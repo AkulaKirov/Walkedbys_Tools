@@ -134,23 +134,12 @@ Module 杂项
     ''' 检测物品是否为列表的某一项
     ''' </summary>
     Public Function 在列表(列表 As Object, 物品 As Object) As Boolean
-        If 列表.count < 1 Then Return False
+        If 列表.Count < 1 Then Return False
         For Each i As Object In 列表
-            If 物品.Equals(i) OrElse 物品 = i Then Return True
+            If 物品.GetHashCode = i.GetHashCode Then Return True
         Next
         Return False
     End Function
-
-    ''' <summary>
-    ''' 把一行行文字变成列表
-    ''' </summary>
-    Public Sub 文字转列表(列表 As Object, 文字 As String)
-        If 文字.Length < 1 Then Exit Sub
-        For Each m As Match In Regex.Matches(文字, ".*")
-            Dim t As String = 去除(m.ToString, vbCr, vbLf)
-            If t.Length > 0 Then 列表.add(t)
-        Next
-    End Sub
 
     ''' <summary>
     ''' 为列表去重

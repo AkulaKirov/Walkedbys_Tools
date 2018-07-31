@@ -62,6 +62,9 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Logo\ico.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -101,11 +104,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="Modules\控件优化.vb" />
-    <Compile Include="Modules\文件处理.vb" />
-    <Compile Include="Modules\字符串处理.vb" />
-    <Compile Include="Modules\杂项.vb" />
-    <Compile Include="Modules\网络.vb" />
+    <Compile Include="Class\设置保存.vb" />
+    <Compile Include="Class\工具类.vb" />
+    <Compile Include="Core\控件优化.vb" />
+    <Compile Include="Core\文件处理.vb" />
+    <Compile Include="Core\字符串处理.vb" />
+    <Compile Include="Core\杂项.vb" />
+    <Compile Include="Core\网络.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -121,7 +126,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Modules\Walkedby.vb" />
+    <Compile Include="Tool\文件夹创建器.Designer.vb">
+      <DependentUpon>文件夹创建器.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\文件夹创建器.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="启动器.Designer.vb">
       <DependentUpon>启动器.vb</DependentUpon>
     </Compile>
@@ -135,6 +145,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\文件夹创建器.resx">
+      <DependentUpon>文件夹创建器.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="启动器.resx">
       <DependentUpon>启动器.vb</DependentUpon>
@@ -159,8 +172,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Tools\" />
+    <None Include="Logo\ico.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
