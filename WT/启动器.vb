@@ -4,9 +4,12 @@ Public Class 启动器
     Friend 工具列表 As New List(Of 工具)
     Friend 工具收藏 As New List(Of 工具)
     Friend 收藏按纽 As New List(Of Button)
+    Dim Th更新 As New Thread(AddressOf 检查更新)
+    Dim 版本 As Single = My.Application.Info.Version.Major + (My.Application.Info.Version.Minor / 10)
 
     Private Sub 启动器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Icon = My.Resources.ico
+        Text = "走過去的工具箱 内部测试版 " + 版本.ToString
         线程越界()
         Directory.CreateDirectory(TempF)
         Sets.读取本地文件()
@@ -48,9 +51,11 @@ Public Class 启动器
             b.Visible = True
         Next
         GBfavorites.Text = "工具收藏夹" + 括(工具收藏.Count.ToString + "/8")
+        Th更新.Start()
     End Sub
 
     Private Sub 启动器_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        中断线程(Th更新)
         Sets.保存本地文件()
         删除文件夹(TempF)
     End Sub
@@ -109,8 +114,23 @@ Public Class 启动器
         GBfavorites.Text = "工具收藏夹" + 括(工具收藏.Count.ToString + "/8")
     End Sub
 
-    Private Sub Always_Tick(sender As Object, e As EventArgs) Handles Always.Tick
-
+    Sub 检查更新()
+        Dim h As New 简易HTTP("" + "?" + 随机.小写字母)
+        Dim t As String = h.获得回应
+        Dim out As String = ""
+        If t.StartsWith("这是一个检查更新版本用的") Then
+            out = "检查更新失败：" + vbCrLf + t
+        Else
+            Dim s As New 简易CFG
+            s.全文本 = t
+            If 版本 >= Val(s.节点("version")) Then
+                out = "你已经是最新版本。" + vbCrLf
+            Else
+                out = "看起来有新的版本。" + vbCrLf
+            End If
+            out += "最新版本：" + s.节点("version") + vbCrLf + "更新记录：" + s.节点("log")
+        End If
+        TxtUpdate.Text = out
     End Sub
 
 End Class

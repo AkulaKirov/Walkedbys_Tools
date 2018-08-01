@@ -22,15 +22,16 @@ Partial Class 启动器
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Me.GBfavorites = New System.Windows.Forms.GroupBox()
         Me.GBallTools = New System.Windows.Forms.GroupBox()
         Me.ButAddToFavor = New System.Windows.Forms.Button()
         Me.ButOpenTool = New System.Windows.Forms.Button()
         Me.TxtToolDes = New System.Windows.Forms.TextBox()
         Me.ListTools = New System.Windows.Forms.ListBox()
-        Me.Always = New System.Windows.Forms.Timer(Me.components)
+        Me.GBupdate = New System.Windows.Forms.GroupBox()
+        Me.TxtUpdate = New System.Windows.Forms.TextBox()
         Me.GBallTools.SuspendLayout()
+        Me.GBupdate.SuspendLayout()
         Me.SuspendLayout()
         '
         'GBfavorites
@@ -100,16 +101,34 @@ Partial Class 启动器
         Me.ListTools.TabIndex = 0
         Me.ListTools.TabStop = False
         '
-        'Always
+        'GBupdate
         '
-        Me.Always.Enabled = True
-        Me.Always.Interval = 10
+        Me.GBupdate.Controls.Add(Me.TxtUpdate)
+        Me.GBupdate.Location = New System.Drawing.Point(355, 135)
+        Me.GBupdate.Name = "GBupdate"
+        Me.GBupdate.Size = New System.Drawing.Size(363, 121)
+        Me.GBupdate.TabIndex = 2
+        Me.GBupdate.TabStop = False
+        Me.GBupdate.Text = "检查更新"
+        '
+        'TxtUpdate
+        '
+        Me.TxtUpdate.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TxtUpdate.Location = New System.Drawing.Point(3, 20)
+        Me.TxtUpdate.Multiline = True
+        Me.TxtUpdate.Name = "TxtUpdate"
+        Me.TxtUpdate.ReadOnly = True
+        Me.TxtUpdate.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TxtUpdate.Size = New System.Drawing.Size(357, 98)
+        Me.TxtUpdate.TabIndex = 0
+        Me.TxtUpdate.TabStop = False
         '
         '启动器
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(730, 381)
+        Me.Controls.Add(Me.GBupdate)
         Me.Controls.Add(Me.GBallTools)
         Me.Controls.Add(Me.GBfavorites)
         Me.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -121,6 +140,8 @@ Partial Class 启动器
         Me.Text = "走過去的工具箱"
         Me.GBallTools.ResumeLayout(False)
         Me.GBallTools.PerformLayout()
+        Me.GBupdate.ResumeLayout(False)
+        Me.GBupdate.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -131,5 +152,6 @@ Partial Class 启动器
     Friend WithEvents TxtToolDes As TextBox
     Friend WithEvents ButOpenTool As Button
     Friend WithEvents ButAddToFavor As Button
-    Friend WithEvents Always As Windows.Forms.Timer
+    Friend WithEvents GBupdate As GroupBox
+    Friend WithEvents TxtUpdate As TextBox
 End Class
