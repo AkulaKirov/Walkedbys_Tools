@@ -104,7 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="Class\设置保存.vb" />
+    <Compile Include="Class\通用.vb" />
     <Compile Include="Class\工具类.vb" />
     <Compile Include="Core\控件优化.vb" />
     <Compile Include="Core\文件处理.vb" />
@@ -138,6 +138,12 @@
     <Compile Include="Tool\文件夹创建器.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Tool\日子提醒.Designer.vb">
+      <DependentUpon>日子提醒.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\日子提醒.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="启动器.Designer.vb">
       <DependentUpon>启动器.vb</DependentUpon>
     </Compile>
@@ -157,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\文件夹创建器.resx">
       <DependentUpon>文件夹创建器.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\日子提醒.resx">
+      <DependentUpon>日子提醒.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="启动器.resx">
       <DependentUpon>启动器.vb</DependentUpon>
@@ -181,7 +190,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Logo\ico.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Logo\ico.ico" />
   </ItemGroup>

@@ -77,6 +77,7 @@ Partial Class B站图床
         Me.Controls.Add(Me.PicBox)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.MaximizeBox = False
         Me.Name = "B站图床"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

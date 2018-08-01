@@ -30,13 +30,16 @@ Partial Class 启动器
         Me.ListTools = New System.Windows.Forms.ListBox()
         Me.GBupdate = New System.Windows.Forms.GroupBox()
         Me.TxtUpdate = New System.Windows.Forms.TextBox()
+        Me.LabAbout = New System.Windows.Forms.Label()
+        Me.GBabout = New System.Windows.Forms.GroupBox()
         Me.GBallTools.SuspendLayout()
         Me.GBupdate.SuspendLayout()
+        Me.GBabout.SuspendLayout()
         Me.SuspendLayout()
         '
         'GBfavorites
         '
-        Me.GBfavorites.Location = New System.Drawing.Point(12, 12)
+        Me.GBfavorites.Location = New System.Drawing.Point(12, 3)
         Me.GBfavorites.Name = "GBfavorites"
         Me.GBfavorites.Size = New System.Drawing.Size(706, 117)
         Me.GBfavorites.TabIndex = 0
@@ -49,7 +52,7 @@ Partial Class 启动器
         Me.GBallTools.Controls.Add(Me.ButOpenTool)
         Me.GBallTools.Controls.Add(Me.TxtToolDes)
         Me.GBallTools.Controls.Add(Me.ListTools)
-        Me.GBallTools.Location = New System.Drawing.Point(12, 135)
+        Me.GBallTools.Location = New System.Drawing.Point(12, 126)
         Me.GBallTools.Name = "GBallTools"
         Me.GBallTools.Size = New System.Drawing.Size(337, 235)
         Me.GBallTools.TabIndex = 1
@@ -104,16 +107,17 @@ Partial Class 启动器
         'GBupdate
         '
         Me.GBupdate.Controls.Add(Me.TxtUpdate)
-        Me.GBupdate.Location = New System.Drawing.Point(355, 135)
+        Me.GBupdate.Location = New System.Drawing.Point(355, 126)
         Me.GBupdate.Name = "GBupdate"
         Me.GBupdate.Size = New System.Drawing.Size(363, 121)
         Me.GBupdate.TabIndex = 2
         Me.GBupdate.TabStop = False
-        Me.GBupdate.Text = "检查更新"
+        Me.GBupdate.Text = "新消息："
         '
         'TxtUpdate
         '
         Me.TxtUpdate.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TxtUpdate.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.0!)
         Me.TxtUpdate.Location = New System.Drawing.Point(3, 20)
         Me.TxtUpdate.Multiline = True
         Me.TxtUpdate.Name = "TxtUpdate"
@@ -123,16 +127,38 @@ Partial Class 启动器
         Me.TxtUpdate.TabIndex = 0
         Me.TxtUpdate.TabStop = False
         '
+        'LabAbout
+        '
+        Me.LabAbout.AutoSize = True
+        Me.LabAbout.BackColor = System.Drawing.Color.Transparent
+        Me.LabAbout.Location = New System.Drawing.Point(6, 20)
+        Me.LabAbout.Name = "LabAbout"
+        Me.LabAbout.Size = New System.Drawing.Size(208, 34)
+        Me.LabAbout.TabIndex = 3
+        Me.LabAbout.Text = "走過去的工具箱 Walkedby's Tools" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "编写：戈登走過去"
+        '
+        'GBabout
+        '
+        Me.GBabout.Controls.Add(Me.LabAbout)
+        Me.GBabout.Location = New System.Drawing.Point(356, 254)
+        Me.GBabout.Name = "GBabout"
+        Me.GBabout.Size = New System.Drawing.Size(362, 107)
+        Me.GBabout.TabIndex = 4
+        Me.GBabout.TabStop = False
+        Me.GBabout.Text = "关于"
+        '
         '启动器
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(730, 381)
+        Me.ClientSize = New System.Drawing.Size(724, 381)
+        Me.Controls.Add(Me.GBabout)
         Me.Controls.Add(Me.GBupdate)
         Me.Controls.Add(Me.GBallTools)
         Me.Controls.Add(Me.GBfavorites)
         Me.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
+        Me.ImeMode = System.Windows.Forms.ImeMode.[On]
         Me.KeyPreview = True
         Me.MaximizeBox = False
         Me.Name = "启动器"
@@ -142,6 +168,8 @@ Partial Class 启动器
         Me.GBallTools.PerformLayout()
         Me.GBupdate.ResumeLayout(False)
         Me.GBupdate.PerformLayout()
+        Me.GBabout.ResumeLayout(False)
+        Me.GBabout.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -154,4 +182,6 @@ Partial Class 启动器
     Friend WithEvents ButAddToFavor As Button
     Friend WithEvents GBupdate As GroupBox
     Friend WithEvents TxtUpdate As TextBox
+    Friend WithEvents LabAbout As Label
+    Friend WithEvents GBabout As GroupBox
 End Class

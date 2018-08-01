@@ -11,7 +11,7 @@ Public Class 工具
         窗体 = win
         简介 = description
         ID = 内部id
-        窗体.Icon = My.Resources.ico
+        窗体.Icon = 图标
         AddHandler 窗体.FormClosing, Sub(sender As Object, e As FormClosingEventArgs)
                                        e.Cancel = True
                                        窗体.Hide()
@@ -19,6 +19,7 @@ Public Class 工具
                                        启动器.WindowState = FormWindowState.Normal
                                        启动器.Show()
                                        启动器.Location = 窗体.Location
+                                       最后窗体 = 启动器
                                    End Sub
     End Sub
 
@@ -28,6 +29,7 @@ Public Class 工具
         窗体.Show()
         窗体.Location = 启动器.Location
         窗体.WindowState = FormWindowState.Normal
+        最后窗体 = 窗体
     End Sub
 
     Public Overrides Function ToString() As String
