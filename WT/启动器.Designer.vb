@@ -22,6 +22,7 @@ Partial Class 启动器
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.GBfavorites = New System.Windows.Forms.GroupBox()
         Me.GBallTools = New System.Windows.Forms.GroupBox()
         Me.ButAddToFavor = New System.Windows.Forms.Button()
@@ -32,6 +33,7 @@ Partial Class 启动器
         Me.TxtUpdate = New System.Windows.Forms.TextBox()
         Me.LabAbout = New System.Windows.Forms.Label()
         Me.GBabout = New System.Windows.Forms.GroupBox()
+        Me.After1s = New System.Windows.Forms.Timer(Me.components)
         Me.GBallTools.SuspendLayout()
         Me.GBupdate.SuspendLayout()
         Me.GBabout.SuspendLayout()
@@ -147,6 +149,9 @@ Partial Class 启动器
         Me.GBabout.TabStop = False
         Me.GBabout.Text = "关于"
         '
+        'After1s
+        '
+        '
         '启动器
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -184,4 +189,5 @@ Partial Class 启动器
     Friend WithEvents TxtUpdate As TextBox
     Friend WithEvents LabAbout As Label
     Friend WithEvents GBabout As GroupBox
+    Friend WithEvents After1s As Windows.Forms.Timer
 End Class

@@ -7,10 +7,11 @@ Module 通用
     Public 图标 As Icon = My.Resources.ico
     Public 最后窗体 As Form = 启动器
     Public Delegate Sub 委托推送(m As String)
+    Public 启动参数 As New List(Of String)
 
     Public Function ID工具(id As String) As 工具
         For Each t As 工具 In 工具列表
-            If t.ID = id Then Return t
+            If t.ID.ToLower = id.ToLower Then Return t
         Next
         Return Nothing
     End Function

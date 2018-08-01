@@ -3,7 +3,7 @@ Public Class 启动器
 
     Friend 工具收藏 As New List(Of 工具)
     Friend 收藏按纽 As New List(Of Button)
-    Dim Th更新 As New Thread(AddressOf 检查更新)
+    Dim Th更新 As Thread
     Dim 关于链接 As New List(Of LinkLabel)
     Dim 版本 As Single = My.Application.Info.Version.Major + (My.Application.Info.Version.Minor / 10)
     Dim 检查更新过了 As String = ""
@@ -18,11 +18,10 @@ Public Class 启动器
         工具列表.Add(New 工具("文件夹创建器", 文件夹创建器, "MKDIR", "输入一个路径，就能新建好你要的文件夹。"))
         工具列表.Add(New 工具("B站图床", B站图床, "BilibiliPic", "把20MB以下的图片无损放到B站服务器还行。"))
         工具列表.Add(New 工具("日子提醒器", 日子提醒, "DayReminder", "可以拿来提醒生日或者重要的啥日子。"))
-        Dim t As 工具
+        Dim t As 工具, b As Button, i As Integer, g As String
         For Each t In 工具列表
             ListTools.Items.Add(t.名字)
         Next
-        Dim b As Button, i As Integer
         For i = 1 To 8
             b = New Button
             GBfavorites.Controls.Add(b)
@@ -40,7 +39,7 @@ Public Class 启动器
         Next
         Dim mc As New List(Of String)
         文字转列表(mc, 读取("FAVOR"))
-        For Each g As String In mc
+        For Each g In mc
             t = ID工具(g)
             If Not IsNothing(t) Then 工具收藏.Add(t)
             If 工具收藏.Count >= 8 Then Exit For
@@ -59,6 +58,7 @@ Public Class 启动器
         新增关于链接("下载最新版", "https://github.com/gordonwalkedby/Walkedbys_Tools/releases")
         新增关于链接("请我喝可乐", "https://walkedby.com/donateme/")
         Refresh()
+        After1s.Enabled = True
     End Sub
 
     Private Sub 启动器_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
@@ -72,6 +72,8 @@ Public Class 启动器
         日子提醒.日子提醒_Load()
         日子提醒.提醒好日子()
         If 检查更新过了.Length < 1 Then
+            中断线程(Th更新)
+            Th更新 = New Thread(AddressOf 检查更新)
             Th更新.Start()
         Else
             推送(检查更新过了)
@@ -174,4 +176,21 @@ Public Class 启动器
         检查推送()
     End Sub
 
+    Private Sub After1s_Tick(sender As Object, e As EventArgs) Handles After1s.Tick
+        Dim t As 工具, g As String
+        If 启动参数.Count > 0 Then
+            For Each g In 启动参数
+                If g.StartsWith("-") Then
+                    t = ID工具(去左(g, 1))
+                    If Not IsNothing(t) Then
+                        t.启动()
+                        Exit For
+                    End If
+                End If
+            Next
+        End If
+        After1s.Enabled = False
+    End Sub
+
 End Class
+
