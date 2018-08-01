@@ -41,7 +41,6 @@ Public Class 启动器
             t = ID工具(g)
             If Not IsNothing(t) Then 工具收藏.Add(t)
         Next
-        PRT(工具收藏.Count)
         For i = 0 To 工具收藏.Count - 1
             If 工具收藏.Count < 1 Then Exit For
             b = 收藏按纽.Item(i)
@@ -115,20 +114,20 @@ Public Class 启动器
     End Sub
 
     Sub 检查更新()
-        Dim h As New 简易HTTP("" + "?" + 随机.小写字母)
+        Dim h As New 简易HTTP("https://raw.githubusercontent.com/gordonwalkedby/Walkedbys_Tools/master/WT/updater.cfg" + "?" + 随机.小写字母)
         Dim t As String = h.获得回应
         Dim out As String = ""
-        If t.StartsWith("这是一个检查更新版本用的") Then
+        If Not t.StartsWith("这是一个检查更新版本用的") Then
             out = "检查更新失败：" + vbCrLf + t
         Else
             Dim s As New 简易CFG
             s.全文本 = t
-            If 版本 >= Val(s.节点("version")) Then
+            If 版本 >= Val(s.节点("ver")) Then
                 out = "你已经是最新版本。" + vbCrLf
             Else
                 out = "看起来有新的版本。" + vbCrLf
             End If
-            out += "最新版本：" + s.节点("version") + vbCrLf + "更新记录：" + s.节点("log")
+            out += "最新版本：" + s.节点("ver") + vbCrLf + "更新记录：" + s.节点("log")
         End If
         TxtUpdate.Text = out
     End Sub
