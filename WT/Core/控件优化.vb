@@ -16,38 +16,6 @@ Module 控件优化
     End Sub
 
     ''' <summary>
-    ''' 获得这个窗口的边框的宽度
-    ''' </summary>
-    Public ReadOnly Property 窗口边框X(窗体 As Form) As Integer
-        Get
-            Select Case 窗体.FormBorderStyle
-                Case FormBorderStyle.Fixed3D OrElse FormBorderStyle.Sizable OrElse FormBorderStyle.FixedSingle
-                    Return 10
-                Case FormBorderStyle.FixedDialog OrElse FormBorderStyle.FixedToolWindow OrElse FormBorderStyle.SizableToolWindow
-                    Return 8
-            End Select
-            Return 0
-        End Get
-    End Property
-
-    ''' <summary>
-    ''' 获得这个窗口的边框的高度
-    ''' </summary>
-    Public ReadOnly Property 窗口边框Y(窗体 As Form) As Integer
-        Get
-            Select Case 窗体.FormBorderStyle
-                Case FormBorderStyle.Fixed3D
-                    Return 32
-                Case FormBorderStyle.FixedSingle OrElse FormBorderStyle.Sizable OrElse FormBorderStyle.FixedDialog
-                    Return 30
-                Case FormBorderStyle.FixedToolWindow OrElse FormBorderStyle.SizableToolWindow
-                    Return 27
-            End Select
-            Return 0
-        End Get
-    End Property
-
-    ''' <summary>
     ''' 使文本框支持拖入一个文件或文件夹
     ''' </summary>
     Public Sub 文本框拖入文件(ParamArray 文本框() As TextBox)

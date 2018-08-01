@@ -126,6 +126,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Tool\B站图床.Designer.vb">
+      <DependentUpon>B站图床.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\B站图床.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Tool\文件夹创建器.Designer.vb">
       <DependentUpon>文件夹创建器.vb</DependentUpon>
     </Compile>
@@ -145,6 +151,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\B站图床.resx">
+      <DependentUpon>B站图床.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\文件夹创建器.resx">
       <DependentUpon>文件夹创建器.vb</DependentUpon>

@@ -6,8 +6,12 @@ Public Class 启动器
     Friend 收藏按纽 As New List(Of Button)
 
     Private Sub 启动器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Icon = My.Resources.ico
+        线程越界()
+        Directory.CreateDirectory(TempF)
         Sets.读取本地文件()
         工具列表.Add(New 工具("文件夹创建器", 文件夹创建器, "MKDIR", "输入一个路径，就能新建好你要的文件夹。"))
+        工具列表.Add(New 工具("B站图床", B站图床, "BilibiliPic", "把20MB以下的图片无损放到B站服务器还行。"))
         Dim t As 工具
         For Each t In 工具列表
             ListTools.Items.Add(t.名字)
@@ -43,10 +47,12 @@ Public Class 启动器
             b.Tag = t.ID
             b.Visible = True
         Next
+        GBfavorites.Text = "工具收藏夹" + 括(工具收藏.Count.ToString + "/8")
     End Sub
 
     Private Sub 启动器_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Sets.保存本地文件()
+        删除文件夹(TempF)
     End Sub
 
     Public Function ID工具(id As String) As 工具
@@ -62,7 +68,15 @@ Public Class 启动器
         Dim t As 工具 = 工具列表.Item(i)
         TxtToolDes.Text = t.名字 + vbCrLf + IIf(在列表(工具收藏, t), "【已收藏】" + vbCrLf, "") + "简介：" + vbCrLf + t.简介
         ButOpenTool.Enabled = True
-        ButAddToFavor.Enabled = True
+        With ButAddToFavor
+            If 在列表(工具收藏, t) Then
+                .Enabled = True
+                .Text = "取消收藏"
+            Else
+                .Enabled = (工具收藏.Count < 8)
+                .Text = "收藏"
+            End If
+        End With
     End Sub
 
     Private Sub ButOpenTool_Click(sender As Object, e As EventArgs) Handles ButOpenTool.Click
@@ -73,10 +87,9 @@ Public Class 启动器
     Private Sub ButAddToFavor_Click(sender As Object, e As EventArgs) Handles ButAddToFavor.Click
         Dim t As 工具 = 工具列表.Item(ListTools.SelectedIndex)
         If Not 在列表(工具收藏, t) Then
-            工具收藏.Add(t)
+            If 工具收藏.Count < 8 Then 工具收藏.Add(t)
         Else
             工具收藏.Remove(t)
-
         End If
         Dim i As Integer = 0
         For i = 0 To 7
@@ -93,6 +106,11 @@ Public Class 启动器
         End If
         保存("FAVOR", 列表转文字(工具收藏))
         ListTools_SelectedIndexChanged(sender, e)
+        GBfavorites.Text = "工具收藏夹" + 括(工具收藏.Count.ToString + "/8")
+    End Sub
+
+    Private Sub Always_Tick(sender As Object, e As EventArgs) Handles Always.Tick
+
     End Sub
 
 End Class

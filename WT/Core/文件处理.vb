@@ -112,6 +112,16 @@ Module 文件处理
     End Function
 
     ''' <summary>
+    ''' 删除一个文件夹
+    ''' </summary>
+    Public Sub 删除文件夹(文件夹 As String)
+        Try
+            Directory.Delete(文件夹, True)
+        Catch ex As Exception
+        End Try
+    End Sub
+
+    ''' <summary>
     ''' 字节单位转换
     ''' </summary>
     Public Function 字节单位转换(数字 As Double, Optional 初始单位 As String = "b", Optional 输出单位 As String = "m") As Double
@@ -142,6 +152,13 @@ Module 文件处理
                 数字 = 数字
         End Select
         Return 数字
+    End Function
+
+    ''' <summary>
+    ''' 快速生成一个文件类
+    ''' </summary>
+    Public Function 文件x(目标 As String) As 文件
+        Return New 文件(目标)
     End Function
 
     ''' <summary>
@@ -197,11 +214,11 @@ Module 文件处理
         End Property
 
         ''' <summary>
-        ''' 返回文件的后缀名，不带第一个点
+        ''' 返回文件的小写后缀名，不带第一个点
         ''' </summary>
         Public ReadOnly Property 后缀 As String
             Get
-                Return 去左(Regex.Match(Fl, "\..*").ToString, 1)
+                Return 去左(Regex.Match(Fl, "\..*").ToString.ToLower, 1)
             End Get
         End Property
 
@@ -282,16 +299,16 @@ Module 文件处理
         Public Sub 复制(路径 As String, 新文件名 As String)
             路径 = 追加斜杠(路径)
             If Not 文件夹存在(路径) Then Directory.CreateDirectory(路径)
-            If 存在 Then File.Copy(Fl, 路径 + 新文件名, True)
+            If 存在 AndAlso 可用 Then File.Copy(Fl, 路径 + 新文件名, True)
         End Sub
 
         ''' <summary>
-        ''' 把文件复制到别的地方
+        ''' 把文件复制到这个文件夹，并且不改名
         ''' </summary>
         Public Sub 复制(路径 As String)
             路径 = 追加斜杠(路径)
             If Not 文件夹存在(路径) Then Directory.CreateDirectory(路径)
-            If 存在 Then File.Copy(Fl, 路径 + 完整文件名, True)
+            If 存在 AndAlso 可用 Then File.Copy(Fl, 路径 + 完整文件名, True)
         End Sub
 
         ''' <summary>
@@ -312,6 +329,22 @@ Module 文件处理
             b = r.ReadBytes(大小("b"))
             r.Close()
             Return b
+        End Function
+
+        ''' <summary>
+        ''' 把文件读取为 Image 并且不占用图片
+        ''' </summary>
+        ''' <returns></returns>
+        Public Function 转图片() As Image
+            Dim t As Image = Nothing
+            If 存在 AndAlso 可用 Then
+                Dim r As New MemoryStream
+                Dim b As Byte() = 读字节()
+                r.Write(b, 0, b.Length)
+                t = Image.FromStream(r)
+                r.Close()
+            End If
+            Return t
         End Function
 
     End Class

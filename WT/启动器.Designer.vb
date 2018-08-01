@@ -22,13 +22,14 @@ Partial Class 启动器
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(启动器))
+        Me.components = New System.ComponentModel.Container()
         Me.GBfavorites = New System.Windows.Forms.GroupBox()
         Me.GBallTools = New System.Windows.Forms.GroupBox()
-        Me.ListTools = New System.Windows.Forms.ListBox()
-        Me.TxtToolDes = New System.Windows.Forms.TextBox()
-        Me.ButOpenTool = New System.Windows.Forms.Button()
         Me.ButAddToFavor = New System.Windows.Forms.Button()
+        Me.ButOpenTool = New System.Windows.Forms.Button()
+        Me.TxtToolDes = New System.Windows.Forms.TextBox()
+        Me.ListTools = New System.Windows.Forms.ListBox()
+        Me.Always = New System.Windows.Forms.Timer(Me.components)
         Me.GBallTools.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -54,16 +55,27 @@ Partial Class 启动器
         Me.GBallTools.TabStop = False
         Me.GBallTools.Text = "全部工具"
         '
-        'ListTools
+        'ButAddToFavor
         '
-        Me.ListTools.FormattingEnabled = True
-        Me.ListTools.ItemHeight = 17
-        Me.ListTools.Location = New System.Drawing.Point(11, 23)
-        Me.ListTools.Name = "ListTools"
-        Me.ListTools.ScrollAlwaysVisible = True
-        Me.ListTools.Size = New System.Drawing.Size(145, 208)
-        Me.ListTools.TabIndex = 0
-        Me.ListTools.TabStop = False
+        Me.ButAddToFavor.Enabled = False
+        Me.ButAddToFavor.Location = New System.Drawing.Point(239, 192)
+        Me.ButAddToFavor.Name = "ButAddToFavor"
+        Me.ButAddToFavor.Size = New System.Drawing.Size(92, 39)
+        Me.ButAddToFavor.TabIndex = 3
+        Me.ButAddToFavor.TabStop = False
+        Me.ButAddToFavor.Text = "收藏"
+        Me.ButAddToFavor.UseVisualStyleBackColor = True
+        '
+        'ButOpenTool
+        '
+        Me.ButOpenTool.Enabled = False
+        Me.ButOpenTool.Location = New System.Drawing.Point(162, 192)
+        Me.ButOpenTool.Name = "ButOpenTool"
+        Me.ButOpenTool.Size = New System.Drawing.Size(71, 39)
+        Me.ButOpenTool.TabIndex = 2
+        Me.ButOpenTool.TabStop = False
+        Me.ButOpenTool.Text = "开启"
+        Me.ButOpenTool.UseVisualStyleBackColor = True
         '
         'TxtToolDes
         '
@@ -77,27 +89,21 @@ Partial Class 启动器
         Me.TxtToolDes.TabStop = False
         Me.TxtToolDes.Text = "请从左边的列表里选择一个工具"
         '
-        'ButOpenTool
+        'ListTools
         '
-        Me.ButOpenTool.Enabled = False
-        Me.ButOpenTool.Location = New System.Drawing.Point(162, 192)
-        Me.ButOpenTool.Name = "ButOpenTool"
-        Me.ButOpenTool.Size = New System.Drawing.Size(71, 39)
-        Me.ButOpenTool.TabIndex = 2
-        Me.ButOpenTool.TabStop = False
-        Me.ButOpenTool.Text = "开启"
-        Me.ButOpenTool.UseVisualStyleBackColor = True
+        Me.ListTools.FormattingEnabled = True
+        Me.ListTools.ItemHeight = 17
+        Me.ListTools.Location = New System.Drawing.Point(11, 23)
+        Me.ListTools.Name = "ListTools"
+        Me.ListTools.ScrollAlwaysVisible = True
+        Me.ListTools.Size = New System.Drawing.Size(145, 208)
+        Me.ListTools.TabIndex = 0
+        Me.ListTools.TabStop = False
         '
-        'ButAddToFavor
+        'Always
         '
-        Me.ButAddToFavor.Enabled = False
-        Me.ButAddToFavor.Location = New System.Drawing.Point(239, 192)
-        Me.ButAddToFavor.Name = "ButAddToFavor"
-        Me.ButAddToFavor.Size = New System.Drawing.Size(92, 39)
-        Me.ButAddToFavor.TabIndex = 3
-        Me.ButAddToFavor.TabStop = False
-        Me.ButAddToFavor.Text = "收藏"
-        Me.ButAddToFavor.UseVisualStyleBackColor = True
+        Me.Always.Enabled = True
+        Me.Always.Interval = 10
         '
         '启动器
         '
@@ -108,7 +114,6 @@ Partial Class 启动器
         Me.Controls.Add(Me.GBfavorites)
         Me.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
         Me.MaximizeBox = False
         Me.Name = "启动器"
@@ -126,4 +131,5 @@ Partial Class 启动器
     Friend WithEvents TxtToolDes As TextBox
     Friend WithEvents ButOpenTool As Button
     Friend WithEvents ButAddToFavor As Button
+    Friend WithEvents Always As Windows.Forms.Timer
 End Class
