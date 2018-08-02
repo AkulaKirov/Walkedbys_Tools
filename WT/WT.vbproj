@@ -144,6 +144,12 @@
     <Compile Include="Tool\日子提醒.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Tool\VMT生成器.Designer.vb">
+      <DependentUpon>VMT生成器.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\VMT生成器.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="启动器.Designer.vb">
       <DependentUpon>启动器.vb</DependentUpon>
     </Compile>
@@ -166,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\日子提醒.resx">
       <DependentUpon>日子提醒.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\VMT生成器.resx">
+      <DependentUpon>VMT生成器.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="启动器.resx">
       <DependentUpon>启动器.vb</DependentUpon>

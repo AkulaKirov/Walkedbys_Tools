@@ -20,7 +20,7 @@ Module 通用
         Sets.节点(节点) = 内容
     End Sub
 
-    Public Function 读取(节点) As String
+    Public Function 读取(节点 As String) As String
         Return Sets.节点(节点)
     End Function
 

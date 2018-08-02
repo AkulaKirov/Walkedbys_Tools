@@ -16,12 +16,12 @@ Public Class 日子提醒
         CBday.SelectedIndex = 0
         CBmonth.SelectedIndex = 0
         ListDates.Items.Clear()
-        文字转列表(ListDates.Items, Sets.节点("days"))
+        文字转列表(ListDates.Items, 读取("days"))
     End Sub
 
     Private Sub ButRM_Click(sender As Object, e As EventArgs) Handles ButRM.Click
         移除一项(ListDates, ListDates.SelectedIndex)
-        Sets.节点("days") = 列表转文字(ListDates.Items)
+        保存("days", 列表转文字(ListDates.Items))
     End Sub
 
     Private Sub ListDates_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListDates.SelectedIndexChanged
@@ -31,7 +31,7 @@ Public Class 日子提醒
     Private Sub ButADD_Click(sender As Object, e As EventArgs) Handles ButADD.Click
         Dim s As String = " " + 凑零(CBmonth.Text) + "-" + 凑零(CBday.Text) + " " + TxtJOB.Text
         If Not 在列表(ListDates.Items, s) Then ListDates.Items.Add(s)
-        Sets.节点("days") = 列表转文字(ListDates.Items)
+        保存("days", 列表转文字(ListDates.Items))
         TxtJOB.Text = ""
     End Sub
 

@@ -18,6 +18,7 @@ Public Class 启动器
         工具列表.Add(New 工具("文件夹创建器", 文件夹创建器, "MKDIR", "输入一个路径，就能新建好你要的文件夹。"))
         工具列表.Add(New 工具("B站图床", B站图床, "BilibiliPic", "把20MB以下的图片无损放到B站服务器还行。"))
         工具列表.Add(New 工具("日子提醒器", 日子提醒, "DayReminder", "可以拿来提醒生日或者重要的啥日子。"))
+        工具列表.Add(New 工具("监视式VMT生成器", VMT生成器, "VMTG", "给一个贴图文件夹批量生成 VMT 文件，支持监视式。"))
         Dim t As 工具, b As Button, i As Integer, g As String
         For Each t In 工具列表
             ListTools.Items.Add(t.名字)
