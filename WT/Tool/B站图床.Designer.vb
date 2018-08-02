@@ -40,20 +40,21 @@ Partial Class B站图床
         '
         'ButCopy
         '
-        Me.ButCopy.Location = New System.Drawing.Point(334, 201)
+        Me.ButCopy.Enabled = False
+        Me.ButCopy.Location = New System.Drawing.Point(297, 201)
         Me.ButCopy.Name = "ButCopy"
-        Me.ButCopy.Size = New System.Drawing.Size(81, 34)
+        Me.ButCopy.Size = New System.Drawing.Size(96, 34)
         Me.ButCopy.TabIndex = 1
-        Me.ButCopy.Text = "复制"
+        Me.ButCopy.Text = "复制链接"
         Me.ButCopy.UseVisualStyleBackColor = True
         '
         'ButPaste
         '
-        Me.ButPaste.Location = New System.Drawing.Point(421, 201)
+        Me.ButPaste.Location = New System.Drawing.Point(399, 201)
         Me.ButPaste.Name = "ButPaste"
-        Me.ButPaste.Size = New System.Drawing.Size(77, 34)
+        Me.ButPaste.Size = New System.Drawing.Size(99, 34)
         Me.ButPaste.TabIndex = 2
-        Me.ButPaste.Text = "粘贴"
+        Me.ButPaste.Text = "粘贴图片"
         Me.ButPaste.UseVisualStyleBackColor = True
         '
         'PicBox
@@ -77,7 +78,6 @@ Partial Class B站图床
         Me.Controls.Add(Me.PicBox)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.MaximizeBox = False
         Me.Name = "B站图床"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

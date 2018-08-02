@@ -9,10 +9,13 @@ Public Class VMT生成器
         TxtVMT.Text = 读取("vmtLAST")
         文字转列表(模板, 读取("vmtTEMPs"))
         Dim i As String
-        For Each i In 模板
-            i = 去右(Regex.Match(i, ".+___").ToString, 3)
-            CBtemplete.Items.Add(i)
-        Next
+        If 模板.Count > 0 Then
+            For Each i In 模板
+                i = 去右(Regex.Match(i, ".+___").ToString, 3)
+                CBtemplete.Items.Add(i)
+            Next
+            CBtemplete.SelectedIndex = CBtemplete.Items.Count - 1
+        End If
         文本框拖入文件(TxtPath)
         文本框全选(Me)
     End Sub
@@ -55,6 +58,7 @@ Public Class VMT生成器
         i += "___" + Regex.Escape(TxtVMT.Text)
         模板.Add(i)
         TxtTempName.Text = ""
+        CBtemplete.SelectedIndex = CBtemplete.Items.Count - 1
     End Sub
 
     Private Sub VMT生成器_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
@@ -93,7 +97,7 @@ Public Class VMT生成器
         TxtPath.Enabled = i
         GBvmt.Enabled = i
         ButGen.Text = IIf(Not i, "停止监视与生成", "开始监视与生成")
-        TxtLOG.Text += IIf(Not i, "开始：", "结束：") + Now.ToString + vbCrLf
+        TxtLOG.Text += vbCrLf + IIf(Not i, "开始：", "结束：") + Now.ToString
     End Sub
 
     Private Sub Watching_Tick(sender As Object, e As EventArgs) Handles Watching.Tick
@@ -106,7 +110,7 @@ Public Class VMT生成器
                 Dim s As String = TxtVMT.Text, t As String = 正则去除(m.地址, ".*materials\\", "\.vmt")
                 s = s.Replace("%文件名%", t)
                 m.写(s)
-                TxtLOG.Text += "已生成：" + t + vbCrLf
+                TxtLOG.Text += vbCrLf + "已生成：" + t
             End If
         Next
     End Sub

@@ -104,8 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="Class\通用.vb" />
-    <Compile Include="Class\工具类.vb" />
+    <Compile Include="Public\通用.vb" />
     <Compile Include="Core\控件优化.vb" />
     <Compile Include="Core\文件处理.vb" />
     <Compile Include="Core\字符串处理.vb" />
@@ -150,10 +149,10 @@
     <Compile Include="Tool\VMT生成器.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="启动器.Designer.vb">
+    <Compile Include="Public\启动器.Designer.vb">
       <DependentUpon>启动器.vb</DependentUpon>
     </Compile>
-    <Compile Include="启动器.vb">
+    <Compile Include="Public\启动器.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -176,7 +175,7 @@
     <EmbeddedResource Include="Tool\VMT生成器.resx">
       <DependentUpon>VMT生成器.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="启动器.resx">
+    <EmbeddedResource Include="Public\启动器.resx">
       <DependentUpon>启动器.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>

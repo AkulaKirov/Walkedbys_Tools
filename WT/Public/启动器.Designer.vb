@@ -163,7 +163,7 @@ Partial Class 启动器
         Me.Controls.Add(Me.GBfavorites)
         Me.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
-        Me.ImeMode = System.Windows.Forms.ImeMode.[On]
+        Me.ImeMode = System.Windows.Forms.ImeMode.Off
         Me.KeyPreview = True
         Me.MaximizeBox = False
         Me.Name = "启动器"

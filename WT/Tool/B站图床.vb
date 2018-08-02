@@ -20,6 +20,7 @@ Public Class B站图床
     End Sub
 
     Sub 检查图片(m As String)
+        ButCopy.Enabled = False
         预览图 = Nothing
         Dim i As New 文件(m)
         If i.存在 AndAlso i.可用 AndAlso 是当中一个(i.后缀, "jpg", "png", "gif") AndAlso i.大小 < 20 Then
@@ -38,7 +39,6 @@ Public Class B站图床
 
     Sub 上传图片()
         上传中 = True
-        ButCopy.Enabled = False
         ButPaste.Enabled = False
         Dim h As New 简易HTTP("https://api.vc.bilibili.com/api/v1/image/upload", "POST")
         Dim r As New 简易MultiPartFormData(h)
@@ -49,11 +49,11 @@ Public Class B站图床
         Dim s As String = h.获得回应
         If 包含(s, "{""code"":0,""message"":""success"",""") Then
             LabDoit.Text = 提取(s, "image_url"":""", """,""image_width")
+            ButCopy.Enabled = True
         Else
             LabDoit.Text = "失败！" + vbCrLf + s
         End If
         上传中 = False
-        ButCopy.Enabled = True
         ButPaste.Enabled = True
     End Sub
 
