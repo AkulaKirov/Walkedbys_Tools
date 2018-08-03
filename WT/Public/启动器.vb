@@ -3,22 +3,25 @@ Public Class 启动器
 
     Friend 工具收藏 As New List(Of 工具)
     Friend 收藏按纽 As New List(Of Button)
-    Dim Th更新 As Thread
+    Dim Th更新 As New Thread(AddressOf 检查更新)
     Dim 关于链接 As New List(Of LinkLabel)
     Dim 版本 As Single = My.Application.Info.Version.Major + (My.Application.Info.Version.Minor / 10)
-    Dim 检查更新过了 As String = ""
 
     Private Sub 启动器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         随机.刷新()
         Icon = 图标
         Text = "走過去的工具箱 内部测试版 " + 版本.ToString
+        Nico.Icon = 图标
         线程越界()
+        Th更新.Start()
         Directory.CreateDirectory(TempF)
         Sets.读取本地文件()
         工具列表.Add(New 工具("文件夹创建器", 文件夹创建器, "MKDIR", "输入一个路径，就能新建好你要的文件夹。"))
         工具列表.Add(New 工具("B站图床", B站图床, "BilibiliPic", "把20MB以下的图片无损放到B站服务器还行。"))
         工具列表.Add(New 工具("日子提醒器", 日子提醒, "DayReminder", "可以拿来提醒生日或者重要的啥日子。"))
-        工具列表.Add(New 工具("监视式VMT生成器", VMT生成器, "VMTG", "给一个贴图文件夹批量生成 VMT 文件，支持监视式。"))
+        工具列表.Add(New 工具("监视式VMT生成器", VMT生成器, "VMTG", "给一个贴图文件夹监视式地批量生成 VMT 文件。"))
+        工具列表.Add(New 工具("工作管理器", 工作管理器, "TaskManager", "关闭程序、查看内存用量。"))
+        AddHandler SizeChanged, AddressOf 最小化隐藏
         Dim t As 工具, b As Button, i As Integer, g As String
         For Each t In 工具列表
             ListTools.Items.Add(t.名字)
@@ -63,6 +66,7 @@ Public Class 启动器
     End Sub
 
     Private Sub 启动器_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        Nico.Visible = False
         中断线程(Th更新)
         Sets.保存本地文件()
         删除文件夹(TempF)
@@ -72,13 +76,6 @@ Public Class 启动器
         TxtUpdate.Text = ""
         日子提醒.日子提醒_Load()
         日子提醒.提醒好日子()
-        If 检查更新过了.Length < 1 Then
-            中断线程(Th更新)
-            Th更新 = New Thread(AddressOf 检查更新)
-            Th更新.Start()
-        Else
-            推送(检查更新过了)
-        End If
     End Sub
 
     Private Sub ListTools_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListTools.SelectedIndexChanged
@@ -130,17 +127,18 @@ Public Class 启动器
 
     Sub 检查更新()
         Dim h As New 简易HTTP("https://raw.githubusercontent.com/gordonwalkedby/Walkedbys_Tools/master/WT/updater.cfg?" + 随机.文字)
+        h.超时 = 15
         Dim t As String = h.获得回应
         Dim out As String = ""
         If t.StartsWith("这是一个检查更新版本用的") Then
             Dim s As New 简易CFG
             s.全文本 = t
             If 版本 < Val(s.节点("ver")) Then
-                检查更新过了 = "软件有新版本：" + s.节点("ver")
+                GBabout.Text += " （检查到新版本：" + s.节点("ver") + "）"
             End If
+        Else
+            GBabout.Text += " （检查更新失败）"
         End If
-        Dim wt As New 委托推送(AddressOf 推送)
-        Invoke(wt, 检查更新过了)
     End Sub
 
     Sub 新增关于链接(文字 As String, 链接 As String)
@@ -191,6 +189,21 @@ Public Class 启动器
             Next
         End If
         After1s.Enabled = False
+    End Sub
+
+    Private Sub Nico_MouseUp(sender As Object, e As MouseEventArgs) Handles Nico.MouseUp
+        If e.Button = MouseButtons.Left Then
+            With 最后窗体
+                .TopMost = True
+                .WindowState = FormWindowState.Normal
+                .Show()
+                .TopMost = False
+            End With
+        End If
+    End Sub
+
+    Private Sub 启动器_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
+
     End Sub
 
 End Class

@@ -20,7 +20,7 @@ Public Class 日子提醒
     End Sub
 
     Private Sub ButRM_Click(sender As Object, e As EventArgs) Handles ButRM.Click
-        移除一项(ListDates, ListDates.SelectedIndex)
+        移除选中项(ListDates)
         保存("days", 列表转文字(ListDates.Items))
     End Sub
 

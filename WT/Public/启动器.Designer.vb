@@ -34,6 +34,7 @@ Partial Class 启动器
         Me.LabAbout = New System.Windows.Forms.Label()
         Me.GBabout = New System.Windows.Forms.GroupBox()
         Me.After1s = New System.Windows.Forms.Timer(Me.components)
+        Me.Nico = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.GBallTools.SuspendLayout()
         Me.GBupdate.SuspendLayout()
         Me.GBabout.SuspendLayout()
@@ -152,6 +153,12 @@ Partial Class 启动器
         'After1s
         '
         '
+        'Nico
+        '
+        Me.Nico.BalloonTipText = "走過去的工具箱"
+        Me.Nico.Text = "走過去的工具箱"
+        Me.Nico.Visible = True
+        '
         '启动器
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -167,6 +174,7 @@ Partial Class 启动器
         Me.KeyPreview = True
         Me.MaximizeBox = False
         Me.Name = "启动器"
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "走過去的工具箱"
         Me.GBallTools.ResumeLayout(False)
@@ -190,4 +198,5 @@ Partial Class 启动器
     Friend WithEvents LabAbout As Label
     Friend WithEvents GBabout As GroupBox
     Friend WithEvents After1s As Windows.Forms.Timer
+    Friend WithEvents Nico As NotifyIcon
 End Class

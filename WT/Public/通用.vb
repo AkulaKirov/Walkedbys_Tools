@@ -31,6 +31,13 @@ Module 通用
         End With
     End Sub
 
+    Public Sub 最小化隐藏(sender As Object, e As EventArgs)
+        If sender.WindowState = FormWindowState.Minimized Then
+            sender.WindowState = FormWindowState.Normal
+            sender.Hide()
+        End If
+    End Sub
+
     Public Class 工具
 
         Public Property 名字 As String
@@ -45,6 +52,8 @@ Module 通用
             ID = 内部id
             窗体.Icon = 图标
             窗体.ImeMode = ImeMode.Off
+            窗体.ShowInTaskbar = False
+            窗体.AutoScaleMode = AutoScaleMode.Dpi
             AddHandler 窗体.FormClosing, Sub(sender As Object, e As FormClosingEventArgs)
                                            e.Cancel = True
                                            窗体.Hide()
@@ -54,6 +63,7 @@ Module 通用
                                            启动器.Location = 窗体.Location
                                            最后窗体 = 启动器
                                        End Sub
+            AddHandler 窗体.SizeChanged, AddressOf 最小化隐藏
         End Sub
 
         Public Sub 启动()

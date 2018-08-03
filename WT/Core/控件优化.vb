@@ -37,26 +37,27 @@ Module 控件优化
     ''' <summary>
     ''' 把这个 ListBox 的指定index的一项移除，并且向前选中一个
     ''' </summary>
-    Public Sub 移除一项(组 As ListBox, index As Integer)
-        移除一项s(组, index)
+    Public Sub 移除选中项(组 As ListBox)
+        移除选中项s(组)
     End Sub
 
     ''' <summary>
     ''' 把这个 ComboBox 的指定index的一项移除，并且向前选中一个
     ''' </summary>
-    Public Sub 移除一项(组 As ComboBox, index As Integer)
-        移除一项s(组, index)
+    Public Sub 移除选中项(组 As ComboBox)
+        移除选中项s(组)
     End Sub
 
-    Private Sub 移除一项s(组 As Object, index As Integer)
-        If index >= 组.Items.Count OrElse 组.items.count < 1 Then Exit Sub
-        组.Items.RemoveAt(index)
-        index -= 1
-        If index < 0 Then index = 0
+    Private Sub 移除选中项s(组 As Object)
+        Dim index As Integer = 组.SelectedIndex
+        If 组.items.count < 1 Then Exit Sub
+        组.Items.RemoveAt(Index)
+        Index -= 1
+        If Index < 0 Then Index = 0
         Dim c As Integer = 组.Items.Count
         If c > 0 Then
-            If c > index Then
-                组.SelectedIndex = index
+            If c > Index Then
+                组.SelectedIndex = Index
             Else
                 组.SelectedIndex = c - 1
             End If

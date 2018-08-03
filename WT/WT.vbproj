@@ -104,6 +104,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Form1.Designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Public\通用.vb" />
     <Compile Include="Core\控件优化.vb" />
     <Compile Include="Core\文件处理.vb" />
@@ -129,6 +135,12 @@
       <DependentUpon>B站图床.vb</DependentUpon>
     </Compile>
     <Compile Include="Tool\B站图床.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tool\工作管理器.Designer.vb">
+      <DependentUpon>工作管理器.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\工作管理器.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Tool\文件夹创建器.Designer.vb">
@@ -157,6 +169,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -165,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\B站图床.resx">
       <DependentUpon>B站图床.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\工作管理器.resx">
+      <DependentUpon>工作管理器.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\文件夹创建器.resx">
       <DependentUpon>文件夹创建器.vb</DependentUpon>

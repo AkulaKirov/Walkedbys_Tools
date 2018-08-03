@@ -88,7 +88,7 @@ Public Class VMT生成器
             If i.StartsWith(s + "___") Then Exit For
         Next
         模板.Remove(i)
-        移除一项(CBtemplete, CBtemplete.SelectedIndex)
+        移除选中项(CBtemplete)
     End Sub
 
     Private Sub ButGen_Click(sender As Object, e As EventArgs) Handles ButGen.Click

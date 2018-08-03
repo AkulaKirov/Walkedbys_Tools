@@ -124,7 +124,7 @@ Module 文件处理
     ''' <summary>
     ''' 字节单位转换
     ''' </summary>
-    Public Function 字节单位转换(数字 As Double, Optional 初始单位 As String = "b", Optional 输出单位 As String = "m") As Double
+    Public Function 字节单位转换(数字 As Double, Optional 初始单位 As String = "b", Optional 输出单位 As String = "m") As Long
         初始单位 = LCase(左(初始单位, 1))
         输出单位 = LCase(左(输出单位, 1))
         Select Case 初始单位
