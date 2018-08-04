@@ -82,6 +82,7 @@
   <ItemGroup>
     <Import Include="Microsoft.SqlServer.Server" />
     <Import Include="Microsoft.VisualBasic" />
+    <Import Include="Microsoft.Win32" />
     <Import Include="System" />
     <Import Include="System.Collections" />
     <Import Include="System.Collections.Generic" />
@@ -167,6 +168,12 @@
     <Compile Include="Public\启动器.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Tool\系统代理设置.Designer.vb">
+      <DependentUpon>系统代理设置.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\系统代理设置.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
@@ -195,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Public\启动器.resx">
       <DependentUpon>启动器.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\系统代理设置.resx">
+      <DependentUpon>系统代理设置.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -21,6 +21,7 @@ Public Class 启动器
         工具列表.Add(New 工具("日子提醒器", 日子提醒, "DayReminder", "可以拿来提醒生日或者重要的啥日子。"))
         工具列表.Add(New 工具("监视式VMT生成器", VMT生成器, "VMTG", "给一个贴图文件夹监视式地批量生成 VMT 文件。"))
         工具列表.Add(New 工具("工作管理器", 工作管理器, "TaskManager", "关闭程序、查看内存用量。"))
+        工具列表.Add(New 工具("系统代理设置", 系统代理设置, "ProxyManager", "快速设置系统代理。"))
         AddHandler SizeChanged, AddressOf 最小化隐藏
         Dim t As 工具, b As Button, i As Integer, g As String
         For Each t In 工具列表
@@ -127,14 +128,14 @@ Public Class 启动器
 
     Sub 检查更新()
         Dim h As New 简易HTTP("https://raw.githubusercontent.com/gordonwalkedby/Walkedbys_Tools/master/WT/updater.cfg?" + 随机.文字)
-        h.超时 = 15
+        h.超时 = 5
         Dim t As String = h.获得回应
         Dim out As String = ""
         If t.StartsWith("这是一个检查更新版本用的") Then
             Dim s As New 简易CFG
             s.全文本 = t
             If 版本 < Val(s.节点("ver")) Then
-                GBabout.Text += " （检查到新版本：" + s.节点("ver") + "）"
+                GBabout.Text += " （检测到新版本：" + s.节点("ver") + "）"
             End If
         Else
             GBabout.Text += " （检查更新失败）"
