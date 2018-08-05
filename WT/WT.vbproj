@@ -93,6 +93,7 @@
     <Import Include="System.math" />
     <Import Include="System.Net" />
     <Import Include="System.Net.Http" />
+    <Import Include="System.Net.NetworkInformation" />
     <Import Include="System.Text" />
     <Import Include="System.Text.RegularExpressions" />
     <Import Include="System.Threading" />
@@ -105,12 +106,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Form1.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Public\通用.vb" />
     <Compile Include="Core\控件优化.vb" />
     <Compile Include="Core\文件处理.vb" />
@@ -176,9 +171,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>

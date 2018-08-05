@@ -13,6 +13,11 @@ Public Class 系统代理设置
             Dim t As String = 去右(Regex.Match(i, ".+___").ToString, 3)
             If t.Length > 0 Then ListTemps.Items.Add(t)
         Next
+        If NetworkInterface.GetIsNetworkAvailable Then
+            For Each ip As IPAddress In Dns.GetHostEntry(Dns.GetHostName).AddressList
+                LabIP.Text += vbCrLf + ip.ToString
+            Next
+        End If
     End Sub
 
     Private Sub ButGetSystem_Click(sender As Object, e As EventArgs) Handles ButGetSystem.Click

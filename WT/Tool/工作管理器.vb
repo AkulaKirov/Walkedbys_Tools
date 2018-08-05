@@ -1,6 +1,9 @@
 ﻿
 Public Class 工作管理器
 
+    Dim lastUp As Long
+    Dim lastDown As Long
+
     Private Sub Watching_Tick(sender As Object, e As EventArgs) Handles Watching.Tick
         If Not Visible Then Exit Sub
         Dim ps() As Process = Process.GetProcesses
@@ -30,6 +33,19 @@ Public Class 工作管理器
             BarMemory.Value = i
             GBmemory.Text = s
         End With
+        If NetworkInterface.GetIsNetworkAvailable Then
+            Dim n As NetworkInterface
+            Dim alldown As Long = 0, allup As Long = 0
+            For Each n In NetworkInterface.GetAllNetworkInterfaces
+                alldown += n.GetIPStatistics.BytesReceived
+                allup += n.GetIPStatistics.BytesSent
+            Next
+            If lastDown > 0 Then LabNetwok.Text = "下载：" + 字节单位转换((alldown - lastDown),, "k").ToString + "KB/s" + vbCrLf + "上传：" + 字节单位转换((allup - lastUp),, "k").ToString + "KB/s"
+            lastDown = alldown
+            lastUp = allup
+        Else
+            LabNetwok.Text = "你电脑没有网络。"
+        End If
     End Sub
 
     Private Sub ListProcesses_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListProcesses.SelectedIndexChanged, ButRefresh.Click

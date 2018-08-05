@@ -14,7 +14,6 @@ Public Class VMT生成器
                 i = 去右(Regex.Match(i, ".+___").ToString, 3)
                 CBtemplete.Items.Add(i)
             Next
-            CBtemplete.SelectedIndex = CBtemplete.Items.Count - 1
         End If
         文本框拖入文件(TxtPath)
         文本框全选(Me)
@@ -101,6 +100,7 @@ Public Class VMT生成器
     End Sub
 
     Private Sub Watching_Tick(sender As Object, e As EventArgs) Handles Watching.Tick
+        If Not Visible Then Exit Sub
         Dim f() As String = Directory.GetFiles(TxtPath.Text, "*.vtf", SearchOption.TopDirectoryOnly)
         If f.Count < 1 Then Exit Sub
         Dim i As String

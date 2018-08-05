@@ -33,6 +33,7 @@ Partial Class 系统代理设置
         Me.ButRM = New System.Windows.Forms.Button()
         Me.LabPAC = New System.Windows.Forms.Label()
         Me.LabProxy = New System.Windows.Forms.Label()
+        Me.LabIP = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'TxtPAC
@@ -143,11 +144,22 @@ Partial Class 系统代理设置
         Me.LabProxy.TabIndex = 12
         Me.LabProxy.Text = "代理服务器："
         '
+        'LabIP
+        '
+        Me.LabIP.AutoSize = True
+        Me.LabIP.Font = New System.Drawing.Font("微软雅黑", 8.0!)
+        Me.LabIP.Location = New System.Drawing.Point(12, 144)
+        Me.LabIP.Name = "LabIP"
+        Me.LabIP.Size = New System.Drawing.Size(51, 16)
+        Me.LabIP.TabIndex = 13
+        Me.LabIP.Text = "本机IP："
+        '
         '系统代理设置
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(682, 166)
+        Me.ClientSize = New System.Drawing.Size(682, 311)
+        Me.Controls.Add(Me.LabIP)
         Me.Controls.Add(Me.LabProxy)
         Me.Controls.Add(Me.LabPAC)
         Me.Controls.Add(Me.ButRM)
@@ -181,4 +193,5 @@ Partial Class 系统代理设置
     Friend WithEvents ButRM As Button
     Friend WithEvents LabPAC As Label
     Friend WithEvents LabProxy As Label
+    Friend WithEvents LabIP As Label
 End Class

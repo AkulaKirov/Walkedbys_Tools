@@ -30,7 +30,10 @@ Partial Class 工作管理器
         Me.ButKill = New System.Windows.Forms.Button()
         Me.GBmemory = New System.Windows.Forms.GroupBox()
         Me.BarMemory = New System.Windows.Forms.ProgressBar()
+        Me.GBnetwork = New System.Windows.Forms.GroupBox()
+        Me.LabNetwok = New System.Windows.Forms.Label()
         Me.GBmemory.SuspendLayout()
+        Me.GBnetwork.SuspendLayout()
         Me.SuspendLayout()
         '
         'ButRefresh
@@ -83,9 +86,9 @@ Partial Class 工作管理器
         'GBmemory
         '
         Me.GBmemory.Controls.Add(Me.BarMemory)
-        Me.GBmemory.Location = New System.Drawing.Point(215, 186)
+        Me.GBmemory.Location = New System.Drawing.Point(215, 183)
         Me.GBmemory.Name = "GBmemory"
-        Me.GBmemory.Size = New System.Drawing.Size(491, 58)
+        Me.GBmemory.Size = New System.Drawing.Size(276, 61)
         Me.GBmemory.TabIndex = 4
         Me.GBmemory.TabStop = False
         Me.GBmemory.Text = "已用物理内存："
@@ -95,14 +98,34 @@ Partial Class 工作管理器
         Me.BarMemory.Dock = System.Windows.Forms.DockStyle.Fill
         Me.BarMemory.Location = New System.Drawing.Point(3, 21)
         Me.BarMemory.Name = "BarMemory"
-        Me.BarMemory.Size = New System.Drawing.Size(485, 34)
+        Me.BarMemory.Size = New System.Drawing.Size(270, 37)
         Me.BarMemory.TabIndex = 0
+        '
+        'GBnetwork
+        '
+        Me.GBnetwork.Controls.Add(Me.LabNetwok)
+        Me.GBnetwork.Location = New System.Drawing.Point(497, 162)
+        Me.GBnetwork.Name = "GBnetwork"
+        Me.GBnetwork.Size = New System.Drawing.Size(209, 79)
+        Me.GBnetwork.TabIndex = 5
+        Me.GBnetwork.TabStop = False
+        Me.GBnetwork.Text = "实时网速："
+        '
+        'LabNetwok
+        '
+        Me.LabNetwok.AutoSize = True
+        Me.LabNetwok.Location = New System.Drawing.Point(6, 21)
+        Me.LabNetwok.Name = "LabNetwok"
+        Me.LabNetwok.Size = New System.Drawing.Size(71, 19)
+        Me.LabNetwok.TabIndex = 0
+        Me.LabNetwok.Text = "初始化中~"
         '
         '工作管理器
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(711, 247)
+        Me.Controls.Add(Me.GBnetwork)
         Me.Controls.Add(Me.GBmemory)
         Me.Controls.Add(Me.ButKill)
         Me.Controls.Add(Me.ListProcesses)
@@ -116,6 +139,8 @@ Partial Class 工作管理器
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "工作管理器"
         Me.GBmemory.ResumeLayout(False)
+        Me.GBnetwork.ResumeLayout(False)
+        Me.GBnetwork.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -127,4 +152,6 @@ Partial Class 工作管理器
     Friend WithEvents ButKill As Button
     Friend WithEvents GBmemory As GroupBox
     Friend WithEvents BarMemory As ProgressBar
+    Friend WithEvents GBnetwork As GroupBox
+    Friend WithEvents LabNetwok As Label
 End Class
