@@ -20,7 +20,6 @@ Public Class 启动器
         工具列表.Add(New 工具("B站图床", B站图床, "BilibiliPic", "把20MB以下的图片无损放到B站服务器还行。"))
         工具列表.Add(New 工具("日子提醒器", 日子提醒, "DayReminder", "可以拿来提醒生日或者重要的啥日子。"))
         工具列表.Add(New 工具("监视式VMT生成器", VMT生成器, "VMTG", "给一个贴图文件夹监视式地批量生成 VMT 文件。"))
-        工具列表.Add(New 工具("工作管理器", 工作管理器, "TaskManager", "关闭程序、查看内存用量。"))
         工具列表.Add(New 工具("系统代理设置", 系统代理设置, "ProxyManager", "快速设置系统代理。"))
         AddHandler SizeChanged, AddressOf 最小化隐藏
         Dim t As 工具, b As Button, i As Integer, g As String
@@ -46,7 +45,9 @@ Public Class 启动器
         文字转列表(mc, 读取("FAVOR"))
         For Each g In mc
             t = ID工具(g)
-            If Not IsNothing(t) Then 工具收藏.Add(t)
+            If Not IsNothing(t) Then
+                工具收藏.Add(t)
+            End If
             If 工具收藏.Count >= 8 Then Exit For
         Next
         For i = 0 To 工具收藏.Count - 1
@@ -77,6 +78,7 @@ Public Class 启动器
         TxtUpdate.Text = ""
         日子提醒.日子提醒_Load()
         日子提醒.提醒好日子()
+        Nico.Text = "走過去的工具箱" + vbCrLf + TxtUpdate.Text
     End Sub
 
     Private Sub ListTools_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListTools.SelectedIndexChanged
@@ -203,8 +205,45 @@ Public Class 启动器
         End If
     End Sub
 
-    Private Sub 启动器_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
+    Private Sub 显示窗口ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 显示窗口ToolStripMenuItem.Click
+        Nico_MouseUp(sender, New MouseEventArgs(MouseButtons.Left, 1, 0, 0, 0))
+    End Sub
 
+    Private Sub NicoMenu_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles NicoMenu.Opening
+        Dim f As New List(Of ToolStripMenuItem)
+        Dim i As ToolStripMenuItem
+        For Each i In NicoMenu.Items
+            If i.Tag <> "" Then
+                f.Add(i)
+            End If
+        Next
+        For Each i In f
+            NicoMenu.Items.Remove(i)
+        Next
+        For Each n As 工具 In 工具收藏
+            i = New ToolStripMenuItem
+            With i
+                .Text = n.名字
+                .Tag = "工具"
+                AddHandler i.Click, Sub()
+                                        n.启动()
+                                    End Sub
+            End With
+            NicoMenu.Items.Add(i)
+        Next
+        i = New ToolStripMenuItem
+        With i
+            .Text = "退出"
+            .Tag = "退出"
+            AddHandler i.Click, Sub()
+                                    Close()
+                                End Sub
+        End With
+        NicoMenu.Items.Add(i)
+    End Sub
+
+    Private Sub 返回启动器ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 返回启动器ToolStripMenuItem.Click
+        If Not 最后窗体.Equals(Me) Then 最后窗体.Close()
     End Sub
 
 End Class

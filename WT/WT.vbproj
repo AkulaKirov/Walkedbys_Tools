@@ -133,12 +133,6 @@
     <Compile Include="Tool\B站图床.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tool\工作管理器.Designer.vb">
-      <DependentUpon>工作管理器.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Tool\工作管理器.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Tool\文件夹创建器.Designer.vb">
       <DependentUpon>文件夹创建器.vb</DependentUpon>
     </Compile>
@@ -179,9 +173,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\B站图床.resx">
       <DependentUpon>B站图床.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tool\工作管理器.resx">
-      <DependentUpon>工作管理器.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\文件夹创建器.resx">
       <DependentUpon>文件夹创建器.vb</DependentUpon>

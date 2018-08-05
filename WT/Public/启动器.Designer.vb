@@ -35,9 +35,13 @@ Partial Class 启动器
         Me.GBabout = New System.Windows.Forms.GroupBox()
         Me.After1s = New System.Windows.Forms.Timer(Me.components)
         Me.Nico = New System.Windows.Forms.NotifyIcon(Me.components)
+        Me.NicoMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.显示窗口ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.返回启动器ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GBallTools.SuspendLayout()
         Me.GBupdate.SuspendLayout()
         Me.GBabout.SuspendLayout()
+        Me.NicoMenu.SuspendLayout()
         Me.SuspendLayout()
         '
         'GBfavorites
@@ -81,7 +85,7 @@ Partial Class 启动器
         Me.ButOpenTool.Size = New System.Drawing.Size(71, 39)
         Me.ButOpenTool.TabIndex = 2
         Me.ButOpenTool.TabStop = False
-        Me.ButOpenTool.Text = "开启"
+        Me.ButOpenTool.Text = "运行"
         Me.ButOpenTool.UseVisualStyleBackColor = True
         '
         'TxtToolDes
@@ -156,8 +160,29 @@ Partial Class 启动器
         'Nico
         '
         Me.Nico.BalloonTipText = "走過去的工具箱"
+        Me.Nico.ContextMenuStrip = Me.NicoMenu
         Me.Nico.Text = "走過去的工具箱"
         Me.Nico.Visible = True
+        '
+        'NicoMenu
+        '
+        Me.NicoMenu.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.NicoMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.显示窗口ToolStripMenuItem, Me.返回启动器ToolStripMenuItem})
+        Me.NicoMenu.Name = "NicoMenu"
+        Me.NicoMenu.ShowItemToolTips = False
+        Me.NicoMenu.Size = New System.Drawing.Size(131, 52)
+        '
+        '显示窗口ToolStripMenuItem
+        '
+        Me.显示窗口ToolStripMenuItem.Name = "显示窗口ToolStripMenuItem"
+        Me.显示窗口ToolStripMenuItem.Size = New System.Drawing.Size(180, 24)
+        Me.显示窗口ToolStripMenuItem.Text = "显示窗口"
+        '
+        '返回启动器ToolStripMenuItem
+        '
+        Me.返回启动器ToolStripMenuItem.Name = "返回启动器ToolStripMenuItem"
+        Me.返回启动器ToolStripMenuItem.Size = New System.Drawing.Size(180, 24)
+        Me.返回启动器ToolStripMenuItem.Text = "返回主页"
         '
         '启动器
         '
@@ -183,6 +208,7 @@ Partial Class 启动器
         Me.GBupdate.PerformLayout()
         Me.GBabout.ResumeLayout(False)
         Me.GBabout.PerformLayout()
+        Me.NicoMenu.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -199,4 +225,7 @@ Partial Class 启动器
     Friend WithEvents GBabout As GroupBox
     Friend WithEvents After1s As Windows.Forms.Timer
     Friend WithEvents Nico As NotifyIcon
+    Friend WithEvents NicoMenu As ContextMenuStrip
+    Friend WithEvents 显示窗口ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents 返回启动器ToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -15,7 +15,7 @@ Public Class 系统代理设置
         Next
         If NetworkInterface.GetIsNetworkAvailable Then
             For Each ip As IPAddress In Dns.GetHostEntry(Dns.GetHostName).AddressList
-                LabIP.Text += vbCrLf + ip.ToString
+                TxtIP.Text += vbCrLf + ip.ToString
             Next
         End If
     End Sub
@@ -82,6 +82,29 @@ Public Class 系统代理设置
 
     Private Sub 系统代理设置_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         保存("ProxyTemps", 列表转文字(模板))
+    End Sub
+
+    Private Sub ButCheckIP_Click(sender As Object, e As EventArgs) Handles ButCheckIP.Click
+        Dim h As New 简易HTTP("http://ip.chinaz.com/getip.aspx")
+        h.超时 = 5
+        Dim s As String = h.获得回应()
+        文件x("e:\s.txt").写(s)
+        If s.Length > 10 AndAlso Regex.IsMatch(s, "{ip:'.+?',address:'.+?'}") Then
+            MsgBox("IP：" + 提取(s, "ip:'", "',") + vbCrLf + "地理信息：" + 提取(s, "address:'", "'}"))
+        Else
+            MsgBox("获取失败！" + vbCrLf + s, MsgBoxStyle.Critical)
+        End If
+    End Sub
+
+    Private Sub ButCheckGoogle_Click(sender As Object, e As EventArgs) Handles ButCheckGoogle.Click
+        Dim h As New 简易HTTP("http://clients3.google.com/generate_204")
+        h.超时 = 5
+        Dim s As String = h.获得回应
+        If s.Length = 0 Then
+            MsgBox("测试成功！")
+        Else
+            MsgBox("测试失败！" + vbCrLf + s, MsgBoxStyle.Critical)
+        End If
     End Sub
 
 End Class

@@ -67,10 +67,10 @@ Module 通用
         End Sub
 
         Public Sub 启动()
-            启动器.Hide()
-            窗体.Location = 启动器.Location
+            最后窗体.Hide()
+            窗体.Location = 最后窗体.Location
             窗体.Show()
-            窗体.Location = 启动器.Location
+            窗体.Location = 最后窗体.Location
             窗体.WindowState = FormWindowState.Normal
             最后窗体 = 窗体
         End Sub
