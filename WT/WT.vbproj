@@ -86,6 +86,7 @@
     <Import Include="System" />
     <Import Include="System.Collections" />
     <Import Include="System.Collections.Generic" />
+    <Import Include="System.ComponentModel" />
     <Import Include="System.Data" />
     <Import Include="System.Drawing" />
     <Import Include="System.Diagnostics" />
@@ -133,6 +134,12 @@
     <Compile Include="Tool\B站图床.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Tool\GM模组发布器.Designer.vb">
+      <DependentUpon>GM模组发布器.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\GM模组发布器.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Tool\文件夹创建器.Designer.vb">
       <DependentUpon>文件夹创建器.vb</DependentUpon>
     </Compile>
@@ -173,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\B站图床.resx">
       <DependentUpon>B站图床.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\GM模组发布器.resx">
+      <DependentUpon>GM模组发布器.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\文件夹创建器.resx">
       <DependentUpon>文件夹创建器.vb</DependentUpon>

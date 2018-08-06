@@ -21,6 +21,7 @@ Public Class 启动器
         工具列表.Add(New 工具("日子提醒器", 日子提醒, "DayReminder", "可以拿来提醒生日或者重要的啥日子。"))
         工具列表.Add(New 工具("监视式VMT生成器", VMT生成器, "VMTG", "给一个贴图文件夹监视式地批量生成 VMT 文件。"))
         工具列表.Add(New 工具("系统代理设置", 系统代理设置, "ProxyManager", "快速设置系统代理。"))
+        工具列表.Add(New 工具("GMod模组发布器", GM模组发布器, "GMAddonPu", "打包GMA文件，发布或更新 Addon 到 Garry's Mod Workshop。"))
         AddHandler SizeChanged, AddressOf 最小化隐藏
         Dim t As 工具, b As Button, i As Integer, g As String
         For Each t In 工具列表

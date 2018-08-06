@@ -183,6 +183,7 @@ Module 杂项
     ''' </summary>
     Public Function 程序运行中(程序名 As String) As Boolean
         Dim ps() As Process = Process.GetProcessesByName(程序名)
+        PRT(ps.Count)
         Return (ps.Count > 0)
     End Function
 

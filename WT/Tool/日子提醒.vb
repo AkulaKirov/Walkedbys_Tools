@@ -52,7 +52,7 @@ Public Class 日子提醒
             Dim t As New Date(Year(Now), Val(Regex.Match(i, "[0-9]+-").ToString), Abs(Val(Regex.Match(i, "-[0-9]+").ToString)))
             If DateDiff(DateInterval.Day, Now.Date, t.Date) < 0 Then t = t.AddYears(1)
             Dim g As Integer = DateDiff(DateInterval.DayOfYear, Now.Date, t.Date)
-            If g < 5 Then
+            If g < 10 Then
                 If g = 0 Then
                     推送("今天是：" + 去左(i, 6))
                 ElseIf g = 1 Then

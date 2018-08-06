@@ -31,6 +31,37 @@ Module 控件优化
                                        Next
                                        sender.SelectionStart = sender.TextLength
                                    End Sub
+            AddHandler i.TextChanged, Sub()
+                                          Dim s As String = Trim(i.Text)
+                                          If s.Length < 1 Then Exit Sub
+                                          If Not File.Exists(s) Then s = ""
+                                          i.Text = s
+                                      End Sub
+        Next
+    End Sub
+
+    ''' <summary>
+    ''' 使文本框支持拖入一个文件或文件夹
+    ''' </summary>
+    Public Sub 文本框拖入文件夹(ParamArray 文本框() As TextBox)
+        For Each i As TextBox In 文本框
+            i.AllowDrop = True
+            AddHandler i.DragEnter, Sub(sender As TextBox, e As DragEventArgs)
+                                        e.Effect = DragDropEffects.Link
+                                    End Sub
+            AddHandler i.DragDrop, Sub(sender As TextBox, e As DragEventArgs)
+                                       For Each m As String In e.Data.GetData(DataFormats.FileDrop)
+                                           sender.Text = m
+                                           Exit For
+                                       Next
+                                       sender.SelectionStart = sender.TextLength
+                                   End Sub
+            AddHandler i.TextChanged, Sub()
+                                          Dim s As String = Trim(i.Text)
+                                          If s.Length < 1 Then Exit Sub
+                                          If Not 文件夹存在(s) Then s = ""
+                                          i.Text = s
+                                      End Sub
         Next
     End Sub
 

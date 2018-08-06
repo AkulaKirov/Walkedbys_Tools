@@ -158,7 +158,7 @@ Module 文件处理
     ''' 快速生成一个文件类
     ''' </summary>
     Public Function 文件x(目标 As String) As 文件
-        Return New 文件(目标)
+        Return New 文件(Trim(目标))
     End Function
 
     ''' <summary>
@@ -169,7 +169,8 @@ Module 文件处理
         Dim Fl As String
 
         Public Sub New(目标 As String)
-            If 目标.Length < 1 Then Exit Sub
+            非空字符串(Fl)
+            If 目标.Length < 3 Then Exit Sub
             Fl = LCase(目标.Replace("/", "\"))
             If Not (Fl(1) = ":" AndAlso Fl(2) = "\") Then
                 Fl = 程序文件目录() + Fl
@@ -191,6 +192,7 @@ Module 文件处理
         ''' </summary>
         Public ReadOnly Property 路径 As String
             Get
+                If Fl.Length < 1 Then Return ""
                 Return 追加斜杠(Regex.Match(Fl, ".*\\").ToString)
             End Get
         End Property
@@ -209,6 +211,7 @@ Module 文件处理
         ''' </summary>
         Public ReadOnly Property 存在 As Boolean
             Get
+                If Fl.Length < 1 Then Return False
                 Return File.Exists(Fl)
             End Get
         End Property
@@ -218,6 +221,7 @@ Module 文件处理
         ''' </summary>
         Public ReadOnly Property 后缀 As String
             Get
+                If Fl.Length < 1 Then Return ""
                 Return 去左(Regex.Match(Fl, "\..*").ToString.ToLower, 1)
             End Get
         End Property
@@ -227,6 +231,7 @@ Module 文件处理
         ''' </summary>
         Public ReadOnly Property 文件名 As String
             Get
+                If Fl.Length < 1 Then Return ""
                 Return 去除(Fl, 路径, Regex.Match(Fl, "\..*").ToString)
             End Get
         End Property
@@ -236,6 +241,7 @@ Module 文件处理
         ''' </summary>
         Public ReadOnly Property 完整文件名 As String
             Get
+                If Fl.Length < 1 Then Return ""
                 Return 去除(Fl, 路径)
             End Get
         End Property
