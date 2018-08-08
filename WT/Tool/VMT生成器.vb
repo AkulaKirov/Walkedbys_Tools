@@ -15,7 +15,7 @@ Public Class VMT生成器
                 CBtemplete.Items.Add(i)
             Next
         End If
-        文本框拖入文件(TxtPath)
+        文本框拖入文件夹(TxtPath)
         文本框全选(Me)
     End Sub
 

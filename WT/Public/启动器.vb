@@ -79,7 +79,9 @@ Public Class 启动器
         TxtUpdate.Text = ""
         日子提醒.日子提醒_Load()
         日子提醒.提醒好日子()
-        Nico.Text = "走過去的工具箱" + vbCrLf + TxtUpdate.Text
+        Dim s As String = TxtUpdate.Text
+        If s.Length > 50 Then s = 左(s, 50) + "..."
+        Nico.Text = "走過去的工具箱" + vbCrLf + s
     End Sub
 
     Private Sub ListTools_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListTools.SelectedIndexChanged

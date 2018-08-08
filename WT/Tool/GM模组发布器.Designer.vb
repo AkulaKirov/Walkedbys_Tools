@@ -37,6 +37,7 @@ Partial Class GM模组发布器
         Me.LabPath = New System.Windows.Forms.Label()
         Me.TxtPath = New System.Windows.Forms.TextBox()
         Me.TabPublish = New System.Windows.Forms.TabPage()
+        Me.ButGoSteam = New System.Windows.Forms.Button()
         Me.ButUpdateJPG = New System.Windows.Forms.Button()
         Me.TxtID = New System.Windows.Forms.TextBox()
         Me.PicThumb = New System.Windows.Forms.PictureBox()
@@ -49,7 +50,6 @@ Partial Class GM模组发布器
         Me.LabGMAfile = New System.Windows.Forms.Label()
         Me.LabGMOD = New System.Windows.Forms.Label()
         Me.TxtGMod = New System.Windows.Forms.TextBox()
-        Me.ButGoSteam = New System.Windows.Forms.Button()
         Me.Tabs.SuspendLayout()
         Me.TabPackGMA.SuspendLayout()
         Me.GBgma.SuspendLayout()
@@ -61,7 +61,6 @@ Partial Class GM模组发布器
         '
         Me.Tabs.Controls.Add(Me.TabPackGMA)
         Me.Tabs.Controls.Add(Me.TabPublish)
-        Me.Tabs.Enabled = False
         Me.Tabs.Location = New System.Drawing.Point(0, 36)
         Me.Tabs.Name = "Tabs"
         Me.Tabs.SelectedIndex = 0
@@ -226,6 +225,16 @@ Partial Class GM模组发布器
         Me.TabPublish.Text = "发布到 Workshop"
         Me.TabPublish.UseVisualStyleBackColor = True
         '
+        'ButGoSteam
+        '
+        Me.ButGoSteam.Location = New System.Drawing.Point(11, 250)
+        Me.ButGoSteam.Name = "ButGoSteam"
+        Me.ButGoSteam.Size = New System.Drawing.Size(281, 39)
+        Me.ButGoSteam.TabIndex = 12
+        Me.ButGoSteam.TabStop = False
+        Me.ButGoSteam.Text = "查看我的 Workshop"
+        Me.ButGoSteam.UseVisualStyleBackColor = True
+        '
         'ButUpdateJPG
         '
         Me.ButUpdateJPG.Enabled = False
@@ -340,16 +349,6 @@ Partial Class GM模组发布器
         Me.TxtGMod.Size = New System.Drawing.Size(310, 24)
         Me.TxtGMod.TabIndex = 5
         Me.TxtGMod.TabStop = False
-        '
-        'ButGoSteam
-        '
-        Me.ButGoSteam.Location = New System.Drawing.Point(11, 250)
-        Me.ButGoSteam.Name = "ButGoSteam"
-        Me.ButGoSteam.Size = New System.Drawing.Size(281, 39)
-        Me.ButGoSteam.TabIndex = 12
-        Me.ButGoSteam.TabStop = False
-        Me.ButGoSteam.Text = "查看我的 Workshop"
-        Me.ButGoSteam.UseVisualStyleBackColor = True
         '
         'GM模组发布器
         '

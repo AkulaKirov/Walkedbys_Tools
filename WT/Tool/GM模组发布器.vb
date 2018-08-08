@@ -48,12 +48,12 @@ Public Class GM模组发布器
     End Sub
 
     Private Sub TxtGMod_TextChanged(sender As Object, e As EventArgs) Handles TxtGMod.TextChanged
-        Tabs.Enabled = False
+        Tabs.Visible = False
         Dim i As String = Trim(TxtGMod.Text)
         If 文件夹存在(i) Then
             i = 追加斜杠(i) + "bin\"
             If 文件x(i + "gmad.exe").存在 AndAlso 文件x(i + "gmpublish.exe").存在 Then
-                Tabs.Enabled = True
+                Tabs.Visible = True
             End If
         End If
     End Sub
