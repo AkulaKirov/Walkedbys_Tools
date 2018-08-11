@@ -3,7 +3,21 @@ Public Class 启动器
 
     Friend 工具收藏 As New List(Of 工具)
     Friend 收藏按纽 As New List(Of Button)
-    Dim Th更新 As New Thread(AddressOf 检查更新)
+    Dim Th更新 As New Thread(Sub()
+                               Dim h As New 简易HTTP("https://raw.githubusercontent.com/gordonwalkedby/Walkedbys_Tools/master/WT/updater.cfg?" + 随机.文字)
+                               h.超时 = 5
+                               Dim t As String = h.获得回应
+                               Dim out As String = ""
+                               If t.StartsWith("这是一个检查更新版本用的") Then
+                                   Dim s As New 简易CFG
+                                   s.全文本 = t
+                                   If 版本 < Val(s.节点("ver")) Then
+                                       GBabout.Text += " （检测到新版本：" + s.节点("ver") + "）"
+                                   End If
+                               Else
+                                   GBabout.Text += " （检查更新失败）"
+                               End If
+                           End Sub)
     Dim 关于链接 As New List(Of LinkLabel)
     Dim 版本 As Single = My.Application.Info.Version.Major + (My.Application.Info.Version.Minor / 10)
 
@@ -22,6 +36,7 @@ Public Class 启动器
         工具列表.Add(New 工具("监视式VMT生成器", VMT生成器, "VMTG", "给一个贴图文件夹监视式地批量生成 VMT 文件。"))
         工具列表.Add(New 工具("系统代理设置", 系统代理设置, "ProxyManager", "快速设置系统代理。"))
         工具列表.Add(New 工具("GMod模组发布器", GM模组发布器, "GMAddonPu", "打包GMA文件，发布或更新 Addon 到 Garry's Mod Workshop。"))
+        工具列表.Add(New 工具("未响应图片制作器", 未响应图片制作器, "NoResPic", "制作假装程序未响应的假图片"))
         AddHandler SizeChanged, AddressOf 最小化隐藏
         Dim t As 工具, b As Button, i As Integer, g As String
         For Each t In 工具列表
@@ -131,22 +146,6 @@ Public Class 启动器
         GBfavorites.Text = "工具收藏夹" + 括(工具收藏.Count.ToString + "/8")
     End Sub
 
-    Sub 检查更新()
-        Dim h As New 简易HTTP("https://raw.githubusercontent.com/gordonwalkedby/Walkedbys_Tools/master/WT/updater.cfg?" + 随机.文字)
-        h.超时 = 5
-        Dim t As String = h.获得回应
-        Dim out As String = ""
-        If t.StartsWith("这是一个检查更新版本用的") Then
-            Dim s As New 简易CFG
-            s.全文本 = t
-            If 版本 < Val(s.节点("ver")) Then
-                GBabout.Text += " （检测到新版本：" + s.节点("ver") + "）"
-            End If
-        Else
-            GBabout.Text += " （检查更新失败）"
-        End If
-    End Sub
-
     Sub 新增关于链接(文字 As String, 链接 As String)
         Dim m As New LinkLabel
         GBabout.Controls.Add(m)
@@ -246,7 +245,7 @@ Public Class 启动器
     End Sub
 
     Private Sub 返回启动器ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 返回启动器ToolStripMenuItem.Click
-        If Not 最后窗体.Equals(Me) Then 最后窗体.Close()
+        If Not 最后窗体.Equals(Me) Then 最后窗体.Close() Else 显示窗口ToolStripMenuItem_Click(sender, e)
     End Sub
 
 End Class

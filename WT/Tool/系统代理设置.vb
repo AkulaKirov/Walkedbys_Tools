@@ -1,6 +1,4 @@
 ﻿
-Imports System.ComponentModel
-
 Public Class 系统代理设置
 
     Dim 注册表 As RegistryKey = Registry.CurrentUser.OpenSubKey("Software\Microsoft\Windows\CurrentVersion\Internet Settings", True)
@@ -9,15 +7,6 @@ Public Class 系统代理设置
     Private Sub 系统代理设置_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ButGetSystem.PerformClick()
         文字转列表(模板, 读取("ProxyTemps"))
-        For Each i As String In 模板
-            Dim t As String = 去右(Regex.Match(i, ".+___").ToString, 3)
-            If t.Length > 0 Then ListTemps.Items.Add(t)
-        Next
-        If NetworkInterface.GetIsNetworkAvailable Then
-            For Each ip As IPAddress In Dns.GetHostEntry(Dns.GetHostName).AddressList
-                TxtIP.Text += vbCrLf + ip.ToString
-            Next
-        End If
     End Sub
 
     Private Sub ButGetSystem_Click(sender As Object, e As EventArgs) Handles ButGetSystem.Click
@@ -104,6 +93,19 @@ Public Class 系统代理设置
             MsgBox("测试成功！")
         Else
             MsgBox("测试失败！" + vbCrLf + s, MsgBoxStyle.Critical)
+        End If
+    End Sub
+
+    Private Sub 系统代理设置_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+        TxtIP.Text = "本机IP："
+        For Each i As String In 模板
+            Dim t As String = 去右(Regex.Match(i, ".+___").ToString, 3)
+            If t.Length > 0 Then ListTemps.Items.Add(t)
+        Next
+        If NetworkInterface.GetIsNetworkAvailable Then
+            For Each ip As IPAddress In Dns.GetHostEntry(Dns.GetHostName).AddressList
+                TxtIP.Text += vbCrLf + ip.ToString
+            Next
         End If
     End Sub
 

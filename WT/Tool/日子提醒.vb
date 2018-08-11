@@ -31,6 +31,12 @@ Public Class 日子提醒
     Private Sub ButADD_Click(sender As Object, e As EventArgs) Handles ButADD.Click
         Dim s As String = " " + 凑零(CBmonth.Text) + "-" + 凑零(CBday.Text) + " " + TxtJOB.Text
         If Not 在列表(ListDates.Items, s) Then ListDates.Items.Add(s)
+        For i As Integer = 0 To ListDates.Items.Count - 1
+            If ListDates.Items.Item(i) = s Then
+                ListDates.SelectedIndex = i
+                Exit For
+            End If
+        Next
         保存("days", 列表转文字(ListDates.Items))
         TxtJOB.Text = ""
     End Sub
