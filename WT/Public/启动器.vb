@@ -76,7 +76,7 @@ Public Class 启动器
             b.Visible = True
         Next
         GBfavorites.Text = "工具收藏夹" + 括(工具收藏.Count.ToString + "/8")
-        新增关于链接("博客", "https://walkedby.com/")
+        新增关于链接("博客", "https://walkedby.com/wt")
         新增关于链接("源码", "https://github.com/gordonwalkedby/Walkedbys_Tools")
         新增关于链接("下载最新版", "https://github.com/gordonwalkedby/Walkedbys_Tools/releases")
         新增关于链接("请我喝可乐", "https://walkedby.com/donateme/")
