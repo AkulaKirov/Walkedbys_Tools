@@ -12,6 +12,8 @@ Public Class 启动器
                                    Dim v As Single = Val(提取XML(t, "root", "ver"))
                                    If 版本 < v Then
                                        GBabout.Text += " （检测到新版本：" + v.ToString + "）"
+                                   Else
+                                       GBabout.Text += " （已是最新版本：" + v.ToString + "）"
                                    End If
                                Else
                                    GBabout.Text += " （检查更新失败）"
@@ -35,7 +37,7 @@ Public Class 启动器
         工具列表.Add(New 工具("监视式VMT生成器", VMT生成器, "VMTG", "给一个贴图文件夹监视式地批量生成 VMT 文件。"))
         工具列表.Add(New 工具("系统代理设置", 系统代理设置, "ProxyManager", "快速设置系统代理。"))
         工具列表.Add(New 工具("GMod模组发布器", GM模组发布器, "GMAddonPu", "打包GMA文件，发布或更新 Addon 到 Garry's Mod Workshop。"))
-        工具列表.Add(New 工具("未响应图片制作器", 未响应图片制作器, "NoResPic", "制作假装程序未响应的假图片"))
+        工具列表.Add(New 工具("未响应图片制作器", 未响应图片制作器, "NoResPic", "制作假装程序未响应的假图片。"))
         AddHandler SizeChanged, AddressOf 最小化隐藏
         Dim t As 工具, b As Button, i As Integer, g As String
         For Each t In 工具列表
@@ -101,7 +103,7 @@ Public Class 启动器
     Private Sub ListTools_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListTools.SelectedIndexChanged
         Dim i As Integer = ListTools.SelectedIndex
         If i < 0 Then Exit Sub
-        Dim t As 工具 = 工具列表.Item(i)
+        Dim t As 工具 = 名字工具(ListTools.Items.Item(i))
         TxtToolDes.Text = t.名字 + vbCrLf + IIf(在列表(工具收藏, t), "【已收藏】" + vbCrLf, "") + "简介：" + vbCrLf + t.简介
         ButOpenTool.Enabled = True
         With ButAddToFavor
@@ -113,6 +115,13 @@ Public Class 启动器
                 .Text = "收藏"
             End If
         End With
+    End Sub
+
+    Private Sub ListTools_DoubleClick(sender As Object, e As EventArgs) Handles ListTools.DoubleClick
+        Dim i As Integer = ListTools.SelectedIndex
+        If i < 0 Then Exit Sub
+        Dim t As 工具 = 名字工具(ListTools.Items.Item(i))
+        t.启动()
     End Sub
 
     Private Sub ButOpenTool_Click(sender As Object, e As EventArgs) Handles ButOpenTool.Click

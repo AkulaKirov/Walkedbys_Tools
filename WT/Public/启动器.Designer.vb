@@ -108,6 +108,7 @@ Partial Class 启动器
         Me.ListTools.Name = "ListTools"
         Me.ListTools.ScrollAlwaysVisible = True
         Me.ListTools.Size = New System.Drawing.Size(145, 208)
+        Me.ListTools.Sorted = True
         Me.ListTools.TabIndex = 0
         Me.ListTools.TabStop = False
         '
@@ -175,13 +176,13 @@ Partial Class 启动器
         '显示窗口ToolStripMenuItem
         '
         Me.显示窗口ToolStripMenuItem.Name = "显示窗口ToolStripMenuItem"
-        Me.显示窗口ToolStripMenuItem.Size = New System.Drawing.Size(180, 24)
+        Me.显示窗口ToolStripMenuItem.Size = New System.Drawing.Size(130, 24)
         Me.显示窗口ToolStripMenuItem.Text = "显示窗口"
         '
         '返回启动器ToolStripMenuItem
         '
         Me.返回启动器ToolStripMenuItem.Name = "返回启动器ToolStripMenuItem"
-        Me.返回启动器ToolStripMenuItem.Size = New System.Drawing.Size(180, 24)
+        Me.返回启动器ToolStripMenuItem.Size = New System.Drawing.Size(130, 24)
         Me.返回启动器ToolStripMenuItem.Text = "返回主页"
         '
         '启动器

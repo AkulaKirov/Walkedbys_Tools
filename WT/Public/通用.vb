@@ -16,6 +16,13 @@ Module 通用
         Return Nothing
     End Function
 
+    Public Function 名字工具(名字 As String) As 工具
+        For Each t As 工具 In 工具列表
+            If 包含(t.名字, 名字) Then Return t
+        Next
+        Return Nothing
+    End Function
+
     Public Sub 保存(节点 As String, 内容 As String)
         Sets.节点(节点) = 内容
     End Sub
@@ -49,7 +56,7 @@ Module 通用
             名字 = name
             窗体 = win
             简介 = description
-            ID = 内部id
+            ID = 内部id.ToLower
             窗体.Icon = 图标
             窗体.ImeMode = ImeMode.Off
             窗体.ShowInTaskbar = False
