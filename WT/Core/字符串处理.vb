@@ -253,4 +253,24 @@ Module 字符串处理
         Return ""
     End Function
 
+    ''' <summary>
+    ''' 简易提取XML的内容
+    ''' </summary>
+    Public Function 提取XML(xml As String, ParamArray 节点() As String) As String
+        If xml.Length > 0 AndAlso 节点.Count > 0 Then
+            Dim s As String = xml, id As Integer = 1
+            For Each i As String In 节点
+                Dim a As String = 括(i, "<>"), b As String = "</" + i + ">"
+                If 全部包含(s, a, b) Then
+                    s = 提取(s, a, b)
+                    If id = 节点.Count Then Return s
+                    id += 1
+                Else
+                    Return ""
+                End If
+            Next
+        End If
+        Return ""
+    End Function
+
 End Module

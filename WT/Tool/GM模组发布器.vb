@@ -14,6 +14,8 @@ Public Class GM模组发布器
         Txtname.Text = 读取("GMAname")
         TxtJPGfile.Text = 读取("GMAjpg")
         TxtGMAfile.Text = 读取("GMAfile")
+        文字转列表(ListAddons.Items, 读取("GMODaddons"))
+        TxtID.Text = 读取("GMAid")
     End Sub
 
     Private Sub TxtPath_TextChanged(sender As Object, e As EventArgs) Handles TxtPath.TextChanged
@@ -35,6 +37,8 @@ Public Class GM模组发布器
         保存("GMAname", Txtname.Text)
         保存("GMAjpg", TxtJPGfile.Text)
         保存("GMAfile", TxtGMAfile.Text)
+        保存("GMAid", TxtID.Text)
+        保存("GMODaddons", 列表转文字(ListAddons.Items))
     End Sub
 
     Private Sub ButGMA_Click(sender As Object, e As EventArgs) Handles ButGMA.Click
@@ -85,11 +89,11 @@ Public Class GM模组发布器
     End Sub
 
     Private Sub ButUpdateGMA_Click(sender As Object, e As EventArgs) Handles ButUpdateGMA.Click
-        Shell("cmd.exe /c " + 左(TxtGMod.Text, 2) + " & " + 引(追加斜杠(TxtGMod.Text) + "bin\gmpublish.exe") + " update -id " + TxtID.Text + " -icon " + 引(TxtJPGfile.Text) + " & pause", AppWinStyle.NormalFocus, True)
+        Shell("cmd.exe /c " + 左(TxtGMod.Text, 2) + " & " + 引(追加斜杠(TxtGMod.Text) + "bin\gmpublish.exe") + " update -id " + TxtID.Text + " -addon " + 引(TxtGMAfile.Text) + " & pause", AppWinStyle.NormalFocus, True)
     End Sub
 
     Private Sub ButUpdateJPG_Click(sender As Object, e As EventArgs) Handles ButUpdateJPG.Click
-        Shell("cmd.exe /c " + 左(TxtGMod.Text, 2) + " & " + 引(追加斜杠(TxtGMod.Text) + "bin\gmpublish.exe") + " update -id " + TxtID.Text + " -addon " + 引(TxtGMAfile.Text) + " & pause", AppWinStyle.NormalFocus, True)
+        Shell("cmd.exe /c " + 左(TxtGMod.Text, 2) + " & " + 引(追加斜杠(TxtGMod.Text) + "bin\gmpublish.exe") + " update -id " + TxtID.Text + " -icon " + 引(TxtJPGfile.Text) + " & pause", AppWinStyle.NormalFocus, True)
     End Sub
 
     Private Sub ButGoSteam_Click(sender As Object, e As EventArgs) Handles ButGoSteam.Click
@@ -102,6 +106,37 @@ Public Class GM模组发布器
         Else
             Process.Start(s)
         End If
+    End Sub
+
+    Private Sub ListAddons_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListAddons.SelectedIndexChanged
+        Dim i As Integer = ListAddons.SelectedIndex
+        ButGotoUpdate.Enabled = (i > -1)
+    End Sub
+
+    Private Sub ButGotoUpdate_Click(sender As Object, e As EventArgs) Handles ButGotoUpdate.Click
+        Dim s As String = ListAddons.SelectedItem.ToString
+        Tabs.SelectedIndex = 1
+        TxtID.Text = Regex.Match(s, "[0-9]{5,}    ").ToString
+    End Sub
+
+    Private Sub ButRefresh_Click(sender As Object, e As EventArgs) Handles ButRefresh.Click
+        ListAddons.Items.Clear()
+        Dim f As New 文件(TempF + "gmodlist.txt")
+        Shell("cmd.exe /c " + 左(TxtGMod.Text, 2) + " & " + 引(追加斜杠(TxtGMod.Text) + "bin\gmpublish.exe") + " list > " + 引(f.地址), AppWinStyle.NormalFocus, True)
+        Dim s As String = f.读
+        If 全部包含(s, "Getting published files..", "Done.") Then
+            s = 提取(s, "Getting published files..", "Done.")
+            For Each m As String In 分割(s, vbCrLf)
+                If m.Length > 5 Then
+                    m = 去左(m, 1)
+                    m = Regex.Replace(m, "	[0-9].*?B	", "    ")
+                    m = Regex.Replace(m, "    " + vbQuote, "    ")
+                    m = 去右(m, 1)
+                    ListAddons.Items.Add(m)
+                End If
+            Next
+        End If
+        LabCount.Text = "共计：" & ListAddons.Items.Count
     End Sub
 
 End Class

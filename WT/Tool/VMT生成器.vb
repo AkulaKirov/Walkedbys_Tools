@@ -7,6 +7,8 @@ Public Class VMT生成器
     Private Sub VMT生成器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TxtPath.Text = 读取("vmtPATH")
         TxtVMT.Text = 读取("vmtLAST")
+        TxtSkip.Text = 读取("vmtSKIP")
+        CheckSon.Checked = (读取("vmtSON").Length = 1)
         文字转列表(模板, 读取("vmtTEMPs"))
         Dim i As String
         If 模板.Count > 0 Then
@@ -63,6 +65,8 @@ Public Class VMT生成器
     Private Sub VMT生成器_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         保存("vmtTEMPs", 列表转文字(模板))
         保存("vmtLAST", TxtVMT.Text)
+        保存("vmtSKIP", TxtSkip.Text)
+        保存("vmtSON", IIf(CheckSon.Checked, 1, ""))
     End Sub
 
     Private Sub CBtemplete_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBtemplete.SelectedIndexChanged
@@ -101,16 +105,21 @@ Public Class VMT生成器
 
     Private Sub Watching_Tick(sender As Object, e As EventArgs) Handles Watching.Tick
         If Not Visible Then Exit Sub
-        Dim f() As String = Directory.GetFiles(TxtPath.Text, "*.vtf", SearchOption.TopDirectoryOnly)
+        Dim f() As String = Directory.GetFiles(TxtPath.Text, "*.vtf", IIf(CheckSon.Checked, SearchOption.AllDirectories, SearchOption.TopDirectoryOnly))
         If f.Count < 1 Then Exit Sub
         Dim i As String
         For Each i In f
             Dim m As New 文件(i.ToLower.Replace(".vtf", ".vmt"))
             If Not m.存在 Then
                 Dim s As String = TxtVMT.Text, t As String = 正则去除(m.地址, ".*materials\\", "\.vmt")
-                s = s.Replace("%文件名%", t)
-                m.写(s)
-                TxtLOG.Text += vbCrLf + "已生成：" + t
+                If t.Length > 0 Then
+                    Dim sw As String = TxtSkip.Text
+                    If (sw.Length > 0 AndAlso Not Regex.IsMatch(t, sw)) OrElse (sw.Length < 1) Then
+                        s = s.Replace("%文件名%", t)
+                        m.写(s)
+                        TxtLOG.Text += vbCrLf + "已生成：" + t
+                    End If
+                End If
             End If
         Next
     End Sub

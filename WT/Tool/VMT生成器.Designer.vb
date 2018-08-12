@@ -27,6 +27,9 @@ Partial Class VMT生成器
         Me.LabPath = New System.Windows.Forms.Label()
         Me.TxtVMT = New System.Windows.Forms.TextBox()
         Me.GBvmt = New System.Windows.Forms.GroupBox()
+        Me.LabSkip = New System.Windows.Forms.Label()
+        Me.TxtSkip = New System.Windows.Forms.TextBox()
+        Me.CheckSon = New System.Windows.Forms.CheckBox()
         Me.TxtTempName = New System.Windows.Forms.TextBox()
         Me.ButUSE = New System.Windows.Forms.Button()
         Me.ButDEL = New System.Windows.Forms.Button()
@@ -36,7 +39,9 @@ Partial Class VMT生成器
         Me.ButGen = New System.Windows.Forms.Button()
         Me.Watching = New System.Windows.Forms.Timer(Me.components)
         Me.TxtLOG = New System.Windows.Forms.TextBox()
+        Me.GBtemps = New System.Windows.Forms.GroupBox()
         Me.GBvmt.SuspendLayout()
+        Me.GBtemps.SuspendLayout()
         Me.SuspendLayout()
         '
         'TxtPath
@@ -71,11 +76,10 @@ Partial Class VMT生成器
         '
         'GBvmt
         '
-        Me.GBvmt.Controls.Add(Me.TxtTempName)
-        Me.GBvmt.Controls.Add(Me.ButUSE)
-        Me.GBvmt.Controls.Add(Me.ButDEL)
-        Me.GBvmt.Controls.Add(Me.ButADD)
-        Me.GBvmt.Controls.Add(Me.CBtemplete)
+        Me.GBvmt.Controls.Add(Me.GBtemps)
+        Me.GBvmt.Controls.Add(Me.LabSkip)
+        Me.GBvmt.Controls.Add(Me.TxtSkip)
+        Me.GBvmt.Controls.Add(Me.CheckSon)
         Me.GBvmt.Controls.Add(Me.ListParms)
         Me.GBvmt.Controls.Add(Me.TxtVMT)
         Me.GBvmt.Enabled = False
@@ -86,10 +90,39 @@ Partial Class VMT生成器
         Me.GBvmt.TabStop = False
         Me.GBvmt.Text = "VMT选项"
         '
+        'LabSkip
+        '
+        Me.LabSkip.AutoSize = True
+        Me.LabSkip.Location = New System.Drawing.Point(486, 59)
+        Me.LabSkip.Name = "LabSkip"
+        Me.LabSkip.Size = New System.Drawing.Size(48, 19)
+        Me.LabSkip.TabIndex = 11
+        Me.LabSkip.Text = "跳过："
+        '
+        'TxtSkip
+        '
+        Me.TxtSkip.Location = New System.Drawing.Point(540, 56)
+        Me.TxtSkip.MaxLength = 30
+        Me.TxtSkip.Name = "TxtSkip"
+        Me.TxtSkip.Size = New System.Drawing.Size(126, 25)
+        Me.TxtSkip.TabIndex = 10
+        Me.TxtSkip.TabStop = False
+        '
+        'CheckSon
+        '
+        Me.CheckSon.AutoSize = True
+        Me.CheckSon.Location = New System.Drawing.Point(487, 24)
+        Me.CheckSon.Name = "CheckSon"
+        Me.CheckSon.Size = New System.Drawing.Size(106, 23)
+        Me.CheckSon.TabIndex = 9
+        Me.CheckSon.TabStop = False
+        Me.CheckSon.Text = "包括子文件夾"
+        Me.CheckSon.UseVisualStyleBackColor = True
+        '
         'TxtTempName
         '
         Me.TxtTempName.Font = New System.Drawing.Font("微软雅黑", 8.0!)
-        Me.TxtTempName.Location = New System.Drawing.Point(491, 66)
+        Me.TxtTempName.Location = New System.Drawing.Point(3, 66)
         Me.TxtTempName.MaxLength = 10
         Me.TxtTempName.Name = "TxtTempName"
         Me.TxtTempName.Size = New System.Drawing.Size(91, 22)
@@ -99,7 +132,7 @@ Partial Class VMT生成器
         'ButUSE
         '
         Me.ButUSE.Enabled = False
-        Me.ButUSE.Location = New System.Drawing.Point(491, 98)
+        Me.ButUSE.Location = New System.Drawing.Point(3, 98)
         Me.ButUSE.Name = "ButUSE"
         Me.ButUSE.Size = New System.Drawing.Size(91, 36)
         Me.ButUSE.TabIndex = 7
@@ -110,7 +143,7 @@ Partial Class VMT生成器
         'ButDEL
         '
         Me.ButDEL.Enabled = False
-        Me.ButDEL.Location = New System.Drawing.Point(582, 98)
+        Me.ButDEL.Location = New System.Drawing.Point(94, 98)
         Me.ButDEL.Name = "ButDEL"
         Me.ButDEL.Size = New System.Drawing.Size(91, 36)
         Me.ButDEL.TabIndex = 6
@@ -121,7 +154,7 @@ Partial Class VMT生成器
         'ButADD
         '
         Me.ButADD.Enabled = False
-        Me.ButADD.Location = New System.Drawing.Point(582, 57)
+        Me.ButADD.Location = New System.Drawing.Point(94, 57)
         Me.ButADD.Name = "ButADD"
         Me.ButADD.Size = New System.Drawing.Size(91, 36)
         Me.ButADD.TabIndex = 5
@@ -133,7 +166,7 @@ Partial Class VMT生成器
         '
         Me.CBtemplete.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CBtemplete.FormattingEnabled = True
-        Me.CBtemplete.Location = New System.Drawing.Point(491, 24)
+        Me.CBtemplete.Location = New System.Drawing.Point(3, 24)
         Me.CBtemplete.Name = "CBtemplete"
         Me.CBtemplete.Size = New System.Drawing.Size(182, 27)
         Me.CBtemplete.TabIndex = 4
@@ -178,6 +211,20 @@ Partial Class VMT生成器
         Me.TxtLOG.TabIndex = 12
         Me.TxtLOG.TabStop = False
         '
+        'GBtemps
+        '
+        Me.GBtemps.Controls.Add(Me.CBtemplete)
+        Me.GBtemps.Controls.Add(Me.ButADD)
+        Me.GBtemps.Controls.Add(Me.ButDEL)
+        Me.GBtemps.Controls.Add(Me.ButUSE)
+        Me.GBtemps.Controls.Add(Me.TxtTempName)
+        Me.GBtemps.Location = New System.Drawing.Point(487, 87)
+        Me.GBtemps.Name = "GBtemps"
+        Me.GBtemps.Size = New System.Drawing.Size(194, 149)
+        Me.GBtemps.TabIndex = 12
+        Me.GBtemps.TabStop = False
+        Me.GBtemps.Text = "模板"
+        '
         'VMT生成器
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -196,6 +243,8 @@ Partial Class VMT生成器
         Me.Text = "监视式VMT生成器"
         Me.GBvmt.ResumeLayout(False)
         Me.GBvmt.PerformLayout()
+        Me.GBtemps.ResumeLayout(False)
+        Me.GBtemps.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -214,4 +263,8 @@ Partial Class VMT生成器
     Friend WithEvents ButGen As Button
     Friend WithEvents Watching As Windows.Forms.Timer
     Friend WithEvents TxtLOG As TextBox
+    Friend WithEvents CheckSon As CheckBox
+    Friend WithEvents TxtSkip As TextBox
+    Friend WithEvents LabSkip As Label
+    Friend WithEvents GBtemps As GroupBox
 End Class

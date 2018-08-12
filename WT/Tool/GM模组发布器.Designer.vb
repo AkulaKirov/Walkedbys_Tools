@@ -50,17 +50,24 @@ Partial Class GM模组发布器
         Me.LabGMAfile = New System.Windows.Forms.Label()
         Me.LabGMOD = New System.Windows.Forms.Label()
         Me.TxtGMod = New System.Windows.Forms.TextBox()
+        Me.TabReadList = New System.Windows.Forms.TabPage()
+        Me.ListAddons = New System.Windows.Forms.ListBox()
+        Me.ButGotoUpdate = New System.Windows.Forms.Button()
+        Me.ButRefresh = New System.Windows.Forms.Button()
+        Me.LabCount = New System.Windows.Forms.Label()
         Me.Tabs.SuspendLayout()
         Me.TabPackGMA.SuspendLayout()
         Me.GBgma.SuspendLayout()
         Me.TabPublish.SuspendLayout()
         CType(Me.PicThumb, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabReadList.SuspendLayout()
         Me.SuspendLayout()
         '
         'Tabs
         '
         Me.Tabs.Controls.Add(Me.TabPackGMA)
         Me.Tabs.Controls.Add(Me.TabPublish)
+        Me.Tabs.Controls.Add(Me.TabReadList)
         Me.Tabs.Location = New System.Drawing.Point(0, 36)
         Me.Tabs.Name = "Tabs"
         Me.Tabs.SelectedIndex = 0
@@ -350,6 +357,62 @@ Partial Class GM模组发布器
         Me.TxtGMod.TabIndex = 5
         Me.TxtGMod.TabStop = False
         '
+        'TabReadList
+        '
+        Me.TabReadList.Controls.Add(Me.LabCount)
+        Me.TabReadList.Controls.Add(Me.ButRefresh)
+        Me.TabReadList.Controls.Add(Me.ButGotoUpdate)
+        Me.TabReadList.Controls.Add(Me.ListAddons)
+        Me.TabReadList.Location = New System.Drawing.Point(4, 26)
+        Me.TabReadList.Name = "TabReadList"
+        Me.TabReadList.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabReadList.Size = New System.Drawing.Size(523, 333)
+        Me.TabReadList.TabIndex = 2
+        Me.TabReadList.Text = "我的作品列表"
+        Me.TabReadList.UseVisualStyleBackColor = True
+        '
+        'ListAddons
+        '
+        Me.ListAddons.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.0!)
+        Me.ListAddons.FormattingEnabled = True
+        Me.ListAddons.ItemHeight = 15
+        Me.ListAddons.Location = New System.Drawing.Point(8, 6)
+        Me.ListAddons.Name = "ListAddons"
+        Me.ListAddons.Size = New System.Drawing.Size(509, 274)
+        Me.ListAddons.Sorted = True
+        Me.ListAddons.TabIndex = 0
+        Me.ListAddons.TabStop = False
+        '
+        'ButGotoUpdate
+        '
+        Me.ButGotoUpdate.Enabled = False
+        Me.ButGotoUpdate.Location = New System.Drawing.Point(145, 288)
+        Me.ButGotoUpdate.Name = "ButGotoUpdate"
+        Me.ButGotoUpdate.Size = New System.Drawing.Size(131, 39)
+        Me.ButGotoUpdate.TabIndex = 1
+        Me.ButGotoUpdate.TabStop = False
+        Me.ButGotoUpdate.Text = "去更新选中项"
+        Me.ButGotoUpdate.UseVisualStyleBackColor = True
+        '
+        'ButRefresh
+        '
+        Me.ButRefresh.Location = New System.Drawing.Point(8, 288)
+        Me.ButRefresh.Name = "ButRefresh"
+        Me.ButRefresh.Size = New System.Drawing.Size(131, 39)
+        Me.ButRefresh.TabIndex = 2
+        Me.ButRefresh.TabStop = False
+        Me.ButRefresh.Text = "刷新列表"
+        Me.ButRefresh.UseVisualStyleBackColor = True
+        '
+        'LabCount
+        '
+        Me.LabCount.AutoSize = True
+        Me.LabCount.Location = New System.Drawing.Point(289, 298)
+        Me.LabCount.Name = "LabCount"
+        Me.LabCount.Size = New System.Drawing.Size(55, 17)
+        Me.LabCount.TabIndex = 3
+        Me.LabCount.Text = "共计：0"
+        '
         'GM模组发布器
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -373,6 +436,8 @@ Partial Class GM模组发布器
         Me.TabPublish.ResumeLayout(False)
         Me.TabPublish.PerformLayout()
         CType(Me.PicThumb, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabReadList.ResumeLayout(False)
+        Me.TabReadList.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -406,4 +471,9 @@ Partial Class GM模组发布器
     Friend WithEvents ButUpdateGMA As Button
     Friend WithEvents ButPublish As Button
     Friend WithEvents ButGoSteam As Button
+    Friend WithEvents TabReadList As TabPage
+    Friend WithEvents ListAddons As ListBox
+    Friend WithEvents ButGotoUpdate As Button
+    Friend WithEvents ButRefresh As Button
+    Friend WithEvents LabCount As Label
 End Class

@@ -4,15 +4,14 @@ Public Class 启动器
     Friend 工具收藏 As New List(Of 工具)
     Friend 收藏按纽 As New List(Of Button)
     Dim Th更新 As New Thread(Sub()
-                               Dim h As New 简易HTTP("https://raw.githubusercontent.com/gordonwalkedby/Walkedbys_Tools/master/WT/updater.cfg?" + 随机.文字)
+                               Dim h As New 简易HTTP("https://raw.githubusercontent.com/gordonwalkedby/Walkedbys_Tools/master/WT/updater.xml")
                                h.超时 = 5
                                Dim t As String = h.获得回应
                                Dim out As String = ""
-                               If t.StartsWith("这是一个检查更新版本用的") Then
-                                   Dim s As New 简易CFG
-                                   s.全文本 = t
-                                   If 版本 < Val(s.节点("ver")) Then
-                                       GBabout.Text += " （检测到新版本：" + s.节点("ver") + "）"
+                               If 全部包含(t, "这是一个检查更新版本用的", "<root>") Then
+                                   Dim v As Single = Val(提取XML(t, "root", "ver"))
+                                   If 版本 < v Then
+                                       GBabout.Text += " （检测到新版本：" + v.ToString + "）"
                                    End If
                                Else
                                    GBabout.Text += " （检查更新失败）"
@@ -24,7 +23,7 @@ Public Class 启动器
     Private Sub 启动器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         随机.刷新()
         Icon = 图标
-        Text = "走過去的工具箱 内部测试版 " + 版本.ToString
+        Text = "走過去的工具箱 测试版 v" + 版本.ToString
         Nico.Icon = 图标
         线程越界()
         Th更新.Start()
