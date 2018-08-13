@@ -48,13 +48,13 @@ Partial Class GM模组发布器
         Me.ButPublish = New System.Windows.Forms.Button()
         Me.TxtGMAfile = New System.Windows.Forms.TextBox()
         Me.LabGMAfile = New System.Windows.Forms.Label()
+        Me.TabReadList = New System.Windows.Forms.TabPage()
+        Me.LabCount = New System.Windows.Forms.Label()
+        Me.ButRefresh = New System.Windows.Forms.Button()
+        Me.ButGotoUpdate = New System.Windows.Forms.Button()
+        Me.ListAddons = New System.Windows.Forms.ListBox()
         Me.LabGMOD = New System.Windows.Forms.Label()
         Me.TxtGMod = New System.Windows.Forms.TextBox()
-        Me.TabReadList = New System.Windows.Forms.TabPage()
-        Me.ListAddons = New System.Windows.Forms.ListBox()
-        Me.ButGotoUpdate = New System.Windows.Forms.Button()
-        Me.ButRefresh = New System.Windows.Forms.Button()
-        Me.LabCount = New System.Windows.Forms.Label()
         Me.Tabs.SuspendLayout()
         Me.TabPackGMA.SuspendLayout()
         Me.GBgma.SuspendLayout()
@@ -74,6 +74,7 @@ Partial Class GM模组发布器
         Me.Tabs.Size = New System.Drawing.Size(531, 363)
         Me.Tabs.TabIndex = 0
         Me.Tabs.TabStop = False
+        Me.Tabs.Visible = False
         '
         'TabPackGMA
         '
@@ -339,6 +340,62 @@ Partial Class GM模组发布器
         Me.LabGMAfile.TabIndex = 2
         Me.LabGMAfile.Text = "GMA 文件："
         '
+        'TabReadList
+        '
+        Me.TabReadList.Controls.Add(Me.LabCount)
+        Me.TabReadList.Controls.Add(Me.ButRefresh)
+        Me.TabReadList.Controls.Add(Me.ButGotoUpdate)
+        Me.TabReadList.Controls.Add(Me.ListAddons)
+        Me.TabReadList.Location = New System.Drawing.Point(4, 26)
+        Me.TabReadList.Name = "TabReadList"
+        Me.TabReadList.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabReadList.Size = New System.Drawing.Size(523, 333)
+        Me.TabReadList.TabIndex = 2
+        Me.TabReadList.Text = "我的作品列表"
+        Me.TabReadList.UseVisualStyleBackColor = True
+        '
+        'LabCount
+        '
+        Me.LabCount.AutoSize = True
+        Me.LabCount.Location = New System.Drawing.Point(282, 299)
+        Me.LabCount.Name = "LabCount"
+        Me.LabCount.Size = New System.Drawing.Size(55, 17)
+        Me.LabCount.TabIndex = 3
+        Me.LabCount.Text = "共计：0"
+        '
+        'ButRefresh
+        '
+        Me.ButRefresh.Location = New System.Drawing.Point(8, 288)
+        Me.ButRefresh.Name = "ButRefresh"
+        Me.ButRefresh.Size = New System.Drawing.Size(131, 39)
+        Me.ButRefresh.TabIndex = 2
+        Me.ButRefresh.TabStop = False
+        Me.ButRefresh.Text = "刷新列表"
+        Me.ButRefresh.UseVisualStyleBackColor = True
+        '
+        'ButGotoUpdate
+        '
+        Me.ButGotoUpdate.Enabled = False
+        Me.ButGotoUpdate.Location = New System.Drawing.Point(145, 288)
+        Me.ButGotoUpdate.Name = "ButGotoUpdate"
+        Me.ButGotoUpdate.Size = New System.Drawing.Size(131, 39)
+        Me.ButGotoUpdate.TabIndex = 1
+        Me.ButGotoUpdate.TabStop = False
+        Me.ButGotoUpdate.Text = "去更新选中项"
+        Me.ButGotoUpdate.UseVisualStyleBackColor = True
+        '
+        'ListAddons
+        '
+        Me.ListAddons.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.0!)
+        Me.ListAddons.FormattingEnabled = True
+        Me.ListAddons.ItemHeight = 15
+        Me.ListAddons.Location = New System.Drawing.Point(8, 6)
+        Me.ListAddons.Name = "ListAddons"
+        Me.ListAddons.Size = New System.Drawing.Size(509, 274)
+        Me.ListAddons.Sorted = True
+        Me.ListAddons.TabIndex = 0
+        Me.ListAddons.TabStop = False
+        '
         'LabGMOD
         '
         Me.LabGMOD.AutoSize = True
@@ -356,62 +413,6 @@ Partial Class GM模组发布器
         Me.TxtGMod.Size = New System.Drawing.Size(310, 24)
         Me.TxtGMod.TabIndex = 5
         Me.TxtGMod.TabStop = False
-        '
-        'TabReadList
-        '
-        Me.TabReadList.Controls.Add(Me.LabCount)
-        Me.TabReadList.Controls.Add(Me.ButRefresh)
-        Me.TabReadList.Controls.Add(Me.ButGotoUpdate)
-        Me.TabReadList.Controls.Add(Me.ListAddons)
-        Me.TabReadList.Location = New System.Drawing.Point(4, 26)
-        Me.TabReadList.Name = "TabReadList"
-        Me.TabReadList.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabReadList.Size = New System.Drawing.Size(523, 333)
-        Me.TabReadList.TabIndex = 2
-        Me.TabReadList.Text = "我的作品列表"
-        Me.TabReadList.UseVisualStyleBackColor = True
-        '
-        'ListAddons
-        '
-        Me.ListAddons.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.0!)
-        Me.ListAddons.FormattingEnabled = True
-        Me.ListAddons.ItemHeight = 15
-        Me.ListAddons.Location = New System.Drawing.Point(8, 6)
-        Me.ListAddons.Name = "ListAddons"
-        Me.ListAddons.Size = New System.Drawing.Size(509, 274)
-        Me.ListAddons.Sorted = True
-        Me.ListAddons.TabIndex = 0
-        Me.ListAddons.TabStop = False
-        '
-        'ButGotoUpdate
-        '
-        Me.ButGotoUpdate.Enabled = False
-        Me.ButGotoUpdate.Location = New System.Drawing.Point(145, 288)
-        Me.ButGotoUpdate.Name = "ButGotoUpdate"
-        Me.ButGotoUpdate.Size = New System.Drawing.Size(131, 39)
-        Me.ButGotoUpdate.TabIndex = 1
-        Me.ButGotoUpdate.TabStop = False
-        Me.ButGotoUpdate.Text = "去更新选中项"
-        Me.ButGotoUpdate.UseVisualStyleBackColor = True
-        '
-        'ButRefresh
-        '
-        Me.ButRefresh.Location = New System.Drawing.Point(8, 288)
-        Me.ButRefresh.Name = "ButRefresh"
-        Me.ButRefresh.Size = New System.Drawing.Size(131, 39)
-        Me.ButRefresh.TabIndex = 2
-        Me.ButRefresh.TabStop = False
-        Me.ButRefresh.Text = "刷新列表"
-        Me.ButRefresh.UseVisualStyleBackColor = True
-        '
-        'LabCount
-        '
-        Me.LabCount.AutoSize = True
-        Me.LabCount.Location = New System.Drawing.Point(289, 298)
-        Me.LabCount.Name = "LabCount"
-        Me.LabCount.Size = New System.Drawing.Size(55, 17)
-        Me.LabCount.TabIndex = 3
-        Me.LabCount.Text = "共计：0"
         '
         'GM模组发布器
         '

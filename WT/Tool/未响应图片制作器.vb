@@ -8,8 +8,8 @@ Public Class 未响应图片制作器
 
     Private Sub 未响应图片制作器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         文本框拖入文件(TxtICO)
-        TxtName.Text = 读取("NoRESname")
-        TxtICO.Text = 读取("NoRESico")
+        TxtName.Text = 设置.元素("NoRESname")
+        TxtICO.Text = 设置.元素("NoRESico")
     End Sub
 
     Sub 绘制()
@@ -32,19 +32,18 @@ Public Class 未响应图片制作器
 
     Private Sub TxtName_TextChanged(sender As Object, e As EventArgs) Handles TxtName.TextChanged
         名字 = TxtName.Text
-        保存("NoRESname", TxtName.Text)
+        设置.保存元素("NoRESname", TxtName.Text)
         Refresh()
     End Sub
 
     Private Sub TxtICO_TextChanged(sender As Object, e As EventArgs) Handles TxtICO.TextChanged
         Dim s As String = TxtICO.Text
-        保存("NoRESico", s)
+        设置.保存元素("NoRESico", s)
         If s.Length < 5 Then Exit Sub
-        Dim f As New 文件(s)
-        If Not (f.存在 AndAlso f.可用) Then Exit Sub
-        Dim i As String = f.后缀
+        If Not 文件可用(s) Then Exit Sub
+        Dim i As String = 文件后缀(s)
         If 是当中一个(i, "jpg", "png", "bmp") Then
-            图片 = f.转图片
+            图片 = 读文件为图片(s)
             图标 = Nothing
         ElseIf i = "ico" Then
             图标 = New Icon(s, 30, 30)

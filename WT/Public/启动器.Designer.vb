@@ -153,7 +153,7 @@ Partial Class 启动器
         Me.GBabout.Size = New System.Drawing.Size(362, 107)
         Me.GBabout.TabIndex = 4
         Me.GBabout.TabStop = False
-        Me.GBabout.Text = "关于"
+        Me.GBabout.Text = "关于 "
         '
         'After1s
         '
@@ -224,7 +224,7 @@ Partial Class 启动器
     Friend WithEvents TxtUpdate As TextBox
     Friend WithEvents LabAbout As Label
     Friend WithEvents GBabout As GroupBox
-    Friend WithEvents After1s As Windows.Forms.Timer
+    Friend WithEvents After1s As System.Windows.Forms.Timer
     Friend WithEvents Nico As NotifyIcon
     Friend WithEvents NicoMenu As ContextMenuStrip
     Friend WithEvents 显示窗口ToolStripMenuItem As ToolStripMenuItem

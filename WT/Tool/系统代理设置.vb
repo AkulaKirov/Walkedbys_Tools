@@ -2,11 +2,11 @@
 Public Class 系统代理设置
 
     Dim 注册表 As RegistryKey = Registry.CurrentUser.OpenSubKey("Software\Microsoft\Windows\CurrentVersion\Internet Settings", True)
-    Dim 模板 As New List(Of String)
+    Dim mz As 模板组
 
     Private Sub 系统代理设置_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        mz = New 模板组("Proxy", ListTemps, TxtTempName, ButAdd, ButRM, ButUSE)
         ButGetSystem.PerformClick()
-        文字转列表(模板, 读取("ProxyTemps"))
     End Sub
 
     Private Sub ButGetSystem_Click(sender As Object, e As EventArgs) Handles ButGetSystem.Click
@@ -25,59 +25,10 @@ Public Class 系统代理设置
         If s.Length > 0 Then 注册表.SetValue("ProxyServer", s, RegistryValueKind.String)
     End Sub
 
-    Private Sub TxtTempName_TextChanged(sender As Object, e As EventArgs) Handles TxtTempName.TextChanged
-        ButAdd.Enabled = (TxtTempName.TextLength > 0 AndAlso Not 在列表(ListTemps.Items, TxtTempName.Text))
-    End Sub
-
-    Private Sub ButAdd_Click(sender As Object, e As EventArgs) Handles ButAdd.Click
-        Dim s As String = TxtTempName.Text + "___"
-        Dim m As New 简易CFG
-        m.节点("pac") = TxtPAC.Text
-        m.节点("proxy") = TxtProxy.Text
-        模板.Add(Regex.Escape(s + m.全文本))
-        ListTemps.Items.Add(TxtTempName.Text)
-        TxtTempName.Text = ""
-        ListTemps.SelectedIndex = ListTemps.Items.Count - 1
-    End Sub
-
-    Private Sub ButUSE_Click(sender As Object, e As EventArgs) Handles ButUSE.Click
-        Dim s As String = ListTemps.Text
-        For Each i As String In 模板
-            If i.StartsWith(s + "___") Then
-                Dim m As New 简易CFG
-                m.全文本 = Regex.Unescape(i)
-                TxtPAC.Text = m.节点("pac")
-                TxtProxy.Text = m.节点("proxy")
-                Exit For
-            End If
-        Next
-    End Sub
-
-    Private Sub ListTemps_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListTemps.SelectedIndexChanged
-        Dim i As Integer = ListTemps.SelectedIndex
-        ButUSE.Enabled = (i >= 0)
-        ButRM.Enabled = ButUSE.Enabled
-    End Sub
-
-    Private Sub ButRM_Click(sender As Object, e As EventArgs) Handles ButRM.Click
-        Dim s As String = ListTemps.Text
-        Dim i As String = ""
-        For Each i In 模板
-            If i.StartsWith(s + "___") Then Exit For
-        Next
-        模板.Remove(i)
-        移除选中项(ListTemps)
-    End Sub
-
-    Private Sub 系统代理设置_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        保存("ProxyTemps", 列表转文字(模板))
-    End Sub
-
     Private Sub ButCheckIP_Click(sender As Object, e As EventArgs) Handles ButCheckIP.Click
         Dim h As New 简易HTTP("http://ip.chinaz.com/getip.aspx")
         h.超时 = 5
         Dim s As String = h.获得回应()
-        文件x("e:\s.txt").写(s)
         If s.Length > 10 AndAlso Regex.IsMatch(s, "{ip:'.+?',address:'.+?'}") Then
             MsgBox("IP：" + 提取(s, "ip:'", "',") + vbCrLf + "地理信息：" + 提取(s, "address:'", "'}"))
         Else
@@ -98,15 +49,25 @@ Public Class 系统代理设置
 
     Private Sub 系统代理设置_Activated(sender As Object, e As EventArgs) Handles Me.Activated
         TxtIP.Text = "本机IP："
-        For Each i As String In 模板
-            Dim t As String = 去右(Regex.Match(i, ".+___").ToString, 3)
-            If t.Length > 0 Then ListTemps.Items.Add(t)
-        Next
         If NetworkInterface.GetIsNetworkAvailable Then
             For Each ip As IPAddress In Dns.GetHostEntry(Dns.GetHostName).AddressList
                 TxtIP.Text += vbCrLf + ip.ToString
             Next
         End If
+    End Sub
+
+    Private Sub ButAdd_Click(sender As Object, e As EventArgs) Handles ButAdd.Click
+        Dim s As String = TxtTempName.Text
+        Dim t As New 模板(s)
+        t.元素("pac") = TxtPAC.Text
+        t.元素("server") = TxtProxy.Text
+        mz.新增(t)
+    End Sub
+
+    Private Sub ButUSE_Click(sender As Object, e As EventArgs) Handles ButUSE.Click
+        Dim t As 模板 = MZ.读取当前项
+        TxtProxy.Text = t.元素("server")
+        TxtPAC.Text = t.元素("pac")
     End Sub
 
 End Class

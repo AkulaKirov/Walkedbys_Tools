@@ -243,13 +243,12 @@
         Public Sub 新文件(名字 As String, 文件 As String, Optional 文件类型 As String = "")
             If lose Then Exit Sub
             加头()
-            Dim x As New 文件(文件)
-            Dim i As String = "Content-Disposition: form-data; name=" + 引(名字) + "; filename=" + 引(x.完整文件名) + vbCrLf
+            Dim i As String = "Content-Disposition: form-data; name=" + 引(名字) + "; filename=" + 引(文件名(文件, True)) + vbCrLf
             If 文件类型.Length > 0 Then i += "Content-Type: " + 文件类型
             i += vbCrLf + vbCrLf
             写入流(s, i)
             数据 += i
-            Dim b() As Byte = x.读字节
+            Dim b() As Byte = 读文件(文件, True)
             写入流(s, b)
             数据 += "[二进制 " & b.Length & "]"
         End Sub

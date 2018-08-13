@@ -261,7 +261,7 @@ Partial Class VMT生成器
     Friend WithEvents ButUSE As Button
     Friend WithEvents TxtTempName As TextBox
     Friend WithEvents ButGen As Button
-    Friend WithEvents Watching As Windows.Forms.Timer
+    Friend WithEvents Watching As System.Windows.Forms.Timer
     Friend WithEvents TxtLOG As TextBox
     Friend WithEvents CheckSon As CheckBox
     Friend WithEvents TxtSkip As TextBox

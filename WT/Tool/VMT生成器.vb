@@ -5,11 +5,11 @@ Public Class VMT生成器
     Dim 模板 As New List(Of String)
 
     Private Sub VMT生成器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        TxtPath.Text = 读取("vmtPATH")
-        TxtVMT.Text = 读取("vmtLAST")
-        TxtSkip.Text = 读取("vmtSKIP")
-        CheckSon.Checked = (读取("vmtSON").Length = 1)
-        文字转列表(模板, 读取("vmtTEMPs"))
+        TxtPath.Text = 设置.元素("vmtPATH")
+        TxtVMT.Text = 设置.元素("vmtLAST")
+        TxtSkip.Text = 设置.元素("vmtSKIP")
+        CheckSon.Checked = (设置.元素("vmtSON").Length = 1)
+        文字转列表(模板, 设置.元素("vmtTEMPs"))
         Dim i As String
         If 模板.Count > 0 Then
             For Each i In 模板
@@ -28,7 +28,7 @@ Public Class VMT生成器
         i = 追加斜杠(i.ToLower.Replace("/", "\"))
         If 包含(i, "\materials\") AndAlso 文件夹存在(i) Then
             TxtPath.Text = i
-            保存("vmtPATH", i)
+            设置.保存元素("vmtPATH", i)
             GBvmt.Enabled = True
         Else
             TxtPath.Text = ""
@@ -63,10 +63,10 @@ Public Class VMT生成器
     End Sub
 
     Private Sub VMT生成器_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        保存("vmtTEMPs", 列表转文字(模板))
-        保存("vmtLAST", TxtVMT.Text)
-        保存("vmtSKIP", TxtSkip.Text)
-        保存("vmtSON", IIf(CheckSon.Checked, 1, ""))
+        设置.保存元素("vmtTEMPs", 列表转文字(模板))
+        设置.保存元素("vmtLAST", TxtVMT.Text)
+        设置.保存元素("vmtSKIP", TxtSkip.Text)
+        设置.保存元素("vmtSON", IIf(CheckSon.Checked, 1, ""))
     End Sub
 
     Private Sub CBtemplete_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBtemplete.SelectedIndexChanged
@@ -109,14 +109,14 @@ Public Class VMT生成器
         If f.Count < 1 Then Exit Sub
         Dim i As String
         For Each i In f
-            Dim m As New 文件(i.ToLower.Replace(".vtf", ".vmt"))
-            If Not m.存在 Then
-                Dim s As String = TxtVMT.Text, t As String = 正则去除(m.地址, ".*materials\\", "\.vmt")
+            Dim m As String = i.ToLower.Replace(".vtf", ".vmt")
+            If Not 文件存在(m) Then
+                Dim s As String = TxtVMT.Text, t As String = 正则去除(m, ".*materials\\", "\.vmt")
                 If t.Length > 0 Then
                     Dim sw As String = TxtSkip.Text
                     If (sw.Length > 0 AndAlso Not Regex.IsMatch(t, sw)) OrElse (sw.Length < 1) Then
                         s = s.Replace("%文件名%", t)
-                        m.写(s)
+                        写文件(m, s)
                         TxtLOG.Text += vbCrLf + "已生成：" + t
                     End If
                 End If

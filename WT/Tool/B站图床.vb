@@ -22,11 +22,10 @@ Public Class B站图床
     Sub 检查图片(m As String)
         ButCopy.Enabled = False
         预览图 = Nothing
-        Dim i As New 文件(m)
-        If i.存在 AndAlso i.可用 AndAlso 是当中一个(i.后缀, "jpg", "png", "gif") AndAlso i.大小 < 20 Then
+        If 文件存在(m) AndAlso 文件可读写(m) AndAlso 是当中一个(文件后缀(m), "jpg", "png", "gif") AndAlso 文件大小(m) < 20 Then
             LabDoit.Text = "上传中：" + vbCrLf + m
             图片 = m
-            预览图 = i.转图片
+            预览图 = 读文件为图片(m)
             Refresh()
             TH = New Thread(AddressOf 上传图片)
             TH.Start()

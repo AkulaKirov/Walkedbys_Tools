@@ -93,7 +93,18 @@ Module 字符串处理
     ''' 把文字用括号括起来
     ''' </summary>
     Public Function 括(文字 As String, Optional 括号 As String = "()") As String
-        Return 左(括号, 1) + 文字 + 右(括号, 1)
+        Dim c As Integer = 括号.Length
+        Select Case c
+            Case < 1
+                Return 文字
+            Case 1
+                Return 括号 + 文字 + 括号
+            Case 2
+                Return 左(括号, 1) + 文字 + 右(括号, 1)
+            Case Else
+                Dim i As Integer = Int(c / 2 + 0.5)
+                Return 左(括号, i) + 文字 + 右(括号, c - i)
+        End Select
     End Function
 
     ''' <summary>
@@ -109,27 +120,15 @@ Module 字符串处理
     ''' </summary>
     Public Function 分割(文字 As String, 间隔符 As String) As List(Of String)
         Dim s As New List(Of String)
-        If 包含(文字, 间隔符) Then s.Add(间隔符) Else s.Add(文字)
-        If 文字.Length < 2 Then Return s
-        If Not 文字.EndsWith(间隔符) Then 文字 += 间隔符
-        For Each m As Match In Regex.Matches(文字, "([\s\S]*?)" + Regex.Escape(间隔符))
-            Dim t As String = m.ToString.Replace(间隔符, "")
-            If t.Length > 0 Then s.Add(t)
-        Next
-        Return s
-    End Function
-
-    ''' <summary>
-    ''' 把用分割函数生成的列表进行合并
-    ''' </summary>
-    Public Function 合并分割(分割 As List(Of String)) As String
-        Dim s As String = "", i As Integer, c As Integer = 分割.Count
-        If c = 1 Then Return 分割.First
-        c -= 1
-        For i = 1 To c
-            s += 分割.Item(i)
-            If i <> c Then s += 分割.First
-        Next
+        If Not 包含(文字, 间隔符) Then
+            s.Add(文字)
+        Else
+            If Not 文字.EndsWith(间隔符) Then 文字 += 间隔符
+            For Each m As Match In Regex.Matches(文字, "([\s\S]*?)" + Regex.Escape(间隔符))
+                Dim t As String = m.ToString.Replace(间隔符, "")
+                If t.Length > 0 Then s.Add(t)
+            Next
+        End If
         Return s
     End Function
 
@@ -167,9 +166,11 @@ Module 字符串处理
     ''' 把匹配到的正则表达式字从文字中移除
     ''' </summary>
     Public Function 正则去除(文字 As String, ParamArray 寻找() As String) As String
-        For Each i As String In 寻找
-            If 文字.Length > 0 Then 文字 = Regex.Replace(文字, i, "")
-        Next
+        If 文字.Length > 0 Then
+            For Each i As String In 寻找
+                If i.Length > 0 Then 文字 = Regex.Replace(文字, i, "")
+            Next
+        End If
         Return 非空字符串(文字)
     End Function
 
@@ -257,18 +258,25 @@ Module 字符串处理
     ''' 简易提取XML的内容
     ''' </summary>
     Public Function 提取XML(xml As String, ParamArray 节点() As String) As String
-        If xml.Length > 0 AndAlso 节点.Count > 0 Then
+        Dim c As Integer = 节点.Count
+        If xml.Length > 0 AndAlso c > 0 Then
             Dim s As String = xml, id As Integer = 1
-            For Each i As String In 节点
-                Dim a As String = 括(i, "<>"), b As String = "</" + i + ">"
-                If 全部包含(s, a, b) Then
-                    s = 提取(s, a, b)
-                    If id = 节点.Count Then Return s
-                    id += 1
-                Else
-                    Return ""
-                End If
-            Next
+            If c > 1 Then
+                For Each i As String In 节点
+                    Dim a As String = 括(i, "<>"), b As String = 括(i, "</>")
+                    If 全部包含(s, a, b) Then
+                        s = 提取(s, a, b)
+                        If id = 节点.Count Then Return s
+                        id += 1
+                    Else
+                        Return ""
+                    End If
+                Next
+            Else
+                Dim i As String = 节点.First
+                Dim a As String = 括(i, "<>"), b As String = 括(i, "</>")
+                Return 提取(s, a, b)
+            End If
         End If
         Return ""
     End Function

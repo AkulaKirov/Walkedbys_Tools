@@ -36,6 +36,8 @@ Partial Class 系统代理设置
         Me.ButCheckIP = New System.Windows.Forms.Button()
         Me.TxtIP = New System.Windows.Forms.TextBox()
         Me.ButCheckGoogle = New System.Windows.Forms.Button()
+        Me.GBtemps = New System.Windows.Forms.GroupBox()
+        Me.GBtemps.SuspendLayout()
         Me.SuspendLayout()
         '
         'TxtPAC
@@ -80,38 +82,38 @@ Partial Class 系统代理设置
         '
         Me.ListTemps.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ListTemps.FormattingEnabled = True
-        Me.ListTemps.Location = New System.Drawing.Point(12, 72)
+        Me.ListTemps.Location = New System.Drawing.Point(6, 24)
         Me.ListTemps.Name = "ListTemps"
-        Me.ListTemps.Size = New System.Drawing.Size(180, 27)
+        Me.ListTemps.Size = New System.Drawing.Size(283, 27)
         Me.ListTemps.TabIndex = 6
         Me.ListTemps.TabStop = False
         '
         'ButAdd
         '
         Me.ButAdd.Enabled = False
-        Me.ButAdd.Location = New System.Drawing.Point(489, 72)
+        Me.ButAdd.Location = New System.Drawing.Point(180, 55)
         Me.ButAdd.Name = "ButAdd"
-        Me.ButAdd.Size = New System.Drawing.Size(180, 27)
+        Me.ButAdd.Size = New System.Drawing.Size(109, 27)
         Me.ButAdd.TabIndex = 7
         Me.ButAdd.TabStop = False
-        Me.ButAdd.Text = "保存为模板"
+        Me.ButAdd.Text = "新存为模板"
         Me.ButAdd.UseVisualStyleBackColor = True
         '
         'TxtTempName
         '
-        Me.TxtTempName.Location = New System.Drawing.Point(198, 72)
+        Me.TxtTempName.Location = New System.Drawing.Point(6, 57)
         Me.TxtTempName.MaxLength = 20
         Me.TxtTempName.Name = "TxtTempName"
-        Me.TxtTempName.Size = New System.Drawing.Size(285, 25)
+        Me.TxtTempName.Size = New System.Drawing.Size(168, 25)
         Me.TxtTempName.TabIndex = 8
         Me.TxtTempName.TabStop = False
         '
         'ButUSE
         '
         Me.ButUSE.Enabled = False
-        Me.ButUSE.Location = New System.Drawing.Point(12, 105)
+        Me.ButUSE.Location = New System.Drawing.Point(6, 88)
         Me.ButUSE.Name = "ButUSE"
-        Me.ButUSE.Size = New System.Drawing.Size(180, 27)
+        Me.ButUSE.Size = New System.Drawing.Size(144, 27)
         Me.ButUSE.TabIndex = 9
         Me.ButUSE.TabStop = False
         Me.ButUSE.Text = "读取该模板"
@@ -120,9 +122,9 @@ Partial Class 系统代理设置
         'ButRM
         '
         Me.ButRM.Enabled = False
-        Me.ButRM.Location = New System.Drawing.Point(198, 105)
+        Me.ButRM.Location = New System.Drawing.Point(156, 88)
         Me.ButRM.Name = "ButRM"
-        Me.ButRM.Size = New System.Drawing.Size(180, 27)
+        Me.ButRM.Size = New System.Drawing.Size(133, 27)
         Me.ButRM.TabIndex = 10
         Me.ButRM.TabStop = False
         Me.ButRM.Text = "删除该模板"
@@ -148,51 +150,61 @@ Partial Class 系统代理设置
         '
         'ButCheckIP
         '
-        Me.ButCheckIP.Location = New System.Drawing.Point(384, 138)
+        Me.ButCheckIP.Location = New System.Drawing.Point(384, 212)
         Me.ButCheckIP.Name = "ButCheckIP"
-        Me.ButCheckIP.Size = New System.Drawing.Size(258, 36)
+        Me.ButCheckIP.Size = New System.Drawing.Size(289, 36)
         Me.ButCheckIP.TabIndex = 14
         Me.ButCheckIP.TabStop = False
-        Me.ButCheckIP.Text = "获取公网IP (ip.chinaz.com)"
+        Me.ButCheckIP.Text = "联网获取公网IP (ip.chinaz.com)"
         Me.ButCheckIP.UseVisualStyleBackColor = True
         '
         'TxtIP
         '
-        Me.TxtIP.Location = New System.Drawing.Point(12, 138)
+        Me.TxtIP.Location = New System.Drawing.Point(12, 72)
         Me.TxtIP.Multiline = True
         Me.TxtIP.Name = "TxtIP"
         Me.TxtIP.ReadOnly = True
         Me.TxtIP.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtIP.Size = New System.Drawing.Size(366, 170)
+        Me.TxtIP.Size = New System.Drawing.Size(366, 216)
         Me.TxtIP.TabIndex = 15
         Me.TxtIP.TabStop = False
         Me.TxtIP.Text = "本地IP："
         '
         'ButCheckGoogle
         '
-        Me.ButCheckGoogle.Location = New System.Drawing.Point(384, 180)
+        Me.ButCheckGoogle.Location = New System.Drawing.Point(384, 254)
         Me.ButCheckGoogle.Name = "ButCheckGoogle"
-        Me.ButCheckGoogle.Size = New System.Drawing.Size(258, 35)
+        Me.ButCheckGoogle.Size = New System.Drawing.Size(289, 35)
         Me.ButCheckGoogle.TabIndex = 16
         Me.ButCheckGoogle.TabStop = False
         Me.ButCheckGoogle.Text = "检测是否可连接到 Google"
         Me.ButCheckGoogle.UseVisualStyleBackColor = True
         '
+        'GBtemps
+        '
+        Me.GBtemps.Controls.Add(Me.ListTemps)
+        Me.GBtemps.Controls.Add(Me.TxtTempName)
+        Me.GBtemps.Controls.Add(Me.ButAdd)
+        Me.GBtemps.Controls.Add(Me.ButRM)
+        Me.GBtemps.Controls.Add(Me.ButUSE)
+        Me.GBtemps.Location = New System.Drawing.Point(384, 72)
+        Me.GBtemps.Name = "GBtemps"
+        Me.GBtemps.Size = New System.Drawing.Size(295, 134)
+        Me.GBtemps.TabIndex = 17
+        Me.GBtemps.TabStop = False
+        Me.GBtemps.Text = "模板"
+        '
         '系统代理设置
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(682, 311)
+        Me.ClientSize = New System.Drawing.Size(682, 295)
+        Me.Controls.Add(Me.GBtemps)
         Me.Controls.Add(Me.ButCheckGoogle)
         Me.Controls.Add(Me.TxtIP)
         Me.Controls.Add(Me.ButCheckIP)
         Me.Controls.Add(Me.LabProxy)
         Me.Controls.Add(Me.LabPAC)
-        Me.Controls.Add(Me.ButRM)
-        Me.Controls.Add(Me.ButUSE)
-        Me.Controls.Add(Me.TxtTempName)
-        Me.Controls.Add(Me.ButAdd)
-        Me.Controls.Add(Me.ListTemps)
         Me.Controls.Add(Me.TxtProxy)
         Me.Controls.Add(Me.ButApply)
         Me.Controls.Add(Me.ButGetSystem)
@@ -204,6 +216,8 @@ Partial Class 系统代理设置
         Me.Name = "系统代理设置"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "系统代理设置"
+        Me.GBtemps.ResumeLayout(False)
+        Me.GBtemps.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -222,4 +236,5 @@ Partial Class 系统代理设置
     Friend WithEvents ButCheckIP As Button
     Friend WithEvents TxtIP As TextBox
     Friend WithEvents ButCheckGoogle As Button
+    Friend WithEvents GBtemps As GroupBox
 End Class

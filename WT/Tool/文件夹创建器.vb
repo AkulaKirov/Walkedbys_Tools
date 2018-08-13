@@ -1,4 +1,5 @@
-﻿Public Class 文件夹创建器
+﻿
+Public Class 文件夹创建器
 
     Private Sub ButCreate_Click(sender As Object, e As EventArgs) Handles ButCreate.Click
         Dim i As String = TxtPath.Text, out As String = ""
@@ -24,7 +25,7 @@
 
     Private Sub 文件夹创建器_Load(sender As Object, e As EventArgs) Handles Me.Load
         LabOut.Text = ""
-        TxtPath.Text = 读取("MKDIRpath")
+        TxtPath.Text = 设置.元素("MKDIRpath")
     End Sub
 
     Private Sub ButOpen_Click(sender As Object, e As EventArgs) Handles ButOpen.Click
@@ -32,7 +33,7 @@
     End Sub
 
     Private Sub TxtPath_TextChanged(sender As Object, e As EventArgs) Handles TxtPath.TextChanged
-        保存("MKDIRpath", TxtPath.Text)
+        设置.保存元素("MKDIRpath", TxtPath.Text)
     End Sub
 
 End Class

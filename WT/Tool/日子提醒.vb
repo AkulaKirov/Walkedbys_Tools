@@ -16,12 +16,12 @@ Public Class 日子提醒
         CBday.SelectedIndex = 0
         CBmonth.SelectedIndex = 0
         ListDates.Items.Clear()
-        文字转列表(ListDates.Items, 读取("days"))
+        文字转列表(ListDates.Items, 设置.元素("days"))
     End Sub
 
     Private Sub ButRM_Click(sender As Object, e As EventArgs) Handles ButRM.Click
         移除选中项(ListDates)
-        保存("days", 列表转文字(ListDates.Items))
+        设置.保存元素("days", 列表转文字(ListDates.Items))
     End Sub
 
     Private Sub ListDates_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListDates.SelectedIndexChanged
@@ -37,7 +37,7 @@ Public Class 日子提醒
                 Exit For
             End If
         Next
-        保存("days", 列表转文字(ListDates.Items))
+        设置.保存元素("days", 列表转文字(ListDates.Items))
         TxtJOB.Text = ""
     End Sub
 

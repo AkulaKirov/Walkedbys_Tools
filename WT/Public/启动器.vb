@@ -11,12 +11,12 @@ Public Class 启动器
                                If 全部包含(t, "这是一个检查更新版本用的", "<root>") Then
                                    Dim v As Single = Val(提取XML(t, "root", "ver"))
                                    If 版本 < v Then
-                                       GBabout.Text += " （检测到新版本：" + v.ToString + "）"
+                                       GBabout.Text += "（检测到新版本：v" + v.ToString + "）"
                                    Else
-                                       GBabout.Text += " （已是最新版本：" + v.ToString + "）"
+                                       GBabout.Text += "（已是最新版本：v" + v.ToString + "）"
                                    End If
                                Else
-                                   GBabout.Text += " （检查更新失败）"
+                                   GBabout.Text += "（检查更新失败）"
                                End If
                            End Sub)
     Dim 关于链接 As New List(Of LinkLabel)
@@ -30,7 +30,6 @@ Public Class 启动器
         线程越界()
         Th更新.Start()
         Directory.CreateDirectory(TempF)
-        Sets.读取本地文件()
         工具列表.Add(New 工具("文件夹创建器", 文件夹创建器, "MKDIR", "输入一个路径，就能新建好你要的文件夹。"))
         工具列表.Add(New 工具("B站图床", B站图床, "BilibiliPic", "把20MB以下的图片无损放到B站服务器还行。"))
         工具列表.Add(New 工具("日子提醒器", 日子提醒, "DayReminder", "可以拿来提醒生日或者重要的啥日子。"))
@@ -59,7 +58,7 @@ Public Class 启动器
             End With
         Next
         Dim mc As New List(Of String)
-        文字转列表(mc, 读取("FAVOR"))
+        文字转列表(mc, 设置.元素("FAVOR"))
         For Each g In mc
             t = ID工具(g)
             If Not IsNothing(t) Then
@@ -87,8 +86,8 @@ Public Class 启动器
     Private Sub 启动器_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Nico.Visible = False
         中断线程(Th更新)
-        Sets.保存本地文件()
-        删除文件夹(TempF)
+        设置.保存到本地()
+        删除(TempF)
     End Sub
 
     Sub 检查推送()
@@ -103,7 +102,7 @@ Public Class 启动器
     Private Sub ListTools_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListTools.SelectedIndexChanged
         Dim i As Integer = ListTools.SelectedIndex
         If i < 0 Then Exit Sub
-        Dim t As 工具 = 名字工具(ListTools.Items.Item(i))
+        Dim t As 工具 = 名字工具(ListTools.SelectedItem.ToString)
         TxtToolDes.Text = t.名字 + vbCrLf + IIf(在列表(工具收藏, t), "【已收藏】" + vbCrLf, "") + "简介：" + vbCrLf + t.简介
         ButOpenTool.Enabled = True
         With ButAddToFavor
@@ -125,12 +124,12 @@ Public Class 启动器
     End Sub
 
     Private Sub ButOpenTool_Click(sender As Object, e As EventArgs) Handles ButOpenTool.Click
-        Dim t As 工具 = 工具列表.Item(ListTools.SelectedIndex)
+        Dim t As 工具 = 名字工具(ListTools.SelectedItem.ToString)
         t.启动()
     End Sub
 
     Private Sub ButAddToFavor_Click(sender As Object, e As EventArgs) Handles ButAddToFavor.Click
-        Dim t As 工具 = 工具列表.Item(ListTools.SelectedIndex)
+        Dim t As 工具 = 名字工具(ListTools.SelectedItem.ToString)
         If Not 在列表(工具收藏, t) Then
             If 工具收藏.Count < 8 Then 工具收藏.Add(t)
         Else
@@ -149,7 +148,7 @@ Public Class 启动器
                 b.Visible = True
             Next
         End If
-        保存("FAVOR", 列表转文字(工具收藏))
+        设置.元素("FAVOR") = 列表转文字(工具收藏)
         ListTools_SelectedIndexChanged(sender, e)
         GBfavorites.Text = "工具收藏夹" + 括(工具收藏.Count.ToString + "/8")
     End Sub
