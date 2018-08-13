@@ -1,24 +1,15 @@
-﻿Imports System.ComponentModel
-
+﻿
 Public Class VMT生成器
 
-    Dim 模板 As New List(Of String)
+    Dim mz As 模板组
 
     Private Sub VMT生成器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TxtPath.Text = 设置.元素("vmtPATH")
         TxtVMT.Text = 设置.元素("vmtLAST")
         TxtSkip.Text = 设置.元素("vmtSKIP")
-        CheckSon.Checked = (设置.元素("vmtSON").Length = 1)
-        文字转列表(模板, 设置.元素("vmtTEMPs"))
-        Dim i As String
-        If 模板.Count > 0 Then
-            For Each i In 模板
-                i = 去右(Regex.Match(i, ".+___").ToString, 3)
-                CBtemplete.Items.Add(i)
-            Next
-        End If
+        mz = New 模板组("VMTG", ListTemps, TxtTempName, ButADD, ButDEL, ButUSE)
+        CheckSon.Checked = 设置.读取真假("vmtSON")
         文本框拖入文件夹(TxtPath)
-        文本框全选(Me)
     End Sub
 
     Private Sub TxtPath_TextChanged(sender As Object, e As EventArgs) Handles TxtPath.TextChanged
@@ -49,49 +40,20 @@ Public Class VMT生成器
 
     Private Sub TxtTempName_TextChanged(sender As Object, e As EventArgs) Handles TxtTempName.TextChanged, ButDEL.Click, TxtVMT.TextChanged
         Dim i As String = Trim(TxtTempName.Text)
-        ButADD.Enabled = (i.Length > 0 AndAlso Not 在列表(CBtemplete.Items, i) AndAlso TxtVMT.TextLength > 10)
+        ButADD.Enabled = (i.Length > 0 AndAlso Not 在列表(ListTemps.Items, i) AndAlso TxtVMT.TextLength > 10)
         ButGen.Enabled = (TxtVMT.TextLength > 10)
     End Sub
 
-    Private Sub ButADD_Click(sender As Object, e As EventArgs) Handles ButADD.Click
-        Dim i As String = Trim(TxtTempName.Text)
-        CBtemplete.Items.Add(i)
-        i += "___" + Regex.Escape(TxtVMT.Text)
-        模板.Add(i)
-        TxtTempName.Text = ""
-        CBtemplete.SelectedIndex = CBtemplete.Items.Count - 1
-    End Sub
-
     Private Sub VMT生成器_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        设置.保存元素("vmtTEMPs", 列表转文字(模板))
         设置.保存元素("vmtLAST", TxtVMT.Text)
         设置.保存元素("vmtSKIP", TxtSkip.Text)
-        设置.保存元素("vmtSON", IIf(CheckSon.Checked, 1, ""))
+        设置.保存元素("vmtSON", CheckSon.Checked)
     End Sub
 
-    Private Sub CBtemplete_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBtemplete.SelectedIndexChanged
-        Dim i As Integer = CBtemplete.SelectedIndex
+    Private Sub CBtemplete_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListTemps.SelectedIndexChanged
+        Dim i As Integer = ListTemps.SelectedIndex
         ButUSE.Enabled = (i > -1)
         ButDEL.Enabled = ButUSE.Enabled
-    End Sub
-
-    Private Sub ButUSE_Click(sender As Object, e As EventArgs) Handles ButUSE.Click
-        Dim s As String = CBtemplete.Text
-        For Each i As String In 模板
-            If i.StartsWith(s + "___") Then
-                TxtVMT.Text = Regex.Unescape(去左(i, s.Length + 3))
-                Exit For
-            End If
-        Next
-    End Sub
-
-    Private Sub ButDEL_Click(sender As Object, e As EventArgs) Handles ButDEL.Click
-        Dim s As String = CBtemplete.Text, i As String = ""
-        For Each i In 模板
-            If i.StartsWith(s + "___") Then Exit For
-        Next
-        模板.Remove(i)
-        移除选中项(CBtemplete)
     End Sub
 
     Private Sub ButGen_Click(sender As Object, e As EventArgs) Handles ButGen.Click
@@ -127,6 +89,17 @@ Public Class VMT生成器
     Private Sub TxtLOG_TextChanged(sender As Object, e As EventArgs) Handles TxtLOG.TextChanged
         TxtLOG.SelectionStart = TxtLOG.TextLength
         TxtLOG.ScrollToCaret()
+    End Sub
+
+    Private Sub ButADD_Click(sender As Object, e As EventArgs) Handles ButADD.Click
+        Dim n As New 模板(TxtTempName.Text)
+        n.元素("pars") = TxtVMT.Text
+        mz.新增(n)
+    End Sub
+
+    Private Sub ButUSE_Click(sender As Object, e As EventArgs) Handles ButUSE.Click
+        Dim n As 模板 = mz.读取当前项
+        TxtVMT.Text = n.元素("pars")
     End Sub
 
 End Class

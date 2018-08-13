@@ -27,19 +27,19 @@ Partial Class VMT生成器
         Me.LabPath = New System.Windows.Forms.Label()
         Me.TxtVMT = New System.Windows.Forms.TextBox()
         Me.GBvmt = New System.Windows.Forms.GroupBox()
+        Me.GBtemps = New System.Windows.Forms.GroupBox()
+        Me.ListTemps = New System.Windows.Forms.ComboBox()
+        Me.ButADD = New System.Windows.Forms.Button()
+        Me.ButDEL = New System.Windows.Forms.Button()
+        Me.ButUSE = New System.Windows.Forms.Button()
+        Me.TxtTempName = New System.Windows.Forms.TextBox()
         Me.LabSkip = New System.Windows.Forms.Label()
         Me.TxtSkip = New System.Windows.Forms.TextBox()
         Me.CheckSon = New System.Windows.Forms.CheckBox()
-        Me.TxtTempName = New System.Windows.Forms.TextBox()
-        Me.ButUSE = New System.Windows.Forms.Button()
-        Me.ButDEL = New System.Windows.Forms.Button()
-        Me.ButADD = New System.Windows.Forms.Button()
-        Me.CBtemplete = New System.Windows.Forms.ComboBox()
         Me.ListParms = New System.Windows.Forms.ListBox()
         Me.ButGen = New System.Windows.Forms.Button()
         Me.Watching = New System.Windows.Forms.Timer(Me.components)
         Me.TxtLOG = New System.Windows.Forms.TextBox()
-        Me.GBtemps = New System.Windows.Forms.GroupBox()
         Me.GBvmt.SuspendLayout()
         Me.GBtemps.SuspendLayout()
         Me.SuspendLayout()
@@ -90,6 +90,73 @@ Partial Class VMT生成器
         Me.GBvmt.TabStop = False
         Me.GBvmt.Text = "VMT选项"
         '
+        'GBtemps
+        '
+        Me.GBtemps.Controls.Add(Me.ListTemps)
+        Me.GBtemps.Controls.Add(Me.ButADD)
+        Me.GBtemps.Controls.Add(Me.ButDEL)
+        Me.GBtemps.Controls.Add(Me.ButUSE)
+        Me.GBtemps.Controls.Add(Me.TxtTempName)
+        Me.GBtemps.Location = New System.Drawing.Point(487, 87)
+        Me.GBtemps.Name = "GBtemps"
+        Me.GBtemps.Size = New System.Drawing.Size(194, 149)
+        Me.GBtemps.TabIndex = 12
+        Me.GBtemps.TabStop = False
+        Me.GBtemps.Text = "模板"
+        '
+        'ListTemps
+        '
+        Me.ListTemps.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ListTemps.FormattingEnabled = True
+        Me.ListTemps.Location = New System.Drawing.Point(3, 24)
+        Me.ListTemps.Name = "ListTemps"
+        Me.ListTemps.Size = New System.Drawing.Size(182, 27)
+        Me.ListTemps.TabIndex = 4
+        Me.ListTemps.TabStop = False
+        '
+        'ButADD
+        '
+        Me.ButADD.Enabled = False
+        Me.ButADD.Location = New System.Drawing.Point(94, 57)
+        Me.ButADD.Name = "ButADD"
+        Me.ButADD.Size = New System.Drawing.Size(91, 36)
+        Me.ButADD.TabIndex = 5
+        Me.ButADD.TabStop = False
+        Me.ButADD.Text = "新增为模板"
+        Me.ButADD.UseVisualStyleBackColor = True
+        '
+        'ButDEL
+        '
+        Me.ButDEL.Enabled = False
+        Me.ButDEL.Location = New System.Drawing.Point(94, 98)
+        Me.ButDEL.Name = "ButDEL"
+        Me.ButDEL.Size = New System.Drawing.Size(91, 36)
+        Me.ButDEL.TabIndex = 6
+        Me.ButDEL.TabStop = False
+        Me.ButDEL.Text = "删除此模板"
+        Me.ButDEL.UseVisualStyleBackColor = True
+        '
+        'ButUSE
+        '
+        Me.ButUSE.Enabled = False
+        Me.ButUSE.Location = New System.Drawing.Point(3, 98)
+        Me.ButUSE.Name = "ButUSE"
+        Me.ButUSE.Size = New System.Drawing.Size(91, 36)
+        Me.ButUSE.TabIndex = 7
+        Me.ButUSE.TabStop = False
+        Me.ButUSE.Text = "使用此模板"
+        Me.ButUSE.UseVisualStyleBackColor = True
+        '
+        'TxtTempName
+        '
+        Me.TxtTempName.Font = New System.Drawing.Font("微软雅黑", 8.0!)
+        Me.TxtTempName.Location = New System.Drawing.Point(3, 66)
+        Me.TxtTempName.MaxLength = 10
+        Me.TxtTempName.Name = "TxtTempName"
+        Me.TxtTempName.Size = New System.Drawing.Size(91, 22)
+        Me.TxtTempName.TabIndex = 8
+        Me.TxtTempName.TabStop = False
+        '
         'LabSkip
         '
         Me.LabSkip.AutoSize = True
@@ -118,59 +185,6 @@ Partial Class VMT生成器
         Me.CheckSon.TabStop = False
         Me.CheckSon.Text = "包括子文件夾"
         Me.CheckSon.UseVisualStyleBackColor = True
-        '
-        'TxtTempName
-        '
-        Me.TxtTempName.Font = New System.Drawing.Font("微软雅黑", 8.0!)
-        Me.TxtTempName.Location = New System.Drawing.Point(3, 66)
-        Me.TxtTempName.MaxLength = 10
-        Me.TxtTempName.Name = "TxtTempName"
-        Me.TxtTempName.Size = New System.Drawing.Size(91, 22)
-        Me.TxtTempName.TabIndex = 8
-        Me.TxtTempName.TabStop = False
-        '
-        'ButUSE
-        '
-        Me.ButUSE.Enabled = False
-        Me.ButUSE.Location = New System.Drawing.Point(3, 98)
-        Me.ButUSE.Name = "ButUSE"
-        Me.ButUSE.Size = New System.Drawing.Size(91, 36)
-        Me.ButUSE.TabIndex = 7
-        Me.ButUSE.TabStop = False
-        Me.ButUSE.Text = "使用此模板"
-        Me.ButUSE.UseVisualStyleBackColor = True
-        '
-        'ButDEL
-        '
-        Me.ButDEL.Enabled = False
-        Me.ButDEL.Location = New System.Drawing.Point(94, 98)
-        Me.ButDEL.Name = "ButDEL"
-        Me.ButDEL.Size = New System.Drawing.Size(91, 36)
-        Me.ButDEL.TabIndex = 6
-        Me.ButDEL.TabStop = False
-        Me.ButDEL.Text = "删除此模板"
-        Me.ButDEL.UseVisualStyleBackColor = True
-        '
-        'ButADD
-        '
-        Me.ButADD.Enabled = False
-        Me.ButADD.Location = New System.Drawing.Point(94, 57)
-        Me.ButADD.Name = "ButADD"
-        Me.ButADD.Size = New System.Drawing.Size(91, 36)
-        Me.ButADD.TabIndex = 5
-        Me.ButADD.TabStop = False
-        Me.ButADD.Text = "新增为模板"
-        Me.ButADD.UseVisualStyleBackColor = True
-        '
-        'CBtemplete
-        '
-        Me.CBtemplete.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.CBtemplete.FormattingEnabled = True
-        Me.CBtemplete.Location = New System.Drawing.Point(3, 24)
-        Me.CBtemplete.Name = "CBtemplete"
-        Me.CBtemplete.Size = New System.Drawing.Size(182, 27)
-        Me.CBtemplete.TabIndex = 4
-        Me.CBtemplete.TabStop = False
         '
         'ListParms
         '
@@ -211,20 +225,6 @@ Partial Class VMT生成器
         Me.TxtLOG.TabIndex = 12
         Me.TxtLOG.TabStop = False
         '
-        'GBtemps
-        '
-        Me.GBtemps.Controls.Add(Me.CBtemplete)
-        Me.GBtemps.Controls.Add(Me.ButADD)
-        Me.GBtemps.Controls.Add(Me.ButDEL)
-        Me.GBtemps.Controls.Add(Me.ButUSE)
-        Me.GBtemps.Controls.Add(Me.TxtTempName)
-        Me.GBtemps.Location = New System.Drawing.Point(487, 87)
-        Me.GBtemps.Name = "GBtemps"
-        Me.GBtemps.Size = New System.Drawing.Size(194, 149)
-        Me.GBtemps.TabIndex = 12
-        Me.GBtemps.TabStop = False
-        Me.GBtemps.Text = "模板"
-        '
         'VMT生成器
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -255,7 +255,7 @@ Partial Class VMT生成器
     Friend WithEvents TxtVMT As TextBox
     Friend WithEvents GBvmt As GroupBox
     Friend WithEvents ListParms As ListBox
-    Friend WithEvents CBtemplete As ComboBox
+    Friend WithEvents ListTemps As ComboBox
     Friend WithEvents ButADD As Button
     Friend WithEvents ButDEL As Button
     Friend WithEvents ButUSE As Button

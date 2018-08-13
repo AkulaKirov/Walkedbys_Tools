@@ -2,6 +2,7 @@
 Public Class GM模组发布器
 
     Const JSON As String = "{""title"": ""标题"",""type"":""类型"", ""tags"":[ ""标签1"",""标签2""],""ignore"":[""*.psd"",""*.vcproj"",""*.svn*""]}"
+    Dim 最后读取时间 As Date = Nothing
 
     Private Sub GM模组发布器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         文本框拖入文件夹(TxtPath, TxtGMod)
@@ -16,7 +17,8 @@ Public Class GM模组发布器
         TxtGMAfile.Text = 设置.元素("GMAfile")
         文字转列表(ListAddons.Items, 设置.元素("GMODaddons"))
         TxtID.Text = 设置.元素("GMAid")
-        LabCount.Text = "共计：" & ListAddons.Items.Count
+        最后读取时间 = 设置.读取日期("GMAtime")
+        刷新统计()
     End Sub
 
     Private Sub TxtPath_TextChanged(sender As Object, e As EventArgs) Handles TxtPath.TextChanged
@@ -40,6 +42,7 @@ Public Class GM模组发布器
         设置.保存元素("GMAfile", TxtGMAfile.Text)
         设置.保存元素("GMAid", TxtID.Text)
         设置.保存元素("GMODaddons", 列表转文字(ListAddons.Items))
+        设置.元素("GMAtime") = 最后读取时间
     End Sub
 
     Private Sub ButGMA_Click(sender As Object, e As EventArgs) Handles ButGMA.Click
@@ -49,7 +52,16 @@ Public Class GM模组发布器
         s = s.Replace("标签1", CBtags.CheckedItems.Item(0))
         s = s.Replace("标签2", CBtags.CheckedItems.Item(1))
         写文件(追加斜杠(TxtPath.Text) + "addon.json", s)
-        Shell("cmd.exe /c " + 左(TxtGMod.Text, 2) + " & " + 引(追加斜杠(TxtGMod.Text) + "bin\gmad.exe") + " " + 引(TxtPath.Text) + " & pause", AppWinStyle.NormalFocus, True)
+        Dim sy As String = TxtPath.Text
+        删除(去右(追加斜杠(sy), 1) + ".gma")
+        文件重命名(sy, sy.ToLower)
+        For Each i As String In Directory.GetFiles(sy, "*", SearchOption.AllDirectories)
+            文件重命名(i, i.ToLower)
+        Next
+        For Each i As String In Directory.GetDirectories(sy, "*", SearchOption.AllDirectories)
+            文件重命名(i, i.ToLower)
+        Next
+        Shell("cmd.exe /c " + 左(TxtGMod.Text, 2) + " & " + 引(追加斜杠(TxtGMod.Text) + "bin\gmad.exe") + " " + 引(sy) + " & pause", AppWinStyle.NormalFocus, True)
     End Sub
 
     Private Sub TxtGMod_TextChanged(sender As Object, e As EventArgs) Handles TxtGMod.TextChanged
@@ -137,7 +149,12 @@ Public Class GM模组发布器
                 End If
             Next
         End If
-        LabCount.Text = "共计：" & ListAddons.Items.Count
+        最后读取时间 = Now
+        刷新统计()
+    End Sub
+
+    Sub 刷新统计()
+        LabCount.Text = "共计：" & ListAddons.Items.Count & vbCrLf & "最后读取时间：" & 最后读取时间
     End Sub
 
 End Class

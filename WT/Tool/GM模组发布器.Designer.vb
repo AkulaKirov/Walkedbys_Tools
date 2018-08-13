@@ -357,7 +357,7 @@ Partial Class GM模组发布器
         'LabCount
         '
         Me.LabCount.AutoSize = True
-        Me.LabCount.Location = New System.Drawing.Point(282, 299)
+        Me.LabCount.Location = New System.Drawing.Point(282, 288)
         Me.LabCount.Name = "LabCount"
         Me.LabCount.Size = New System.Drawing.Size(55, 17)
         Me.LabCount.TabIndex = 3

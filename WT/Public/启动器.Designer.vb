@@ -38,6 +38,7 @@ Partial Class 启动器
         Me.NicoMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.显示窗口ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.返回启动器ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.GBallTools.SuspendLayout()
         Me.GBupdate.SuspendLayout()
         Me.GBabout.SuspendLayout()
@@ -185,6 +186,10 @@ Partial Class 启动器
         Me.返回启动器ToolStripMenuItem.Size = New System.Drawing.Size(130, 24)
         Me.返回启动器ToolStripMenuItem.Text = "返回主页"
         '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        '
         '启动器
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -200,7 +205,6 @@ Partial Class 启动器
         Me.KeyPreview = True
         Me.MaximizeBox = False
         Me.Name = "启动器"
-        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "走過去的工具箱"
         Me.GBallTools.ResumeLayout(False)
@@ -229,4 +233,5 @@ Partial Class 启动器
     Friend WithEvents NicoMenu As ContextMenuStrip
     Friend WithEvents 显示窗口ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents 返回启动器ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Timer1 As Forms.Timer
 End Class

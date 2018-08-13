@@ -63,16 +63,16 @@ Partial Class 未响应图片制作器
         Me.LabICO.AutoSize = True
         Me.LabICO.Location = New System.Drawing.Point(12, 44)
         Me.LabICO.Name = "LabICO"
-        Me.LabICO.Size = New System.Drawing.Size(139, 19)
+        Me.LabICO.Size = New System.Drawing.Size(149, 19)
         Me.LabICO.TabIndex = 3
-        Me.LabICO.Text = "程序的图标（图片）："
+        Me.LabICO.Text = "程序的图片 (jpg, png)："
         '
         'TxtICO
         '
-        Me.TxtICO.Location = New System.Drawing.Point(157, 41)
+        Me.TxtICO.Location = New System.Drawing.Point(180, 41)
         Me.TxtICO.MaxLength = 30
         Me.TxtICO.Name = "TxtICO"
-        Me.TxtICO.Size = New System.Drawing.Size(334, 25)
+        Me.TxtICO.Size = New System.Drawing.Size(311, 25)
         Me.TxtICO.TabIndex = 4
         Me.TxtICO.TabStop = False
         '

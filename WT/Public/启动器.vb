@@ -83,11 +83,17 @@ Public Class 启动器
         After1s.Enabled = True
     End Sub
 
-    Private Sub 启动器_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+    Private Sub 启动器_FormClosing(sender As Form, e As FormClosingEventArgs) Handles Me.FormClosing
+        e.Cancel = True
+        sender.WindowState = FormWindowState.Minimized
+    End Sub
+
+    Public Sub 退出()
         Nico.Visible = False
         中断线程(Th更新)
         设置.保存到本地()
         删除(TempF)
+        End
     End Sub
 
     Sub 检查推送()
@@ -218,7 +224,7 @@ Public Class 启动器
         Nico_MouseUp(sender, New MouseEventArgs(MouseButtons.Left, 1, 0, 0, 0))
     End Sub
 
-    Private Sub NicoMenu_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles NicoMenu.Opening
+    Private Sub NicoMenu_Opening(sender As Object, e As CancelEventArgs) Handles NicoMenu.Opening
         Dim f As New List(Of ToolStripMenuItem)
         Dim i As ToolStripMenuItem
         For Each i In NicoMenu.Items
@@ -245,7 +251,7 @@ Public Class 启动器
             .Text = "退出"
             .Tag = "退出"
             AddHandler i.Click, Sub()
-                                    Close()
+                                    退出()
                                 End Sub
         End With
         NicoMenu.Items.Add(i)

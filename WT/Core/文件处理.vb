@@ -169,6 +169,22 @@ Module 文件处理
     End Function
 
     ''' <summary>
+    ''' 把文件重命名为新的文件名，也支持文件夹
+    ''' </summary>
+    Public Sub 文件重命名(文件 As String, 新文件名 As String)
+        If Not (文件可用(文件) OrElse 文件夹存在(文件)) Then Exit Sub
+        If 文件.EndsWith("/") Then 文件 = 去右(文件, 1)
+        If 新文件名.EndsWith("/") Then 新文件名 = 去右(新文件名, 1)
+        Dim i As String = 文件路径(文件)
+        Dim s As String = 新文件名
+        If 文件路径(新文件名).Length < 1 Then s = i + s
+        Try
+            Rename(文件, s)
+        Catch ex As Exception
+        End Try
+    End Sub
+
+    ''' <summary>
     ''' 返回文件名，默认不带后缀名
     ''' </summary>
     Public Function 文件名(文件 As String, Optional 带后缀 As Boolean = False) As String
@@ -235,8 +251,10 @@ Module 文件处理
     ''' </summary>
     Public Sub 删除(ParamArray 文件() As String)
         For Each i As String In 文件
-            If 文件存在(i) Then File.Delete(i)
-            If 文件夹存在(i) Then Directory.Delete(i)
+            If i.Length > 5 Then
+                If 文件存在(i) Then File.Delete(i)
+                If 文件夹存在(i) Then Directory.Delete(i, True)
+            End If
         Next
     End Sub
 
@@ -260,14 +278,21 @@ Module 文件处理
     ''' <summary>
     ''' 把文件读取为 Image 并且不占用图片
     ''' </summary>
-    Public Function 读文件为图片(文件 As String) As Image
+    Public Function 读文件为图片(文件 As String, Optional 宽 As Integer = 0, Optional 高 As Integer = 0) As Image
         Dim t As Image = Nothing
         If Not 文件可用(文件) Then Return t
         Dim b As Byte() = 读文件(文件, True)
         If b.Length > 0 Then
             Dim r As New MemoryStream
             r.Write(b, 0, b.Length)
-            t = Image.FromStream(r)
+            Dim n As String = 文件后缀(文件)
+            If 是当中一个(n, "jpg", "gif", "png", "bmp") Then
+                If 宽 > 0 AndAlso 高 > 0 Then
+                    t = New Bitmap(Image.FromStream(r), 宽, 高)
+                Else
+                    t = Image.FromStream(r)
+                End If
+            End If
             r.Close()
         End If
         Return t
@@ -355,6 +380,29 @@ Module 文件处理
         Public Sub 保存元素(名字 As String, 内容 As String)
             元素(名字) = 内容
         End Sub
+
+        Public Function 读取字符串(名字 As String) As String
+            Return 元素(名字)
+        End Function
+
+        Public Function 读取数(名字 As String) As Double
+            Return Val(元素(名字))
+        End Function
+
+        Public Function 读取真假(名字 As String) As Boolean
+            Return (元素(名字).ToLower = "true")
+        End Function
+
+        Public Function 读取日期(名字 As String) As Date
+            Dim n As Date = #2000/01/01 00:00:00#
+            Dim s As String = 元素(名字)
+            If s.Length < 3 Then Return n
+            Try
+                Return Date.Parse(s)
+            Catch ex As Exception
+                Return n
+            End Try
+        End Function
 
     End Class
 

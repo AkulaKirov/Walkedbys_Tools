@@ -3,7 +3,7 @@ Module 通用
 
     Friend 工具列表 As New List(Of 工具)
     Friend 设置 As New 简易XML("WT", "", 程序文件目录() + "wt_save.xml")
-    Friend TempF As String = 程序文件目录() + "WalkedbysTemps\"
+    Public TempF As String = 程序文件目录() + "WalkedbysTemps\"
     Friend 图标 As Icon = My.Resources.ico
     Friend 最后窗体 As Form = 启动器
     Friend 启动参数 As New List(Of String)
@@ -29,10 +29,13 @@ Module 通用
         End With
     End Sub
 
-    Public Sub 最小化隐藏(sender As Object, e As EventArgs)
+    Public Sub 最小化隐藏(sender As Form, e As EventArgs)
         If sender.WindowState = FormWindowState.Minimized Then
+            sender.ShowInTaskbar = False
             sender.WindowState = FormWindowState.Normal
             sender.Hide()
+        Else
+            sender.ShowInTaskbar = True
         End If
     End Sub
 
@@ -49,17 +52,20 @@ Module 通用
             简介 = description
             ID = 内部id.ToLower
             窗体.Icon = 图标
-            窗体.ImeMode = ImeMode.Off
-            窗体.ShowInTaskbar = False
+            窗体.ImeMode = 启动器.ImeMode
+            窗体.ShowInTaskbar = True
             窗体.AutoScaleMode = AutoScaleMode.Dpi
+            文本框全选(窗体)
             AddHandler 窗体.FormClosing, Sub(sender As Object, e As FormClosingEventArgs)
                                            e.Cancel = True
                                            窗体.Hide()
+                                           窗体.ShowInTaskbar = False
                                            启动器.Location = 窗体.Location
                                            启动器.WindowState = FormWindowState.Normal
                                            启动器.Show()
                                            启动器.Location = 窗体.Location
                                            最后窗体 = 启动器
+                                           最后窗体.ShowInTaskbar = True
                                        End Sub
             AddHandler 窗体.SizeChanged, AddressOf 最小化隐藏
         End Sub

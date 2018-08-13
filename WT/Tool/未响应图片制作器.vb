@@ -3,7 +3,6 @@ Public Class 未响应图片制作器
 
     Dim 名字 As String = ""
     Dim 图片 As Image = Nothing
-    Dim 图标 As Icon = Nothing
     Dim 输出 As Image = Nothing
 
     Private Sub 未响应图片制作器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -22,7 +21,6 @@ Public Class 未响应图片制作器
         g.DrawString(名字, New Font("Segoe UI", 9), black, 31, 9)
         g.DrawString(名字 + " has stopped working", New Font("Segoe UI", 12), blue, 58, 43)
         If Not IsNothing(图片) Then g.DrawImage(图片, 20, 50, 32, 32)
-        If Not IsNothing(图标) Then g.DrawIcon(图标, 20, 50)
     End Sub
 
     Private Sub LabS_Paint(sender As Object, e As PaintEventArgs) Handles LabS.Paint
@@ -42,12 +40,11 @@ Public Class 未响应图片制作器
         If s.Length < 5 Then Exit Sub
         If Not 文件可用(s) Then Exit Sub
         Dim i As String = 文件后缀(s)
-        If 是当中一个(i, "jpg", "png", "bmp") Then
+        If 是当中一个(i, "jpg", "png") Then
             图片 = 读文件为图片(s)
-            图标 = Nothing
-        ElseIf i = "ico" Then
-            图标 = New Icon(s, 30, 30)
+        Else
             图片 = Nothing
+            TxtICO.Text = ""
         End If
         Refresh()
     End Sub
