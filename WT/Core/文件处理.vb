@@ -93,16 +93,29 @@ Module 文件处理
     ''' <summary>
     ''' 获得本程序的文件的目录
     ''' </summary>
-    Public Function 程序文件目录() As String
-        Return 追加斜杠(My.Application.Info.DirectoryPath)
-    End Function
+    Public ReadOnly Property 程序文件目录() As String
+        Get
+            Return 追加斜杠(My.Application.Info.DirectoryPath)
+        End Get
+    End Property
 
     ''' <summary>
     ''' 获得本程序的工作目录
     ''' </summary>
-    Public Function 程序工作目录() As String
-        Return 追加斜杠(Directory.GetCurrentDirectory)
-    End Function
+    Public ReadOnly Property 程序工作目录() As String
+        Get
+            Return 追加斜杠(Directory.GetCurrentDirectory)
+        End Get
+    End Property
+
+    ''' <summary>
+    ''' 获得本程序的小写文件名，不带exe
+    ''' </summary>
+    Public ReadOnly Property 程序文件名() As String
+        Get
+            Return Process.GetCurrentProcess.ProcessName.ToLower
+        End Get
+    End Property
 
     ''' <summary>
     ''' 判断这个文件夹是否存在于电脑上
@@ -188,11 +201,11 @@ Module 文件处理
     ''' 返回文件名，默认不带后缀名
     ''' </summary>
     Public Function 文件名(文件 As String, Optional 带后缀 As Boolean = False) As String
-        If 文件.Length < 5 Then Return ""
+        If 文件.Length < 5 OrElse (Not 包含(文件, ":", "\")) Then Return 文件
         If 带后缀 Then
-            Return 去除(文件, 文件路径(文件), Regex.Match(文件, "\..*").ToString)
-        Else
             Return 去除(文件, 文件路径(文件))
+        Else
+            Return 去除(文件, 文件路径(文件), Regex.Match(文件, "\..*").ToString)
         End If
     End Function
 
@@ -232,7 +245,10 @@ Module 文件处理
     Public Sub 写文件(文件 As String, 内容 As String)
         If Not 文件可读写(文件) Then Exit Sub
         内容 = 回车规范(内容)
-        File.WriteAllText(文件, 内容)
+        Try
+            File.WriteAllText(文件, 内容)
+        Catch ex As Exception
+        End Try
     End Sub
 
     ''' <summary>
@@ -241,9 +257,12 @@ Module 文件处理
     Public Sub 写文件(文件 As String, 字节 As Byte())
         If Not 文件可读写(文件) Then Exit Sub
         删除(文件)
-        Dim r As New BinaryWriter(File.OpenWrite(文件))
-        r.Write(字节)
-        r.Close()
+        Try
+            Dim r As New BinaryWriter(File.OpenWrite(文件))
+            r.Write(字节)
+            r.Close()
+        Catch ex As Exception
+        End Try
     End Sub
 
     ''' <summary>
@@ -252,8 +271,11 @@ Module 文件处理
     Public Sub 删除(ParamArray 文件() As String)
         For Each i As String In 文件
             If i.Length > 5 Then
-                If 文件存在(i) Then File.Delete(i)
-                If 文件夹存在(i) Then Directory.Delete(i, True)
+                Try
+                    If 文件存在(i) Then File.Delete(i)
+                    If 文件夹存在(i) Then Directory.Delete(i, True)
+                Catch ex As Exception
+                End Try
             End If
         Next
     End Sub
@@ -385,12 +407,22 @@ Module 文件处理
             Return 元素(名字)
         End Function
 
-        Public Function 读取数(名字 As String) As Double
-            Return Val(元素(名字))
+        Public Function 读取数(名字 As String, Optional 默认 As Double = 0) As Double
+            Dim s As String = 元素(名字)
+            If s.Length > 0 Then
+                Return Val(s)
+            Else
+                Return 默认
+            End If
         End Function
 
-        Public Function 读取真假(名字 As String) As Boolean
-            Return (元素(名字).ToLower = "true")
+        Public Function 读取真假(名字 As String, Optional 默认 As Boolean = False) As Boolean
+            Dim s As String = 元素(名字).ToLower
+            If s.Length > 0 Then
+                Return (s = "true")
+            Else
+                Return 默认
+            End If
         End Function
 
         Public Function 读取日期(名字 As String) As Date

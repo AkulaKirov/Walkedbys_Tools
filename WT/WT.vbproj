@@ -70,11 +70,13 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Net" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
@@ -83,6 +85,7 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.SqlServer.Server" />
@@ -96,6 +99,7 @@
     <Import Include="System.Data" />
     <Import Include="System.Drawing" />
     <Import Include="System.Diagnostics" />
+    <Import Include="System.Globalization" />
     <Import Include="System.IO" />
     <Import Include="System.math" />
     <Import Include="System.Net" />
@@ -147,6 +151,12 @@
     <Compile Include="Tool\GM模组发布器.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Tool\后台键盘指令.Designer.vb">
+      <DependentUpon>后台键盘指令.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\后台键盘指令.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Tool\文件夹创建器.Designer.vb">
       <DependentUpon>文件夹创建器.vb</DependentUpon>
     </Compile>
@@ -177,6 +187,12 @@
     <Compile Include="Tool\未响应图片制作器.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Tool\程序设置.Designer.vb">
+      <DependentUpon>程序设置.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\程序设置.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Tool\系统代理设置.Designer.vb">
       <DependentUpon>系统代理设置.vb</DependentUpon>
     </Compile>
@@ -197,6 +213,9 @@
     <EmbeddedResource Include="Tool\GM模组发布器.resx">
       <DependentUpon>GM模组发布器.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Tool\后台键盘指令.resx">
+      <DependentUpon>后台键盘指令.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tool\文件夹创建器.resx">
       <DependentUpon>文件夹创建器.vb</DependentUpon>
     </EmbeddedResource>
@@ -211,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\未响应图片制作器.resx">
       <DependentUpon>未响应图片制作器.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\程序设置.resx">
+      <DependentUpon>程序设置.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\系统代理设置.resx">
       <DependentUpon>系统代理设置.vb</DependentUpon>

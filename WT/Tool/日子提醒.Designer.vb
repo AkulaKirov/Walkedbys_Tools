@@ -30,6 +30,9 @@ Partial Class 日子提醒
         Me.LabJOB = New System.Windows.Forms.Label()
         Me.TxtJOB = New System.Windows.Forms.TextBox()
         Me.ButADD = New System.Windows.Forms.Button()
+        Me.LabRange = New System.Windows.Forms.Label()
+        Me.CBremind = New System.Windows.Forms.ComboBox()
+        Me.CheckCN = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'ListDates
@@ -115,11 +118,45 @@ Partial Class 日子提醒
         Me.ButADD.Text = "添加事件"
         Me.ButADD.UseVisualStyleBackColor = True
         '
+        'LabRange
+        '
+        Me.LabRange.AutoSize = True
+        Me.LabRange.Location = New System.Drawing.Point(12, 311)
+        Me.LabRange.Name = "LabRange"
+        Me.LabRange.Size = New System.Drawing.Size(152, 19)
+        Me.LabRange.TabIndex = 8
+        Me.LabRange.Text = "提醒的时间范围（天）："
+        '
+        'CBremind
+        '
+        Me.CBremind.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CBremind.Font = New System.Drawing.Font("微软雅黑", 8.0!)
+        Me.CBremind.FormattingEnabled = True
+        Me.CBremind.Location = New System.Drawing.Point(164, 306)
+        Me.CBremind.Name = "CBremind"
+        Me.CBremind.Size = New System.Drawing.Size(62, 24)
+        Me.CBremind.TabIndex = 9
+        Me.CBremind.TabStop = False
+        '
+        'CheckCN
+        '
+        Me.CheckCN.AutoSize = True
+        Me.CheckCN.Location = New System.Drawing.Point(172, 236)
+        Me.CheckCN.Name = "CheckCN"
+        Me.CheckCN.Size = New System.Drawing.Size(54, 23)
+        Me.CheckCN.TabIndex = 10
+        Me.CheckCN.TabStop = False
+        Me.CheckCN.Text = "农历"
+        Me.CheckCN.UseVisualStyleBackColor = True
+        '
         '日子提醒
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(509, 348)
+        Me.Controls.Add(Me.CheckCN)
+        Me.Controls.Add(Me.CBremind)
+        Me.Controls.Add(Me.LabRange)
         Me.Controls.Add(Me.ButADD)
         Me.Controls.Add(Me.TxtJOB)
         Me.Controls.Add(Me.LabJOB)
@@ -130,6 +167,7 @@ Partial Class 日子提醒
         Me.Controls.Add(Me.ListDates)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
+        Me.ImeMode = System.Windows.Forms.ImeMode.Off
         Me.MaximizeBox = False
         Me.Name = "日子提醒"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
@@ -147,4 +185,7 @@ Partial Class 日子提醒
     Friend WithEvents LabJOB As Label
     Friend WithEvents TxtJOB As TextBox
     Friend WithEvents ButADD As Button
+    Friend WithEvents LabRange As Label
+    Friend WithEvents CBremind As ComboBox
+    Friend WithEvents CheckCN As CheckBox
 End Class

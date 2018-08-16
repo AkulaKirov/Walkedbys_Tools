@@ -11,9 +11,9 @@ Public Class B站图床
         LabDoit.Tag = LabDoit.Text
     End Sub
 
-    Private Sub B站图床_DragDrop(sender As Object, e As DragEventArgs) Handles Me.DragDrop
+    Private Sub B站图床_DragDrop(sender As Object, e As Forms.DragEventArgs) Handles Me.DragDrop
         If 上传中 Then Exit Sub
-        For Each m As String In e.Data.GetData(DataFormats.FileDrop)
+        For Each m As String In e.Data.GetData(Forms.DataFormats.FileDrop)
             检查图片(m)
             Exit For
         Next
@@ -56,8 +56,8 @@ Public Class B站图床
         ButPaste.Enabled = True
     End Sub
 
-    Private Sub B站图床_DragEnter(sender As Object, e As DragEventArgs) Handles Me.DragEnter
-        e.Effect = DragDropEffects.Link
+    Private Sub B站图床_DragEnter(sender As Object, e As Forms.DragEventArgs) Handles Me.DragEnter
+        e.Effect = Forms.DragDropEffects.Link
     End Sub
 
     Private Sub B站图床_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
@@ -66,11 +66,11 @@ Public Class B站图床
     End Sub
 
     Private Sub ButCopy_Click(sender As Object, e As EventArgs) Handles ButCopy.Click
-        Clipboard.SetText(LabDoit.Text)
+        Forms.Clipboard.SetText(LabDoit.Text)
     End Sub
 
     Private Sub ButPaste_Click(sender As Object, e As EventArgs) Handles ButPaste.Click
-        Dim m As Image = Clipboard.GetImage
+        Dim m As Image = Forms.Clipboard.GetImage
         If IsNothing(m) Then
             LabDoit.Text = "剪贴板里没有图片！"
         Else

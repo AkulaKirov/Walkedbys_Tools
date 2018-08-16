@@ -31,12 +31,27 @@ Module 通用
 
     Public Sub 最小化隐藏(sender As Form, e As EventArgs)
         If sender.WindowState = FormWindowState.Minimized Then
-            sender.ShowInTaskbar = False
-            sender.WindowState = FormWindowState.Normal
-            sender.Hide()
+            If Not 设置.读取真假("HideWindowAtMin") Then 隐藏到后台(sender)
         Else
-            sender.ShowInTaskbar = True
+            显示到前台(sender)
         End If
+    End Sub
+
+    Public Sub 隐藏到后台(sender As Form)
+        With sender
+            .ShowInTaskbar = False
+            .Hide()
+        End With
+    End Sub
+
+    Public Sub 显示到前台(sender As Form)
+        With sender
+            .ShowInTaskbar = True
+            .TopMost = True
+            .Show()
+            .WindowState = FormWindowState.Normal
+            .TopMost = False
+        End With
     End Sub
 
     Public Class 工具
@@ -72,10 +87,8 @@ Module 通用
 
         Public Sub 启动()
             最后窗体.Hide()
+            显示到前台(窗体)
             窗体.Location = 最后窗体.Location
-            窗体.Show()
-            窗体.Location = 最后窗体.Location
-            窗体.WindowState = FormWindowState.Normal
             最后窗体 = 窗体
         End Sub
 
@@ -87,17 +100,15 @@ Module 通用
 
     Public Class 模板组
 
-        Dim g As New List(Of 模板)
-        Dim n As String
-        Dim 列表 As ComboBox
-        Dim 文本框 As TextBox
-        Dim 新增按纽 As Button, 移除按纽 As Button, 读取按纽 As Button
+        Dim n As String, g As New List(Of 模板)
+        Dim 列表 As ComboBox, 文本框 As TextBox, 新增按纽 As Button, 移除按纽 As Button, 读取按纽 As Button
 
         Public Sub New(名字 As String, 列表控件 As ComboBox, 文本控件 As TextBox, 新增 As Button, 移除 As Button, 读取 As Button)
             n = "模板组___" + 名字
             Dim x As New 简易XML(n, 设置.元素(n))
             列表 = 列表控件
             文本框 = 文本控件
+            文本框.MaxLength = 10
             新增按纽 = 新增
             移除按纽 = 移除
             读取按纽 = 读取
@@ -105,20 +116,13 @@ Module 通用
             移除按纽.Enabled = False
             读取按纽.Enabled = False
             AddHandler 列表.SelectedIndexChanged, AddressOf 刷新
-            AddHandler 文本框.TextChanged, Sub()
-                                            Dim name As String = Trim(文本框.Text)
-                                            新增按纽.Enabled = (name.Length > 0 AndAlso name.Length < 11 AndAlso Not 在列表(列表.Items, name))
-                                            刷新()
-                                        End Sub
+            AddHandler 文本框.TextChanged, AddressOf 刷新
             AddHandler 移除按纽.Click, Sub()
                                        移除列表选中项()
                                        刷新()
                                    End Sub
-            AddHandler 移除按纽.FindForm.FormClosing, Sub()
-                                                      保存()
-                                                  End Sub
+            AddHandler 移除按纽.FindForm.FormClosing, AddressOf 保存
             Dim f As List(Of String) = 分割(设置.元素(n + "列表"), vbCrLf)
-            列表.Items.Clear()
             Dim t As 模板
             If f.Count > 0 Then
                 For Each i As String In f
@@ -127,9 +131,9 @@ Module 通用
                         t.读取(x.元素(i))
                         g.Add(t)
                     End If
-
                 Next
             End If
+            列表.Items.Clear()
             If g.Count > 0 Then
                 For Each t In g
                     列表.Items.Add(t.名字)
@@ -137,21 +141,21 @@ Module 通用
             End If
         End Sub
 
-        Private Sub 刷新()
+        Public Sub 刷新()
+            Dim name As String = Trim(文本框.Text)
+            新增按纽.Enabled = (name.Length > 0 AndAlso name.Length < 11 AndAlso Not 在列表(列表.Items, name))
             Dim i As Integer = 列表.SelectedIndex
             Dim b As Boolean = (i > -1)
             移除按纽.Enabled = b
             读取按纽.Enabled = b
         End Sub
 
-        Public Sub 新增(ParamArray s() As 模板)
-            Dim i As 模板
-            For Each i In s
-                g.Add(i)
-                列表.Items.Add(i.名字)
-                列表.SelectedItem = i.名字
-            Next
+        Public Sub 新增(s As 模板)
+            g.Add(s)
+            列表.Items.Add(s.名字)
+            列表.SelectedItem = s.名字
             文本框.Text = ""
+            刷新()
             保存()
         End Sub
 
@@ -159,25 +163,16 @@ Module 通用
             If 列表.SelectedIndex < 0 Then Return Nothing
             Dim i As String = 列表.SelectedItem.ToString
             If i.Length < 1 OrElse g.Count < 1 Then Return Nothing
-            Dim s As New List(Of 模板), t As 模板
-            For Each t In g
-                If t.名字 = i Then Return t
-            Next
-            Return Nothing
+            Return 获得模板(i)
         End Function
 
         Public Sub 移除列表选中项()
             If 列表.SelectedIndex < 0 Then Exit Sub
-            Dim i As String = 列表.SelectedItem.ToString
-            If i.Length < 1 OrElse g.Count < 1 Then Exit Sub
-            Dim s As New List(Of 模板), t As 模板
-            For Each t In g
-                If t.名字 = i Then s.Add(t)
-            Next
+            If g.Count < 1 Then Exit Sub
+            Dim t As 模板 = 读取当前项()
             移除选中项(列表)
-            For Each t In s
-                g.Remove(t)
-            Next
+            g.Remove(t)
+            刷新()
             保存()
         End Sub
 
@@ -195,6 +190,22 @@ Module 通用
             设置.元素(n + "列表") = 列表转文字(列表.Items)
             设置.元素(n) = ToString()
         End Sub
+
+        Public ReadOnly Property 模板列表 As List(Of 模板)
+            Get
+                Return g
+            End Get
+        End Property
+
+        Public Function 获得模板(name As String) As 模板
+            Dim t As 模板
+            For Each t In g
+                If t.名字 = name Then
+                    Return t
+                End If
+            Next
+            Return Nothing
+        End Function
 
     End Class
 
@@ -223,6 +234,14 @@ Module 通用
 
         Public Overrides Function ToString() As String
             Return n.ToString
+        End Function
+
+        Public Function 读取真假(name As String) As Boolean
+            Return n.读取真假(name)
+        End Function
+
+        Public Function 读取数(name As String) As Double
+            Return n.读取数(name)
         End Function
 
     End Class

@@ -22,379 +22,35 @@ Partial Class GM模组发布器
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.Tabs = New System.Windows.Forms.TabControl()
-        Me.TabPackGMA = New System.Windows.Forms.TabPage()
-        Me.GBgma = New System.Windows.Forms.GroupBox()
-        Me.ButGoPublish = New System.Windows.Forms.Button()
-        Me.CBtags = New System.Windows.Forms.CheckedListBox()
-        Me.ButGMA = New System.Windows.Forms.Button()
-        Me.CBtype = New System.Windows.Forms.ComboBox()
-        Me.Txtname = New System.Windows.Forms.TextBox()
-        Me.LabTAGs = New System.Windows.Forms.Label()
-        Me.LabGMAtype = New System.Windows.Forms.Label()
-        Me.LabGMAname = New System.Windows.Forms.Label()
-        Me.LabNO = New System.Windows.Forms.Label()
-        Me.LabPath = New System.Windows.Forms.Label()
-        Me.TxtPath = New System.Windows.Forms.TextBox()
-        Me.TabPublish = New System.Windows.Forms.TabPage()
-        Me.ButGoSteam = New System.Windows.Forms.Button()
-        Me.ButUpdateJPG = New System.Windows.Forms.Button()
-        Me.TxtID = New System.Windows.Forms.TextBox()
-        Me.PicThumb = New System.Windows.Forms.PictureBox()
-        Me.LabUpdate = New System.Windows.Forms.Label()
-        Me.TxtJPGfile = New System.Windows.Forms.TextBox()
-        Me.ButUpdateGMA = New System.Windows.Forms.Button()
-        Me.LabJpgfile = New System.Windows.Forms.Label()
-        Me.ButPublish = New System.Windows.Forms.Button()
-        Me.TxtGMAfile = New System.Windows.Forms.TextBox()
-        Me.LabGMAfile = New System.Windows.Forms.Label()
-        Me.TabReadList = New System.Windows.Forms.TabPage()
-        Me.LabCount = New System.Windows.Forms.Label()
-        Me.ButRefresh = New System.Windows.Forms.Button()
-        Me.ButGotoUpdate = New System.Windows.Forms.Button()
-        Me.ListAddons = New System.Windows.Forms.ListBox()
         Me.LabGMOD = New System.Windows.Forms.Label()
         Me.TxtGMod = New System.Windows.Forms.TextBox()
-        Me.Tabs.SuspendLayout()
-        Me.TabPackGMA.SuspendLayout()
-        Me.GBgma.SuspendLayout()
-        Me.TabPublish.SuspendLayout()
+        Me.LabJpgfile = New System.Windows.Forms.Label()
+        Me.TxtJPGfile = New System.Windows.Forms.TextBox()
+        Me.TxtPath = New System.Windows.Forms.TextBox()
+        Me.LabPath = New System.Windows.Forms.Label()
+        Me.LabNO = New System.Windows.Forms.Label()
+        Me.GBjson = New System.Windows.Forms.GroupBox()
+        Me.LabGMAname = New System.Windows.Forms.Label()
+        Me.LabGMAtype = New System.Windows.Forms.Label()
+        Me.CBtags = New System.Windows.Forms.CheckedListBox()
+        Me.LabTAGs = New System.Windows.Forms.Label()
+        Me.Txtname = New System.Windows.Forms.TextBox()
+        Me.CBtype = New System.Windows.Forms.ComboBox()
+        Me.ButNew = New System.Windows.Forms.Button()
+        Me.GBupdate = New System.Windows.Forms.GroupBox()
+        Me.ButUpdateALL = New System.Windows.Forms.Button()
+        Me.ButUpdateJPG = New System.Windows.Forms.Button()
+        Me.ButUpdateGMA = New System.Windows.Forms.Button()
+        Me.LabCount = New System.Windows.Forms.Label()
+        Me.ButGetList = New System.Windows.Forms.Button()
+        Me.ListAddons = New System.Windows.Forms.ComboBox()
+        Me.Pn = New System.Windows.Forms.Panel()
+        Me.PicThumb = New System.Windows.Forms.PictureBox()
+        Me.GBjson.SuspendLayout()
+        Me.GBupdate.SuspendLayout()
+        Me.Pn.SuspendLayout()
         CType(Me.PicThumb, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabReadList.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'Tabs
-        '
-        Me.Tabs.Controls.Add(Me.TabPackGMA)
-        Me.Tabs.Controls.Add(Me.TabPublish)
-        Me.Tabs.Controls.Add(Me.TabReadList)
-        Me.Tabs.Location = New System.Drawing.Point(0, 36)
-        Me.Tabs.Name = "Tabs"
-        Me.Tabs.SelectedIndex = 0
-        Me.Tabs.Size = New System.Drawing.Size(531, 363)
-        Me.Tabs.TabIndex = 0
-        Me.Tabs.TabStop = False
-        Me.Tabs.Visible = False
-        '
-        'TabPackGMA
-        '
-        Me.TabPackGMA.Controls.Add(Me.GBgma)
-        Me.TabPackGMA.Controls.Add(Me.LabNO)
-        Me.TabPackGMA.Controls.Add(Me.LabPath)
-        Me.TabPackGMA.Controls.Add(Me.TxtPath)
-        Me.TabPackGMA.Location = New System.Drawing.Point(4, 26)
-        Me.TabPackGMA.Name = "TabPackGMA"
-        Me.TabPackGMA.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPackGMA.Size = New System.Drawing.Size(523, 333)
-        Me.TabPackGMA.TabIndex = 0
-        Me.TabPackGMA.Text = "打包GMA"
-        Me.TabPackGMA.UseVisualStyleBackColor = True
-        '
-        'GBgma
-        '
-        Me.GBgma.Controls.Add(Me.ButGoPublish)
-        Me.GBgma.Controls.Add(Me.CBtags)
-        Me.GBgma.Controls.Add(Me.ButGMA)
-        Me.GBgma.Controls.Add(Me.CBtype)
-        Me.GBgma.Controls.Add(Me.Txtname)
-        Me.GBgma.Controls.Add(Me.LabTAGs)
-        Me.GBgma.Controls.Add(Me.LabGMAtype)
-        Me.GBgma.Controls.Add(Me.LabGMAname)
-        Me.GBgma.Enabled = False
-        Me.GBgma.Location = New System.Drawing.Point(11, 57)
-        Me.GBgma.Name = "GBgma"
-        Me.GBgma.Size = New System.Drawing.Size(494, 272)
-        Me.GBgma.TabIndex = 3
-        Me.GBgma.TabStop = False
-        Me.GBgma.Text = "打包选项"
-        '
-        'ButGoPublish
-        '
-        Me.ButGoPublish.Location = New System.Drawing.Point(289, 61)
-        Me.ButGoPublish.Name = "ButGoPublish"
-        Me.ButGoPublish.Size = New System.Drawing.Size(182, 33)
-        Me.ButGoPublish.TabIndex = 9
-        Me.ButGoPublish.TabStop = False
-        Me.ButGoPublish.Text = "去发布到 Workshop"
-        Me.ButGoPublish.UseVisualStyleBackColor = True
-        '
-        'CBtags
-        '
-        Me.CBtags.FormattingEnabled = True
-        Me.CBtags.Items.AddRange(New Object() {"fun", "roleplay", "scenic", "movie", "realism", "cartoon", "water", "comic", "build"})
-        Me.CBtags.Location = New System.Drawing.Point(53, 87)
-        Me.CBtags.Name = "CBtags"
-        Me.CBtags.Size = New System.Drawing.Size(129, 175)
-        Me.CBtags.TabIndex = 8
-        '
-        'ButGMA
-        '
-        Me.ButGMA.Enabled = False
-        Me.ButGMA.Location = New System.Drawing.Point(289, 22)
-        Me.ButGMA.Name = "ButGMA"
-        Me.ButGMA.Size = New System.Drawing.Size(182, 33)
-        Me.ButGMA.TabIndex = 7
-        Me.ButGMA.TabStop = False
-        Me.ButGMA.Text = "生成GMA文件"
-        Me.ButGMA.UseVisualStyleBackColor = True
-        '
-        'CBtype
-        '
-        Me.CBtype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.CBtype.FormattingEnabled = True
-        Me.CBtype.Items.AddRange(New Object() {"servercontent", "gamemode", "map", "weapon", "vehicle", "npc", "tool", "effects", "model"})
-        Me.CBtype.Location = New System.Drawing.Point(53, 55)
-        Me.CBtype.Name = "CBtype"
-        Me.CBtype.Size = New System.Drawing.Size(215, 25)
-        Me.CBtype.TabIndex = 4
-        Me.CBtype.TabStop = False
-        '
-        'Txtname
-        '
-        Me.Txtname.Location = New System.Drawing.Point(53, 27)
-        Me.Txtname.MaxLength = 50
-        Me.Txtname.Name = "Txtname"
-        Me.Txtname.Size = New System.Drawing.Size(215, 24)
-        Me.Txtname.TabIndex = 3
-        Me.Txtname.TabStop = False
-        '
-        'LabTAGs
-        '
-        Me.LabTAGs.AutoSize = True
-        Me.LabTAGs.Location = New System.Drawing.Point(6, 87)
-        Me.LabTAGs.Name = "LabTAGs"
-        Me.LabTAGs.Size = New System.Drawing.Size(47, 17)
-        Me.LabTAGs.TabIndex = 2
-        Me.LabTAGs.Text = "标签："
-        '
-        'LabGMAtype
-        '
-        Me.LabGMAtype.AutoSize = True
-        Me.LabGMAtype.Location = New System.Drawing.Point(6, 58)
-        Me.LabGMAtype.Name = "LabGMAtype"
-        Me.LabGMAtype.Size = New System.Drawing.Size(47, 17)
-        Me.LabGMAtype.TabIndex = 1
-        Me.LabGMAtype.Text = "类型："
-        '
-        'LabGMAname
-        '
-        Me.LabGMAname.AutoSize = True
-        Me.LabGMAname.Location = New System.Drawing.Point(6, 30)
-        Me.LabGMAname.Name = "LabGMAname"
-        Me.LabGMAname.Size = New System.Drawing.Size(47, 17)
-        Me.LabGMAname.TabIndex = 0
-        Me.LabGMAname.Text = "名字："
-        '
-        'LabNO
-        '
-        Me.LabNO.AutoSize = True
-        Me.LabNO.Location = New System.Drawing.Point(8, 37)
-        Me.LabNO.Name = "LabNO"
-        Me.LabNO.Size = New System.Drawing.Size(404, 17)
-        Me.LabNO.TabIndex = 2
-        Me.LabNO.Text = "addon.json 将由本程序生成，请勿自己手动编写，被覆盖不要怪我。"
-        '
-        'LabPath
-        '
-        Me.LabPath.AutoSize = True
-        Me.LabPath.Location = New System.Drawing.Point(8, 13)
-        Me.LabPath.Name = "LabPath"
-        Me.LabPath.Size = New System.Drawing.Size(125, 17)
-        Me.LabPath.TabIndex = 1
-        Me.LabPath.Text = "你的模组的文件夹："
-        '
-        'TxtPath
-        '
-        Me.TxtPath.Location = New System.Drawing.Point(137, 10)
-        Me.TxtPath.MaxLength = 500
-        Me.TxtPath.Name = "TxtPath"
-        Me.TxtPath.Size = New System.Drawing.Size(368, 24)
-        Me.TxtPath.TabIndex = 0
-        Me.TxtPath.TabStop = False
-        '
-        'TabPublish
-        '
-        Me.TabPublish.Controls.Add(Me.ButGoSteam)
-        Me.TabPublish.Controls.Add(Me.ButUpdateJPG)
-        Me.TabPublish.Controls.Add(Me.TxtID)
-        Me.TabPublish.Controls.Add(Me.PicThumb)
-        Me.TabPublish.Controls.Add(Me.LabUpdate)
-        Me.TabPublish.Controls.Add(Me.TxtJPGfile)
-        Me.TabPublish.Controls.Add(Me.ButUpdateGMA)
-        Me.TabPublish.Controls.Add(Me.LabJpgfile)
-        Me.TabPublish.Controls.Add(Me.ButPublish)
-        Me.TabPublish.Controls.Add(Me.TxtGMAfile)
-        Me.TabPublish.Controls.Add(Me.LabGMAfile)
-        Me.TabPublish.Location = New System.Drawing.Point(4, 26)
-        Me.TabPublish.Name = "TabPublish"
-        Me.TabPublish.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPublish.Size = New System.Drawing.Size(523, 333)
-        Me.TabPublish.TabIndex = 1
-        Me.TabPublish.Text = "发布到 Workshop"
-        Me.TabPublish.UseVisualStyleBackColor = True
-        '
-        'ButGoSteam
-        '
-        Me.ButGoSteam.Location = New System.Drawing.Point(11, 250)
-        Me.ButGoSteam.Name = "ButGoSteam"
-        Me.ButGoSteam.Size = New System.Drawing.Size(281, 39)
-        Me.ButGoSteam.TabIndex = 12
-        Me.ButGoSteam.TabStop = False
-        Me.ButGoSteam.Text = "查看我的 Workshop"
-        Me.ButGoSteam.UseVisualStyleBackColor = True
-        '
-        'ButUpdateJPG
-        '
-        Me.ButUpdateJPG.Enabled = False
-        Me.ButUpdateJPG.Location = New System.Drawing.Point(11, 205)
-        Me.ButUpdateJPG.Name = "ButUpdateJPG"
-        Me.ButUpdateJPG.Size = New System.Drawing.Size(281, 39)
-        Me.ButUpdateJPG.TabIndex = 11
-        Me.ButUpdateJPG.TabStop = False
-        Me.ButUpdateJPG.Text = "更新 JPG 封面到 Workshop"
-        Me.ButUpdateJPG.UseVisualStyleBackColor = True
-        '
-        'TxtID
-        '
-        Me.TxtID.Location = New System.Drawing.Point(130, 130)
-        Me.TxtID.MaxLength = 300
-        Me.TxtID.Name = "TxtID"
-        Me.TxtID.Size = New System.Drawing.Size(162, 24)
-        Me.TxtID.TabIndex = 10
-        Me.TxtID.TabStop = False
-        '
-        'PicThumb
-        '
-        Me.PicThumb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PicThumb.Location = New System.Drawing.Point(298, 80)
-        Me.PicThumb.Name = "PicThumb"
-        Me.PicThumb.Size = New System.Drawing.Size(200, 200)
-        Me.PicThumb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PicThumb.TabIndex = 6
-        Me.PicThumb.TabStop = False
-        '
-        'LabUpdate
-        '
-        Me.LabUpdate.AutoSize = True
-        Me.LabUpdate.Location = New System.Drawing.Point(11, 133)
-        Me.LabUpdate.Name = "LabUpdate"
-        Me.LabUpdate.Size = New System.Drawing.Size(113, 17)
-        Me.LabUpdate.TabIndex = 9
-        Me.LabUpdate.Text = "要更新的作品ID："
-        '
-        'TxtJPGfile
-        '
-        Me.TxtJPGfile.Location = New System.Drawing.Point(97, 50)
-        Me.TxtJPGfile.MaxLength = 500
-        Me.TxtJPGfile.Name = "TxtJPGfile"
-        Me.TxtJPGfile.Size = New System.Drawing.Size(401, 24)
-        Me.TxtJPGfile.TabIndex = 5
-        Me.TxtJPGfile.TabStop = False
-        '
-        'ButUpdateGMA
-        '
-        Me.ButUpdateGMA.Enabled = False
-        Me.ButUpdateGMA.Location = New System.Drawing.Point(11, 160)
-        Me.ButUpdateGMA.Name = "ButUpdateGMA"
-        Me.ButUpdateGMA.Size = New System.Drawing.Size(281, 39)
-        Me.ButUpdateGMA.TabIndex = 8
-        Me.ButUpdateGMA.TabStop = False
-        Me.ButUpdateGMA.Text = "更新 GMA 文件到 Workshop"
-        Me.ButUpdateGMA.UseVisualStyleBackColor = True
-        '
-        'LabJpgfile
-        '
-        Me.LabJpgfile.AutoSize = True
-        Me.LabJpgfile.Location = New System.Drawing.Point(8, 53)
-        Me.LabJpgfile.Name = "LabJpgfile"
-        Me.LabJpgfile.Size = New System.Drawing.Size(86, 17)
-        Me.LabJpgfile.TabIndex = 4
-        Me.LabJpgfile.Text = "封面图文件："
-        '
-        'ButPublish
-        '
-        Me.ButPublish.Enabled = False
-        Me.ButPublish.Location = New System.Drawing.Point(11, 80)
-        Me.ButPublish.Name = "ButPublish"
-        Me.ButPublish.Size = New System.Drawing.Size(281, 39)
-        Me.ButPublish.TabIndex = 7
-        Me.ButPublish.TabStop = False
-        Me.ButPublish.Text = "发布新 Addon 到 Workshop"
-        Me.ButPublish.UseVisualStyleBackColor = True
-        '
-        'TxtGMAfile
-        '
-        Me.TxtGMAfile.Location = New System.Drawing.Point(97, 16)
-        Me.TxtGMAfile.MaxLength = 500
-        Me.TxtGMAfile.Name = "TxtGMAfile"
-        Me.TxtGMAfile.Size = New System.Drawing.Size(401, 24)
-        Me.TxtGMAfile.TabIndex = 3
-        Me.TxtGMAfile.TabStop = False
-        '
-        'LabGMAfile
-        '
-        Me.LabGMAfile.AutoSize = True
-        Me.LabGMAfile.Location = New System.Drawing.Point(8, 19)
-        Me.LabGMAfile.Name = "LabGMAfile"
-        Me.LabGMAfile.Size = New System.Drawing.Size(83, 17)
-        Me.LabGMAfile.TabIndex = 2
-        Me.LabGMAfile.Text = "GMA 文件："
-        '
-        'TabReadList
-        '
-        Me.TabReadList.Controls.Add(Me.LabCount)
-        Me.TabReadList.Controls.Add(Me.ButRefresh)
-        Me.TabReadList.Controls.Add(Me.ButGotoUpdate)
-        Me.TabReadList.Controls.Add(Me.ListAddons)
-        Me.TabReadList.Location = New System.Drawing.Point(4, 26)
-        Me.TabReadList.Name = "TabReadList"
-        Me.TabReadList.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabReadList.Size = New System.Drawing.Size(523, 333)
-        Me.TabReadList.TabIndex = 2
-        Me.TabReadList.Text = "我的作品列表"
-        Me.TabReadList.UseVisualStyleBackColor = True
-        '
-        'LabCount
-        '
-        Me.LabCount.AutoSize = True
-        Me.LabCount.Location = New System.Drawing.Point(282, 288)
-        Me.LabCount.Name = "LabCount"
-        Me.LabCount.Size = New System.Drawing.Size(55, 17)
-        Me.LabCount.TabIndex = 3
-        Me.LabCount.Text = "共计：0"
-        '
-        'ButRefresh
-        '
-        Me.ButRefresh.Location = New System.Drawing.Point(8, 288)
-        Me.ButRefresh.Name = "ButRefresh"
-        Me.ButRefresh.Size = New System.Drawing.Size(131, 39)
-        Me.ButRefresh.TabIndex = 2
-        Me.ButRefresh.TabStop = False
-        Me.ButRefresh.Text = "刷新列表"
-        Me.ButRefresh.UseVisualStyleBackColor = True
-        '
-        'ButGotoUpdate
-        '
-        Me.ButGotoUpdate.Enabled = False
-        Me.ButGotoUpdate.Location = New System.Drawing.Point(145, 288)
-        Me.ButGotoUpdate.Name = "ButGotoUpdate"
-        Me.ButGotoUpdate.Size = New System.Drawing.Size(131, 39)
-        Me.ButGotoUpdate.TabIndex = 1
-        Me.ButGotoUpdate.TabStop = False
-        Me.ButGotoUpdate.Text = "去更新选中项"
-        Me.ButGotoUpdate.UseVisualStyleBackColor = True
-        '
-        'ListAddons
-        '
-        Me.ListAddons.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.0!)
-        Me.ListAddons.FormattingEnabled = True
-        Me.ListAddons.ItemHeight = 15
-        Me.ListAddons.Location = New System.Drawing.Point(8, 6)
-        Me.ListAddons.Name = "ListAddons"
-        Me.ListAddons.Size = New System.Drawing.Size(509, 274)
-        Me.ListAddons.Sorted = True
-        Me.ListAddons.TabIndex = 0
-        Me.ListAddons.TabStop = False
         '
         'LabGMOD
         '
@@ -410,18 +66,251 @@ Partial Class GM模组发布器
         Me.TxtGMod.Location = New System.Drawing.Point(192, 6)
         Me.TxtGMod.MaxLength = 500
         Me.TxtGMod.Name = "TxtGMod"
-        Me.TxtGMod.Size = New System.Drawing.Size(310, 24)
+        Me.TxtGMod.Size = New System.Drawing.Size(391, 24)
         Me.TxtGMod.TabIndex = 5
         Me.TxtGMod.TabStop = False
+        '
+        'LabJpgfile
+        '
+        Me.LabJpgfile.AutoSize = True
+        Me.LabJpgfile.Location = New System.Drawing.Point(3, 65)
+        Me.LabJpgfile.Name = "LabJpgfile"
+        Me.LabJpgfile.Size = New System.Drawing.Size(87, 17)
+        Me.LabJpgfile.TabIndex = 4
+        Me.LabJpgfile.Text = "封面图 JPG："
+        '
+        'TxtJPGfile
+        '
+        Me.TxtJPGfile.Location = New System.Drawing.Point(96, 65)
+        Me.TxtJPGfile.MaxLength = 500
+        Me.TxtJPGfile.Name = "TxtJPGfile"
+        Me.TxtJPGfile.Size = New System.Drawing.Size(469, 24)
+        Me.TxtJPGfile.TabIndex = 5
+        Me.TxtJPGfile.TabStop = False
+        '
+        'TxtPath
+        '
+        Me.TxtPath.Location = New System.Drawing.Point(144, 33)
+        Me.TxtPath.MaxLength = 500
+        Me.TxtPath.Name = "TxtPath"
+        Me.TxtPath.Size = New System.Drawing.Size(421, 24)
+        Me.TxtPath.TabIndex = 0
+        Me.TxtPath.TabStop = False
+        '
+        'LabPath
+        '
+        Me.LabPath.AutoSize = True
+        Me.LabPath.Location = New System.Drawing.Point(3, 36)
+        Me.LabPath.Name = "LabPath"
+        Me.LabPath.Size = New System.Drawing.Size(135, 17)
+        Me.LabPath.TabIndex = 1
+        Me.LabPath.Text = "你的 Addon 文件夹："
+        '
+        'LabNO
+        '
+        Me.LabNO.AutoSize = True
+        Me.LabNO.Location = New System.Drawing.Point(3, 13)
+        Me.LabNO.Name = "LabNO"
+        Me.LabNO.Size = New System.Drawing.Size(496, 17)
+        Me.LabNO.TabIndex = 2
+        Me.LabNO.Text = "addon.json 以及 GMA 文件将由本程序生成，请勿自己手动制作，被覆盖不要怪我。"
+        '
+        'GBjson
+        '
+        Me.GBjson.Controls.Add(Me.LabGMAname)
+        Me.GBjson.Controls.Add(Me.LabGMAtype)
+        Me.GBjson.Controls.Add(Me.CBtags)
+        Me.GBjson.Controls.Add(Me.LabTAGs)
+        Me.GBjson.Controls.Add(Me.Txtname)
+        Me.GBjson.Controls.Add(Me.CBtype)
+        Me.GBjson.Location = New System.Drawing.Point(4, 95)
+        Me.GBjson.Name = "GBjson"
+        Me.GBjson.Size = New System.Drawing.Size(209, 275)
+        Me.GBjson.TabIndex = 11
+        Me.GBjson.TabStop = False
+        Me.GBjson.Text = "addon.json 信息"
+        Me.GBjson.Visible = False
+        '
+        'LabGMAname
+        '
+        Me.LabGMAname.AutoSize = True
+        Me.LabGMAname.Location = New System.Drawing.Point(4, 26)
+        Me.LabGMAname.Name = "LabGMAname"
+        Me.LabGMAname.Size = New System.Drawing.Size(47, 17)
+        Me.LabGMAname.TabIndex = 0
+        Me.LabGMAname.Text = "名字："
+        '
+        'LabGMAtype
+        '
+        Me.LabGMAtype.AutoSize = True
+        Me.LabGMAtype.Location = New System.Drawing.Point(4, 56)
+        Me.LabGMAtype.Name = "LabGMAtype"
+        Me.LabGMAtype.Size = New System.Drawing.Size(47, 17)
+        Me.LabGMAtype.TabIndex = 1
+        Me.LabGMAtype.Text = "类型："
+        '
+        'CBtags
+        '
+        Me.CBtags.FormattingEnabled = True
+        Me.CBtags.Items.AddRange(New Object() {"fun", "roleplay", "scenic", "movie", "realism", "cartoon", "water", "comic", "build"})
+        Me.CBtags.Location = New System.Drawing.Point(62, 88)
+        Me.CBtags.Name = "CBtags"
+        Me.CBtags.Size = New System.Drawing.Size(129, 175)
+        Me.CBtags.TabIndex = 8
+        '
+        'LabTAGs
+        '
+        Me.LabTAGs.AutoSize = True
+        Me.LabTAGs.Location = New System.Drawing.Point(4, 88)
+        Me.LabTAGs.Name = "LabTAGs"
+        Me.LabTAGs.Size = New System.Drawing.Size(47, 17)
+        Me.LabTAGs.TabIndex = 2
+        Me.LabTAGs.Text = "标签："
+        '
+        'Txtname
+        '
+        Me.Txtname.Location = New System.Drawing.Point(62, 23)
+        Me.Txtname.MaxLength = 50
+        Me.Txtname.Name = "Txtname"
+        Me.Txtname.Size = New System.Drawing.Size(129, 24)
+        Me.Txtname.TabIndex = 3
+        Me.Txtname.TabStop = False
+        '
+        'CBtype
+        '
+        Me.CBtype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CBtype.FormattingEnabled = True
+        Me.CBtype.Items.AddRange(New Object() {"servercontent", "gamemode", "map", "weapon", "vehicle", "npc", "tool", "effects", "model"})
+        Me.CBtype.Location = New System.Drawing.Point(62, 53)
+        Me.CBtype.Name = "CBtype"
+        Me.CBtype.Size = New System.Drawing.Size(129, 25)
+        Me.CBtype.TabIndex = 4
+        Me.CBtype.TabStop = False
+        '
+        'ButNew
+        '
+        Me.ButNew.Enabled = False
+        Me.ButNew.Location = New System.Drawing.Point(219, 100)
+        Me.ButNew.Name = "ButNew"
+        Me.ButNew.Size = New System.Drawing.Size(280, 42)
+        Me.ButNew.TabIndex = 12
+        Me.ButNew.TabStop = False
+        Me.ButNew.Text = "发布新 Addon"
+        Me.ButNew.UseVisualStyleBackColor = True
+        '
+        'GBupdate
+        '
+        Me.GBupdate.Controls.Add(Me.ButUpdateALL)
+        Me.GBupdate.Controls.Add(Me.ButUpdateJPG)
+        Me.GBupdate.Controls.Add(Me.ButUpdateGMA)
+        Me.GBupdate.Controls.Add(Me.LabCount)
+        Me.GBupdate.Controls.Add(Me.ButGetList)
+        Me.GBupdate.Controls.Add(Me.ListAddons)
+        Me.GBupdate.Location = New System.Drawing.Point(219, 151)
+        Me.GBupdate.Name = "GBupdate"
+        Me.GBupdate.Size = New System.Drawing.Size(346, 219)
+        Me.GBupdate.TabIndex = 14
+        Me.GBupdate.TabStop = False
+        Me.GBupdate.Text = "更新"
+        '
+        'ButUpdateALL
+        '
+        Me.ButUpdateALL.Enabled = False
+        Me.ButUpdateALL.Location = New System.Drawing.Point(6, 158)
+        Me.ButUpdateALL.Name = "ButUpdateALL"
+        Me.ButUpdateALL.Size = New System.Drawing.Size(334, 37)
+        Me.ButUpdateALL.TabIndex = 18
+        Me.ButUpdateALL.TabStop = False
+        Me.ButUpdateALL.Text = "文件本体和封面图一起更新"
+        Me.ButUpdateALL.UseVisualStyleBackColor = True
+        '
+        'ButUpdateJPG
+        '
+        Me.ButUpdateJPG.Enabled = False
+        Me.ButUpdateJPG.Location = New System.Drawing.Point(174, 115)
+        Me.ButUpdateJPG.Name = "ButUpdateJPG"
+        Me.ButUpdateJPG.Size = New System.Drawing.Size(166, 37)
+        Me.ButUpdateJPG.TabIndex = 17
+        Me.ButUpdateJPG.TabStop = False
+        Me.ButUpdateJPG.Text = "更新封面图"
+        Me.ButUpdateJPG.UseVisualStyleBackColor = True
+        '
+        'ButUpdateGMA
+        '
+        Me.ButUpdateGMA.Enabled = False
+        Me.ButUpdateGMA.Location = New System.Drawing.Point(6, 115)
+        Me.ButUpdateGMA.Name = "ButUpdateGMA"
+        Me.ButUpdateGMA.Size = New System.Drawing.Size(166, 37)
+        Me.ButUpdateGMA.TabIndex = 16
+        Me.ButUpdateGMA.TabStop = False
+        Me.ButUpdateGMA.Text = "更新文件本体"
+        Me.ButUpdateGMA.UseVisualStyleBackColor = True
+        '
+        'LabCount
+        '
+        Me.LabCount.AutoSize = True
+        Me.LabCount.Location = New System.Drawing.Point(9, 60)
+        Me.LabCount.Name = "LabCount"
+        Me.LabCount.Size = New System.Drawing.Size(55, 17)
+        Me.LabCount.TabIndex = 15
+        Me.LabCount.Text = "共计：0"
+        '
+        'ButGetList
+        '
+        Me.ButGetList.Location = New System.Drawing.Point(6, 19)
+        Me.ButGetList.Name = "ButGetList"
+        Me.ButGetList.Size = New System.Drawing.Size(334, 33)
+        Me.ButGetList.TabIndex = 14
+        Me.ButGetList.TabStop = False
+        Me.ButGetList.Text = "刷新我的 Addons 列表"
+        Me.ButGetList.UseVisualStyleBackColor = True
+        '
+        'ListAddons
+        '
+        Me.ListAddons.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ListAddons.Font = New System.Drawing.Font("Microsoft YaHei UI", 8.0!)
+        Me.ListAddons.FormattingEnabled = True
+        Me.ListAddons.Location = New System.Drawing.Point(6, 80)
+        Me.ListAddons.Name = "ListAddons"
+        Me.ListAddons.Size = New System.Drawing.Size(334, 22)
+        Me.ListAddons.Sorted = True
+        Me.ListAddons.TabIndex = 13
+        Me.ListAddons.TabStop = False
+        '
+        'Pn
+        '
+        Me.Pn.Controls.Add(Me.PicThumb)
+        Me.Pn.Controls.Add(Me.GBupdate)
+        Me.Pn.Controls.Add(Me.ButNew)
+        Me.Pn.Controls.Add(Me.GBjson)
+        Me.Pn.Controls.Add(Me.LabNO)
+        Me.Pn.Controls.Add(Me.LabPath)
+        Me.Pn.Controls.Add(Me.TxtPath)
+        Me.Pn.Controls.Add(Me.TxtJPGfile)
+        Me.Pn.Controls.Add(Me.LabJpgfile)
+        Me.Pn.Location = New System.Drawing.Point(6, 29)
+        Me.Pn.Name = "Pn"
+        Me.Pn.Size = New System.Drawing.Size(577, 387)
+        Me.Pn.TabIndex = 6
+        '
+        'PicThumb
+        '
+        Me.PicThumb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PicThumb.Location = New System.Drawing.Point(505, 95)
+        Me.PicThumb.Name = "PicThumb"
+        Me.PicThumb.Size = New System.Drawing.Size(60, 60)
+        Me.PicThumb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PicThumb.TabIndex = 15
+        Me.PicThumb.TabStop = False
         '
         'GM模组发布器
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(534, 404)
+        Me.ClientSize = New System.Drawing.Size(595, 428)
+        Me.Controls.Add(Me.Pn)
         Me.Controls.Add(Me.TxtGMod)
         Me.Controls.Add(Me.LabGMOD)
-        Me.Controls.Add(Me.Tabs)
         Me.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.ImeMode = System.Windows.Forms.ImeMode.Off
@@ -429,52 +318,39 @@ Partial Class GM模组发布器
         Me.Name = "GM模组发布器"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Garry's Mod 模组发布器"
-        Me.Tabs.ResumeLayout(False)
-        Me.TabPackGMA.ResumeLayout(False)
-        Me.TabPackGMA.PerformLayout()
-        Me.GBgma.ResumeLayout(False)
-        Me.GBgma.PerformLayout()
-        Me.TabPublish.ResumeLayout(False)
-        Me.TabPublish.PerformLayout()
+        Me.GBjson.ResumeLayout(False)
+        Me.GBjson.PerformLayout()
+        Me.GBupdate.ResumeLayout(False)
+        Me.GBupdate.PerformLayout()
+        Me.Pn.ResumeLayout(False)
+        Me.Pn.PerformLayout()
         CType(Me.PicThumb, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabReadList.ResumeLayout(False)
-        Me.TabReadList.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents Tabs As TabControl
-    Friend WithEvents TabPackGMA As TabPage
-    Friend WithEvents TabPublish As TabPage
+    Friend WithEvents LabGMOD As Label
+    Friend WithEvents TxtGMod As TextBox
+    Friend WithEvents LabJpgfile As Label
+    Friend WithEvents TxtJPGfile As TextBox
     Friend WithEvents TxtPath As TextBox
     Friend WithEvents LabPath As Label
     Friend WithEvents LabNO As Label
-    Friend WithEvents GBgma As GroupBox
+    Friend WithEvents GBjson As GroupBox
     Friend WithEvents LabGMAname As Label
     Friend WithEvents LabGMAtype As Label
+    Friend WithEvents CBtags As CheckedListBox
     Friend WithEvents LabTAGs As Label
     Friend WithEvents Txtname As TextBox
     Friend WithEvents CBtype As ComboBox
-    Friend WithEvents ButGMA As Button
-    Friend WithEvents LabGMOD As Label
-    Friend WithEvents TxtGMod As TextBox
-    Friend WithEvents CBtags As CheckedListBox
-    Friend WithEvents ButGoPublish As Button
-    Friend WithEvents LabGMAfile As Label
-    Friend WithEvents TxtGMAfile As TextBox
-    Friend WithEvents LabJpgfile As Label
-    Friend WithEvents TxtJPGfile As TextBox
+    Friend WithEvents ButNew As Button
+    Friend WithEvents GBupdate As GroupBox
+    Friend WithEvents LabCount As Label
+    Friend WithEvents ButGetList As Button
+    Friend WithEvents ListAddons As ComboBox
+    Friend WithEvents Pn As Panel
     Friend WithEvents PicThumb As PictureBox
     Friend WithEvents ButUpdateJPG As Button
-    Friend WithEvents TxtID As TextBox
-    Friend WithEvents LabUpdate As Label
     Friend WithEvents ButUpdateGMA As Button
-    Friend WithEvents ButPublish As Button
-    Friend WithEvents ButGoSteam As Button
-    Friend WithEvents TabReadList As TabPage
-    Friend WithEvents ListAddons As ListBox
-    Friend WithEvents ButGotoUpdate As Button
-    Friend WithEvents ButRefresh As Button
-    Friend WithEvents LabCount As Label
+    Friend WithEvents ButUpdateALL As Button
 End Class

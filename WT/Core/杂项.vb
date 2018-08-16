@@ -1,6 +1,12 @@
 ﻿
 Module 杂项
 
+    Public ReadOnly Property 当前用户名 As String
+        Get
+            Return 去左(Regex.Match(My.User.Name, "\\.*").ToString(), 1)
+        End Get
+    End Property
+
     ''' <summary>
     ''' 把输入的东西进行 DEBUG 输出
     ''' </summary>
@@ -179,12 +185,32 @@ Module 杂项
     End Function
 
     ''' <summary>
+    ''' 把输入的公历转换成农历
+    ''' </summary>
+    Public Function 公历转农历(公历 As Date) As Date
+        Dim c As New ChineseLunisolarCalendar
+        Return (New Date(c.GetYear(公历), c.GetMonth(公历), c.GetDayOfMonth(公历), 公历.Hour, 公历.Minute, 公历.Second))
+    End Function
+
+    ''' <summary>
     ''' 是否有这个名字的程序运行，名字不需要后缀
     ''' </summary>
     Public Function 程序运行中(程序名 As String) As Boolean
         Dim ps() As Process = Process.GetProcessesByName(程序名)
-        PRT(ps.Count)
         Return (ps.Count > 0)
     End Function
+
+    ''' <summary>
+    ''' 关闭每一个这个名字的程序进程，名字不需要后缀
+    ''' </summary>
+    Public Sub 关闭程序(程序名 As String)
+        Dim ps() As Process = Process.GetProcessesByName(程序名)
+        For Each p As Process In ps
+            Try
+                p.Kill()
+            Catch ex As Exception
+            End Try
+        Next
+    End Sub
 
 End Module

@@ -32,7 +32,7 @@ Partial Class B站图床
         'LabDoit
         '
         Me.LabDoit.AutoSize = True
-        Me.LabDoit.Location = New System.Drawing.Point(12, 9)
+        Me.LabDoit.Location = New System.Drawing.Point(8, 9)
         Me.LabDoit.Name = "LabDoit"
         Me.LabDoit.Size = New System.Drawing.Size(282, 19)
         Me.LabDoit.TabIndex = 0
@@ -41,7 +41,7 @@ Partial Class B站图床
         'ButCopy
         '
         Me.ButCopy.Enabled = False
-        Me.ButCopy.Location = New System.Drawing.Point(297, 201)
+        Me.ButCopy.Location = New System.Drawing.Point(411, 304)
         Me.ButCopy.Name = "ButCopy"
         Me.ButCopy.Size = New System.Drawing.Size(96, 34)
         Me.ButCopy.TabIndex = 1
@@ -50,7 +50,7 @@ Partial Class B站图床
         '
         'ButPaste
         '
-        Me.ButPaste.Location = New System.Drawing.Point(399, 201)
+        Me.ButPaste.Location = New System.Drawing.Point(513, 304)
         Me.ButPaste.Name = "ButPaste"
         Me.ButPaste.Size = New System.Drawing.Size(99, 34)
         Me.ButPaste.TabIndex = 2
@@ -59,9 +59,9 @@ Partial Class B站图床
         '
         'PicBox
         '
-        Me.PicBox.Location = New System.Drawing.Point(14, 38)
+        Me.PicBox.Location = New System.Drawing.Point(12, 48)
         Me.PicBox.Name = "PicBox"
-        Me.PicBox.Size = New System.Drawing.Size(497, 207)
+        Me.PicBox.Size = New System.Drawing.Size(600, 290)
         Me.PicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PicBox.TabIndex = 3
         Me.PicBox.TabStop = False
@@ -71,7 +71,7 @@ Partial Class B站图床
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(523, 257)
+        Me.ClientSize = New System.Drawing.Size(626, 357)
         Me.Controls.Add(Me.ButPaste)
         Me.Controls.Add(Me.ButCopy)
         Me.Controls.Add(Me.LabDoit)

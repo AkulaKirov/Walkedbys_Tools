@@ -5,18 +5,24 @@ Public Class 日子提醒
 
     Public Sub 日子提醒_Load() Handles MyBase.Load
         Dim i As Integer
-        CBmonth.Items.Clear()
-        CBday.Items.Clear()
-        For i = 1 To 12
-            CBmonth.Items.Add(i.ToString)
-        Next
-        For i = 1 To 31
-            CBday.Items.Add(i.ToString)
-        Next
-        CBday.SelectedIndex = 0
-        CBmonth.SelectedIndex = 0
-        ListDates.Items.Clear()
-        文字转列表(ListDates.Items, 设置.元素("days"))
+        If CBremind.Items.Count < 1 Then
+            For i = 1 To 12
+                CBmonth.Items.Add(i.ToString)
+            Next
+            For i = 1 To 31
+                CBday.Items.Add(i.ToString)
+            Next
+            For i = 3 To 60
+                CBremind.Items.Add(i.ToString)
+            Next
+            i = 设置.读取数("Remindtime")
+            If i < 3 OrElse i > 60 Then i = 7
+            CBremind.SelectedIndex = i
+            CBday.SelectedIndex = 0
+            CBmonth.SelectedIndex = 0
+            ListDates.Items.Clear()
+            文字转列表(ListDates.Items, 设置.元素("days"))
+        End If
     End Sub
 
     Private Sub ButRM_Click(sender As Object, e As EventArgs) Handles ButRM.Click
@@ -29,7 +35,7 @@ Public Class 日子提醒
     End Sub
 
     Private Sub ButADD_Click(sender As Object, e As EventArgs) Handles ButADD.Click
-        Dim s As String = " " + 凑零(CBmonth.Text) + "-" + 凑零(CBday.Text) + " " + TxtJOB.Text
+        Dim s As String = " " + 凑零(CBmonth.Text) + "-" + 凑零(CBday.Text) + IIf(CheckCN.Checked, "n ", "  ") + TxtJOB.Text
         If Not 在列表(ListDates.Items, s) Then ListDates.Items.Add(s)
         For i As Integer = 0 To ListDates.Items.Count - 1
             If ListDates.Items.Item(i) = s Then
@@ -54,20 +60,32 @@ Public Class 日子提醒
 
     Public Sub 提醒好日子()
         If ListDates.Items.Count < 1 Then Exit Sub
-        For Each i As String In ListDates.Items
+        Dim ls As New ListBox, i As String, g As Integer, f As String
+        For Each i In ListDates.Items
             Dim t As New Date(Year(Now), Val(Regex.Match(i, "[0-9]+-").ToString), Abs(Val(Regex.Match(i, "-[0-9]+").ToString)))
-            If DateDiff(DateInterval.Day, Now.Date, t.Date) < 0 Then t = t.AddYears(1)
-            Dim g As Integer = DateDiff(DateInterval.DayOfYear, Now.Date, t.Date)
-            If g < 10 Then
-                If g = 0 Then
-                    推送("今天是：" + 去左(i, 6))
-                ElseIf g = 1 Then
-                    推送("明天就是：" + 去左(i, 6))
-                Else
-                    推送("还有 " + g.ToString + " 天就是：" + 去左(i, 6))
-                End If
+            Dim cp As Date = Now.Date
+            If i(6) = "n" Then cp = 公历转农历(cp)
+            If DateDiff(DateInterval.Day, cp, t.Date) < 0 Then t = t.AddYears(1)
+            g = DateDiff(DateInterval.DayOfYear, cp, t.Date)
+            ls.Sorted = True
+            ls.Visible = False
+            If g <= Val(只要数字(CBremind.SelectedItem.ToString)) Then
+                f = 去左(i, 7)
+                ls.Items.Add(凑零(g) & " " & f)
             End If
         Next
+        For Each i In ls.Items
+            g = Val(左(i, 2))
+            f = 去左(i, 3)
+            If g = 0 Then
+                推送("今天是：" + f)
+            ElseIf g = 1 Then
+                推送("明天就是：" + f)
+            Else
+                推送("还有 " + g.ToString + " 天就是：" + f)
+            End If
+        Next
+        ls.Dispose()
     End Sub
 
     Private Sub CBday_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBday.SelectedIndexChanged, CBmonth.SelectedIndexChanged, TxtJOB.TextChanged
@@ -81,6 +99,10 @@ Public Class 日子提醒
                 If m = 2 Then 日子正确 = False
         End Select
         ButADD.Enabled = (TxtJOB.TextLength > 0 AndAlso 日子正确)
+    End Sub
+
+    Private Sub CBremind_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBremind.SelectedIndexChanged
+        设置.保存元素("Remindtime", CBremind.SelectedIndex.ToString)
     End Sub
 
 End Class

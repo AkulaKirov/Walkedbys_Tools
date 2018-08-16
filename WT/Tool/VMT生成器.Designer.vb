@@ -97,7 +97,7 @@ Partial Class VMT生成器
         Me.GBtemps.Controls.Add(Me.ButDEL)
         Me.GBtemps.Controls.Add(Me.ButUSE)
         Me.GBtemps.Controls.Add(Me.TxtTempName)
-        Me.GBtemps.Location = New System.Drawing.Point(487, 87)
+        Me.GBtemps.Location = New System.Drawing.Point(487, 102)
         Me.GBtemps.Name = "GBtemps"
         Me.GBtemps.Size = New System.Drawing.Size(194, 149)
         Me.GBtemps.TabIndex = 12
@@ -160,18 +160,18 @@ Partial Class VMT生成器
         'LabSkip
         '
         Me.LabSkip.AutoSize = True
-        Me.LabSkip.Location = New System.Drawing.Point(486, 59)
+        Me.LabSkip.Location = New System.Drawing.Point(486, 50)
         Me.LabSkip.Name = "LabSkip"
-        Me.LabSkip.Size = New System.Drawing.Size(48, 19)
+        Me.LabSkip.Size = New System.Drawing.Size(100, 19)
         Me.LabSkip.TabIndex = 11
-        Me.LabSkip.Text = "跳过："
+        Me.LabSkip.Text = "忽略（正则）："
         '
         'TxtSkip
         '
-        Me.TxtSkip.Location = New System.Drawing.Point(540, 56)
+        Me.TxtSkip.Location = New System.Drawing.Point(487, 72)
         Me.TxtSkip.MaxLength = 30
         Me.TxtSkip.Name = "TxtSkip"
-        Me.TxtSkip.Size = New System.Drawing.Size(126, 25)
+        Me.TxtSkip.Size = New System.Drawing.Size(185, 25)
         Me.TxtSkip.TabIndex = 10
         Me.TxtSkip.TabStop = False
         '

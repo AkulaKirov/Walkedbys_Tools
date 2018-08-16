@@ -33,12 +33,11 @@ Partial Class 启动器
         Me.TxtUpdate = New System.Windows.Forms.TextBox()
         Me.LabAbout = New System.Windows.Forms.Label()
         Me.GBabout = New System.Windows.Forms.GroupBox()
-        Me.After1s = New System.Windows.Forms.Timer(Me.components)
+        Me.TimerX = New System.Windows.Forms.Timer(Me.components)
         Me.Nico = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.NicoMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.显示窗口ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.返回启动器ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.GBallTools.SuspendLayout()
         Me.GBupdate.SuspendLayout()
         Me.GBabout.SuspendLayout()
@@ -156,7 +155,7 @@ Partial Class 启动器
         Me.GBabout.TabStop = False
         Me.GBabout.Text = "关于 "
         '
-        'After1s
+        'TimerX
         '
         '
         'Nico
@@ -185,10 +184,6 @@ Partial Class 启动器
         Me.返回启动器ToolStripMenuItem.Name = "返回启动器ToolStripMenuItem"
         Me.返回启动器ToolStripMenuItem.Size = New System.Drawing.Size(130, 24)
         Me.返回启动器ToolStripMenuItem.Text = "返回主页"
-        '
-        'Timer1
-        '
-        Me.Timer1.Enabled = True
         '
         '启动器
         '
@@ -228,10 +223,9 @@ Partial Class 启动器
     Friend WithEvents TxtUpdate As TextBox
     Friend WithEvents LabAbout As Label
     Friend WithEvents GBabout As GroupBox
-    Friend WithEvents After1s As System.Windows.Forms.Timer
+    Friend WithEvents TimerX As System.Windows.Forms.Timer
     Friend WithEvents Nico As NotifyIcon
     Friend WithEvents NicoMenu As ContextMenuStrip
     Friend WithEvents 显示窗口ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents 返回启动器ToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents Timer1 As Forms.Timer
 End Class

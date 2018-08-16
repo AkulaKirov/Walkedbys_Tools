@@ -21,14 +21,15 @@ Public Class 启动器
                            End Sub)
     Dim 关于链接 As New List(Of LinkLabel)
     Dim 版本 As Single = My.Application.Info.Version.Major + (My.Application.Info.Version.Minor / 10)
+    Dim 计时 As Integer = 0
+    Dim 统计页 As WebBrowser
 
     Private Sub 启动器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        随机.刷新()
         Icon = 图标
         Text = "走過去的工具箱 测试版 v" + 版本.ToString
         Nico.Icon = 图标
         线程越界()
-        Th更新.Start()
+        If Not 设置.读取真假("NoUpdateAtMain") Then Th更新.Start()
         Directory.CreateDirectory(TempF)
         工具列表.Add(New 工具("文件夹创建器", 文件夹创建器, "MKDIR", "输入一个路径，就能新建好你要的文件夹。"))
         工具列表.Add(New 工具("B站图床", B站图床, "BilibiliPic", "把20MB以下的图片无损放到B站服务器还行。"))
@@ -37,6 +38,8 @@ Public Class 启动器
         工具列表.Add(New 工具("系统代理设置", 系统代理设置, "ProxyManager", "快速设置系统代理。"))
         工具列表.Add(New 工具("GMod模组发布器", GM模组发布器, "GMAddonPu", "打包GMA文件，发布或更新 Addon 到 Garry's Mod Workshop。"))
         工具列表.Add(New 工具("未响应图片制作器", 未响应图片制作器, "NoResPic", "制作假装程序未响应的假图片。"))
+        工具列表.Add(New 工具(" 工具箱设置", 程序设置, "AllSettings", "关于本工具箱的一些设置。"))
+        工具列表.Add(New 工具("自定义后台键盘指令", 后台键盘指令, "KeyBinder", "可以在程序运行的时候，使用一些你自定义的快捷键来开关你想要的程序。"))
         AddHandler SizeChanged, AddressOf 最小化隐藏
         Dim t As 工具, b As Button, i As Integer, g As String
         For Each t In 工具列表
@@ -80,12 +83,25 @@ Public Class 启动器
         新增关于链接("下载最新版", "https://github.com/gordonwalkedby/Walkedbys_Tools/releases")
         新增关于链接("请我喝可乐", "https://walkedby.com/donateme/")
         Refresh()
-        After1s.Enabled = True
+        TimerX.Enabled = True
+        If Not 设置.读取真假("NoReportBack") Then
+            统计页 = New WebBrowser
+            With 统计页
+                .Visible = False
+                .ScriptErrorsSuppressed = False
+                .Navigate("https://walkedby.com/other/wt_analytics?v=" + 版本.ToString)
+            End With
+        End If
+        后台键盘指令.后台键盘指令_Load()
     End Sub
 
     Private Sub 启动器_FormClosing(sender As Form, e As FormClosingEventArgs) Handles Me.FormClosing
-        e.Cancel = True
-        sender.WindowState = FormWindowState.Minimized
+        If 设置.读取真假("ExitAtMain") Then
+            退出()
+        Else
+            e.Cancel = True
+            隐藏到后台(sender)
+        End If
     End Sub
 
     Public Sub 退出()
@@ -193,30 +209,28 @@ Public Class 启动器
         检查推送()
     End Sub
 
-    Private Sub After1s_Tick(sender As Object, e As EventArgs) Handles After1s.Tick
-        Dim t As 工具, g As String
-        If 启动参数.Count > 0 Then
-            For Each g In 启动参数
-                If g.StartsWith("-") Then
-                    t = ID工具(去左(g, 1))
-                    If Not IsNothing(t) Then
-                        t.启动()
-                        Exit For
-                    End If
+    Private Sub TimerX_Tick(sender As Object, e As EventArgs) Handles TimerX.Tick
+        计时 += 1
+        Select Case 计时
+            Case 1
+                Dim t As 工具, g As String
+                If 启动参数.Count > 0 Then
+                    For Each g In 启动参数
+                        If g.StartsWith("-") Then
+                            t = ID工具(去左(g, 1))
+                            If Not IsNothing(t) Then
+                                t.启动()
+                                Exit For
+                            End If
+                        End If
+                    Next
                 End If
-            Next
-        End If
-        After1s.Enabled = False
+        End Select
     End Sub
 
     Private Sub Nico_MouseUp(sender As Object, e As MouseEventArgs) Handles Nico.MouseUp
         If e.Button = MouseButtons.Left Then
-            With 最后窗体
-                .TopMost = True
-                .WindowState = FormWindowState.Normal
-                .Show()
-                .TopMost = False
-            End With
+            显示到前台(最后窗体)
         End If
     End Sub
 
@@ -241,6 +255,7 @@ Public Class 启动器
                 .Text = n.名字
                 .Tag = "工具"
                 AddHandler i.Click, Sub()
+                                        显示到前台(最后窗体)
                                         n.启动()
                                     End Sub
             End With
@@ -258,7 +273,8 @@ Public Class 启动器
     End Sub
 
     Private Sub 返回启动器ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 返回启动器ToolStripMenuItem.Click
-        If Not 最后窗体.Equals(Me) Then 最后窗体.Close() Else 显示窗口ToolStripMenuItem_Click(sender, e)
+        显示到前台(最后窗体)
+        If Not 最后窗体.Equals(Me) Then 最后窗体.Close()
     End Sub
 
 End Class

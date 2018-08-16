@@ -50,14 +50,14 @@ Public Class 未响应图片制作器
     End Sub
 
     Private Sub ButClipBoard_Click(sender As Object, e As EventArgs) Handles ButClipBoard.Click
-        If IsNothing(Clipboard.GetImage) Then Exit Sub
-        图片 = Clipboard.GetImage
+        If IsNothing(Forms.Clipboard.GetImage) Then Exit Sub
+        图片 = Forms.Clipboard.GetImage
         图标 = Nothing
         Refresh()
     End Sub
 
     Private Sub ButOut_Click(sender As Object, e As EventArgs) Handles ButOut.Click
-        If Not IsNothing(输出) Then Clipboard.SetImage(输出)
+        If Not IsNothing(输出) Then Forms.Clipboard.SetImage(输出)
     End Sub
 
 End Class

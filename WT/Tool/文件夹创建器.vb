@@ -29,11 +29,24 @@ Public Class 文件夹创建器
     End Sub
 
     Private Sub ButOpen_Click(sender As Object, e As EventArgs) Handles ButOpen.Click
-        Process.Start(追加斜杠(ButOpen.Tag))
+        Dim i As String = 追加斜杠(ButOpen.Tag)
+        If 文件夹存在(i) Then
+            Process.Start(i)
+        Else
+            ButOpen.Tag = ""
+            ButOpen.Visible = False
+            LabOut.Text = "文件夹已经被删除"
+        End If
     End Sub
 
     Private Sub TxtPath_TextChanged(sender As Object, e As EventArgs) Handles TxtPath.TextChanged
         设置.保存元素("MKDIRpath", TxtPath.Text)
+    End Sub
+
+    Private Sub TxtPath_KeyUp(sender As Object, e As KeyEventArgs) Handles TxtPath.KeyUp
+        If e.KeyCode = Keys.Enter Then
+            ButCreate.PerformClick()
+        End If
     End Sub
 
 End Class
