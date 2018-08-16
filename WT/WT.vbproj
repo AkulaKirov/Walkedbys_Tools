@@ -151,12 +151,6 @@
     <Compile Include="Tool\GM模组发布器.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tool\后台键盘指令.Designer.vb">
-      <DependentUpon>后台键盘指令.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Tool\后台键盘指令.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Tool\文件夹创建器.Designer.vb">
       <DependentUpon>文件夹创建器.vb</DependentUpon>
     </Compile>
@@ -212,9 +206,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\GM模组发布器.resx">
       <DependentUpon>GM模组发布器.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tool\后台键盘指令.resx">
-      <DependentUpon>后台键盘指令.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\文件夹创建器.resx">
       <DependentUpon>文件夹创建器.vb</DependentUpon>

@@ -39,7 +39,6 @@ Public Class 启动器
         工具列表.Add(New 工具("GMod模组发布器", GM模组发布器, "GMAddonPu", "打包GMA文件，发布或更新 Addon 到 Garry's Mod Workshop。"))
         工具列表.Add(New 工具("未响应图片制作器", 未响应图片制作器, "NoResPic", "制作假装程序未响应的假图片。"))
         工具列表.Add(New 工具(" 工具箱设置", 程序设置, "AllSettings", "关于本工具箱的一些设置。"))
-        工具列表.Add(New 工具("自定义后台键盘指令", 后台键盘指令, "KeyBinder", "可以在程序运行的时候，使用一些你自定义的快捷键来开关你想要的程序。"))
         AddHandler SizeChanged, AddressOf 最小化隐藏
         Dim t As 工具, b As Button, i As Integer, g As String
         For Each t In 工具列表
@@ -92,7 +91,6 @@ Public Class 启动器
                 .Navigate("https://walkedby.com/other/wt_analytics?v=" + 版本.ToString)
             End With
         End If
-        后台键盘指令.后台键盘指令_Load()
     End Sub
 
     Private Sub 启动器_FormClosing(sender As Form, e As FormClosingEventArgs) Handles Me.FormClosing
