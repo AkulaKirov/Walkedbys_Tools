@@ -38,6 +38,12 @@ Module 控件优化
                                           If Not 文件存在(s) Then s = ""
                                           i.Text = s
                                       End Sub
+            AddHandler i.FindForm.Activated, Sub()
+                                                 Dim s As String = Trim(i.Text)
+                                                 If s.Length < 1 Then Exit Sub
+                                                 If Not 文件存在(s) Then s = ""
+                                                 i.Text = s
+                                             End Sub
         Next
     End Sub
 
@@ -64,6 +70,12 @@ Module 控件优化
                                           If Not 文件夹存在(s) Then s = ""
                                           i.Text = s
                                       End Sub
+            AddHandler i.FindForm.Activated, Sub()
+                                                 Dim s As String = Trim(i.Text)
+                                                 If s.Length < 1 Then Exit Sub
+                                                 If Not 文件夹存在(s) Then s = ""
+                                                 i.Text = s
+                                             End Sub
         Next
     End Sub
 

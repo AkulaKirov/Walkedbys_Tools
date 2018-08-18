@@ -6,6 +6,7 @@ Namespace My
 
         Private Sub MyApplication_Startup(sender As Object, e As StartupEventArgs) Handles Me.Startup
             随机.刷新()
+            线程越界()
             Dim i As String
             For Each i In e.CommandLine
                 启动参数.Add(i.ToLower)
@@ -17,7 +18,8 @@ Namespace My
                 报错退出("对不起，本程序不能多开。
 或者请把其他名为 wt 的进程退出。")
             End If
-            If (Not 文件存在(设置.本地文件)) OrElse 在列表(启动参数, "-firsttime") Then
+            If Not 文件存在(设置.本地文件) Then 启动参数.Add("-firsttime")
+            If 在列表(启动参数, "-firsttime") Then
                 Dim n As MsgBoxResult = MsgBox("你好，程序没有找到你的配置文件。
 所以你应该是第一次使用本程序吧。
 我们正在使用百度统计来回收各位用户的使用情况，

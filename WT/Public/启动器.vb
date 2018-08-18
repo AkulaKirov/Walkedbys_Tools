@@ -28,7 +28,6 @@ Public Class 启动器
         Icon = 图标
         Text = "走過去的工具箱 测试版 v" + 版本.ToString
         Nico.Icon = 图标
-        线程越界()
         If Not 设置.读取真假("NoUpdateAtMain") Then Th更新.Start()
         Directory.CreateDirectory(TempF)
         工具列表.Add(New 工具("文件夹创建器", 文件夹创建器, "MKDIR", "输入一个路径，就能新建好你要的文件夹。"))
@@ -39,6 +38,7 @@ Public Class 启动器
         工具列表.Add(New 工具("GMod模组发布器", GM模组发布器, "GMAddonPu", "打包GMA文件，发布或更新 Addon 到 Garry's Mod Workshop。"))
         工具列表.Add(New 工具("未响应图片制作器", 未响应图片制作器, "NoResPic", "制作假装程序未响应的假图片。"))
         工具列表.Add(New 工具(" 工具箱设置", 程序设置, "AllSettings", "关于本工具箱的一些设置。"))
+        工具列表.Add(New 工具("文件筛选", 文件筛选, "FileChoose", "把A文件夹B文件夹的文件选择性的复制到C文件夹。"))
         AddHandler SizeChanged, AddressOf 最小化隐藏
         Dim t As 工具, b As Button, i As Integer, g As String
         For Each t In 工具列表
@@ -130,8 +130,13 @@ Public Class 启动器
                 .Enabled = True
                 .Text = "取消收藏"
             Else
-                .Enabled = (工具收藏.Count < 8)
-                .Text = "收藏"
+                If 工具收藏.Count < 8 Then
+                    .Enabled = True
+                    .Text = "收藏"
+                Else
+                    .Enabled = False
+                    .Text = "收藏夹已满"
+                End If
             End If
         End With
     End Sub
