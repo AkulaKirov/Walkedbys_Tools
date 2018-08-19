@@ -48,7 +48,7 @@ Partial Class 启动器
         '
         Me.GBfavorites.Location = New System.Drawing.Point(12, 3)
         Me.GBfavorites.Name = "GBfavorites"
-        Me.GBfavorites.Size = New System.Drawing.Size(706, 117)
+        Me.GBfavorites.Size = New System.Drawing.Size(730, 117)
         Me.GBfavorites.TabIndex = 0
         Me.GBfavorites.TabStop = False
         Me.GBfavorites.Text = "工具收藏夹"
@@ -61,7 +61,7 @@ Partial Class 启动器
         Me.GBallTools.Controls.Add(Me.ListTools)
         Me.GBallTools.Location = New System.Drawing.Point(12, 126)
         Me.GBallTools.Name = "GBallTools"
-        Me.GBallTools.Size = New System.Drawing.Size(337, 235)
+        Me.GBallTools.Size = New System.Drawing.Size(382, 235)
         Me.GBallTools.TabIndex = 1
         Me.GBallTools.TabStop = False
         Me.GBallTools.Text = "全部工具"
@@ -69,9 +69,9 @@ Partial Class 启动器
         'ButAddToFavor
         '
         Me.ButAddToFavor.Enabled = False
-        Me.ButAddToFavor.Location = New System.Drawing.Point(239, 192)
+        Me.ButAddToFavor.Location = New System.Drawing.Point(284, 190)
         Me.ButAddToFavor.Name = "ButAddToFavor"
-        Me.ButAddToFavor.Size = New System.Drawing.Size(92, 39)
+        Me.ButAddToFavor.Size = New System.Drawing.Size(91, 39)
         Me.ButAddToFavor.TabIndex = 3
         Me.ButAddToFavor.TabStop = False
         Me.ButAddToFavor.Text = "收藏"
@@ -80,7 +80,7 @@ Partial Class 启动器
         'ButOpenTool
         '
         Me.ButOpenTool.Enabled = False
-        Me.ButOpenTool.Location = New System.Drawing.Point(162, 192)
+        Me.ButOpenTool.Location = New System.Drawing.Point(207, 190)
         Me.ButOpenTool.Name = "ButOpenTool"
         Me.ButOpenTool.Size = New System.Drawing.Size(71, 39)
         Me.ButOpenTool.TabIndex = 2
@@ -90,12 +90,12 @@ Partial Class 启动器
         '
         'TxtToolDes
         '
-        Me.TxtToolDes.Location = New System.Drawing.Point(162, 22)
+        Me.TxtToolDes.Location = New System.Drawing.Point(207, 20)
         Me.TxtToolDes.Multiline = True
         Me.TxtToolDes.Name = "TxtToolDes"
         Me.TxtToolDes.ReadOnly = True
         Me.TxtToolDes.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtToolDes.Size = New System.Drawing.Size(169, 166)
+        Me.TxtToolDes.Size = New System.Drawing.Size(168, 166)
         Me.TxtToolDes.TabIndex = 1
         Me.TxtToolDes.TabStop = False
         Me.TxtToolDes.Text = "请从左边的列表里选择一个工具"
@@ -107,7 +107,7 @@ Partial Class 启动器
         Me.ListTools.Location = New System.Drawing.Point(11, 23)
         Me.ListTools.Name = "ListTools"
         Me.ListTools.ScrollAlwaysVisible = True
-        Me.ListTools.Size = New System.Drawing.Size(145, 208)
+        Me.ListTools.Size = New System.Drawing.Size(190, 208)
         Me.ListTools.Sorted = True
         Me.ListTools.TabIndex = 0
         Me.ListTools.TabStop = False
@@ -115,9 +115,9 @@ Partial Class 启动器
         'GBupdate
         '
         Me.GBupdate.Controls.Add(Me.TxtUpdate)
-        Me.GBupdate.Location = New System.Drawing.Point(355, 126)
+        Me.GBupdate.Location = New System.Drawing.Point(400, 126)
         Me.GBupdate.Name = "GBupdate"
-        Me.GBupdate.Size = New System.Drawing.Size(363, 121)
+        Me.GBupdate.Size = New System.Drawing.Size(342, 121)
         Me.GBupdate.TabIndex = 2
         Me.GBupdate.TabStop = False
         Me.GBupdate.Text = "新消息："
@@ -131,7 +131,7 @@ Partial Class 启动器
         Me.TxtUpdate.Name = "TxtUpdate"
         Me.TxtUpdate.ReadOnly = True
         Me.TxtUpdate.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtUpdate.Size = New System.Drawing.Size(357, 98)
+        Me.TxtUpdate.Size = New System.Drawing.Size(336, 98)
         Me.TxtUpdate.TabIndex = 0
         Me.TxtUpdate.TabStop = False
         '
@@ -148,9 +148,9 @@ Partial Class 启动器
         'GBabout
         '
         Me.GBabout.Controls.Add(Me.LabAbout)
-        Me.GBabout.Location = New System.Drawing.Point(356, 254)
+        Me.GBabout.Location = New System.Drawing.Point(400, 254)
         Me.GBabout.Name = "GBabout"
-        Me.GBabout.Size = New System.Drawing.Size(362, 107)
+        Me.GBabout.Size = New System.Drawing.Size(339, 107)
         Me.GBabout.TabIndex = 4
         Me.GBabout.TabStop = False
         Me.GBabout.Text = "关于 "
@@ -189,7 +189,7 @@ Partial Class 启动器
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(724, 381)
+        Me.ClientSize = New System.Drawing.Size(754, 381)
         Me.Controls.Add(Me.GBabout)
         Me.Controls.Add(Me.GBupdate)
         Me.Controls.Add(Me.GBallTools)

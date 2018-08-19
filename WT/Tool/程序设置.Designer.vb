@@ -24,12 +24,13 @@ Partial Class 程序设置
     Private Sub InitializeComponent()
         Me.Tabs = New System.Windows.Forms.TabControl()
         Me.Tab1 = New System.Windows.Forms.TabPage()
+        Me.CheckStartUP = New System.Windows.Forms.CheckBox()
         Me.LinkReport = New System.Windows.Forms.LinkLabel()
         Me.CheckNoReport = New System.Windows.Forms.CheckBox()
         Me.CheckHide = New System.Windows.Forms.CheckBox()
         Me.CheckUpdate = New System.Windows.Forms.CheckBox()
         Me.CheckExit = New System.Windows.Forms.CheckBox()
-        Me.CheckStartUP = New System.Windows.Forms.CheckBox()
+        Me.ButCreateSC = New System.Windows.Forms.Button()
         Me.Tabs.SuspendLayout()
         Me.Tab1.SuspendLayout()
         Me.SuspendLayout()
@@ -41,12 +42,13 @@ Partial Class 程序设置
         Me.Tabs.Location = New System.Drawing.Point(0, 0)
         Me.Tabs.Name = "Tabs"
         Me.Tabs.SelectedIndex = 0
-        Me.Tabs.Size = New System.Drawing.Size(474, 202)
+        Me.Tabs.Size = New System.Drawing.Size(494, 306)
         Me.Tabs.TabIndex = 0
         Me.Tabs.TabStop = False
         '
         'Tab1
         '
+        Me.Tab1.Controls.Add(Me.ButCreateSC)
         Me.Tab1.Controls.Add(Me.CheckStartUP)
         Me.Tab1.Controls.Add(Me.LinkReport)
         Me.Tab1.Controls.Add(Me.CheckNoReport)
@@ -56,10 +58,21 @@ Partial Class 程序设置
         Me.Tab1.Location = New System.Drawing.Point(4, 28)
         Me.Tab1.Name = "Tab1"
         Me.Tab1.Padding = New System.Windows.Forms.Padding(3)
-        Me.Tab1.Size = New System.Drawing.Size(466, 170)
+        Me.Tab1.Size = New System.Drawing.Size(486, 274)
         Me.Tab1.TabIndex = 0
         Me.Tab1.Text = "杂项"
         Me.Tab1.UseVisualStyleBackColor = True
+        '
+        'CheckStartUP
+        '
+        Me.CheckStartUP.AutoSize = True
+        Me.CheckStartUP.Location = New System.Drawing.Point(6, 116)
+        Me.CheckStartUP.Name = "CheckStartUP"
+        Me.CheckStartUP.Size = New System.Drawing.Size(275, 23)
+        Me.CheckStartUP.TabIndex = 5
+        Me.CheckStartUP.TabStop = False
+        Me.CheckStartUP.Text = "开机启动本程序（可能会被安全软件拦截）"
+        Me.CheckStartUP.UseVisualStyleBackColor = True
         '
         'LinkReport
         '
@@ -115,22 +128,21 @@ Partial Class 程序设置
         Me.CheckExit.Text = "关闭主页的时候直接退出程序，而不是隐藏到后台"
         Me.CheckExit.UseVisualStyleBackColor = True
         '
-        'CheckStartUP
+        'ButCreateSC
         '
-        Me.CheckStartUP.AutoSize = True
-        Me.CheckStartUP.Location = New System.Drawing.Point(6, 116)
-        Me.CheckStartUP.Name = "CheckStartUP"
-        Me.CheckStartUP.Size = New System.Drawing.Size(275, 23)
-        Me.CheckStartUP.TabIndex = 5
-        Me.CheckStartUP.TabStop = False
-        Me.CheckStartUP.Text = "开机启动本程序（可能会被安全软件拦截）"
-        Me.CheckStartUP.UseVisualStyleBackColor = True
+        Me.ButCreateSC.Location = New System.Drawing.Point(346, 215)
+        Me.ButCreateSC.Name = "ButCreateSC"
+        Me.ButCreateSC.Size = New System.Drawing.Size(132, 53)
+        Me.ButCreateSC.TabIndex = 6
+        Me.ButCreateSC.TabStop = False
+        Me.ButCreateSC.Text = "在桌面上建立" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "本程序的快捷方式"
+        Me.ButCreateSC.UseVisualStyleBackColor = True
         '
         '程序设置
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(474, 202)
+        Me.ClientSize = New System.Drawing.Size(494, 306)
         Me.Controls.Add(Me.Tabs)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
@@ -154,4 +166,5 @@ Partial Class 程序设置
     Friend WithEvents CheckNoReport As CheckBox
     Friend WithEvents LinkReport As LinkLabel
     Friend WithEvents CheckStartUP As CheckBox
+    Friend WithEvents ButCreateSC As Button
 End Class

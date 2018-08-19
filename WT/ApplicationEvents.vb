@@ -8,6 +8,10 @@ Namespace My
             随机.刷新()
             线程越界()
             Dim i As String
+            i = 程序文件目录
+            If 全部包含(i, "C:\Users", "\AppData\", "\Temp\") Then
+                报错退出("对不起，请不要把本程序在压缩包内直接打开。")
+            End If
             For Each i In e.CommandLine
                 启动参数.Add(i.ToLower)
             Next
@@ -20,7 +24,7 @@ Namespace My
             End If
             If Not 文件存在(设置.本地文件) Then 启动参数.Add("-firsttime")
             If 在列表(启动参数, "-firsttime") Then
-                Dim n As MsgBoxResult = MsgBox("你好，程序没有找到你的配置文件。
+                Dim n As MsgBoxResult = MsgBox("你好，程序没有检测到你的本地配置文件。
 所以你应该是第一次使用本程序吧。
 我们正在使用百度统计来回收各位用户的使用情况，
 主要收集的是使用地点、系统、时间等，
@@ -29,6 +33,8 @@ Namespace My
                 If n <> MsgBoxResult.Yes Then
                     设置.元素("NoReportBack") = "True"
                 End If
+                n = MsgBox("你想在桌面上建立本程序的快捷方式吗？", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "欢迎使用走過去的工具箱~")
+                If n = MsgBoxResult.Yes Then 程序设置.ButCreateSC_Click()
             End If
         End Sub
 

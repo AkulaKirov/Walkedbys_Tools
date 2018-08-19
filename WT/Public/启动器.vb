@@ -39,6 +39,7 @@ Public Class 启动器
         工具列表.Add(New 工具("未响应图片制作器", 未响应图片制作器, "NoResPic", "制作假装程序未响应的假图片。"))
         工具列表.Add(New 工具(" 工具箱设置", 程序设置, "AllSettings", "关于本工具箱的一些设置。"))
         工具列表.Add(New 工具("文件筛选", 文件筛选, "FileChoose", "把A文件夹B文件夹的文件选择性的复制到C文件夹。"))
+        工具列表.Add(New 工具("Workshop物品篡改器", 创意工坊篡改器, "WorkshopCut", "可以直接修改 Steam Workshop 指定物品的信息，但是你必须是这个物品的上传者或贡献者。"))
         AddHandler SizeChanged, AddressOf 最小化隐藏
         Dim t As 工具, b As Button, i As Integer, g As String
         For Each t In 工具列表
@@ -50,9 +51,11 @@ Public Class 启动器
             收藏按纽.Add(b)
             With b
                 .Visible = False
-                .Width = 150
+                Dim wd As Integer = 170
+                .Width = wd
+                wd += 10
                 .Height = 32
-                .Left = IIf(i > 4, IIf(i - 4 > 1, (i - 5) * 160 + 10, 10), IIf(i > 1, (i - 1) * 160 + 10, 10))
+                .Left = IIf(i > 4, IIf(i - 4 > 1, (i - 5) * wd + 10, 10), IIf(i > 1, (i - 1) * wd + 10, 10))
                 .Top = IIf(i > 4, 70, 20)
                 AddHandler .Click, Sub()
                                        ID工具(.Tag).启动()

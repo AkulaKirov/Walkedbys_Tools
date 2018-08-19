@@ -24,13 +24,17 @@ Public Class 程序设置
     End Sub
 
     Private Sub CheckStartUP_CheckedChanged(sender As Object, e As EventArgs) Handles CheckStartUP.CheckedChanged
-        Dim s As String = "C:\Users\" + 当前用户名 + "\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\走過去的工具箱.bat"
+        Dim s As String = "C:\Users\" + 当前用户名 + "\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\走過去的工具箱.lnk"
+        删除(去右(s, 3) + ".bat")
         If CheckStartUP.Checked Then
-            Dim b As Byte() = Encoding.ASCII.GetBytes(左(程序文件目录, 2) + vbCrLf + "cd " + 程序文件目录 + vbCrLf + "start wt.exe")
-            写文件(s, b)
+            创建快捷方式(s, 程序文件目录 + "wt.exe")
         Else
             删除(s)
         End If
+    End Sub
+
+    Public Sub ButCreateSC_Click() Handles ButCreateSC.Click
+        创建快捷方式(追加斜杠(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)) + "走過去的工具箱.lnk", 程序文件目录 + "wt.exe")
     End Sub
 
 End Class

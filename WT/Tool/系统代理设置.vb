@@ -70,4 +70,8 @@ Public Class 系统代理设置
         TxtPAC.Text = t.元素("pac")
     End Sub
 
+    Private Sub ButCheckSystem_Click(sender As Object, e As EventArgs) Handles ButCheckSystem.Click
+        Process.Start("C:\Windows\System32\inetcpl.cpl")
+    End Sub
+
 End Class

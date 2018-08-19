@@ -37,6 +37,7 @@ Partial Class 系统代理设置
         Me.TxtIP = New System.Windows.Forms.TextBox()
         Me.ButCheckGoogle = New System.Windows.Forms.Button()
         Me.GBtemps = New System.Windows.Forms.GroupBox()
+        Me.ButCheckSystem = New System.Windows.Forms.Button()
         Me.GBtemps.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -150,7 +151,7 @@ Partial Class 系统代理设置
         '
         'ButCheckIP
         '
-        Me.ButCheckIP.Location = New System.Drawing.Point(384, 212)
+        Me.ButCheckIP.Location = New System.Drawing.Point(384, 246)
         Me.ButCheckIP.Name = "ButCheckIP"
         Me.ButCheckIP.Size = New System.Drawing.Size(289, 36)
         Me.ButCheckIP.TabIndex = 14
@@ -165,14 +166,14 @@ Partial Class 系统代理设置
         Me.TxtIP.Name = "TxtIP"
         Me.TxtIP.ReadOnly = True
         Me.TxtIP.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtIP.Size = New System.Drawing.Size(366, 216)
+        Me.TxtIP.Size = New System.Drawing.Size(366, 251)
         Me.TxtIP.TabIndex = 15
         Me.TxtIP.TabStop = False
         Me.TxtIP.Text = "本地IP："
         '
         'ButCheckGoogle
         '
-        Me.ButCheckGoogle.Location = New System.Drawing.Point(384, 254)
+        Me.ButCheckGoogle.Location = New System.Drawing.Point(384, 288)
         Me.ButCheckGoogle.Name = "ButCheckGoogle"
         Me.ButCheckGoogle.Size = New System.Drawing.Size(289, 35)
         Me.ButCheckGoogle.TabIndex = 16
@@ -187,18 +188,29 @@ Partial Class 系统代理设置
         Me.GBtemps.Controls.Add(Me.ButAdd)
         Me.GBtemps.Controls.Add(Me.ButRM)
         Me.GBtemps.Controls.Add(Me.ButUSE)
-        Me.GBtemps.Location = New System.Drawing.Point(384, 72)
+        Me.GBtemps.Location = New System.Drawing.Point(384, 106)
         Me.GBtemps.Name = "GBtemps"
         Me.GBtemps.Size = New System.Drawing.Size(295, 134)
         Me.GBtemps.TabIndex = 17
         Me.GBtemps.TabStop = False
         Me.GBtemps.Text = "模板"
         '
+        'ButCheckSystem
+        '
+        Me.ButCheckSystem.Location = New System.Drawing.Point(384, 72)
+        Me.ButCheckSystem.Name = "ButCheckSystem"
+        Me.ButCheckSystem.Size = New System.Drawing.Size(289, 28)
+        Me.ButCheckSystem.TabIndex = 18
+        Me.ButCheckSystem.TabStop = False
+        Me.ButCheckSystem.Text = "打开系统的 Internet 设置"
+        Me.ButCheckSystem.UseVisualStyleBackColor = True
+        '
         '系统代理设置
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(682, 295)
+        Me.ClientSize = New System.Drawing.Size(682, 334)
+        Me.Controls.Add(Me.ButCheckSystem)
         Me.Controls.Add(Me.GBtemps)
         Me.Controls.Add(Me.ButCheckGoogle)
         Me.Controls.Add(Me.TxtIP)
@@ -237,4 +249,5 @@ Partial Class 系统代理设置
     Friend WithEvents TxtIP As TextBox
     Friend WithEvents ButCheckGoogle As Button
     Friend WithEvents GBtemps As GroupBox
+    Friend WithEvents ButCheckSystem As Button
 End Class

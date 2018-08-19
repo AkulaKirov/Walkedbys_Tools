@@ -70,7 +70,6 @@ Module 通用
             窗体.ImeMode = 启动器.ImeMode
             窗体.ShowInTaskbar = True
             窗体.AutoScaleMode = AutoScaleMode.Dpi
-            文本框全选(窗体)
             AddHandler 窗体.FormClosing, Sub(sender As Object, e As FormClosingEventArgs)
                                            e.Cancel = True
                                            窗体.Hide()

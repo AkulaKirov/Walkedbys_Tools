@@ -26,7 +26,7 @@ Public Class GM模组发布器
 
     Private Sub TxtPath_TextChanged(sender As Object, e As EventArgs) Handles TxtPath.TextChanged
         Dim s As String = TxtPath.Text
-        Dim b As Boolean = s.Length > 5
+        Dim b As Boolean = s.Length > 3
         If b Then Txtname.Text = 文件名(s)
         GBjson.Visible = b
     End Sub

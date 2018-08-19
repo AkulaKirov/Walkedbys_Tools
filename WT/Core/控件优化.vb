@@ -2,20 +2,6 @@
 Module 控件优化
 
     ''' <summary>
-    ''' 把这个窗体里的文本框都设置 ctrl+a 全选
-    ''' </summary>
-    ''' <param name="窗体"></param>
-    Public Sub 文本框全选(窗体 As Form)
-        For Each i As Control In 窗体.Controls
-            If i.GetType.Equals((New TextBox).GetType) Then
-                AddHandler i.KeyUp, Sub(sender As TextBox, e As KeyEventArgs)
-                                        If e.Control AndAlso e.KeyCode = Keys.A Then sender.SelectAll()
-                                    End Sub
-            End If
-        Next
-    End Sub
-
-    ''' <summary>
     ''' 使文本框支持拖入一个文件或文件夹
     ''' </summary>
     Public Sub 文本框拖入文件(ParamArray 文本框() As TextBox)

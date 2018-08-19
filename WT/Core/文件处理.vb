@@ -438,4 +438,18 @@ Module 文件处理
 
     End Class
 
+    ''' <summary>
+    ''' 简单地创建一个快捷方式
+    ''' </summary>
+    Public Sub 创建快捷方式(lnk文件 As String, 目标文件 As String, Optional 起始文件夹 As String = "")
+        Directory.CreateDirectory(文件路径(lnk文件))
+        If 起始文件夹.Length < 3 Then 起始文件夹 = 文件路径(目标文件)
+        Dim sc As IWshRuntimeLibrary.IWshShortcut = (New IWshRuntimeLibrary.WshShell).CreateShortcut(lnk文件)
+        sc.TargetPath = 目标文件
+        sc.WindowStyle = 1
+        sc.WorkingDirectory = 起始文件夹
+        sc.IconLocation = 目标文件
+        sc.Save()
+    End Sub
+
 End Module
