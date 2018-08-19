@@ -15,7 +15,7 @@ Public Class 文件筛选
     End Sub
 
     Private Sub TxtFA_TextChanged(sender As Object, e As EventArgs) Handles TxtFA.TextChanged, TxtFB.TextChanged, TxtFC.TextChanged
-        Pn.Enabled = (TxtFA.TextLength > 3 AndAlso TxtFB.TextLength > 3 AndAlso TxtFC.TextLength > 3)
+        Pn.Enabled = (TxtFA.TextLength > 3 AndAlso TxtFB.TextLength > 3 AndAlso TxtFC.TextLength > 3 AndAlso TxtFA.Text <> TxtFB.Text)
     End Sub
 
     Private Sub ButAtoC_Click(sender As Object, e As EventArgs) Handles ButAtoC.Click
