@@ -26,10 +26,13 @@ Partial Class SMD骨骼修整器
         Me.LabInput = New System.Windows.Forms.Label()
         Me.TxtSMD = New System.Windows.Forms.TextBox()
         Me.GBwork = New System.Windows.Forms.GroupBox()
+        Me.LabLog = New System.Windows.Forms.Label()
+        Me.ButDoLog = New System.Windows.Forms.Button()
+        Me.TxtLOG = New System.Windows.Forms.TextBox()
         Me.ButRenameMaterial = New System.Windows.Forms.Button()
         Me.TxtRenameMaterial = New System.Windows.Forms.TextBox()
         Me.ListOtherMaterial = New System.Windows.Forms.ListBox()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.LabOtherMaterial = New System.Windows.Forms.Label()
         Me.ListMaterial = New System.Windows.Forms.ListBox()
         Me.ButRenameF = New System.Windows.Forms.Button()
         Me.LabBones = New System.Windows.Forms.Label()
@@ -42,16 +45,15 @@ Partial Class SMD骨骼修整器
         Me.LabBoneInfo = New System.Windows.Forms.Label()
         Me.ButGoRead = New System.Windows.Forms.Button()
         Me.Always = New System.Windows.Forms.Timer(Me.components)
-        Me.TxtLOG = New System.Windows.Forms.TextBox()
-        Me.ButDoLog = New System.Windows.Forms.Button()
-        Me.LabLog = New System.Windows.Forms.Label()
+        Me.LabNote = New System.Windows.Forms.Label()
+        Me.ButClearOtherTexture = New System.Windows.Forms.Button()
         Me.GBwork.SuspendLayout()
         Me.SuspendLayout()
         '
         'LabInput
         '
         Me.LabInput.AutoSize = True
-        Me.LabInput.Location = New System.Drawing.Point(12, 9)
+        Me.LabInput.Location = New System.Drawing.Point(12, 30)
         Me.LabInput.Name = "LabInput"
         Me.LabInput.Size = New System.Drawing.Size(105, 19)
         Me.LabInput.TabIndex = 0
@@ -59,7 +61,7 @@ Partial Class SMD骨骼修整器
         '
         'TxtSMD
         '
-        Me.TxtSMD.Location = New System.Drawing.Point(123, 9)
+        Me.TxtSMD.Location = New System.Drawing.Point(123, 30)
         Me.TxtSMD.MaxLength = 500
         Me.TxtSMD.Name = "TxtSMD"
         Me.TxtSMD.Size = New System.Drawing.Size(567, 25)
@@ -68,13 +70,14 @@ Partial Class SMD骨骼修整器
         '
         'GBwork
         '
+        Me.GBwork.Controls.Add(Me.ButClearOtherTexture)
         Me.GBwork.Controls.Add(Me.LabLog)
         Me.GBwork.Controls.Add(Me.ButDoLog)
         Me.GBwork.Controls.Add(Me.TxtLOG)
         Me.GBwork.Controls.Add(Me.ButRenameMaterial)
         Me.GBwork.Controls.Add(Me.TxtRenameMaterial)
         Me.GBwork.Controls.Add(Me.ListOtherMaterial)
-        Me.GBwork.Controls.Add(Me.Label1)
+        Me.GBwork.Controls.Add(Me.LabOtherMaterial)
         Me.GBwork.Controls.Add(Me.ListMaterial)
         Me.GBwork.Controls.Add(Me.ButRenameF)
         Me.GBwork.Controls.Add(Me.LabBones)
@@ -85,13 +88,44 @@ Partial Class SMD骨骼修整器
         Me.GBwork.Controls.Add(Me.ButSave)
         Me.GBwork.Controls.Add(Me.ListBones)
         Me.GBwork.Controls.Add(Me.LabBoneInfo)
-        Me.GBwork.Location = New System.Drawing.Point(12, 40)
+        Me.GBwork.Location = New System.Drawing.Point(12, 64)
         Me.GBwork.Name = "GBwork"
         Me.GBwork.Size = New System.Drawing.Size(791, 554)
         Me.GBwork.TabIndex = 2
         Me.GBwork.TabStop = False
         Me.GBwork.Text = "操作区"
         Me.GBwork.Visible = False
+        '
+        'LabLog
+        '
+        Me.LabLog.AutoSize = True
+        Me.LabLog.Location = New System.Drawing.Point(551, 220)
+        Me.LabLog.Name = "LabLog"
+        Me.LabLog.Size = New System.Drawing.Size(74, 19)
+        Me.LabLog.TabIndex = 17
+        Me.LabLog.Text = "操作记录："
+        '
+        'ButDoLog
+        '
+        Me.ButDoLog.Enabled = False
+        Me.ButDoLog.Location = New System.Drawing.Point(653, 207)
+        Me.ButDoLog.Name = "ButDoLog"
+        Me.ButDoLog.Size = New System.Drawing.Size(121, 34)
+        Me.ButDoLog.TabIndex = 16
+        Me.ButDoLog.TabStop = False
+        Me.ButDoLog.Text = "执行以下操作"
+        Me.ButDoLog.UseVisualStyleBackColor = True
+        '
+        'TxtLOG
+        '
+        Me.TxtLOG.Font = New System.Drawing.Font("微软雅黑", 8.0!)
+        Me.TxtLOG.Location = New System.Drawing.Point(521, 242)
+        Me.TxtLOG.Multiline = True
+        Me.TxtLOG.Name = "TxtLOG"
+        Me.TxtLOG.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TxtLOG.Size = New System.Drawing.Size(253, 137)
+        Me.TxtLOG.TabIndex = 15
+        Me.TxtLOG.WordWrap = False
         '
         'ButRenameMaterial
         '
@@ -124,14 +158,14 @@ Partial Class SMD骨骼修整器
         Me.ListOtherMaterial.TabIndex = 12
         Me.ListOtherMaterial.TabStop = False
         '
-        'Label1
+        'LabOtherMaterial
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(527, 389)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(224, 19)
-        Me.Label1.TabIndex = 11
-        Me.Label1.Text = "↓可以把其他文件拖入到待选贴图列表"
+        Me.LabOtherMaterial.AutoSize = True
+        Me.LabOtherMaterial.Location = New System.Drawing.Point(527, 389)
+        Me.LabOtherMaterial.Name = "LabOtherMaterial"
+        Me.LabOtherMaterial.Size = New System.Drawing.Size(224, 19)
+        Me.LabOtherMaterial.TabIndex = 11
+        Me.LabOtherMaterial.Text = "↓可以把其他文件拖入到待选贴图列表"
         '
         'ListMaterial
         '
@@ -236,7 +270,7 @@ Partial Class SMD骨骼修整器
         '
         'ButGoRead
         '
-        Me.ButGoRead.Location = New System.Drawing.Point(696, 7)
+        Me.ButGoRead.Location = New System.Drawing.Point(696, 31)
         Me.ButGoRead.Name = "ButGoRead"
         Me.ButGoRead.Size = New System.Drawing.Size(107, 27)
         Me.ButGoRead.TabIndex = 3
@@ -249,42 +283,32 @@ Partial Class SMD骨骼修整器
         Me.Always.Enabled = True
         Me.Always.Interval = 20
         '
-        'TxtLOG
+        'LabNote
         '
-        Me.TxtLOG.Font = New System.Drawing.Font("微软雅黑", 8.0!)
-        Me.TxtLOG.Location = New System.Drawing.Point(521, 242)
-        Me.TxtLOG.Multiline = True
-        Me.TxtLOG.Name = "TxtLOG"
-        Me.TxtLOG.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtLOG.Size = New System.Drawing.Size(253, 137)
-        Me.TxtLOG.TabIndex = 15
-        Me.TxtLOG.WordWrap = False
+        Me.LabNote.AutoSize = True
+        Me.LabNote.Location = New System.Drawing.Point(12, 8)
+        Me.LabNote.Name = "LabNote"
+        Me.LabNote.Size = New System.Drawing.Size(499, 19)
+        Me.LabNote.TabIndex = 4
+        Me.LabNote.Text = "注意：本工具不稳定性略强，建议不要用了（ 很可能对SMD产生的是破坏而不是修整"
         '
-        'ButDoLog
+        'ButClearOtherTexture
         '
-        Me.ButDoLog.Enabled = False
-        Me.ButDoLog.Location = New System.Drawing.Point(653, 207)
-        Me.ButDoLog.Name = "ButDoLog"
-        Me.ButDoLog.Size = New System.Drawing.Size(121, 34)
-        Me.ButDoLog.TabIndex = 16
-        Me.ButDoLog.TabStop = False
-        Me.ButDoLog.Text = "执行以下操作"
-        Me.ButDoLog.UseVisualStyleBackColor = True
-        '
-        'LabLog
-        '
-        Me.LabLog.AutoSize = True
-        Me.LabLog.Location = New System.Drawing.Point(551, 220)
-        Me.LabLog.Name = "LabLog"
-        Me.LabLog.Size = New System.Drawing.Size(74, 19)
-        Me.LabLog.TabIndex = 17
-        Me.LabLog.Text = "操作记录："
+        Me.ButClearOtherTexture.Enabled = False
+        Me.ButClearOtherTexture.Location = New System.Drawing.Point(393, 523)
+        Me.ButClearOtherTexture.Name = "ButClearOtherTexture"
+        Me.ButClearOtherTexture.Size = New System.Drawing.Size(122, 25)
+        Me.ButClearOtherTexture.TabIndex = 18
+        Me.ButClearOtherTexture.TabStop = False
+        Me.ButClearOtherTexture.Text = "清空待选贴图"
+        Me.ButClearOtherTexture.UseVisualStyleBackColor = True
         '
         'SMD骨骼修整器
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(815, 606)
+        Me.ClientSize = New System.Drawing.Size(815, 630)
+        Me.Controls.Add(Me.LabNote)
         Me.Controls.Add(Me.ButGoRead)
         Me.Controls.Add(Me.GBwork)
         Me.Controls.Add(Me.TxtSMD)
@@ -318,11 +342,13 @@ Partial Class SMD骨骼修整器
     Friend WithEvents ListOtherBones As ListBox
     Friend WithEvents ButRenameF As Button
     Friend WithEvents ListMaterial As ListBox
-    Friend WithEvents Label1 As Label
+    Friend WithEvents LabOtherMaterial As Label
     Friend WithEvents ListOtherMaterial As ListBox
     Friend WithEvents ButRenameMaterial As Button
     Friend WithEvents TxtRenameMaterial As TextBox
     Friend WithEvents TxtLOG As TextBox
     Friend WithEvents ButDoLog As Button
     Friend WithEvents LabLog As Label
+    Friend WithEvents LabNote As Label
+    Friend WithEvents ButClearOtherTexture As Button
 End Class

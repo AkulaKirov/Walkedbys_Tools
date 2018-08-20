@@ -123,7 +123,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Public\SMD文件处理.vb" />
     <Compile Include="Public\通用.vb" />
     <Compile Include="Core\控件优化.vb" />
     <Compile Include="Core\文件处理.vb" />
