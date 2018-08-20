@@ -178,7 +178,7 @@ Module 文件处理
     ''' </summary>
     Public Function 文件后缀(文件 As String) As String
         If 文件.Length < 5 Then Return ""
-        Return 去左(Regex.Match(文件, "\..*").ToString.ToLower, 1)
+        Return 去左(Regex.Match(文件名(文件, True), "\..*").ToString.ToLower, 1)
     End Function
 
     ''' <summary>
@@ -202,11 +202,9 @@ Module 文件处理
     ''' </summary>
     Public Function 文件名(文件 As String, Optional 带后缀 As Boolean = False) As String
         If 文件.Length < 5 OrElse (Not 包含(文件, ":", "\")) Then Return 文件
-        If 带后缀 Then
-            Return 去除(文件, 文件路径(文件))
-        Else
-            Return 去除(文件, 文件路径(文件), Regex.Match(文件, "\..*").ToString)
-        End If
+        Dim s As String = 去除(文件, 文件路径(文件))
+        If Not 带后缀 Then s = 正则去除(s, "\..*")
+        Return s
     End Function
 
     ''' <summary>

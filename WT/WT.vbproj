@@ -123,6 +123,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Public\SMD文件处理.vb" />
     <Compile Include="Public\通用.vb" />
     <Compile Include="Core\控件优化.vb" />
     <Compile Include="Core\文件处理.vb" />
@@ -149,6 +150,12 @@
       <DependentUpon>GM模组发布器.vb</DependentUpon>
     </Compile>
     <Compile Include="Tool\GM模组发布器.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tool\SMD骨骼修整器.Designer.vb">
+      <DependentUpon>SMD骨骼修整器.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\SMD骨骼修整器.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Tool\创意工坊篡改器.Designer.vb">
@@ -218,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\GM模组发布器.resx">
       <DependentUpon>GM模组发布器.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\SMD骨骼修整器.resx">
+      <DependentUpon>SMD骨骼修整器.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\创意工坊篡改器.resx">
       <DependentUpon>创意工坊篡改器.vb</DependentUpon>

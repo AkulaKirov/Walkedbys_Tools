@@ -73,9 +73,9 @@ Module 字符串处理
         If 列表.count < 1 Then Return ""
         Dim s As String = "", i As Integer = 0
         For i = 0 To 列表.count - 1
-            s += 去回车(列表.item(i).ToString) + vbCrLf
+            s += 列表.item(i).ToString + vbCrLf
         Next
-        Return 去右(s, 2)
+        Return 去右(s, vbCrLf.Length)
     End Function
 
     ''' <summary>
@@ -236,7 +236,7 @@ Module 字符串处理
     End Function
 
     ''' <summary>
-    ''' 提取在文字中头开始的字符
+    ''' 提取在文字中头开始到结尾的字符
     ''' </summary>
     Public Function 提取(文字 As String, 头 As String) As String
         If 包含(文字, 头) Then Return Mid(文字, InStr(文字, 头, CompareMethod.Text) + 头.Length, 文字.Length)

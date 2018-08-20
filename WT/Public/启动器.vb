@@ -22,7 +22,6 @@ Public Class 启动器
     Dim 关于链接 As New List(Of LinkLabel)
     Dim 版本 As Single = My.Application.Info.Version.Major + (My.Application.Info.Version.Minor / 10)
     Dim 计时 As Integer = 0
-    Dim 统计页 As WebBrowser
 
     Private Sub 启动器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Icon = 图标
@@ -40,6 +39,7 @@ Public Class 启动器
         工具列表.Add(New 工具(" 工具箱设置", 程序设置, "AllSettings", "关于本工具箱的一些设置。"))
         工具列表.Add(New 工具("文件筛选", 文件筛选, "FileChoose", "把A文件夹B文件夹的文件选择性的复制到C文件夹。"))
         工具列表.Add(New 工具("Workshop物品篡改器", 创意工坊篡改器, "WorkshopCut", "可以直接修改 Steam Workshop 指定物品的信息，但是你必须是这个物品的上传者或贡献者。"))
+        工具列表.Add(New 工具("SMD骨骼修整器", SMD骨骼修整器, "SMDmover", "修整一个SMD的骨骼和权重"))
         AddHandler SizeChanged, AddressOf 最小化隐藏
         Dim t As 工具, b As Button, i As Integer, g As String
         For Each t In 工具列表
@@ -86,14 +86,6 @@ Public Class 启动器
         新增关于链接("请我喝可乐", "https://walkedby.com/donateme/")
         Refresh()
         TimerX.Enabled = True
-        If Not 设置.读取真假("NoReportBack") Then
-            统计页 = New WebBrowser
-            With 统计页
-                .Visible = False
-                .ScriptErrorsSuppressed = False
-                .Navigate("https://walkedby.com/other/wt_analytics?v=" + 版本.ToString)
-            End With
-        End If
     End Sub
 
     Private Sub 启动器_FormClosing(sender As Form, e As FormClosingEventArgs) Handles Me.FormClosing
@@ -231,6 +223,8 @@ Public Class 启动器
                         End If
                     Next
                 End If
+            Case 2
+                TimerX.Enabled = False
         End Select
     End Sub
 

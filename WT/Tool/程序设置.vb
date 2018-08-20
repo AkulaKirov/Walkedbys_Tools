@@ -5,7 +5,6 @@ Public Class 程序设置
         对应CheckBox(CheckExit, "ExitAtMain")
         对应CheckBox(CheckUpdate, "NoUpdateAtMain")
         对应CheckBox(CheckHide, "HideWindowAtMin")
-        对应CheckBox(CheckNoReport, "NoReportBack")
         对应CheckBox(CheckStartUP, "StartUP")
     End Sub
 
@@ -19,22 +18,29 @@ Public Class 程序设置
                               End Sub
     End Sub
 
-    Private Sub LinkReport_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkReport.LinkClicked
+    Private Sub LinkReport_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs)
         Process.Start("https://s1.ax1x.com/2018/08/15/P2oz36.png")
     End Sub
 
     Private Sub CheckStartUP_CheckedChanged(sender As Object, e As EventArgs) Handles CheckStartUP.CheckedChanged
-        Dim s As String = "C:\Users\" + 当前用户名 + "\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\走過去的工具箱.lnk"
-        删除(去右(s, 3) + ".bat")
-        If CheckStartUP.Checked Then
-            创建快捷方式(s, 程序文件目录 + "wt.exe")
-        Else
-            删除(s)
-        End If
+        Try
+            Dim s As String = "C:\Users\" + 当前用户名 + "\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\走過去的工具箱.lnk"
+            If CheckStartUP.Checked Then
+                创建快捷方式(s, 程序文件目录 + "wt.exe")
+            Else
+                删除(s)
+            End If
+        Catch ex As Exception
+            MsgBox("未能成功创建或删除开机启动用的快捷方式。" + vbCrLf + ex.Message, MsgBoxStyle.Critical, "创建文件出错啦")
+        End Try
     End Sub
 
     Public Sub ButCreateSC_Click() Handles ButCreateSC.Click
-        创建快捷方式(追加斜杠(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)) + "走過去的工具箱.lnk", 程序文件目录 + "wt.exe")
+        Try
+            创建快捷方式(追加斜杠(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)) + "走過去的工具箱.lnk", 程序文件目录 + "wt.exe")
+        Catch ex As Exception
+            MsgBox("未能成功创建桌面快捷方式。" + vbCrLf + ex.Message, MsgBoxStyle.Critical, "创建文件出错啦")
+        End Try
     End Sub
 
 End Class
