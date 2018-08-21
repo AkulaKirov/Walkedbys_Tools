@@ -163,12 +163,6 @@
     <Compile Include="Tool\创意工坊篡改器.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tool\博客系统.Designer.vb">
-      <DependentUpon>博客系统.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Tool\博客系统.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Tool\文件夹创建器.Designer.vb">
       <DependentUpon>文件夹创建器.vb</DependentUpon>
     </Compile>
@@ -237,9 +231,6 @@
     <EmbeddedResource Include="Tool\创意工坊篡改器.resx">
       <DependentUpon>创意工坊篡改器.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tool\博客系统.resx">
-      <DependentUpon>博客系统.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Tool\文件夹创建器.resx">
       <DependentUpon>文件夹创建器.vb</DependentUpon>
     </EmbeddedResource>
@@ -307,9 +298,6 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Res\maincss.css" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
