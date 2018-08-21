@@ -39,6 +39,7 @@ Public Class 启动器
         工具列表.Add(New 工具(" 工具箱设置", 程序设置, "AllSettings", "关于本工具箱的一些设置。"))
         工具列表.Add(New 工具("文件筛选", 文件筛选, "FileChoose", "把A文件夹B文件夹的文件选择性的复制到C文件夹。"))
         工具列表.Add(New 工具("Workshop物品篡改器", 创意工坊篡改器, "WorkshopCut", "可以直接修改 Steam Workshop 指定物品的信息，但是你必须是这个物品的上传者或贡献者。"))
+        工具列表.Add(New 工具("博客系统", 博客系统, "BlogSystem", "走過去自己制作的一个简易静态博客生成系统，只有一个自带模板，不能换模板。"))
         工具列表.Add(New 工具("SMD骨骼修整器", SMD骨骼修整器, "SMDmover", "（不推荐使用）修整一个SMD的骨骼的名字或者贴图的名字。"))
         AddHandler SizeChanged, AddressOf 最小化隐藏
         Dim t As 工具, b As Button, i As Integer, g As String

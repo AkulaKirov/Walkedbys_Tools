@@ -81,6 +81,75 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  查找类似 &lt;body&gt;&lt;div id=&quot;header&quot;&gt;&lt;div id=&quot;headercontent&quot;&gt;&lt;div id=&quot;logoimage&quot;&gt;&lt;/div&gt;
+        '''&lt;div id=&quot;title&quot;&gt;博客标题&lt;/div&gt;&lt;div id=&quot;headerlinks&quot;&gt;超链接
+        '''&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div id=&quot;mainbody&quot;&gt; 的本地化字符串。
+        '''</summary>
+        Friend ReadOnly Property 博客HTML_1() As String
+            Get
+                Return ResourceManager.GetString("博客HTML_1", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找类似 &lt;div class=&quot;post&quot;&gt;
+        '''&lt;div class=&quot;posttitle&quot;&gt;
+        '''&lt;a class=&quot;postname&quot; href=&quot;/&quot;&gt;标题&lt;/a&gt;日期&lt;/div&gt;
+        '''&lt;div class=&quot;postblock&quot;&gt;
+        '''&lt;div class=&quot;postcontent&quot;&gt;内容&lt;/div&gt;&lt;/div&gt;&lt;/div&gt; 的本地化字符串。
+        '''</summary>
+        Friend ReadOnly Property 博客HTML_2() As String
+            Get
+                Return ResourceManager.GetString("博客HTML_2", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找类似 &lt;/div&gt;&lt;/body&gt;&lt;/html&gt; 的本地化字符串。
+        '''</summary>
+        Friend ReadOnly Property 博客HTML_3() As String
+            Get
+                Return ResourceManager.GetString("博客HTML_3", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找类似 &lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+        '''&lt;title&gt;标题&lt;/title&gt;
+        '''&lt;meta name=&quot;description&quot; content=&quot;简介&quot;&gt;
+        '''&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+        '''&lt;link rel=&quot;icon&quot; href=&quot;/favicon.ico&quot;&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;/maincss.css&quot;&gt; 的本地化字符串。
+        '''</summary>
+        Friend ReadOnly Property 博客HTMLhead() As String
+            Get
+                Return ResourceManager.GetString("博客HTMLhead", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找类似 &lt;!--
+        '''标题：title
+        '''时间：date
+        '''--&gt;
+        '''&lt;h1&gt;把你的文章正文写在这里~&lt;/h1&gt;
+        '''目前只支持&lt;br&gt;html 的本地化字符串。
+        '''</summary>
+        Friend ReadOnly Property 博客HTML文章模板() As String
+            Get
+                Return ResourceManager.GetString("博客HTML文章模板", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找类似 html{font-family:&quot;Microsoft Yahei&quot;,&quot;Helvetica Neue&quot;,&quot;Hiragino Sans GB&quot;,&quot;Noto Sans SC&quot;,Consolas,Tahoma,Arial,sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{background-image:url(/images/bg.png);background-color:#000;background-repeat:no-repeat;background-size:contain;margin:0;font-size:14px;color:#fff}a{text-decoration:none;cursor:pointer;color:#ef4b4b}h1{font-size:20px;color:#5aa9d6;font-weight:700}h2{font-size:16px;color:#5aa9d6;font-weight:700}h3,h4,h5,h6{font-size:13px;font-weight [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        '''</summary>
+        Friend ReadOnly Property 压缩CSS() As String
+            Get
+                Return ResourceManager.GetString("压缩CSS", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  查找 System.Drawing.Bitmap 类型的本地化资源。
         '''</summary>
         Friend ReadOnly Property 无响应() As System.Drawing.Bitmap

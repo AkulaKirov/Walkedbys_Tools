@@ -30,11 +30,12 @@ Module 通用
     End Sub
 
     Public Sub 最小化隐藏(sender As Form, e As EventArgs)
-        If sender.WindowState = FormWindowState.Minimized Then
-            If Not 设置.读取真假("HideWindowAtMin") Then 隐藏到后台(sender)
-        Else
-            显示到前台(sender)
-        End If
+        Select Case sender.WindowState
+            Case FormWindowState.Minimized
+                If Not 设置.读取真假("HideWindowAtMin") Then 隐藏到后台(sender)
+            Case FormWindowState.Normal
+                显示到前台(sender)
+        End Select
     End Sub
 
     Public Sub 隐藏到后台(sender As Form)
@@ -69,6 +70,7 @@ Module 通用
             窗体.Icon = 图标
             窗体.ImeMode = 启动器.ImeMode
             窗体.ShowInTaskbar = True
+            窗体.MaximizeBox = False
             窗体.AutoScaleMode = AutoScaleMode.Dpi
             AddHandler 窗体.FormClosing, Sub(sender As Object, e As FormClosingEventArgs)
                                            e.Cancel = True
