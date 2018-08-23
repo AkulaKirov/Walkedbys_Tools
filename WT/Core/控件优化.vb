@@ -45,13 +45,13 @@ Module 控件优化
             AddHandler i.DragDrop, Sub(sender As TextBox, e As Forms.DragEventArgs)
                                        sender.Text = ""
                                        For Each m As String In e.Data.GetData(Forms.DataFormats.FileDrop)
-                                           sender.Text = m
+                                           sender.Text = 追加斜杠(m)
                                            Exit For
                                        Next
                                        sender.SelectionStart = sender.TextLength
                                    End Sub
             AddHandler i.TextChanged, Sub()
-                                          Dim s As String = Trim(i.Text)
+                                          Dim s As String = Trim(追加斜杠(i.Text))
                                           If s.Length < 1 Then Exit Sub
                                           If Not 文件夹存在(s) Then s = ""
                                           i.Text = s

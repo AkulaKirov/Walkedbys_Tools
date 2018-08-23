@@ -23,23 +23,29 @@ Public Class 启动器
     Dim 版本 As Single = My.Application.Info.Version.Major + (My.Application.Info.Version.Minor / 10)
     Dim 计时 As Integer = 0
 
+    Sub 新工具(名字 As String, 窗体 As Form, ID As String, 简介 As String)
+        工具列表.Add(New 工具(名字, 窗体, ID, 简介))
+    End Sub
+
     Private Sub 启动器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Icon = 图标
         Text = "走過去的工具箱 测试版 v" + 版本.ToString
         Nico.Icon = 图标
         If Not 设置.读取真假("NoUpdateAtMain") Then Th更新.Start()
         Directory.CreateDirectory(TempF)
-        工具列表.Add(New 工具("文件夹创建器", 文件夹创建器, "MKDIR", "输入一个路径，就能新建好你要的文件夹。"))
-        工具列表.Add(New 工具("B站图床", B站图床, "BilibiliPic", "把20MB以下的图片无损放到B站服务器还行。"))
-        工具列表.Add(New 工具("日子提醒器", 日子提醒, "DayReminder", "可以拿来提醒生日或者重要的啥日子。"))
-        工具列表.Add(New 工具("监视式VMT生成器", VMT生成器, "VMTG", "给一个贴图文件夹监视式地批量生成 VMT 文件。"))
-        工具列表.Add(New 工具("系统代理设置", 系统代理设置, "ProxyManager", "快速设置系统代理。"))
-        工具列表.Add(New 工具("GMod模组发布器", GM模组发布器, "GMAddonPu", "打包GMA文件，发布或更新 Addon 到 Garry's Mod Workshop。"))
-        工具列表.Add(New 工具("未响应图片制作器", 未响应图片制作器, "NoResPic", "制作假装程序未响应的假图片。"))
-        工具列表.Add(New 工具(" 工具箱设置", 程序设置, "AllSettings", "关于本工具箱的一些设置。"))
-        工具列表.Add(New 工具("文件筛选", 文件筛选, "FileChoose", "把A文件夹B文件夹的文件选择性的复制到C文件夹。"))
-        工具列表.Add(New 工具("Workshop物品篡改器", 创意工坊篡改器, "WorkshopCut", "可以直接修改 Steam Workshop 指定物品的信息，但是你必须是这个物品的上传者或贡献者。"))
-        工具列表.Add(New 工具("SMD骨骼修整器", SMD骨骼修整器, "SMDmover", "（不推荐使用）修整一个SMD的骨骼的名字或者贴图的名字。"))
+        新工具("文件夹创建器", 文件夹创建器, "MKDIR", "输入一个路径，就能新建好你要的文件夹。")
+        新工具("B站图床", B站图床, "BilibiliPic", "把20MB以下的图片无损放到B站服务器还行。")
+        新工具("日子提醒器", 日子提醒, "DayReminder", "可以拿来提醒生日或者重要的啥日子。")
+        新工具("监视式VMT生成器", VMT生成器, "VMTG", "给一个贴图文件夹监视式地批量生成 VMT 文件。")
+        新工具("系统代理设置", 系统代理设置, "ProxyManager", "快速设置系统代理。")
+        新工具("GMod模组发布器", GM模组发布器, "GMAddonPu", "打包GMA文件，发布或更新 Addon 到 Garry's Mod Workshop。")
+        新工具("未响应图片制作器", 未响应图片制作器, "NoResPic", "制作假装程序未响应的假图片。")
+        新工具(" 工具箱设置", 程序设置, "AllSettings", "关于本工具箱的一些设置。")
+        新工具("文件筛选", 文件筛选, "FileChoose", "把A文件夹B文件夹的文件选择性的复制到C文件夹。")
+        新工具("Workshop物品篡改器", 创意工坊篡改器, "WorkshopCut", "可以直接修改 Steam Workshop 指定物品的信息，但是你必须是这个物品的上传者或贡献者。")
+        新工具("SMD骨骼修整器", SMD骨骼修整器, "SMDmover", "（不推荐使用）修整一个SMD的骨骼的名字或者贴图的名字。")
+        '新工具("临时工具", 临时工具, "Whatever", "临时用的工具，你不应该在公开发布版里面看见我。")
+        新工具("剪贴板记录器", 剪贴板记录器, "clipboardrecord", "可以帮你在后台记录剪贴板的内容到硬盘里。")
         AddHandler SizeChanged, AddressOf 最小化隐藏
         Dim t As 工具, b As Button, i As Integer, g As String
         For Each t In 工具列表
@@ -86,6 +92,7 @@ Public Class 启动器
         新增关于链接("请我喝可乐", "https://walkedby.com/donateme/")
         Refresh()
         TimerX.Enabled = True
+        剪贴板记录器.剪贴板记录器_Load(sender, e)
     End Sub
 
     Private Sub 启动器_FormClosing(sender As Form, e As FormClosingEventArgs) Handles Me.FormClosing
