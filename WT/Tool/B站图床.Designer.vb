@@ -26,6 +26,7 @@ Partial Class B站图床
         Me.ButCopy = New System.Windows.Forms.Button()
         Me.ButPaste = New System.Windows.Forms.Button()
         Me.PicBox = New System.Windows.Forms.PictureBox()
+        Me.ButRetry = New System.Windows.Forms.Button()
         CType(Me.PicBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -45,6 +46,7 @@ Partial Class B站图床
         Me.ButCopy.Name = "ButCopy"
         Me.ButCopy.Size = New System.Drawing.Size(96, 34)
         Me.ButCopy.TabIndex = 1
+        Me.ButCopy.TabStop = False
         Me.ButCopy.Text = "复制链接"
         Me.ButCopy.UseVisualStyleBackColor = True
         '
@@ -54,6 +56,7 @@ Partial Class B站图床
         Me.ButPaste.Name = "ButPaste"
         Me.ButPaste.Size = New System.Drawing.Size(99, 34)
         Me.ButPaste.TabIndex = 2
+        Me.ButPaste.TabStop = False
         Me.ButPaste.Text = "粘贴图片"
         Me.ButPaste.UseVisualStyleBackColor = True
         '
@@ -66,12 +69,24 @@ Partial Class B站图床
         Me.PicBox.TabIndex = 3
         Me.PicBox.TabStop = False
         '
+        'ButRetry
+        '
+        Me.ButRetry.Enabled = False
+        Me.ButRetry.Location = New System.Drawing.Point(309, 304)
+        Me.ButRetry.Name = "ButRetry"
+        Me.ButRetry.Size = New System.Drawing.Size(96, 34)
+        Me.ButRetry.TabIndex = 4
+        Me.ButRetry.TabStop = False
+        Me.ButRetry.Text = "重试上传"
+        Me.ButRetry.UseVisualStyleBackColor = True
+        '
         'B站图床
         '
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(626, 357)
+        Me.Controls.Add(Me.ButRetry)
         Me.Controls.Add(Me.ButPaste)
         Me.Controls.Add(Me.ButCopy)
         Me.Controls.Add(Me.LabDoit)
@@ -92,4 +107,5 @@ Partial Class B站图床
     Friend WithEvents ButCopy As Button
     Friend WithEvents ButPaste As Button
     Friend WithEvents PicBox As PictureBox
+    Friend WithEvents ButRetry As Button
 End Class

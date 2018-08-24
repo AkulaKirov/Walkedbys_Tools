@@ -1,14 +1,18 @@
-﻿Imports System.ComponentModel
-
+﻿
 Public Class B站图床
 
     Dim TH As Thread
     Dim 上传中 As Boolean = False
     Dim 图片 As String = ""
     Dim 预览图 As Image
+    Dim 重试 As Boolean = False
 
     Private Sub B站图床_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LabDoit.Tag = LabDoit.Text
+        ButPaste.Enabled = True
+        ButRetry.Enabled = False
+        ButCopy.Enabled = False
+        PicBox.Image = Nothing
     End Sub
 
     Private Sub B站图床_DragDrop(sender As Object, e As Forms.DragEventArgs) Handles Me.DragDrop
@@ -20,6 +24,7 @@ Public Class B站图床
     End Sub
 
     Sub 检查图片(m As String)
+        ButRetry.Enabled = False
         ButCopy.Enabled = False
         预览图 = Nothing
         If 文件存在(m) AndAlso 文件可读写(m) AndAlso 是当中一个(文件后缀(m), "jpg", "png", "gif") AndAlso 文件大小(m) < 20 Then
@@ -51,6 +56,7 @@ Public Class B站图床
             ButCopy.Enabled = True
         Else
             LabDoit.Text = "失败！" + vbCrLf + s
+            ButRetry.Enabled = True
         End If
         上传中 = False
         ButPaste.Enabled = True
@@ -83,6 +89,17 @@ Public Class B站图床
                 LabDoit.Text = "剪贴板图片有误：" + vbCrLf + ex.Message
             End Try
         End If
+    End Sub
+
+    Private Sub ButRetry_Click(sender As Object, e As EventArgs) Handles ButRetry.Click
+        Dim n As Image = PicBox.Image
+        Dim i As String = TempF + "bilibilitemp.png"
+        n.Save(i)
+        检查图片(i)
+    End Sub
+
+    Private Sub B站图床_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+
     End Sub
 
 End Class

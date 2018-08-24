@@ -10,10 +10,11 @@ Public Class 启动器
                                Dim out As String = ""
                                If 全部包含(t, "这是一个检查更新版本用的", "<root>") Then
                                    Dim v As Single = Val(提取XML(t, "root", "ver"))
+                                   t = v.ToString + "）"
                                    If 版本 < v Then
-                                       GBabout.Text += "（检测到新版本：v" + v.ToString + "）"
+                                       GBabout.Text += "（检测到新版本：v" + t
                                    Else
-                                       GBabout.Text += "（已是最新版本：v" + v.ToString + "）"
+                                       GBabout.Text += "（已是最新版本：v" + t
                                    End If
                                Else
                                    GBabout.Text += "（检查更新失败）"
@@ -22,10 +23,6 @@ Public Class 启动器
     Dim 关于链接 As New List(Of LinkLabel)
     Dim 版本 As Single = My.Application.Info.Version.Major + (My.Application.Info.Version.Minor / 10)
     Dim 计时 As Integer = 0
-
-    Sub 新工具(名字 As String, 窗体 As Form, ID As String, 简介 As String)
-        工具列表.Add(New 工具(名字, 窗体, ID, 简介))
-    End Sub
 
     Private Sub 启动器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Icon = 图标
@@ -93,6 +90,10 @@ Public Class 启动器
         Refresh()
         TimerX.Enabled = True
         剪贴板记录器.剪贴板记录器_Load(sender, e)
+    End Sub
+
+    Sub 新工具(名字 As String, 窗体 As Form, ID As String, 简介 As String)
+        工具列表.Add(New 工具(名字, 窗体, ID, 简介))
     End Sub
 
     Private Sub 启动器_FormClosing(sender As Form, e As FormClosingEventArgs) Handles Me.FormClosing
