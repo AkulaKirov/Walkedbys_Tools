@@ -28,7 +28,9 @@ Partial Class 网站监视器
         Me.ButREAD = New System.Windows.Forms.Button()
         Me.ListWhen = New System.Windows.Forms.ComboBox()
         Me.GBweb = New System.Windows.Forms.GroupBox()
-        Me.ButRefresh = New System.Windows.Forms.Button()
+        Me.ButIE = New System.Windows.Forms.Button()
+        Me.ButiPhone = New System.Windows.Forms.Button()
+        Me.ButChrome = New System.Windows.Forms.Button()
         Me.ButSave = New System.Windows.Forms.Button()
         Me.TxtLast = New System.Windows.Forms.TextBox()
         Me.LabLast = New System.Windows.Forms.Label()
@@ -43,9 +45,8 @@ Partial Class 网站监视器
         Me.TxtURL = New System.Windows.Forms.TextBox()
         Me.LabURL = New System.Windows.Forms.Label()
         Me.ButRM = New System.Windows.Forms.Button()
-        Me.ButChrome = New System.Windows.Forms.Button()
-        Me.ButiPhone = New System.Windows.Forms.Button()
-        Me.ButIE = New System.Windows.Forms.Button()
+        Me.LabREGEX = New System.Windows.Forms.Label()
+        Me.TxtRegex = New System.Windows.Forms.TextBox()
         Me.GBweb.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -100,10 +101,11 @@ Partial Class 网站监视器
         '
         'GBweb
         '
+        Me.GBweb.Controls.Add(Me.TxtRegex)
+        Me.GBweb.Controls.Add(Me.LabREGEX)
         Me.GBweb.Controls.Add(Me.ButIE)
         Me.GBweb.Controls.Add(Me.ButiPhone)
         Me.GBweb.Controls.Add(Me.ButChrome)
-        Me.GBweb.Controls.Add(Me.ButRefresh)
         Me.GBweb.Controls.Add(Me.ButSave)
         Me.GBweb.Controls.Add(Me.TxtLast)
         Me.GBweb.Controls.Add(Me.LabLast)
@@ -120,24 +122,44 @@ Partial Class 网站监视器
         Me.GBweb.Controls.Add(Me.ButRM)
         Me.GBweb.Location = New System.Drawing.Point(12, 67)
         Me.GBweb.Name = "GBweb"
-        Me.GBweb.Size = New System.Drawing.Size(744, 306)
+        Me.GBweb.Size = New System.Drawing.Size(744, 344)
         Me.GBweb.TabIndex = 5
         Me.GBweb.TabStop = False
         '
-        'ButRefresh
+        'ButIE
         '
-        Me.ButRefresh.Location = New System.Drawing.Point(3, 261)
-        Me.ButRefresh.Name = "ButRefresh"
-        Me.ButRefresh.Size = New System.Drawing.Size(75, 29)
-        Me.ButRefresh.TabIndex = 14
-        Me.ButRefresh.TabStop = False
-        Me.ButRefresh.Text = "刷新"
-        Me.ButRefresh.UseVisualStyleBackColor = True
+        Me.ButIE.Location = New System.Drawing.Point(658, 107)
+        Me.ButIE.Name = "ButIE"
+        Me.ButIE.Size = New System.Drawing.Size(80, 27)
+        Me.ButIE.TabIndex = 17
+        Me.ButIE.TabStop = False
+        Me.ButIE.Text = "IE11"
+        Me.ButIE.UseVisualStyleBackColor = True
+        '
+        'ButiPhone
+        '
+        Me.ButiPhone.Location = New System.Drawing.Point(572, 107)
+        Me.ButiPhone.Name = "ButiPhone"
+        Me.ButiPhone.Size = New System.Drawing.Size(80, 27)
+        Me.ButiPhone.TabIndex = 16
+        Me.ButiPhone.TabStop = False
+        Me.ButiPhone.Text = "iPhone"
+        Me.ButiPhone.UseVisualStyleBackColor = True
+        '
+        'ButChrome
+        '
+        Me.ButChrome.Location = New System.Drawing.Point(486, 107)
+        Me.ButChrome.Name = "ButChrome"
+        Me.ButChrome.Size = New System.Drawing.Size(80, 27)
+        Me.ButChrome.TabIndex = 15
+        Me.ButChrome.TabStop = False
+        Me.ButChrome.Text = "Chrome"
+        Me.ButChrome.UseVisualStyleBackColor = True
         '
         'ButSave
         '
         Me.ButSave.Enabled = False
-        Me.ButSave.Location = New System.Drawing.Point(611, 225)
+        Me.ButSave.Location = New System.Drawing.Point(614, 261)
         Me.ButSave.Name = "ButSave"
         Me.ButSave.Size = New System.Drawing.Size(127, 43)
         Me.ButSave.TabIndex = 13
@@ -146,7 +168,7 @@ Partial Class 网站监视器
         '
         'TxtLast
         '
-        Me.TxtLast.Location = New System.Drawing.Point(86, 169)
+        Me.TxtLast.Location = New System.Drawing.Point(95, 205)
         Me.TxtLast.MaxLength = 2000
         Me.TxtLast.Multiline = True
         Me.TxtLast.Name = "TxtLast"
@@ -160,7 +182,7 @@ Partial Class 网站监视器
         'LabLast
         '
         Me.LabLast.AutoSize = True
-        Me.LabLast.Location = New System.Drawing.Point(6, 169)
+        Me.LabLast.Location = New System.Drawing.Point(6, 205)
         Me.LabLast.Name = "LabLast"
         Me.LabLast.Size = New System.Drawing.Size(74, 19)
         Me.LabLast.TabIndex = 11
@@ -260,48 +282,36 @@ Partial Class 网站监视器
         '
         'ButRM
         '
-        Me.ButRM.Location = New System.Drawing.Point(611, 274)
+        Me.ButRM.Location = New System.Drawing.Point(614, 310)
         Me.ButRM.Name = "ButRM"
         Me.ButRM.Size = New System.Drawing.Size(127, 26)
         Me.ButRM.TabIndex = 0
         Me.ButRM.Text = "删除本监视项目"
         Me.ButRM.UseVisualStyleBackColor = True
         '
-        'ButChrome
+        'LabREGEX
         '
-        Me.ButChrome.Location = New System.Drawing.Point(486, 107)
-        Me.ButChrome.Name = "ButChrome"
-        Me.ButChrome.Size = New System.Drawing.Size(80, 27)
-        Me.ButChrome.TabIndex = 15
-        Me.ButChrome.TabStop = False
-        Me.ButChrome.Text = "Chrome"
-        Me.ButChrome.UseVisualStyleBackColor = True
+        Me.LabREGEX.AutoSize = True
+        Me.LabREGEX.Location = New System.Drawing.Point(8, 175)
+        Me.LabREGEX.Name = "LabREGEX"
+        Me.LabREGEX.Size = New System.Drawing.Size(152, 19)
+        Me.LabREGEX.TabIndex = 18
+        Me.LabREGEX.Text = "只查找（正则表达式）："
         '
-        'ButiPhone
+        'TxtRegex
         '
-        Me.ButiPhone.Location = New System.Drawing.Point(572, 107)
-        Me.ButiPhone.Name = "ButiPhone"
-        Me.ButiPhone.Size = New System.Drawing.Size(80, 27)
-        Me.ButiPhone.TabIndex = 16
-        Me.ButiPhone.TabStop = False
-        Me.ButiPhone.Text = "iPhone"
-        Me.ButiPhone.UseVisualStyleBackColor = True
-        '
-        'ButIE
-        '
-        Me.ButIE.Location = New System.Drawing.Point(658, 107)
-        Me.ButIE.Name = "ButIE"
-        Me.ButIE.Size = New System.Drawing.Size(80, 27)
-        Me.ButIE.TabIndex = 17
-        Me.ButIE.TabStop = False
-        Me.ButIE.Text = "IE11"
-        Me.ButIE.UseVisualStyleBackColor = True
+        Me.TxtRegex.Location = New System.Drawing.Point(166, 172)
+        Me.TxtRegex.MaxLength = 300
+        Me.TxtRegex.Name = "TxtRegex"
+        Me.TxtRegex.Size = New System.Drawing.Size(572, 25)
+        Me.TxtRegex.TabIndex = 19
+        Me.TxtRegex.TabStop = False
         '
         '网站监视器
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(765, 387)
+        Me.ClientSize = New System.Drawing.Size(765, 423)
         Me.Controls.Add(Me.GBweb)
         Me.Controls.Add(Me.ListWhen)
         Me.Controls.Add(Me.ButREAD)
@@ -341,8 +351,9 @@ Partial Class 网站监视器
     Friend WithEvents LabLast As Label
     Friend WithEvents TxtLast As TextBox
     Friend WithEvents ButSave As Button
-    Friend WithEvents ButRefresh As Button
     Friend WithEvents ButChrome As Button
     Friend WithEvents ButiPhone As Button
     Friend WithEvents ButIE As Button
+    Friend WithEvents LabREGEX As Label
+    Friend WithEvents TxtRegex As TextBox
 End Class

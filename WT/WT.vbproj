@@ -309,9 +309,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Res\ico.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Res\ico.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -330,6 +327,12 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\bigico.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

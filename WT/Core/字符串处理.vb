@@ -34,6 +34,19 @@ Module 字符串处理
     End Function
 
     ''' <summary>
+    ''' 判断正则表达式是否正确
+    ''' </summary>
+    Public Function 正确正则表达式(表达式 As String) As Boolean
+        If 表达式.Length < 1 Then Return True
+        Try
+            Dim b As Boolean = Regex.IsMatch("a15", 表达式)
+            Return True
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
+
+    ''' <summary>
     ''' 把文字从左数的几个字给提取出来
     ''' </summary>
     Public Function 左(文字 As String, 个数 As Integer) As String

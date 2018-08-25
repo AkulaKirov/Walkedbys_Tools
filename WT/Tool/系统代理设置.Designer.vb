@@ -156,7 +156,7 @@ Partial Class 系统代理设置
         Me.ButCheckIP.Size = New System.Drawing.Size(289, 36)
         Me.ButCheckIP.TabIndex = 14
         Me.ButCheckIP.TabStop = False
-        Me.ButCheckIP.Text = "联网获取公网IP (ip.chinaz.com)"
+        Me.ButCheckIP.Text = "联网获取公网IP (ip.cn)"
         Me.ButCheckIP.UseVisualStyleBackColor = True
         '
         'TxtIP

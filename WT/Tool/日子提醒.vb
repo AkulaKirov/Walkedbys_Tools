@@ -22,11 +22,13 @@ Public Class 日子提醒
         CBmonth.SelectedIndex = 0
         ListDates.Items.Clear()
         文字转列表(ListDates.Items, 设置.元素("days"))
+        提醒好日子()
     End Sub
 
     Private Sub ButRM_Click(sender As Object, e As EventArgs) Handles ButRM.Click
         移除选中项(ListDates)
         设置.保存元素("days", 列表转文字(ListDates.Items))
+        提醒好日子()
     End Sub
 
     Private Sub ListDates_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListDates.SelectedIndexChanged
@@ -44,6 +46,7 @@ Public Class 日子提醒
         Next
         设置.保存元素("days", 列表转文字(ListDates.Items))
         TxtJOB.Text = ""
+        提醒好日子()
     End Sub
 
     Private Sub TxtJOB_KeyUp(sender As Object, e As KeyEventArgs) Handles TxtJOB.KeyUp
@@ -73,6 +76,7 @@ Public Class 日子提醒
                 ls.Items.Add(凑零(g) & " " & f)
             End If
         Next
+        Tag = ""
         For Each i In ls.Items
             g = Val(左(i, 2))
             f = 去左(i, 3)
@@ -101,10 +105,17 @@ Public Class 日子提醒
                 If m = 2 Then 日子正确 = False
         End Select
         ButADD.Enabled = (TxtJOB.TextLength > 0 AndAlso 日子正确)
+        提醒好日子()
     End Sub
 
     Private Sub CBremind_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBremind.SelectedIndexChanged
         设置.保存元素("Remindtime", CBremind.SelectedIndex.ToString)
+    End Sub
+
+    Private Sub 推送(s As String)
+        非空字符串(Tag)
+        If Tag.ToString.Length > 0 Then Tag += vbCrLf
+        Tag += s
     End Sub
 
 End Class

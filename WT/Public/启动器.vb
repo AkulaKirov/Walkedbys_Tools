@@ -115,11 +115,14 @@ Public Class 启动器
         End
     End Sub
 
-    Sub 检查推送() Handles Me.Activated
+    Sub 检查推送() Handles Me.Activated, TxtUpdate.LostFocus, TxtUpdate.GotFocus
         TxtUpdate.Text = ""
-        日子提醒.日子提醒_Load()
-        日子提醒.提醒好日子()
-        Dim s As String = TxtUpdate.Text
+        Dim s As String = ""
+        For Each t As 工具 In 工具列表
+            If t.推送.Length > 0 Then s += t.推送 + vbCrLf
+        Next
+        s = 去右(s, 2)
+        TxtUpdate.Text = s
         If s.Length > 50 Then s = 左(s, 50) + "..."
         Nico.Text = "走過去的工具箱" + vbCrLf + s
     End Sub

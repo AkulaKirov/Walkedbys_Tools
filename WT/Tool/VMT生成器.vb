@@ -38,10 +38,10 @@ Public Class VMT生成器
         TxtVMT.Focus()
     End Sub
 
-    Private Sub TxtTempName_TextChanged(sender As Object, e As EventArgs) Handles TxtTempName.TextChanged, ButDEL.Click, TxtVMT.TextChanged
+    Private Sub TxtTempName_TextChanged(sender As Object, e As EventArgs) Handles TxtTempName.TextChanged, ButDEL.Click, TxtVMT.TextChanged, TxtSkip.TextChanged
         Dim i As String = Trim(TxtTempName.Text)
         ButADD.Enabled = (i.Length > 0 AndAlso Not 在列表(ListTemps.Items, i) AndAlso TxtVMT.TextLength > 10)
-        ButGen.Enabled = (TxtVMT.TextLength > 10)
+        ButGen.Enabled = (TxtVMT.TextLength > 10 AndAlso 正确正则表达式(TxtSkip.Text))
     End Sub
 
     Private Sub VMT生成器_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing

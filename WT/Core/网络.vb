@@ -151,11 +151,11 @@
         ''' <summary>
         ''' 获得 HTTP 请求的最终回应
         ''' </summary>
-        Public Function 获得回应(Optional 解码 As Boolean = True)
+        Public Function 获得回应(Optional 解码 As Boolean = True) As String
             Try
                 Dim i As String = 读取流(h.GetResponse.GetResponseStream)
                 If 解码 Then i = Regex.Unescape(i)
-                Return i
+                Return 非空字符串(i)
             Catch ex As Exception
                 Return ex.Message
             End Try

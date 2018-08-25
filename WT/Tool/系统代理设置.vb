@@ -26,11 +26,12 @@ Public Class 系统代理设置
     End Sub
 
     Private Sub ButCheckIP_Click(sender As Object, e As EventArgs) Handles ButCheckIP.Click
-        Dim h As New 简易HTTP("http://ip.chinaz.com/getip.aspx")
+        Dim h As New 简易HTTP("https://ip.cn/index.php?")
         h.超时 = 5
         Dim s As String = h.获得回应()
-        If s.Length > 10 AndAlso Regex.IsMatch(s, "{ip:'.+?',address:'.+?'}") Then
-            MsgBox("IP：" + 提取(s, "ip:'", "',") + vbCrLf + "地理信息：" + 提取(s, "address:'", "'}"))
+        s = 提取(s, "result", "</p></div></div>").Replace("</p><p>", vbCrLf)
+        If s.Length > 10 Then
+            MsgBox(正则去除(s, "<.*?>", "<", ">", vbQuote))
         Else
             MsgBox("获取失败！" + vbCrLf + s, MsgBoxStyle.Critical)
         End If

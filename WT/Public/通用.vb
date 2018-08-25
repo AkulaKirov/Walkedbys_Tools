@@ -46,13 +46,6 @@ Module 通用
         Return Nothing
     End Function
 
-    Public Sub 推送(m As String)
-        With 启动器.TxtUpdate
-            If .TextLength > 1 Then .Text += vbCrLf
-            .Text += m
-        End With
-    End Sub
-
     Public Sub 消息(s As String, Optional 警告 As Boolean = False)
         With 启动器.Nico
             .BalloonTipIcon = IIf(警告, ToolTipIcon.Warning, ToolTipIcon.Info)
@@ -148,6 +141,13 @@ Module 通用
         Public Overrides Function ToString() As String
             Return ID
         End Function
+
+        Public ReadOnly Property 推送 As String
+            Get
+                If IsNothing(窗体.Tag) Then Return ""
+                Return 非空字符串(窗体.Tag.ToString)
+            End Get
+        End Property
 
     End Class
 

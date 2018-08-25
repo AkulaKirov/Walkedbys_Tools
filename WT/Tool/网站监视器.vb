@@ -3,6 +3,7 @@ Public Class 网站监视器
 
     Dim mz As 模板组
     Delegate Sub 委托消息(s As String)
+    Dim 更新过的 As New List(Of String)
 
     Public Sub 网站监视器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If 只做一次(3) = False Then Exit Sub
@@ -18,7 +19,7 @@ Public Class 网站监视器
         mz.新增(n)
     End Sub
 
-    Private Sub ButREAD_Click(sender As Object, e As EventArgs) Handles ButREAD.Click, ListWebs.SelectedIndexChanged, ButRefresh.Click
+    Private Sub ButREAD_Click(sender As Object, e As EventArgs) Handles ButREAD.Click, ListWebs.SelectedIndexChanged
         GBweb.Text = ""
         ButSave.Enabled = False
         Dim n As 模板 = mz.读取当前项
@@ -30,6 +31,7 @@ Public Class 网站监视器
             TxtOrigin.Text = .元素("origin")
             TxtCookie.Text = .元素("cookie")
             TxtReferer.Text = .元素("ref")
+            TxtRegex.Text = .元素("regex")
             TxtLast.Text = .元素("last")
         End With
         ButSave.Enabled = True
@@ -42,6 +44,7 @@ Public Class 网站监视器
     End Sub
 
     Private Sub 保存模板(n As 模板)
+        推送()
         If IsNothing(n) Then Exit Sub
         With n
             .元素("url") = TxtURL.Text
@@ -50,6 +53,7 @@ Public Class 网站监视器
             .元素("cookie") = TxtCookie.Text
             .元素("ref") = TxtReferer.Text
             .元素("last") = TxtLast.Text
+            .元素("regex") = TxtRegex.Text
         End With
     End Sub
 
@@ -61,6 +65,7 @@ Public Class 网站监视器
         Dim N As Integer = 0, c As Integer, mb As 模板, h As 简易HTTP, s As String, wt As 委托消息
         Do While True
             Thread.Sleep(1000 * 10)
+            推送()
             If 后台定时器启用(ListWhen) Then
                 c = ListWebs.Items.Count
                 If c > 0 Then
@@ -74,17 +79,25 @@ Public Class 网站监视器
                                 h.Referer = .元素("ref")
                                 h.Cookie = .元素("cookie")
                                 s = h.获得回应
+                                If .元素("regex").Length > 0 AndAlso 正确正则表达式(.元素("regex")) Then
+                                    s = Regex.Match(s, .元素("regex")).ToString
+                                End If
                             Catch ex As Exception
                                 s = ex.Message
                             End Try
+                            s = Trim(s.ToLower)
                             If .元素("last").Length > 0 Then
                                 If s <> .元素("last") Then
                                     .元素("last") = s
                                     wt = New 委托消息(AddressOf 消息)
                                     Invoke(wt, .名字 + vbCrLf + "网站有变化！")
+                                    If Not 在列表(更新过的, .名字) Then 更新过的.Add(.名字)
                                 End If
                             Else
                                 .元素("last") = s
+                            End If
+                            If Not IsNothing(mz.读取当前项) Then
+                                If mz.读取当前项.名字 = .名字 Then 刷新最后回应()
                             End If
                         End With
                     End If
@@ -92,6 +105,7 @@ Public Class 网站监视器
                     If N >= c Then N = 0
                 End If
             End If
+            推送()
         Loop
     End Sub
 
@@ -105,6 +119,28 @@ Public Class 网站监视器
 
     Private Sub ButIE_Click(sender As Object, e As EventArgs) Handles ButIE.Click
         TxtUA.Text = 浏览器UA.IE11
+    End Sub
+
+    Private Sub ButRM_Click(sender As Object, e As EventArgs) Handles ButRM.Click
+        GBweb.Text = ""
+        ButSave.Enabled = False
+    End Sub
+
+    Sub 刷新最后回应() Handles Me.Activated
+        Dim n As 模板 = mz.读取当前项
+        If IsNothing(n) Then Exit Sub
+        TxtLast.Text = n.元素("last")
+        推送()
+    End Sub
+
+    Sub 推送()
+        Tag = ""
+        For Each i As String In 更新过的
+            If Not IsNothing(mz.获得模板(i)) Then
+                Tag += " 网站有更新：" + i + vbCrLf
+            End If
+        Next
+        Tag = 去右(Tag, 2)
     End Sub
 
 End Class
