@@ -3,23 +3,6 @@ Public Class 启动器
 
     Friend 工具收藏 As New List(Of 工具)
     Friend 收藏按纽 As New List(Of Button)
-    Dim Th更新 As New Thread(Sub()
-                               Dim h As New 简易HTTP("https://raw.githubusercontent.com/gordonwalkedby/Walkedbys_Tools/master/WT/updater.xml")
-                               h.超时 = 5
-                               Dim t As String = h.获得回应
-                               Dim out As String = ""
-                               If 全部包含(t, "这是一个检查更新版本用的", "<root>") Then
-                                   Dim v As Single = Val(提取XML(t, "root", "ver"))
-                                   t = v.ToString + "）"
-                                   If 版本 < v Then
-                                       GBabout.Text += "（检测到新版本：v" + t
-                                   Else
-                                       GBabout.Text += "（已是最新版本：v" + t
-                                   End If
-                               Else
-                                   GBabout.Text += "（检查更新失败）"
-                               End If
-                           End Sub)
     Dim 关于链接 As New List(Of LinkLabel)
     Dim 版本 As Single = 版本转小数(My.Application.Info.Version)
     Dim 计时 As Integer = 0
@@ -29,11 +12,10 @@ Public Class 启动器
         Icon = 图标
         Text = "走過去的工具箱 测试版 v" + 版本.ToString
         Nico.Icon = 图标
-        If Not 设置.读取真假("NoUpdateAtMain") Then Th更新.Start()
         Directory.CreateDirectory(TempF)
         新工具("文件夹创建器", 文件夹创建器, "MKDIR", "输入一个路径，就能新建好你要的文件夹。")
         新工具("B站图床", B站图床, "BilibiliPic", "把20MB以下的图片无损放到B站服务器还行。")
-        新工具("日子提醒器", 日子提醒, "DayReminder", "可以拿来提醒生日或者重要的啥日子。")
+        新工具("日子提醒器", 日子提醒, "DayReminder", "提醒生日或者重要的啥日子。")
         新工具("监视式VMT生成器", VMT生成器, "VMTG", "给一个贴图文件夹监视式地批量生成 VMT 文件。")
         新工具("系统代理设置", 系统代理设置, "ProxyManager", "快速设置系统代理。")
         新工具("GMod模组发布器", GM模组发布器, "GMAddonPu", "打包GMA文件，发布或更新 Addon 到 Garry's Mod Workshop。")
@@ -43,7 +25,8 @@ Public Class 启动器
         新工具("Workshop物品篡改器", 创意工坊篡改器, "WorkshopCut", "可以直接修改 Steam Workshop 指定物品的信息，但是你必须是这个物品的上传者或贡献者。")
         新工具("SMD骨骼修整器", SMD骨骼修整器, "SMDmover", "（不推荐使用）修整一个SMD的骨骼的名字或者贴图的名字。")
         '新工具("临时工具", 临时工具, "Whatever", "临时用的工具，你不应该在公开发布版里面看见我。")
-        新工具("剪贴板记录器", 剪贴板记录器, "clipboardrecord", "可以帮你在后台记录剪贴板的内容到硬盘里。")
+        新工具("剪贴板记录器", 剪贴板记录器, "clipboardrecord", "在后台记录剪贴板的内容到硬盘里。")
+        新工具("网站监视器", 网站监视器, "HTTPWatch", "通过 HTTP GET 自动在后台定时检查返回数据的变化并提醒。")
         AddHandler SizeChanged, AddressOf 最小化隐藏
         Dim t As 工具, b As Button, i As Integer, g As String
         For Each t In 工具列表
@@ -90,12 +73,26 @@ Public Class 启动器
         新增关于链接("请我喝可乐", "https://walkedby.com/donateme/")
         Refresh()
         TimerX.Enabled = True
-        剪贴板记录器.剪贴板记录器_Load(sender, e)
         GBallTools.Text += 括((ListTools.Items.Count - 1).ToString)
-    End Sub
-
-    Sub 新工具(名字 As String, 窗体 As Form, ID As String, 简介 As String)
-        工具列表.Add(New 工具(名字, 窗体, ID, 简介))
+        If Not 设置.读取真假("NoUpdateAtMain") Then
+            新线程(Sub()
+                    Dim h As New 简易HTTP("https://raw.githubusercontent.com/gordonwalkedby/Walkedbys_Tools/master/WT/updater.xml")
+                    h.超时 = 5
+                    Dim ta As String = h.获得回应
+                    Dim out As String = ""
+                    If 全部包含(ta, "这是一个检查更新版本用的", "<root>") Then
+                        Dim v As Single = Val(提取XML(ta, "root", "ver"))
+                        ta = v.ToString + "）"
+                        If 版本 < v Then
+                            GBabout.Text += "（检测到新版本：v" + ta
+                        Else
+                            GBabout.Text += "（已是最新版本：v" + ta
+                        End If
+                    Else
+                        GBabout.Text += "（检查更新失败）"
+                    End If
+                End Sub)
+        End If
     End Sub
 
     Private Sub 启动器_FormClosing(sender As Form, e As FormClosingEventArgs) Handles Me.FormClosing
@@ -109,14 +106,16 @@ Public Class 启动器
 
     Public Sub 退出()
         Nico.Visible = False
-        中断线程(Th更新)
+        For Each t As Thread In 多线程
+            中断线程(t)
+        Next
         设置.保存到本地()
         删除(TempF)
         已退出 = True
         End
     End Sub
 
-    Sub 检查推送()
+    Sub 检查推送() Handles Me.Activated
         TxtUpdate.Text = ""
         日子提醒.日子提醒_Load()
         日子提醒.提醒好日子()
@@ -212,10 +211,6 @@ Public Class 启动器
         With GBabout
             e.Graphics.DrawImage(i, .Width - i.Width * b, .Height - i.Height * b, i.Width * b, i.Height * b)
         End With
-    End Sub
-
-    Private Sub 启动器_Activated(sender As Object, e As EventArgs) Handles Me.Activated
-        检查推送()
     End Sub
 
     Private Sub TimerX_Tick(sender As Object, e As EventArgs) Handles TimerX.Tick

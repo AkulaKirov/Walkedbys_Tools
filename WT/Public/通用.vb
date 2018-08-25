@@ -3,10 +3,34 @@ Module 通用
 
     Friend 工具列表 As New List(Of 工具)
     Friend 设置 As New 简易XML("WT", "", 程序文件目录() + "wt_save.xml")
-    Public TempF As String = 程序文件目录() + "WalkedbysTemps\"
+    Friend TempF As String = 程序文件目录() + "WalkedbysTemps\"
     Friend 图标 As Icon = My.Resources.ico
     Friend 最后窗体 As Form = 启动器
     Friend 启动参数 As New List(Of String)
+    Friend 多线程 As New List(Of Thread)
+    Private 只做一次列表 As New List(Of Integer)
+
+    Public Sub 新线程(start As ThreadStart)
+        Dim n As New Thread(start)
+        多线程.Add(n)
+        n.Start()
+    End Sub
+
+    ''' <summary>
+    ''' 只在第一次访问的时候返回true，然后一直是false
+    ''' </summary>
+    Public Function 只做一次(i As Integer) As Boolean
+        If 在列表(只做一次列表, i) Then
+            Return False
+        Else
+            只做一次列表.Add(i)
+            Return True
+        End If
+    End Function
+
+    Public Sub 新工具(名字 As String, 窗体 As Form, ID As String, 简介 As String)
+        工具列表.Add(New 工具(名字, 窗体, ID, 简介))
+    End Sub
 
     Public Function ID工具(id As String) As 工具
         For Each t As 工具 In 工具列表
@@ -26,6 +50,15 @@ Module 通用
         With 启动器.TxtUpdate
             If .TextLength > 1 Then .Text += vbCrLf
             .Text += m
+        End With
+    End Sub
+
+    Public Sub 消息(s As String, Optional 警告 As Boolean = False)
+        With 启动器.Nico
+            .BalloonTipIcon = IIf(警告, ToolTipIcon.Warning, ToolTipIcon.Info)
+            .BalloonTipText = 左(s, 30)
+            .BalloonTipTitle = IIf(警告, "警告：", "通知：")
+            .ShowBalloonTip(100)
         End With
     End Sub
 
@@ -55,6 +88,18 @@ Module 通用
         End With
     End Sub
 
+    Public Function 后台定时器启用(c As ComboBox) As Boolean
+        Dim i As Integer = c.SelectedIndex
+        If i < 0 OrElse i > 2 Then i = 0
+        Select Case i
+            Case 0
+                Return (最后窗体.Text = c.FindForm.Text)
+            Case 1
+                Return True
+        End Select
+        Return False
+    End Function
+
     Public Class 工具
 
         Public Property 名字 As String
@@ -65,6 +110,13 @@ Module 通用
         Public Sub New(name As String, win As Form, 内部id As String, description As String)
             名字 = name
             窗体 = win
+            With 窗体
+                .StartPosition = FormStartPosition.Manual
+                .ShowInTaskbar = False
+                .Top = My.Computer.Screen.Bounds.Height + 100
+                .Show()
+                .Hide()
+            End With
             简介 = description
             ID = 内部id.ToLower
             窗体.Icon = 图标

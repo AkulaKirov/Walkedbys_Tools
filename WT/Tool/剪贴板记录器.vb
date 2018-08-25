@@ -20,15 +20,7 @@ Public Class 剪贴板记录器
     End Sub
 
     Private Sub Watching_Tick(sender As Object, e As EventArgs) Handles Watching.Tick
-        Dim n As Integer = ListOption.SelectedIndex, b As Boolean = False
-        Select Case n
-            Case 0
-                If 最后窗体.Text = Text Then b = True
-            Case 1
-                b = True
-            Case 2
-        End Select
-        If b Then
+        If 后台定时器启用(ListOption) Then
             Dim s As String = TxtText.Text, m As String
             If s.Length > 0 Then
                 m = Forms.Clipboard.GetText

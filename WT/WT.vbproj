@@ -226,6 +226,12 @@
     <Compile Include="Tool\系统代理设置.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Tool\网站监视器.Designer.vb">
+      <DependentUpon>网站监视器.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\网站监视器.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -275,6 +281,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\系统代理设置.resx">
       <DependentUpon>系统代理设置.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\网站监视器.resx">
+      <DependentUpon>网站监视器.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

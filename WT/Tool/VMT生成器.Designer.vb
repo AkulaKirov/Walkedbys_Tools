@@ -201,12 +201,13 @@ Partial Class VMT生成器
         'ButGen
         '
         Me.ButGen.Enabled = False
+        Me.ButGen.Font = New System.Drawing.Font("微软雅黑", 9.0!)
         Me.ButGen.Location = New System.Drawing.Point(12, 327)
         Me.ButGen.Name = "ButGen"
-        Me.ButGen.Size = New System.Drawing.Size(148, 48)
+        Me.ButGen.Size = New System.Drawing.Size(187, 48)
         Me.ButGen.TabIndex = 11
         Me.ButGen.TabStop = False
-        Me.ButGen.Text = "开始监视与生成"
+        Me.ButGen.Text = "开始监视与生成" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(只在本工具运行的时候监视)"
         Me.ButGen.UseVisualStyleBackColor = True
         '
         'Watching
@@ -216,12 +217,12 @@ Partial Class VMT生成器
         'TxtLOG
         '
         Me.TxtLOG.Font = New System.Drawing.Font("微软雅黑", 8.0!)
-        Me.TxtLOG.Location = New System.Drawing.Point(166, 322)
+        Me.TxtLOG.Location = New System.Drawing.Point(205, 322)
         Me.TxtLOG.Multiline = True
         Me.TxtLOG.Name = "TxtLOG"
         Me.TxtLOG.ReadOnly = True
         Me.TxtLOG.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtLOG.Size = New System.Drawing.Size(531, 61)
+        Me.TxtLOG.Size = New System.Drawing.Size(492, 61)
         Me.TxtLOG.TabIndex = 12
         Me.TxtLOG.TabStop = False
         '

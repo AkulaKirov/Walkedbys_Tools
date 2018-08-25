@@ -4,25 +4,24 @@ Public Class 日子提醒
     Dim 日子正确 As Boolean = False
 
     Public Sub 日子提醒_Load() Handles MyBase.Load
+        If 只做一次(2) = False Then Exit Sub
         Dim i As Integer
-        If CBremind.Items.Count < 1 Then
-            For i = 1 To 12
-                CBmonth.Items.Add(i.ToString)
-            Next
-            For i = 1 To 31
-                CBday.Items.Add(i.ToString)
-            Next
-            For i = 3 To 60
-                CBremind.Items.Add(i.ToString)
-            Next
-            i = 设置.读取数("Remindtime")
-            If i < 3 OrElse i > 60 Then i = 7
-            CBremind.SelectedIndex = i
-            CBday.SelectedIndex = 0
-            CBmonth.SelectedIndex = 0
-            ListDates.Items.Clear()
-            文字转列表(ListDates.Items, 设置.元素("days"))
-        End If
+        For i = 1 To 12
+            CBmonth.Items.Add(i.ToString)
+        Next
+        For i = 1 To 31
+            CBday.Items.Add(i.ToString)
+        Next
+        For i = 3 To 60
+            CBremind.Items.Add(i.ToString)
+        Next
+        i = 设置.读取数("Remindtime")
+        If i < 3 OrElse i > 60 Then i = 7
+        CBremind.SelectedIndex = i
+        CBday.SelectedIndex = 0
+        CBmonth.SelectedIndex = 0
+        ListDates.Items.Clear()
+        文字转列表(ListDates.Items, 设置.元素("days"))
     End Sub
 
     Private Sub ButRM_Click(sender As Object, e As EventArgs) Handles ButRM.Click
@@ -81,6 +80,9 @@ Public Class 日子提醒
                 推送("今天是：" + f)
             ElseIf g = 1 Then
                 推送("明天就是：" + f)
+                If 只做一次(1) Then
+                    消息("明天就是：" + f)
+                End If
             Else
                 推送("还有 " + g.ToString + " 天就是：" + f)
             End If
