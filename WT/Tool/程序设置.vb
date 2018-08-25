@@ -24,7 +24,7 @@ Public Class 程序设置
 
     Private Sub CheckStartUP_CheckedChanged(sender As Object, e As EventArgs) Handles CheckStartUP.CheckedChanged
         Try
-            Dim s As String = "C:\Users\" + 当前用户名 + "\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\走過去的工具箱.lnk"
+            Dim s As String = "C:\Users\" + 当前用户名 + "\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\" + 中英文快捷方式名()
             If CheckStartUP.Checked Then
                 创建快捷方式(s, 程序文件目录 + "wt.exe")
             Else
@@ -37,10 +37,18 @@ Public Class 程序设置
 
     Public Sub ButCreateSC_Click() Handles ButCreateSC.Click
         Try
-            创建快捷方式(追加斜杠(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)) + "走過去的工具箱.lnk", 程序文件目录 + "wt.exe")
+            创建快捷方式(追加斜杠(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)) + 中英文快捷方式名(), 程序文件目录 + "wt.exe")
         Catch ex As Exception
             MsgBox("未能成功创建桌面快捷方式。" + vbCrLf + ex.Message, MsgBoxStyle.Critical, "创建文件出错啦")
         End Try
     End Sub
+
+    Public Function 中英文快捷方式名() As String
+        If 包含(My.Computer.Info.InstalledUICulture.Name.ToLower, "cn") Then
+            Return "走過去的工具箱.lnk"
+        Else
+            Return "Walkedby's Tools.lnk"
+        End If
+    End Function
 
 End Class

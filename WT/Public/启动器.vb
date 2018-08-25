@@ -21,8 +21,9 @@ Public Class 启动器
                                End If
                            End Sub)
     Dim 关于链接 As New List(Of LinkLabel)
-    Dim 版本 As Single = My.Application.Info.Version.Major + (My.Application.Info.Version.Minor / 10)
+    Dim 版本 As Single = 版本转小数(My.Application.Info.Version)
     Dim 计时 As Integer = 0
+    Dim 已退出 As Boolean = False
 
     Private Sub 启动器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Icon = 图标
@@ -90,6 +91,7 @@ Public Class 启动器
         Refresh()
         TimerX.Enabled = True
         剪贴板记录器.剪贴板记录器_Load(sender, e)
+        GBallTools.Text += 括((ListTools.Items.Count - 1).ToString)
     End Sub
 
     Sub 新工具(名字 As String, 窗体 As Form, ID As String, 简介 As String)
@@ -110,6 +112,7 @@ Public Class 启动器
         中断线程(Th更新)
         设置.保存到本地()
         删除(TempF)
+        已退出 = True
         End
     End Sub
 
@@ -235,6 +238,14 @@ Public Class 启动器
         End Select
         If 计时 Mod 60 * (1000 / TimerX.Interval) = 0 Then
             设置.保存到本地()
+        End If
+        If 已退出 Then
+            Do While True
+                PRT("die")
+                End
+            Loop
+        Else
+            Nico.Visible = True
         End If
     End Sub
 

@@ -1,8 +1,6 @@
 ﻿
 Public Class B站图床
 
-    Dim TH As Thread
-    Dim 上传中 As Boolean = False
     Dim 图片 As String = ""
     Dim 预览图 As Image
     Dim 重试 As Boolean = False
@@ -16,7 +14,6 @@ Public Class B站图床
     End Sub
 
     Private Sub B站图床_DragDrop(sender As Object, e As Forms.DragEventArgs) Handles Me.DragDrop
-        If 上传中 Then Exit Sub
         For Each m As String In e.Data.GetData(Forms.DataFormats.FileDrop)
             检查图片(m)
             Exit For
@@ -32,8 +29,22 @@ Public Class B站图床
             图片 = m
             预览图 = 读文件为图片(m)
             Refresh()
-            TH = New Thread(AddressOf 上传图片)
-            TH.Start()
+            ButPaste.Enabled = False
+            Dim h As New 简易HTTP("https://api.vc.bilibili.com/api/v1/image/upload", "POST")
+            Dim r As New 简易MultiPartFormData(h)
+            r.新文件("file_up", 图片, "image/jpeg")
+            r.新参数("biz", "draw")
+            r.新参数("category", "daily")
+            r.结束()
+            Dim s As String = h.获得回应
+            If 包含(s, "{""code"":0,""message"":""success"",""") Then
+                LabDoit.Text = 提取(s, "image_url"":""", """,""image_width")
+                ButCopy.Enabled = True
+            Else
+                LabDoit.Text = "失败！" + vbCrLf + s
+                ButRetry.Enabled = True
+            End If
+            ButPaste.Enabled = True
             LabDoit.BringToFront()
         Else
             LabDoit.Text = "对不起，文件不合适。" + vbCrLf + m
@@ -41,34 +52,14 @@ Public Class B站图床
         PicBox.Image = 预览图
     End Sub
 
-    Sub 上传图片()
-        上传中 = True
-        ButPaste.Enabled = False
-        Dim h As New 简易HTTP("https://api.vc.bilibili.com/api/v1/image/upload", "POST")
-        Dim r As New 简易MultiPartFormData(h)
-        r.新文件("file_up", 图片, "image/jpeg")
-        r.新参数("biz", "draw")
-        r.新参数("category", "daily")
-        r.结束()
-        Dim s As String = h.获得回应
-        If 包含(s, "{""code"":0,""message"":""success"",""") Then
-            LabDoit.Text = 提取(s, "image_url"":""", """,""image_width")
-            ButCopy.Enabled = True
-        Else
-            LabDoit.Text = "失败！" + vbCrLf + s
-            ButRetry.Enabled = True
-        End If
-        上传中 = False
-        ButPaste.Enabled = True
-    End Sub
-
     Private Sub B站图床_DragEnter(sender As Object, e As Forms.DragEventArgs) Handles Me.DragEnter
         e.Effect = Forms.DragDropEffects.Link
     End Sub
 
     Private Sub B站图床_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        中断线程(TH)
         LabDoit.Text = LabDoit.Tag
+        PicBox.Image = Nothing
+        ButCopy.Enabled = False
     End Sub
 
     Private Sub ButCopy_Click(sender As Object, e As EventArgs) Handles ButCopy.Click
@@ -96,10 +87,6 @@ Public Class B站图床
         Dim i As String = TempF + "bilibilitemp.png"
         n.Save(i)
         检查图片(i)
-    End Sub
-
-    Private Sub B站图床_Activated(sender As Object, e As EventArgs) Handles Me.Activated
-
     End Sub
 
 End Class

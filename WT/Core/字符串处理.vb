@@ -25,6 +25,15 @@ Module 字符串处理
     End Function
 
     ''' <summary>
+    ''' 把版本号变成小数
+    ''' </summary>
+    ''' <param name="版本"></param>
+    ''' <returns></returns>
+    Public Function 版本转小数(版本 As Version) As Single
+        Return 版本.Major + 版本.Minor * 0.1
+    End Function
+
+    ''' <summary>
     ''' 把文字从左数的几个字给提取出来
     ''' </summary>
     Public Function 左(文字 As String, 个数 As Integer) As String
