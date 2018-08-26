@@ -2,7 +2,7 @@
 Public Class 网站监视器
 
     Dim mz As 模板组
-    Delegate Sub 委托消息(s As String)
+    Delegate Sub 委托消息(s As String, b As Boolean)
     Dim 更新过的 As New List(Of String)
 
     Public Sub 网站监视器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -62,7 +62,7 @@ Public Class 网站监视器
     End Sub
 
     Sub 后台监视()
-        Dim N As Integer = 0, c As Integer, mb As 模板, h As 简易HTTP, s As String, wt As 委托消息
+        Dim N As Integer = 0, c As Integer, mb As 模板, h As 简易HTTP, s As String = "", wt As 委托消息
         Do While True
             Thread.Sleep(1000 * 10)
             推送()
@@ -78,25 +78,28 @@ Public Class 网站监视器
                                 h.Origin = .元素("origin")
                                 h.Referer = .元素("ref")
                                 h.Cookie = .元素("cookie")
-                                h.超时 = 10
+                                h.超时 = 8
                                 s = h.获得回应
-                                If .元素("regex").Length > 0 AndAlso 正确正则表达式(.元素("regex")) Then
-                                    s = Regex.Match(s, .元素("regex")).ToString
+                                If s <> "超时" Then
+                                    If .元素("regex").Length > 0 AndAlso 正确正则表达式(.元素("regex")) Then
+                                        s = Regex.Match(s, .元素("regex")).ToString
+                                    End If
+                                    s = Trim(s.ToLower)
+                                    If .元素("last").Length > 0 Then
+                                        If s <> .元素("last") Then
+                                            .元素("last") = s
+                                            wt = New 委托消息(AddressOf 消息)
+                                            Invoke(wt, .名字 + vbCrLf + "网站有变化！", False)
+                                            If Not 在列表(更新过的, .名字) Then 更新过的.Add(.名字)
+                                        End If
+                                    Else
+                                        .元素("last") = s
+                                    End If
                                 End If
                             Catch ex As Exception
-                                s = ex.Message
+                                wt = New 委托消息(AddressOf 消息)
+                                Invoke(wt, .名字 + vbCrLf + "连接有误！" + vbCrLf + ex.Message, True)
                             End Try
-                            s = Trim(s.ToLower)
-                            If .元素("last").Length > 0 Then
-                                If s <> .元素("last") Then
-                                    .元素("last") = s
-                                    wt = New 委托消息(AddressOf 消息)
-                                    Invoke(wt, .名字 + vbCrLf + "网站有变化！")
-                                    If Not 在列表(更新过的, .名字) Then 更新过的.Add(.名字)
-                                End If
-                            Else
-                                .元素("last") = s
-                            End If
                             If Not IsNothing(mz.读取当前项) Then
                                 If mz.读取当前项.名字 = .名字 Then 刷新最后回应()
                             End If

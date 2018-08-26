@@ -165,6 +165,9 @@
                 If 解码 Then i = Regex.Unescape(i)
                 Return 非空字符串(i)
             Catch ex As Exception
+                If Err.Number = 5 Then
+                    Return "超时"
+                End If
                 Return ex.Message
             End Try
         End Function
