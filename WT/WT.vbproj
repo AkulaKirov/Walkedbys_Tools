@@ -154,12 +154,6 @@
     <Compile Include="Tool\GM模组发布器.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tool\SMD骨骼修整器.Designer.vb">
-      <DependentUpon>SMD骨骼修整器.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Tool\SMD骨骼修整器.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Tool\临时工具.Designer.vb">
       <DependentUpon>临时工具.vb</DependentUpon>
     </Compile>
@@ -226,12 +220,6 @@
     <Compile Include="Tool\系统代理设置.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tool\网站监视器.Designer.vb">
-      <DependentUpon>网站监视器.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Tool\网站监视器.vb">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -245,9 +233,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\GM模组发布器.resx">
       <DependentUpon>GM模组发布器.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tool\SMD骨骼修整器.resx">
-      <DependentUpon>SMD骨骼修整器.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\临时工具.resx">
       <DependentUpon>临时工具.vb</DependentUpon>
@@ -281,9 +266,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\系统代理设置.resx">
       <DependentUpon>系统代理设置.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tool\网站监视器.resx">
-      <DependentUpon>网站监视器.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
