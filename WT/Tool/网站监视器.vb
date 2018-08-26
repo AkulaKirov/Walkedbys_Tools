@@ -78,6 +78,7 @@ Public Class 网站监视器
                                 h.Origin = .元素("origin")
                                 h.Referer = .元素("ref")
                                 h.Cookie = .元素("cookie")
+                                h.超时 = 10
                                 s = h.获得回应
                                 If .元素("regex").Length > 0 AndAlso 正确正则表达式(.元素("regex")) Then
                                     s = Regex.Match(s, .元素("regex")).ToString
@@ -137,7 +138,7 @@ Public Class 网站监视器
         Tag = ""
         For Each i As String In 更新过的
             If Not IsNothing(mz.获得模板(i)) Then
-                Tag += " 网站有更新：" + i + vbCrLf
+                Tag += "网站有更新：" + i + vbCrLf
             End If
         Next
         Tag = 去右(Tag, 2)

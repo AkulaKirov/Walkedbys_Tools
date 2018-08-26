@@ -82,6 +82,9 @@ Public Class 日子提醒
             f = 去左(i, 3)
             If g = 0 Then
                 推送("今天是：" + f)
+                If 只做一次(1) Then
+                    消息("今天是：" + f)
+                End If
             ElseIf g = 1 Then
                 推送("明天就是：" + f)
                 If 只做一次(1) Then
@@ -110,12 +113,21 @@ Public Class 日子提醒
 
     Private Sub CBremind_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBremind.SelectedIndexChanged
         设置.保存元素("Remindtime", CBremind.SelectedIndex.ToString)
+        提醒好日子()
     End Sub
 
     Private Sub 推送(s As String)
         非空字符串(Tag)
         If Tag.ToString.Length > 0 Then Tag += vbCrLf
         Tag += s
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Dim s As Integer = Val(非空字符串(Timer1.Tag))
+        If s <> Today.Day Then
+            Timer1.Tag = Today.Day.ToString
+            提醒好日子()
+        End If
     End Sub
 
 End Class

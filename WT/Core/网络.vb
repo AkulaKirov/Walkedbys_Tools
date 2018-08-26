@@ -43,7 +43,15 @@
         ''' </summary>
         Public Sub 设置头(名字 As String, 内容 As String)
             移除头(名字)
-            h.Headers.Add(名字, 内容)
+            Dim s As String = ""
+            For Each n As Char In 内容.ToCharArray
+                If Asc(n) < 32 OrElse Asc(n) > 127 Then
+                    s += HttpUtility.UrlEncode(n)
+                Else
+                    s += n
+                End If
+            Next
+            h.Headers.Add(名字, s)
         End Sub
 
         ''' <summary>

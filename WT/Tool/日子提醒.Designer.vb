@@ -22,6 +22,7 @@ Partial Class 日子提醒
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.ListDates = New System.Windows.Forms.ListBox()
         Me.LabMD = New System.Windows.Forms.Label()
         Me.CBmonth = New System.Windows.Forms.ComboBox()
@@ -33,6 +34,7 @@ Partial Class 日子提醒
         Me.LabRange = New System.Windows.Forms.Label()
         Me.CBremind = New System.Windows.Forms.ComboBox()
         Me.CheckCN = New System.Windows.Forms.CheckBox()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.SuspendLayout()
         '
         'ListDates
@@ -149,6 +151,11 @@ Partial Class 日子提醒
         Me.CheckCN.Text = "农历"
         Me.CheckCN.UseVisualStyleBackColor = True
         '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        Me.Timer1.Interval = 10000
+        '
         '日子提醒
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -188,4 +195,5 @@ Partial Class 日子提醒
     Friend WithEvents LabRange As Label
     Friend WithEvents CBremind As ComboBox
     Friend WithEvents CheckCN As CheckBox
+    Friend WithEvents Timer1 As Forms.Timer
 End Class
