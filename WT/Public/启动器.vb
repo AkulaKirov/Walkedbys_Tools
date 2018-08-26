@@ -26,7 +26,6 @@ Public Class 启动器
         新工具("SMD骨骼修整器", SMD骨骼修整器, "SMDmover", "（不推荐使用）修整一个SMD的骨骼的名字或者贴图的名字。")
         '新工具("临时工具", 临时工具, "Whatever", "临时用的工具，你不应该在公开发布版里面看见我。")
         新工具("剪贴板记录器", 剪贴板记录器, "clipboardrecord", "在后台记录剪贴板的内容到硬盘里。")
-        新工具("网站监视器", 网站监视器, "HTTPWatch", "通过 HTTP GET 自动在后台定时检查返回数据的变化并提醒。")
         AddHandler SizeChanged, AddressOf 最小化隐藏
         Dim t As 工具, b As Button, i As Integer, g As String
         For Each t In 工具列表
