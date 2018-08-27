@@ -51,7 +51,7 @@ Module 控件优化
                                        sender.SelectionStart = sender.TextLength
                                    End Sub
             AddHandler i.TextChanged, Sub()
-                                          Dim s As String = Trim(追加斜杠(i.Text))
+                                          Dim s As String = 追加斜杠(i.Text)
                                           If s.Length < 1 Then Exit Sub
                                           If Not 文件夹存在(s) Then s = ""
                                           i.Text = s
@@ -93,6 +93,22 @@ Module 控件优化
                 组.SelectedIndex = c - 1
             End If
         End If
+    End Sub
+
+    Public Function 文本框都有字(ParamArray t() As TextBox) As Boolean
+        For Each i As TextBox In t
+            If i.TextLength < 1 Then Return False
+        Next
+        Return True
+    End Function
+
+    Public Sub 文本框自动拖到最后(ParamArray t() As TextBox)
+        For Each i As TextBox In t
+            AddHandler i.TextChanged, Sub()
+                                          i.SelectionStart = i.TextLength
+                                          i.ScrollToCaret()
+                                      End Sub
+        Next
     End Sub
 
 End Module

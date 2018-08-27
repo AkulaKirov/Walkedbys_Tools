@@ -86,6 +86,7 @@ Module 文件处理
     ''' 如果路径字符串的结尾没有\的话就加一个\
     ''' </summary>
     Public Function 追加斜杠(路径 As String) As String
+        路径 = Trim(路径)
         If 路径.Length < 2 Then Return 路径
         路径 = 路径.Replace("/", "\")
         Return IIf(路径.EndsWith("\"), 路径, 路径 + "\")
