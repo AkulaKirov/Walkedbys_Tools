@@ -23,7 +23,7 @@ Public Class 启动器
         新工具(" 工具箱设置", 程序设置, "AllSettings", "关于本工具箱的一些设置。")
         新工具("文件筛选", 文件筛选, "FileChoose", "把A文件夹B文件夹的文件选择性的复制到C文件夹。")
         新工具("Workshop物品篡改器", 创意工坊篡改器, "WorkshopCut", "可以直接修改 Steam Workshop 指定物品的信息，但是你必须是这个物品的上传者或贡献者。")
-        '新工具("临时工具", 临时工具, "Whatever", "临时用的工具，你不应该在公开发布版里面看见我。")
+        新工具("临时工具", 临时工具, "Whatever", "临时用的工具，你不应该在公开发布版里面看见我。")
         新工具("剪贴板记录器", 剪贴板记录器, "clipboardrecord", "在后台记录剪贴板的内容到硬盘里。")
         AddHandler SizeChanged, AddressOf 最小化隐藏
         Dim t As 工具, b As Button, i As Integer, g As String

@@ -303,4 +303,16 @@ Module 字符串处理
         Return ""
     End Function
 
+    ''' <summary>
+    ''' 可以把 char() 转成一个 string 
+    ''' </summary>
+    ''' <returns></returns>
+    Public Function 字符转字符串(ParamArray c() As Char) As String
+        Dim s As String = ""
+        For Each i As Char In c
+            If Not IsNothing(i) Then s += i
+        Next
+        Return s
+    End Function
+
 End Module

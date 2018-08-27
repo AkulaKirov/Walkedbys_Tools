@@ -67,6 +67,11 @@ Public Class VMT生成器
 
     Private Sub Watching_Tick(sender As Object, e As EventArgs) Handles Watching.Tick
         If Not Visible Then Exit Sub
+        If Not 文件夹存在(TxtPath.Text) Then
+            TxtLOG.Text += vbCrLf + "出错：文件夹已经被删除。"
+            ButGen.PerformClick()
+            Exit Sub
+        End If
         Dim f() As String = Directory.GetFiles(TxtPath.Text, "*.vtf", IIf(CheckSon.Checked, SearchOption.AllDirectories, SearchOption.TopDirectoryOnly))
         If f.Count < 1 Then Exit Sub
         Dim i As String

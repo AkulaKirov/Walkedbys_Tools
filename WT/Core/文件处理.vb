@@ -451,4 +451,19 @@ Module 文件处理
         sc.Save()
     End Sub
 
+    ''' <summary>
+    ''' 针对 BinaryReader 进行操作，一直读取字符串直到特定的byte
+    ''' </summary>
+    ''' <param name="r"></param>
+    ''' <returns></returns>
+    Public Function 读取字符串到零(r As BinaryReader, Optional b As Byte = 0)
+        Dim s As String = ""
+        Do While True
+            Dim ba As Byte = r.ReadByte
+            If ba = b Then Exit Do
+            s += Chr(b)
+        Loop
+        Return s
+    End Function
+
 End Module

@@ -82,14 +82,8 @@ Public Class 日子提醒
             f = 去左(i, 3)
             If g = 0 Then
                 推送("今天是：" + f)
-                If 只做一次(1) Then
-                    消息("今天是：" + f)
-                End If
             ElseIf g = 1 Then
                 推送("明天就是：" + f)
-                If 只做一次(1) Then
-                    消息("明天就是：" + f)
-                End If
             Else
                 推送("还有 " + g.ToString + " 天就是：" + f)
             End If
@@ -120,6 +114,7 @@ Public Class 日子提醒
         非空字符串(Tag)
         If Tag.ToString.Length > 0 Then Tag += vbCrLf
         Tag += s
+        If 只做一次(1) Then 消息(s)
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
