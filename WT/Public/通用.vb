@@ -2,6 +2,8 @@
 Module 通用
 
     Friend 工具列表 As New List(Of 工具)
+    Friend 工具收藏 As New List(Of 工具)
+    Friend 版本 As Single = 版本转小数(My.Application.Info.Version)
     Friend 设置 As New 简易XML("WT", "", 程序文件目录() + "wt_save.xml")
     Friend TempF As String = 程序文件目录() + "WalkedbysTemps\"
     Friend 图标 As Icon = My.Resources.ico
@@ -28,8 +30,8 @@ Module 通用
         End If
     End Function
 
-    Public Sub 新工具(名字 As String, 窗体 As Form, ID As String, 简介 As String)
-        工具列表.Add(New 工具(名字, 窗体, ID, 简介))
+    Public Sub 新工具(名字 As String, 窗体 As Form, ID As String, 简介 As String, Optional 预加载 As Boolean = False)
+        工具列表.Add(New 工具(名字, 窗体, ID, 简介, 预加载))
     End Sub
 
     Public Function ID工具(id As String) As 工具
@@ -100,16 +102,18 @@ Module 通用
         Public Property 窗体 As Form
         Public Property ID As String
 
-        Public Sub New(name As String, win As Form, 内部id As String, description As String)
+        Public Sub New(name As String, win As Form, 内部id As String, description As String, 预加载 As Boolean)
             名字 = name
             窗体 = win
-            With 窗体
-                .StartPosition = FormStartPosition.Manual
-                .ShowInTaskbar = False
-                .Top = My.Computer.Screen.Bounds.Height + 100
-                .Show()
-                .Hide()
-            End With
+            If 预加载 Then
+                With 窗体
+                    .StartPosition = FormStartPosition.Manual
+                    .ShowInTaskbar = False
+                    .Top = My.Computer.Screen.Bounds.Height + 100
+                    .Show()
+                    .Hide()
+                End With
+            End If
             简介 = description
             ID = 内部id.ToLower
             窗体.Icon = 图标

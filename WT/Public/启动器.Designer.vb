@@ -38,6 +38,7 @@ Partial Class 启动器
         Me.NicoMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.显示窗口ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.返回启动器ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LabFun = New System.Windows.Forms.Label()
         Me.GBallTools.SuspendLayout()
         Me.GBupdate.SuspendLayout()
         Me.GBabout.SuspendLayout()
@@ -46,7 +47,7 @@ Partial Class 启动器
         '
         'GBfavorites
         '
-        Me.GBfavorites.Location = New System.Drawing.Point(12, 3)
+        Me.GBfavorites.Location = New System.Drawing.Point(9, 12)
         Me.GBfavorites.Name = "GBfavorites"
         Me.GBfavorites.Size = New System.Drawing.Size(730, 117)
         Me.GBfavorites.TabIndex = 0
@@ -59,7 +60,7 @@ Partial Class 启动器
         Me.GBallTools.Controls.Add(Me.ButOpenTool)
         Me.GBallTools.Controls.Add(Me.TxtToolDes)
         Me.GBallTools.Controls.Add(Me.ListTools)
-        Me.GBallTools.Location = New System.Drawing.Point(12, 126)
+        Me.GBallTools.Location = New System.Drawing.Point(9, 135)
         Me.GBallTools.Name = "GBallTools"
         Me.GBallTools.Size = New System.Drawing.Size(382, 235)
         Me.GBallTools.TabIndex = 1
@@ -115,7 +116,7 @@ Partial Class 启动器
         'GBupdate
         '
         Me.GBupdate.Controls.Add(Me.TxtUpdate)
-        Me.GBupdate.Location = New System.Drawing.Point(400, 126)
+        Me.GBupdate.Location = New System.Drawing.Point(400, 135)
         Me.GBupdate.Name = "GBupdate"
         Me.GBupdate.Size = New System.Drawing.Size(342, 121)
         Me.GBupdate.TabIndex = 2
@@ -148,7 +149,7 @@ Partial Class 启动器
         'GBabout
         '
         Me.GBabout.Controls.Add(Me.LabAbout)
-        Me.GBabout.Location = New System.Drawing.Point(400, 254)
+        Me.GBabout.Location = New System.Drawing.Point(397, 263)
         Me.GBabout.Name = "GBabout"
         Me.GBabout.Size = New System.Drawing.Size(339, 107)
         Me.GBabout.TabIndex = 4
@@ -185,15 +186,26 @@ Partial Class 启动器
         Me.返回启动器ToolStripMenuItem.Size = New System.Drawing.Size(130, 24)
         Me.返回启动器ToolStripMenuItem.Text = "返回主页"
         '
+        'LabFun
+        '
+        Me.LabFun.AutoSize = True
+        Me.LabFun.Location = New System.Drawing.Point(17, 373)
+        Me.LabFun.Name = "LabFun"
+        Me.LabFun.Size = New System.Drawing.Size(39, 17)
+        Me.LabFun.TabIndex = 5
+        Me.LabFun.Text = "fun~"
+        '
         '启动器
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(754, 381)
+        Me.ClientSize = New System.Drawing.Size(754, 396)
+        Me.Controls.Add(Me.LabFun)
         Me.Controls.Add(Me.GBabout)
         Me.Controls.Add(Me.GBupdate)
         Me.Controls.Add(Me.GBallTools)
         Me.Controls.Add(Me.GBfavorites)
+        Me.DoubleBuffered = True
         Me.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.ImeMode = System.Windows.Forms.ImeMode.Off
@@ -210,6 +222,7 @@ Partial Class 启动器
         Me.GBabout.PerformLayout()
         Me.NicoMenu.ResumeLayout(False)
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -228,4 +241,5 @@ Partial Class 启动器
     Friend WithEvents NicoMenu As ContextMenuStrip
     Friend WithEvents 显示窗口ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents 返回启动器ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LabFun As Label
 End Class

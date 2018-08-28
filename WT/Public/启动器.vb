@@ -1,11 +1,10 @@
 ﻿
 Public Class 启动器
 
-    Friend 工具收藏 As New List(Of 工具)
     Friend 收藏按纽 As New List(Of Button)
     Dim 关于链接 As New List(Of LinkLabel)
-    Dim 版本 As Single = 版本转小数(My.Application.Info.Version)
     Dim 计时 As Integer = 0
+    Dim 彩蛋码 As String
     Dim 已退出 As Boolean = False
 
     Private Sub 启动器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -15,7 +14,7 @@ Public Class 启动器
         Directory.CreateDirectory(TempF)
         新工具("文件夹创建器", 文件夹创建器, "MKDIR", "输入一个路径，就能新建好你要的文件夹。")
         新工具("B站图床", B站图床, "BilibiliPic", "把20MB以下的图片无损放到B站服务器还行。")
-        新工具("日子提醒器", 日子提醒, "DayReminder", "提醒生日或者重要的啥日子。")
+        新工具("日子提醒器", 日子提醒, "DayReminder", "提醒生日或者重要的啥日子。", True)
         新工具("监视式VMT生成器", VMT生成器, "VMTG", "给一个贴图文件夹监视式地批量生成 VMT 文件。")
         新工具("系统代理设置", 系统代理设置, "ProxyManager", "快速设置系统代理。")
         新工具("GMod模组发布器", GM模组发布器, "GMAddonPu", "打包GMA文件，发布或更新 Addon 到 Garry's Mod Workshop。")
@@ -24,7 +23,7 @@ Public Class 启动器
         新工具("文件筛选", 文件筛选, "FileChoose", "把A文件夹B文件夹的文件选择性的复制到C文件夹。")
         新工具("Workshop物品篡改器", 创意工坊篡改器, "WorkshopCut", "可以直接修改 Steam Workshop 指定物品的信息，但是你必须是这个物品的上传者或贡献者。")
         '新工具("临时工具", 临时工具, "Whatever", "临时用的工具，你不应该在公开发布版里面看见我。")
-        新工具("剪贴板记录器", 剪贴板记录器, "clipboardrecord", "在后台记录剪贴板的内容到硬盘里。")
+        新工具("剪贴板记录器", 剪贴板记录器, "clipboardrecord", "在后台记录剪贴板的内容到硬盘里。", True)
         新工具("模型贴图打包器", 起源模型贴图打包器, "sourcemodelpacker", "给 Source 的模型文件批量打包贴图文件。")
         AddHandler SizeChanged, AddressOf 最小化隐藏
         Dim t As 工具, b As Button, i As Integer, g As String
@@ -69,8 +68,7 @@ Public Class 启动器
         新增关于链接("博客", "https://walkedby.com/wt")
         新增关于链接("源码", "https://github.com/gordonwalkedby/Walkedbys_Tools")
         新增关于链接("下载最新版", "https://github.com/gordonwalkedby/Walkedbys_Tools/releases")
-        新增关于链接("请我喝可乐", "https://walkedby.com/donateme/")
-        Refresh()
+        新增关于链接("请我喝好的", "https://walkedby.com/donateme/")
         TimerX.Enabled = True
         GBallTools.Text += 括((ListTools.Items.Count - 1).ToString)
         If Not 设置.读取真假("NoUpdateAtMain") Then
@@ -92,6 +90,32 @@ Public Class 启动器
                     End If
                 End Sub)
         End If
+        彩蛋码 = ""
+        Refresh()
+        LabFun.Text = 随机.多选一("",
+"8848 钛金显卡~",
+"真高兴我的计算机几乎都不是学校教的。",
+引("风水轮流转。"),
+"那太不幸了。",
+"要试试直接对着主页输入steam吗？",
+引("正义之子面对有悖常理的世界，会让世界天翻地覆。") + " ——GMan",
+"我不喜欢吵架或者辱骂，我也不支持断绝交流的大门。",
+"我有一个男友，可惜他关键时刻派不上用场。",
+"迅雷其实是功能最齐全的下载软件，可惜他越做越差。",
+"一个朋友曾对我说：" + 引("steam没被墙，只是被DNS污染了。"),
+引("You forget a thousand things every day, make sure this is one of them.") + " ——麦可·汤利",
+"做地图做到想吐，赚钱好难啊。",
+"做傻瓜式软件救不了中国人。",
+"别和差的比，越差越有理。",
+引("有钱能使贵推磨。"),
+"我喜欢喝可乐，我更喜欢喝热茶，就是那种便宜的绿茶，茶叶买回来泡开水喝。",
+"你猜猜这里一共可以出现几句话？",
+"我也曾是个小学生，我先玩的CF，然后玩的CS1.6，然后学了怎么做CS1.6地图。",
+"我用的麦克风大概卖30元。",
+"我播放量最高的那个马化腾的视频其实是个垃圾视频，只花了我两个小时做好的。",
+"我也想做一个盗号软件，专门把密码发回主人邮箱里那种，告诉他你已经被我盗号了，记得改密码。hhhhh",
+"我已经等不急玩GTA6或者半条命2EP3了。"
+).ToString
     End Sub
 
     Private Sub 启动器_FormClosing(sender As Form, e As FormClosingEventArgs) Handles Me.FormClosing
@@ -296,6 +320,44 @@ Public Class 启动器
     Private Sub 返回启动器ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 返回启动器ToolStripMenuItem.Click
         显示到前台(最后窗体)
         If Not 最后窗体.Equals(Me) Then 最后窗体.Close()
+    End Sub
+
+    Private Sub 启动器_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp
+        彩蛋码 += 左(e.KeyCode.ToString, 1).ToLower
+        彩蛋码 = 右(彩蛋码, 30)
+        Dim i As Integer, lc As List(Of Label), l As Label, c As Integer
+        If 彩蛋码.EndsWith("steam") AndAlso 只做一次(156) Then
+            c = 100
+            lc = New List(Of Label)
+            For i = 0 To c
+                l = New Label
+                l.Text = "-" & 随机.整数(5, 99) & "%"
+                l.Font = New Font("Arial", 随机.整数(15, 50))
+                l.BackColor = Color.FromArgb(76, 107, 34)
+                l.ForeColor = Color.FromArgb(164, 208, 7)
+                l.AutoSize = True
+                l.Location = New Drawing.Point(随机.整数(-20, Width - 100), 随机.整数(0, -5000))
+                Controls.Add(l)
+                lc.Add(l)
+                l.BringToFront()
+            Next
+            Dim nt As New Forms.Timer
+            nt.Interval = 15
+            AddHandler nt.Tick, Sub()
+                                    Dim done As Boolean = True
+                                    For Each l In lc
+                                        l.Top += 8
+                                        If l.Top < Height + 100 Then done = False
+                                    Next
+                                    If done Then
+                                        For i = 0 To c
+                                            lc.First.Dispose()
+                                        Next
+                                        nt.Dispose()
+                                    End If
+                                End Sub
+            nt.Enabled = True
+        End If
     End Sub
 
 End Class
