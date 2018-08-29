@@ -210,6 +210,13 @@ Module 文件处理
     End Function
 
     ''' <summary>
+    ''' 返回文件夹的名字
+    ''' </summary>
+    Public Function 文件夹名(文件夹 As String) As String
+        Return 文件名(去右(追加斜杠(文件夹), 1), False)
+    End Function
+
+    ''' <summary>
     ''' 返回文件是否可读写，如果文件不存在也表示可读写
     ''' </summary>
     Public Function 文件可读写(文件 As String) As Boolean

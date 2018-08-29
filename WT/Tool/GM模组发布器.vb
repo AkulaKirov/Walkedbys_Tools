@@ -22,12 +22,13 @@ Public Class GM模组发布器
         Dim i As Integer = 设置.读取数("GMAw", 0)
         If i < 0 Then i = 0
         If ListAddons.Items.Count > i Then ListAddons.SelectedIndex = i
+        删除(tgma, log)
     End Sub
 
     Private Sub TxtPath_TextChanged(sender As Object, e As EventArgs) Handles TxtPath.TextChanged
         Dim s As String = TxtPath.Text
         Dim b As Boolean = s.Length > 3
-        If b Then Txtname.Text = 文件名(s)
+        If b Then Txtname.Text = 文件夹名(TxtPath.Text)
         GBjson.Visible = b
     End Sub
 
@@ -62,6 +63,7 @@ Public Class GM模组发布器
         设置.保存元素("GMODaddons", 列表转文字(ListAddons.Items))
         设置.元素("GMAtime") = 上次更新日期.ToString
         设置.元素("GMAw") = ListAddons.SelectedIndex
+        删除(tgma, log)
     End Sub
 
     Private Sub TxtGMod_TextChanged(sender As Object, e As EventArgs) Handles TxtGMod.TextChanged
@@ -86,6 +88,7 @@ Public Class GM模组发布器
     Private Sub ButNew_Click(sender As Object, e As EventArgs) Handles ButNew.Click
         If 生成GMA() Then
             Shell("cmd.exe /c " + 左(GMODbin, 2) + " & " + 引(GMODbin + "gmpublish.exe") + " create -icon " + 引(TxtJPGfile.Text) + " -addon " + 引(tgma) + " & pause ", AppWinStyle.NormalFocus, True)
+            删除(tgma, log)
         End If
     End Sub
 
@@ -120,6 +123,7 @@ Public Class GM模组发布器
     Private Sub ButUpdateGMA_Click(sender As Object, e As EventArgs) Handles ButUpdateGMA.Click
         If 生成GMA() Then
             Shell("cmd.exe /c " + 左(GMODbin, 2) + " & " + 引(GMODbin + "gmpublish.exe") + " update -id " + Regex.Match(Trim(ListAddons.SelectedItem.ToString), "[0-9].*? ").ToString + " -addon " + 引(tgma) + " & pause", AppWinStyle.NormalFocus, True)
+            删除(tgma, log)
         End If
     End Sub
 
@@ -148,13 +152,14 @@ Public Class GM模组发布器
         s = s.Replace("标签2", CBtags.CheckedItems.Item(1))
         写文件(追加斜杠(TxtPath.Text) + "addon.json", s)
         文件重命名(sy, sy.ToLower)
-        Shell("cmd.exe /c " + 左(GMODbin, 2) + " & " + 引(GMODbin + "gmad.exe") + " create -folder " + 引(sy) + " -out " + 引(tgma) + " > " + 引(log), AppWinStyle.NormalFocus, True)
+        Dim sc As String = "cmd.exe /c " + 左(GMODbin, 2) + " & " + 引(GMODbin + "gmad.exe") + " create -folder " + 引(去右(sy, 1)) + " -out " + 引(tgma) + " > " + 引(log)
+        Shell(sc, AppWinStyle.NormalFocus, True)
         If 文件可用(tgma) Then
             Return True
         Else
             s = 读文件(log)
             Dim m As Integer = Regex.Match(s, "\[([\s\S]*)\]").Index
-            s = "大致错误信息： " + vbCrLf + 左(去左(s, m - 30), 300)
+            s = "大致错误信息： " + vbCrLf + 左(去左(s, m - 30), 800)
             MsgBox(s, MsgBoxStyle.Critical, "GMA 文件生成失败！")
             Return False
         End If
