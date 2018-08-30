@@ -25,6 +25,7 @@ Public Class 启动器
         '新工具("临时工具", 临时工具, "Whatever", "临时用的工具，你不应该在公开发布版里面看见我。")
         新工具("剪贴板记录器", 剪贴板记录器, "clipboardrecord", "在后台记录剪贴板的内容到硬盘里。", True)
         新工具("模型贴图打包器", 起源模型贴图打包器, "sourcemodelpacker", "给 Source 的模型文件批量打包贴图文件。")
+        新工具("RunSringLUA制作器", RunStringLUA制作器, "runstringlua", "算是给 GMod LUA 加密？")
         AddHandler SizeChanged, AddressOf 最小化隐藏
         Dim t As 工具, b As Button, i As Integer, g As String
         For Each t In 工具列表

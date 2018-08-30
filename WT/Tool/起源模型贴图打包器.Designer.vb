@@ -89,6 +89,7 @@ Partial Class 起源模型贴图打包器
         '
         'ButGo
         '
+        Me.ButGo.Enabled = False
         Me.ButGo.Location = New System.Drawing.Point(12, 124)
         Me.ButGo.Name = "ButGo"
         Me.ButGo.Size = New System.Drawing.Size(126, 46)
@@ -99,6 +100,7 @@ Partial Class 起源模型贴图打包器
         '
         'ButList
         '
+        Me.ButList.Enabled = False
         Me.ButList.Location = New System.Drawing.Point(144, 124)
         Me.ButList.Name = "ButList"
         Me.ButList.Size = New System.Drawing.Size(188, 46)

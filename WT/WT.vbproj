@@ -155,6 +155,12 @@
     <Compile Include="Tool\GM模组发布器.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Tool\RunStringLUA制作器.Designer.vb">
+      <DependentUpon>RunStringLUA制作器.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\RunStringLUA制作器.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Tool\临时工具.Designer.vb">
       <DependentUpon>临时工具.vb</DependentUpon>
     </Compile>
@@ -241,6 +247,9 @@
     <EmbeddedResource Include="Tool\GM模组发布器.resx">
       <DependentUpon>GM模组发布器.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Tool\RunStringLUA制作器.resx">
+      <DependentUpon>RunStringLUA制作器.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tool\临时工具.resx">
       <DependentUpon>临时工具.vb</DependentUpon>
     </EmbeddedResource>
@@ -322,6 +331,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Res\bigico.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="updater.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
