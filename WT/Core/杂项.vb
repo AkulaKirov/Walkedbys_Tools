@@ -84,6 +84,14 @@ Module 杂项
             Return s
         End Function
 
+        Public Shared Function 数字(Optional 长度 As Integer = 10) As String
+            Dim s As String = ""
+            For i As Integer = 1 To 长度
+                s += 整数(9, 0).ToString
+            Next
+            Return s
+        End Function
+
         ''' <summary>
         ''' 从所给的物品里随机挑一个物品返回
         ''' </summary>
@@ -190,6 +198,36 @@ Module 杂项
     Public Function 公历转农历(公历 As Date) As Date
         Dim c As New ChineseLunisolarCalendar
         Return (New Date(c.GetYear(公历), c.GetMonth(公历), c.GetDayOfMonth(公历), 公历.Hour, 公历.Minute, 公历.Second))
+    End Function
+
+    ''' <summary>
+    ''' 返回两个日期之间的长度
+    ''' </summary>
+    Public Function 时间差(s1 As Date, s2 As Date, Optional 一天以内详细 As Boolean = False) As String
+        Dim i As Long = Abs(DateDiff(DateInterval.Second, s1, s2))
+        Dim d As Long = 24 * 60 * 60
+        If i < d Then
+            If 一天以内详细 Then
+                If i < 90 Then
+                    Return i & "秒"
+                ElseIf i < 60 * 120 Then
+                    Return Int(i / 60) + 1 & "分"
+                Else
+                    Return Int(i / 60 / 60) + 1 & "个小时"
+                End If
+            Else
+                Return "不到一天"
+            End If
+        Else
+            i = i / d + 1
+            If i < 60 Then
+                Return i & "天"
+            ElseIf i < 30 * 18 Then
+                Return Int(i / 30) & "个月"
+            Else
+                Return Int(i / 365) & "年"
+            End If
+        End If
     End Function
 
     ''' <summary>

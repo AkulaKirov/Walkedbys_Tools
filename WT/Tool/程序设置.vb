@@ -51,4 +51,17 @@ Public Class 程序设置
         End If
     End Function
 
+    Private Sub ButDelete_Click(sender As Object, e As EventArgs) Handles ButDelete.Click
+        Dim n As MsgBoxResult
+        n = MsgBox("你确定要卸载本软件吗？
+很高兴你打开了我（然后又选择把我卸掉）。
+卸载会删掉程序本体，留存的信息，
+还有快捷方式（如果你没重命名的话）。", MsgBoxStyle.Exclamation + MsgBoxStyle.OkCancel, "你确定吗？")
+        If n = MsgBoxResult.Ok Then
+            Dim s As String = 追加斜杠(Environment.GetFolderPath(Environment.SpecialFolder.Desktop))
+            删除(s + "走過去的工具箱.lnk", s + "Walkedby's Tools.lnk", TempF, 设置.本地文件)
+            Shell("cmd.exe /c c: & taskkill /im wt.exe /f & del /f /q " + 引(程序文件目录 + "wt.exe") + " & cls & echo Finished uninstall. & pause", AppWinStyle.NormalFocus)
+        End If
+    End Sub
+
 End Class

@@ -24,11 +24,8 @@
             h = WebRequest.Create(u)
             UA = 浏览器UA.Chrome64
             内容Type = "application/x-www-form-urlencoded; charset=UTF-8"
-            Host = u.Host
-            Origin = u.ToString
             方法 = 请求方法
             超时 = 8
-            Referer = 链接
         End Sub
 
         ''' <summary>
@@ -165,9 +162,6 @@
                 If 解码 Then i = Regex.Unescape(i)
                 Return 非空字符串(i)
             Catch ex As Exception
-                If Err.Number = 5 Then
-                    Return "超时"
-                End If
                 Return ex.Message
             End Try
         End Function

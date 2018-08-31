@@ -29,6 +29,7 @@ Partial Class 程序设置
         Me.CheckHide = New System.Windows.Forms.CheckBox()
         Me.CheckUpdate = New System.Windows.Forms.CheckBox()
         Me.CheckExit = New System.Windows.Forms.CheckBox()
+        Me.ButDelete = New System.Windows.Forms.Button()
         Me.Tabs.SuspendLayout()
         Me.Tab1.SuspendLayout()
         Me.SuspendLayout()
@@ -46,6 +47,7 @@ Partial Class 程序设置
         '
         'Tab1
         '
+        Me.Tab1.Controls.Add(Me.ButDelete)
         Me.Tab1.Controls.Add(Me.ButCreateSC)
         Me.Tab1.Controls.Add(Me.CheckStartUP)
         Me.Tab1.Controls.Add(Me.CheckHide)
@@ -61,7 +63,8 @@ Partial Class 程序设置
         '
         'ButCreateSC
         '
-        Me.ButCreateSC.Location = New System.Drawing.Point(346, 177)
+        Me.ButCreateSC.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.ButCreateSC.Location = New System.Drawing.Point(8, 180)
         Me.ButCreateSC.Name = "ButCreateSC"
         Me.ButCreateSC.Size = New System.Drawing.Size(132, 53)
         Me.ButCreateSC.TabIndex = 6
@@ -113,6 +116,17 @@ Partial Class 程序设置
         Me.CheckExit.Text = "关闭主页的时候直接退出程序，而不是隐藏到后台"
         Me.CheckExit.UseVisualStyleBackColor = True
         '
+        'ButDelete
+        '
+        Me.ButDelete.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.ButDelete.Location = New System.Drawing.Point(146, 180)
+        Me.ButDelete.Name = "ButDelete"
+        Me.ButDelete.Size = New System.Drawing.Size(121, 53)
+        Me.ButDelete.TabIndex = 7
+        Me.ButDelete.TabStop = False
+        Me.ButDelete.Text = "卸载本程序"
+        Me.ButDelete.UseVisualStyleBackColor = True
+        '
         '程序设置
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -140,4 +154,5 @@ Partial Class 程序设置
     Friend WithEvents CheckHide As CheckBox
     Friend WithEvents CheckStartUP As CheckBox
     Friend WithEvents ButCreateSC As Button
+    Friend WithEvents ButDelete As Button
 End Class
