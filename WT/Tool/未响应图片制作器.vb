@@ -35,7 +35,7 @@ Public Class 未响应图片制作器
                 g.DrawString(名字, New Font("Segoe UI", 9), New SolidBrush(Color.Black), 30, 9)
                 g.DrawString(名字 + " 未响应", New Font("Segoe UI", 12), New SolidBrush(Color.FromArgb(0, 51, 153)), 12, 43)
             Case 2
-                g.DrawString(名字, New Font("Segoe UI", 9.5, Drawing.FontStyle.Bold), New SolidBrush(Color.White), 80, 7)
+                g.DrawString(名字, New Font("System", 9, Drawing.FontStyle.Bold), New SolidBrush(Color.White), 80, 8)
                 If Not IsNothing(图片) Then
                     g.DrawImage(图片, 16, 43, 28, 28)
                     b = My.Resources.xp未响应2

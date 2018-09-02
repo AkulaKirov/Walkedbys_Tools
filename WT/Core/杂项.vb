@@ -193,7 +193,7 @@ Module 杂项
     ''' 转换时间为UNIX时间
     ''' </summary>
     Public Function UNIX时间(时间 As Date) As Long
-        UNIX时间 = DateDiff("s", #1970-1-1 0:0:0#, ConvertTimeToUtc(时间))
+        Return DateDiff("s", #1970-1-1 0:0:0#, ConvertTimeToUtc(时间))
     End Function
 
     ''' <summary>
@@ -201,14 +201,14 @@ Module 杂项
     ''' </summary>
     Public Function UNIX时间恢复(时间 As Long) As Date
         Dim T1970 As Date = #1970-1-1 0:0:0#
-        UNIX时间恢复 = ConvertTime(T1970.Add(New TimeSpan(0, 0, 0, 时间)), Utc, Local)
+        Return ConvertTime(T1970.Add(New TimeSpan(0, 0, 0, 时间)), Utc, Local)
     End Function
 
     ''' <summary>
     ''' 把计算机时间变成北京时区的时间
     ''' </summary>
     Public Function 北京时间(时间 As Date) As Date
-        北京时间 = ConvertTimeBySystemTimeZoneId(时间, Local.Id, "China Standard Time")
+        Return ConvertTimeBySystemTimeZoneId(时间, Local.Id, "China Standard Time")
     End Function
 
     ''' <summary>

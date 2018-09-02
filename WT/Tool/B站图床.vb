@@ -24,10 +24,17 @@ Public Class B站图床
         ButRetry.Enabled = False
         ButCopy.Enabled = False
         预览图 = Nothing
-        If 文件存在(m) AndAlso 文件可读写(m) AndAlso 是当中一个(文件后缀(m), "jpg", "png", "gif") AndAlso 文件大小(m) < 20 Then
+        PicBox.Image = Nothing
+        If 文件可用(m) AndAlso 是当中一个(文件后缀(m), "jpg", "png", "gif") AndAlso 文件大小(m) < 20 Then
             LabDoit.Text = "上传中：" + vbCrLf + m
-            图片 = m
-            预览图 = 读文件为图片(m)
+            If 文件后缀(m) = "gif" Then
+                图片 = TempF + "bi.gif"
+                File.Copy(m, TempF + "bi.gif", True)
+                预览图 = Image.FromFile(m)
+            Else
+                图片 = m
+                预览图 = 读文件为图片(m)
+            End If
             Refresh()
             ButPaste.Enabled = False
             Dim h As New 简易HTTP("https://api.vc.bilibili.com/api/v1/image/upload", "POST")
@@ -70,6 +77,7 @@ Public Class B站图床
         Dim m As Image = Forms.Clipboard.GetImage
         If IsNothing(m) Then
             LabDoit.Text = "剪贴板里没有图片！"
+            ButCopy.Enabled = False
         Else
             Try
                 Dim i As String = TempF + "bilibilitemp.png"

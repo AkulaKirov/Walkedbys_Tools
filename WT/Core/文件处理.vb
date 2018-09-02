@@ -315,7 +315,7 @@ Module 文件处理
             Dim r As New MemoryStream
             r.Write(b, 0, b.Length)
             Dim n As String = 文件后缀(文件)
-            If 是当中一个(n, "jpg", "gif", "png", "bmp") Then
+            If 是当中一个(n, "jpg", "png", "bmp") Then
                 If 宽 > 0 AndAlso 高 > 0 Then
                     t = New Bitmap(Image.FromStream(r), 宽, 高)
                 Else

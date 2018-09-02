@@ -56,15 +56,15 @@ Public Class 程序设置
         n = MsgBox("你确定要卸载本软件吗？
 很高兴你打开了我（然后又选择把我卸掉）。
 卸载会删掉程序本体，留存的信息，
-还有快捷方式（如果你没重命名的话）。", MsgBoxStyle.Exclamation + MsgBoxStyle.OkCancel, "你确定吗？")
-        If n = MsgBoxResult.Ok Then
-            启动器.Nico.Visible = False
-            Dim s As String = 追加斜杠(Environment.GetFolderPath(Environment.SpecialFolder.Desktop))
-            删除(s + "走過去的工具箱.lnk", s + "Walkedby's Tools.lnk", TempF, 程序文件目录() + "wt_save.xml", 程序文件目录() + "wt_save.wbxml")
-            s = "C:\Users\" + 当前用户名 + "\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\"
-            删除(s + "走過去的工具箱.lnk", s + "Walkedby's Tools.lnk")
-            Shell("cmd.exe /c c: & taskkill /im wt.exe /f & del /f /q " + 引(程序文件目录 + "wt.exe") + "  & echo Finished uninstall. & pause", AppWinStyle.NormalFocus)
-        End If
+还有快捷方式（如果你没重命名的话）。
+程序本体有几率自删失败，还请同志你亲自动手 。", MsgBoxStyle.Exclamation + MsgBoxStyle.OkCancel, "你确定吗？")
+        If n <> MsgBoxResult.Ok Then Exit Sub
+        启动器.Nico.Visible = False
+        Dim s As String = 追加斜杠(Environment.GetFolderPath(Environment.SpecialFolder.Desktop))
+        删除(s + "走過去的工具箱.lnk", s + "Walkedby's Tools.lnk", TempF, 程序文件目录() + "wt_save.xml", 程序文件目录() + "wt_save.wbxml")
+        s = "C:\Users\" + 当前用户名 + "\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\"
+        删除(s + "走過去的工具箱.lnk", s + "Walkedby's Tools.lnk")
+        Shell("cmd.exe /c c: & taskkill /im wt.exe /f & timeout 1 & del /f /q " + 引(程序文件目录 + "wt.exe") + "  & echo Finished uninstall. & pause", AppWinStyle.NormalFocus)
     End Sub
 
 End Class
