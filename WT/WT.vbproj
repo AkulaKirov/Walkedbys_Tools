@@ -338,9 +338,6 @@
     <None Include="Res\ico.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Res\无响应.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="NEW.md" />
   </ItemGroup>
   <ItemGroup>
@@ -362,6 +359,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="updater.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\win7无响应.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\win10未响应.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\xp未响应.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\xp未响应2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

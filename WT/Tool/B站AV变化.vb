@@ -134,7 +134,7 @@ Public Class 分区
     Public Sub New(name As String, rid As Integer)
         名字 = name
         Me.rid = rid
-        最大AV = 设置.读取数("bilibiliav" + 名字)
+        最大AV = 0
     End Sub
 
     Public Sub 获得最大av()
@@ -155,7 +155,6 @@ Public Class 分区
             g2 = g2 / c
             If g2 > 最大AV Then
                 最大AV = g2
-                设置.元素("bilibiliav" + 名字) = g2.ToString
             End If
         End If
     End Sub

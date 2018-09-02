@@ -22,23 +22,12 @@ Partial Class 未响应图片制作器
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.LabS = New System.Windows.Forms.Label()
         Me.TxtName = New System.Windows.Forms.TextBox()
         Me.LabName = New System.Windows.Forms.Label()
-        Me.LabICO = New System.Windows.Forms.Label()
-        Me.TxtICO = New System.Windows.Forms.TextBox()
         Me.ButClipBoard = New System.Windows.Forms.Button()
         Me.ButOut = New System.Windows.Forms.Button()
+        Me.ListStyle = New System.Windows.Forms.ComboBox()
         Me.SuspendLayout()
-        '
-        'LabS
-        '
-        Me.LabS.BackColor = System.Drawing.SystemColors.Control
-        Me.LabS.Image = Global.WT.My.Resources.Resources.无响应
-        Me.LabS.Location = New System.Drawing.Point(48, 90)
-        Me.LabS.Name = "LabS"
-        Me.LabS.Size = New System.Drawing.Size(536, 247)
-        Me.LabS.TabIndex = 0
         '
         'TxtName
         '
@@ -58,37 +47,20 @@ Partial Class 未响应图片制作器
         Me.LabName.TabIndex = 2
         Me.LabName.Text = "程序的名字："
         '
-        'LabICO
-        '
-        Me.LabICO.AutoSize = True
-        Me.LabICO.Location = New System.Drawing.Point(12, 44)
-        Me.LabICO.Name = "LabICO"
-        Me.LabICO.Size = New System.Drawing.Size(149, 19)
-        Me.LabICO.TabIndex = 3
-        Me.LabICO.Text = "程序的图片 (jpg, png)："
-        '
-        'TxtICO
-        '
-        Me.TxtICO.Location = New System.Drawing.Point(180, 41)
-        Me.TxtICO.MaxLength = 30
-        Me.TxtICO.Name = "TxtICO"
-        Me.TxtICO.Size = New System.Drawing.Size(311, 25)
-        Me.TxtICO.TabIndex = 4
-        Me.TxtICO.TabStop = False
-        '
         'ButClipBoard
         '
-        Me.ButClipBoard.Location = New System.Drawing.Point(497, 41)
+        Me.ButClipBoard.Location = New System.Drawing.Point(12, 43)
         Me.ButClipBoard.Name = "ButClipBoard"
-        Me.ButClipBoard.Size = New System.Drawing.Size(132, 28)
+        Me.ButClipBoard.Size = New System.Drawing.Size(230, 28)
         Me.ButClipBoard.TabIndex = 5
         Me.ButClipBoard.TabStop = False
-        Me.ButClipBoard.Text = "使用剪贴板图片"
+        Me.ButClipBoard.Text = "使用剪贴板图片作为图标"
         Me.ButClipBoard.UseVisualStyleBackColor = True
         '
         'ButOut
         '
-        Me.ButOut.Location = New System.Drawing.Point(50, 340)
+        Me.ButOut.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.ButOut.Location = New System.Drawing.Point(6, 377)
         Me.ButOut.Name = "ButOut"
         Me.ButOut.Size = New System.Drawing.Size(155, 32)
         Me.ButOut.TabIndex = 6
@@ -96,19 +68,28 @@ Partial Class 未响应图片制作器
         Me.ButOut.Text = "输出图片到剪贴板"
         Me.ButOut.UseVisualStyleBackColor = True
         '
+        'ListStyle
+        '
+        Me.ListStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ListStyle.FormattingEnabled = True
+        Me.ListStyle.Items.AddRange(New Object() {"Win7 英文", "Win10 中文", "XP 中文"})
+        Me.ListStyle.Location = New System.Drawing.Point(497, 9)
+        Me.ListStyle.Name = "ListStyle"
+        Me.ListStyle.Size = New System.Drawing.Size(132, 27)
+        Me.ListStyle.TabIndex = 7
+        Me.ListStyle.TabStop = False
+        '
         '未响应图片制作器
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(655, 391)
+        Me.ClientSize = New System.Drawing.Size(655, 421)
+        Me.Controls.Add(Me.ListStyle)
         Me.Controls.Add(Me.ButOut)
         Me.Controls.Add(Me.ButClipBoard)
-        Me.Controls.Add(Me.TxtICO)
-        Me.Controls.Add(Me.LabICO)
         Me.Controls.Add(Me.LabName)
         Me.Controls.Add(Me.TxtName)
-        Me.Controls.Add(Me.LabS)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.ImeMode = System.Windows.Forms.ImeMode.Off
@@ -122,12 +103,9 @@ Partial Class 未响应图片制作器
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents LabS As Label
     Friend WithEvents TxtName As TextBox
     Friend WithEvents LabName As Label
-    Friend WithEvents LabICO As Label
-    Friend WithEvents TxtICO As TextBox
     Friend WithEvents ButClipBoard As Button
     Friend WithEvents ButOut As Button
+    Friend WithEvents ListStyle As ComboBox
 End Class

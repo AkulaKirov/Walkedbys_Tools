@@ -93,9 +93,39 @@ Namespace My.Resources
         '''<summary>
         '''  查找 System.Drawing.Bitmap 类型的本地化资源。
         '''</summary>
-        Friend ReadOnly Property 无响应() As System.Drawing.Bitmap
+        Friend ReadOnly Property win10未响应() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("无响应", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("win10未响应", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property win7无响应() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("win7无响应", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property xp未响应() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("xp未响应", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property xp未响应2() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("xp未响应2", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
