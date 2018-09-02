@@ -27,7 +27,6 @@ Partial Class 启动器
         Me.GBallTools = New System.Windows.Forms.GroupBox()
         Me.ButAddToFavor = New System.Windows.Forms.Button()
         Me.ButOpenTool = New System.Windows.Forms.Button()
-        Me.TxtToolDes = New System.Windows.Forms.TextBox()
         Me.ListTools = New System.Windows.Forms.ListBox()
         Me.GBupdate = New System.Windows.Forms.GroupBox()
         Me.TxtUpdate = New System.Windows.Forms.TextBox()
@@ -39,6 +38,8 @@ Partial Class 启动器
         Me.显示窗口ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.返回启动器ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LabFun = New System.Windows.Forms.Label()
+        Me.TxtToolName = New System.Windows.Forms.TextBox()
+        Me.TxtToolInfo = New System.Windows.Forms.TextBox()
         Me.GBallTools.SuspendLayout()
         Me.GBupdate.SuspendLayout()
         Me.GBabout.SuspendLayout()
@@ -56,9 +57,10 @@ Partial Class 启动器
         '
         'GBallTools
         '
+        Me.GBallTools.Controls.Add(Me.TxtToolInfo)
+        Me.GBallTools.Controls.Add(Me.TxtToolName)
         Me.GBallTools.Controls.Add(Me.ButAddToFavor)
         Me.GBallTools.Controls.Add(Me.ButOpenTool)
-        Me.GBallTools.Controls.Add(Me.TxtToolDes)
         Me.GBallTools.Controls.Add(Me.ListTools)
         Me.GBallTools.Location = New System.Drawing.Point(9, 135)
         Me.GBallTools.Name = "GBallTools"
@@ -88,18 +90,6 @@ Partial Class 启动器
         Me.ButOpenTool.TabStop = False
         Me.ButOpenTool.Text = "运行"
         Me.ButOpenTool.UseVisualStyleBackColor = True
-        '
-        'TxtToolDes
-        '
-        Me.TxtToolDes.Location = New System.Drawing.Point(207, 20)
-        Me.TxtToolDes.Multiline = True
-        Me.TxtToolDes.Name = "TxtToolDes"
-        Me.TxtToolDes.ReadOnly = True
-        Me.TxtToolDes.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtToolDes.Size = New System.Drawing.Size(168, 166)
-        Me.TxtToolDes.TabIndex = 1
-        Me.TxtToolDes.TabStop = False
-        Me.TxtToolDes.Text = "请从左边的列表里选择一个工具"
         '
         'ListTools
         '
@@ -195,10 +185,30 @@ Partial Class 启动器
         Me.LabFun.TabIndex = 5
         Me.LabFun.Text = "fun~"
         '
+        'TxtToolName
+        '
+        Me.TxtToolName.Location = New System.Drawing.Point(207, 20)
+        Me.TxtToolName.Name = "TxtToolName"
+        Me.TxtToolName.ReadOnly = True
+        Me.TxtToolName.Size = New System.Drawing.Size(168, 24)
+        Me.TxtToolName.TabIndex = 4
+        Me.TxtToolName.TabStop = False
+        '
+        'TxtToolInfo
+        '
+        Me.TxtToolInfo.Location = New System.Drawing.Point(207, 50)
+        Me.TxtToolInfo.Multiline = True
+        Me.TxtToolInfo.Name = "TxtToolInfo"
+        Me.TxtToolInfo.ReadOnly = True
+        Me.TxtToolInfo.Size = New System.Drawing.Size(168, 134)
+        Me.TxtToolInfo.TabIndex = 5
+        Me.TxtToolInfo.TabStop = False
+        '
         '启动器
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(754, 396)
         Me.Controls.Add(Me.LabFun)
         Me.Controls.Add(Me.GBabout)
@@ -207,6 +217,7 @@ Partial Class 启动器
         Me.Controls.Add(Me.GBfavorites)
         Me.DoubleBuffered = True
         Me.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ForeColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(44, Byte), Integer), CType(CType(61, Byte), Integer))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.ImeMode = System.Windows.Forms.ImeMode.Off
         Me.KeyPreview = True
@@ -229,7 +240,6 @@ Partial Class 启动器
     Friend WithEvents GBfavorites As GroupBox
     Friend WithEvents GBallTools As GroupBox
     Friend WithEvents ListTools As ListBox
-    Friend WithEvents TxtToolDes As TextBox
     Friend WithEvents ButOpenTool As Button
     Friend WithEvents ButAddToFavor As Button
     Friend WithEvents GBupdate As GroupBox
@@ -242,4 +252,6 @@ Partial Class 启动器
     Friend WithEvents 显示窗口ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents 返回启动器ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LabFun As Label
+    Friend WithEvents TxtToolName As TextBox
+    Friend WithEvents TxtToolInfo As TextBox
 End Class

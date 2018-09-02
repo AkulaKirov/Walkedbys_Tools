@@ -117,7 +117,7 @@ Public Class 起源模型贴图打包器
         For Each i As String In f
             i = Trim(i)
             If Not (i.StartsWith("//") OrElse i.StartsWith("--")) AndAlso 包含(i, n) Then
-                Return Trim(去除(i, vbQuote, n, ".vtf").Replace("/", "\"))
+                Return Trim(去除(i, 引号, n, ".vtf").Replace("/", "\"))
             End If
         Next
         Return ""

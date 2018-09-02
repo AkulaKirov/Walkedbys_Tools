@@ -143,7 +143,7 @@ Public Class 分区
         h.Host = "api.bilibili.com"
         Dim s As String = h.获得回应
         If s.Length > 1000 Then
-            s = 去除(s, vbQuote)
+            s = 去除(s, 引号)
             Dim g2 As Long, g As Long, c As Integer = 0
             For Each m As Match In Regex.Matches(s, "aid:[0-9]+,")
                 g = Val(只要数字(m.ToString))

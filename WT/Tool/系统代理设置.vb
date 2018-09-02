@@ -31,7 +31,7 @@ Public Class 系统代理设置
         Dim s As String = h.获得回应()
         s = 提取(s, "result", "</p></div></div>").Replace("</p><p>", vbCrLf)
         If s.Length > 10 Then
-            MsgBox(正则去除(s, "<.*?>", "<", ">", vbQuote))
+            MsgBox(正则去除(s, "<.*?>", "<", ">", 引号))
         Else
             MsgBox("获取失败！" + vbCrLf + s, MsgBoxStyle.Critical)
         End If

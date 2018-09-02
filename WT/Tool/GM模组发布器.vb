@@ -102,7 +102,7 @@ Public Class GM模组发布器
                 If m.Length > 5 Then
                     m = 去左(m, 1)
                     m = Regex.Replace(m, "	[0-9].*?B	", "    ")
-                    m = Regex.Replace(m, "    " + vbQuote, "    ")
+                    m = Regex.Replace(m, "    " + 引号, "    ")
                     m = 去右(m, 1)
                     Dim c As Integer = Trim(Regex.Match(m, "[0-9].*? ").ToString).Length
                     If c < 10 Then

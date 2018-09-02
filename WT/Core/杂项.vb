@@ -69,8 +69,8 @@ Module 杂项
         ''' <summary>
         ''' 随机获得 True 或 False
         ''' </summary>
-        Public Shared Function 真假() As Boolean
-            Return (Rnd() >= 0.5)
+        Public Shared Function 真假(Optional 百分比概率 As Integer = 50) As Boolean
+            Return (Rnd() > (百分比概率 / 100))
         End Function
 
         ''' <summary>
@@ -84,6 +84,9 @@ Module 杂项
             Return s
         End Function
 
+        ''' <summary>
+        ''' 返回指定长度的用数字组成的字符串
+        ''' </summary>
         Public Shared Function 数字(Optional 长度 As Integer = 10) As String
             Dim s As String = ""
             For i As Integer = 1 To 长度
@@ -93,10 +96,26 @@ Module 杂项
         End Function
 
         ''' <summary>
+        ''' 返回指定长度的用汉字组成的字符串
+        ''' </summary>
+        Public Shared Function 汉字(Optional 长度 As Integer = 10) As String
+            Dim s As String = ""
+            For i As Integer = 1 To 长度
+                s += 常用简体字(整数(0, 常用简体字.Length - 1))
+            Next
+            Return s
+        End Function
+
+        ''' <summary>
         ''' 从所给的物品里随机挑一个物品返回
         ''' </summary>
         Public Shared Function 多选一(ParamArray 物品() As Object) As Object
             Return 物品(整数(0, 物品.Length - 1))
+        End Function
+
+        Public Shared Function 比特() As Byte
+            Dim b As Byte = 整数(0, 255)
+            Return b
         End Function
 
         ''' <summary>

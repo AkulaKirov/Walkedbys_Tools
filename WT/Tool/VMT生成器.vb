@@ -13,7 +13,6 @@ Public Class VMT生成器
     End Sub
 
     Private Sub TxtPath_TextChanged(sender As Object, e As EventArgs) Handles TxtPath.TextChanged
-        GBvmt.Enabled = False
         Dim i As String = TxtPath.Text
         If i.Length < 1 Then Exit Sub
         i = 追加斜杠(i.ToLower.Replace("/", "\"))
@@ -23,6 +22,7 @@ Public Class VMT生成器
             GBvmt.Enabled = True
         Else
             TxtPath.Text = ""
+            GBvmt.Enabled = False
         End If
     End Sub
 
@@ -38,10 +38,10 @@ Public Class VMT生成器
         TxtVMT.Focus()
     End Sub
 
-    Private Sub TxtTempName_TextChanged(sender As Object, e As EventArgs) Handles TxtTempName.TextChanged, ButDEL.Click, TxtVMT.TextChanged, TxtSkip.TextChanged
+    Private Sub TxtTempName_TextChanged(sender As Object, e As EventArgs) Handles TxtTempName.TextChanged, ButDEL.Click, TxtVMT.TextChanged, TxtSkip.TextChanged, TxtPath.TextChanged
         Dim i As String = Trim(TxtTempName.Text)
         ButADD.Enabled = (i.Length > 0 AndAlso Not 在列表(ListTemps.Items, i) AndAlso TxtVMT.TextLength > 10)
-        ButGen.Enabled = (TxtVMT.TextLength > 10 AndAlso 正确正则表达式(TxtSkip.Text))
+        ButGen.Enabled = (TxtVMT.TextLength > 10 AndAlso 正确正则表达式(TxtSkip.Text) AndAlso TxtPath.TextLength > 10)
     End Sub
 
     Private Sub VMT生成器_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing

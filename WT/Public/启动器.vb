@@ -12,6 +12,8 @@ Public Class 启动器
         Text = "走過去的工具箱 测试版 v" + 版本.ToString
         Nico.Icon = 图标
         Directory.CreateDirectory(TempF)
+        配色(Me)
+        Dim t As 工具, b As Button, i As Integer, g As String
         新工具("文件夹创建器", 文件夹创建器, "MKDIR", "输入一个路径，就能新建好你要的文件夹。")
         新工具("B站图床", B站图床, "BilibiliPic", "把20MB以下的图片无损放到B站服务器还行。")
         新工具("日子提醒器", 日子提醒, "DayReminder", "提醒生日或者重要的啥日子。", True)
@@ -28,8 +30,8 @@ Public Class 启动器
         新工具("RunSringLUA制作器", RunStringLUA制作器, "runstringlua", "算是给 GMod LUA 加密？")
         新工具("B站催更器", B站催更器, "BilibiliPushYou", "会提醒你B站多久没更视频的一个工具。")
         新工具("B站实时最大AV", B站AV变化, "BilibiliAV", "直观地显示一下B站各分区的最大AV号的实时情况。")
+        新工具("随机生成器", 随机生成器, "RandomG", "随机生成中英文句子或者数字等。")
         AddHandler SizeChanged, AddressOf 最小化隐藏
-        Dim t As 工具, b As Button, i As Integer, g As String
         For Each t In 工具列表
             ListTools.Items.Add(t.名字)
         Next
@@ -94,19 +96,18 @@ Public Class 启动器
                 End Sub)
         End If
         彩蛋码 = ""
-        Refresh()
         LabFun.Text = 随机.多选一("",
 "8848 钛金显卡~",
 "真高兴我的计算机几乎都不是学校教的。",
 引("风水轮流转。"),
 "那太不幸了。",
 "要试试直接对着主页输入steam吗？",
-引("正义之子面对有悖常理的世界，会让世界天翻地覆。") + " ——GMan",
+引("正义之子面对有悖常理的世界，会让世界天翻地覆。"),
 "我不喜欢吵架或者辱骂，我也不支持断绝交流的大门。",
 "我有一个男友，可惜他关键时刻派不上用场。",
 "迅雷其实是功能最齐全的下载软件，可惜他越做越差。",
 "一个朋友曾对我说：" + 引("steam没被墙，只是被DNS污染了。"),
-引("You forget a thousand things every day, make sure this is one of them.") + " ——麦可·汤利",
+引("You forget a thousand things every day, make sure this is one of them."),
 "做地图做到想吐，赚钱好难啊。",
 "做傻瓜式软件救不了中国人。",
 "别和差的比，越差越有理。",
@@ -116,9 +117,10 @@ Public Class 启动器
 "我也曾是个小学生，我先玩的CF，然后玩的CS1.6，然后学了怎么做CS1.6地图。",
 "我用的麦克风大概卖30元。",
 "我播放量最高的那个马化腾的视频其实是个垃圾视频，只花了我两个小时做好的。",
-"我也想做一个盗号软件，专门把密码发回主人邮箱里那种，告诉他你已经被我盗号了，记得改密码。hhhhh",
-"我已经等不急玩GTA6或者半条命2EP3了。"
+"我已经等不急玩GTA6或者半条命2EP3了。",
+"曾经有一个朋友让我电脑登录他的steam账号帮他做点事情，我很高兴，因为他信任我，被信任真好。"
 ).ToString
+        Refresh()
     End Sub
 
     Private Sub 启动器_FormClosing(sender As Form, e As FormClosingEventArgs) Handles Me.FormClosing
@@ -136,7 +138,7 @@ Public Class 启动器
             中断线程(t)
         Next
         For Each n As 工具 In 工具列表
-            n.窗体.Close()
+            If n.启动过了 Then n.窗体.Dispose()
         Next
         设置.保存到本地()
         删除(TempF)
@@ -160,7 +162,8 @@ Public Class 启动器
         Dim i As Integer = ListTools.SelectedIndex
         If i < 0 Then Exit Sub
         Dim t As 工具 = 名字工具(ListTools.SelectedItem.ToString)
-        TxtToolDes.Text = t.名字 + vbCrLf + IIf(在列表(工具收藏, t), "【已收藏】" + vbCrLf, "") + "简介：" + vbCrLf + t.简介
+        TxtToolInfo.Text = t.简介
+        TxtToolName.Text = t.名字
         ButOpenTool.Enabled = True
         With ButAddToFavor
             If 在列表(工具收藏, t) Then

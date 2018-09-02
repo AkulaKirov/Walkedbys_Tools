@@ -122,6 +122,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Core\字符串收集.vb" />
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -245,6 +246,12 @@
     <Compile Include="Tool\起源模型贴图打包器.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Tool\随机生成器.Designer.vb">
+      <DependentUpon>随机生成器.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\随机生成器.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -303,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\起源模型贴图打包器.resx">
       <DependentUpon>起源模型贴图打包器.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\随机生成器.resx">
+      <DependentUpon>随机生成器.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

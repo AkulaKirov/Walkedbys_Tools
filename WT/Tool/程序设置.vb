@@ -58,9 +58,12 @@ Public Class 程序设置
 卸载会删掉程序本体，留存的信息，
 还有快捷方式（如果你没重命名的话）。", MsgBoxStyle.Exclamation + MsgBoxStyle.OkCancel, "你确定吗？")
         If n = MsgBoxResult.Ok Then
+            启动器.Nico.Visible = False
             Dim s As String = 追加斜杠(Environment.GetFolderPath(Environment.SpecialFolder.Desktop))
-            删除(s + "走過去的工具箱.lnk", s + "Walkedby's Tools.lnk", TempF, 设置.本地文件)
-            Shell("cmd.exe /c c: & taskkill /im wt.exe /f & del /f /q " + 引(程序文件目录 + "wt.exe") + " & cls & echo Finished uninstall. & pause", AppWinStyle.NormalFocus)
+            删除(s + "走過去的工具箱.lnk", s + "Walkedby's Tools.lnk", TempF, 程序文件目录() + "wt_save.xml", 程序文件目录() + "wt_save.wbxml")
+            s = "C:\Users\" + 当前用户名 + "\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\"
+            删除(s + "走過去的工具箱.lnk", s + "Walkedby's Tools.lnk")
+            Shell("cmd.exe /c c: & taskkill /im wt.exe /f & del /f /q " + 引(程序文件目录 + "wt.exe") + "  & echo Finished uninstall. & pause", AppWinStyle.NormalFocus)
         End If
     End Sub
 

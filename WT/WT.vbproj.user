@@ -12,6 +12,6 @@
     <ProjectView>ProjectFiles</ProjectView>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <StartArguments>-bilibiliav</StartArguments>
+    <StartArguments>-whatever</StartArguments>
   </PropertyGroup>
 </Project>

@@ -26,9 +26,9 @@
             If 包含(s, "tlist"":[],""vlist"":[],""count"":0") Then
                 out = "同志，你没视频。"
             Else
-                s = 去除(s, vbCr, vbLf, vbQuote)
+                s = 去除(s, vbCr, vbLf, 引号)
                 s = 提取(s, "author", "length")
-                out = "你是：" + 提取(s, ":", ",") + vbCrLf + "距离你的最后一个视频已经过去了：" + 时间差(UNIX时间恢复(Val(提取(s, "created:", ","))), Now, True)
+                out = "你是：" + 提取(s, ":", ",") + vbCrLf + "距离你上一次发视频已经过去了：" + 时间差(UNIX时间恢复(Val(提取(s, "created:", ","))), Now, True)
             End If
         Else
             out = "获得网站信息失败，错误信息：" + vbCrLf + s

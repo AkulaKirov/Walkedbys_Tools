@@ -2,11 +2,6 @@
 Module 字符串处理
 
     ''' <summary>
-    ''' 一个英文引号
-    ''' </summary>
-    Public Const vbQuote As String = """"
-
-    ''' <summary>
     ''' 把全部回车统一到指定的 vbCrLf
     ''' </summary>
     Public Function 回车规范(文字 As String) As String
@@ -133,7 +128,7 @@ Module 字符串处理
     ''' 把 文字 变成 "文字"
     ''' </summary>
     Public Function 引(文字 As String) As String
-        Return vbQuote + 文字 + vbQuote
+        Return 引号 + 文字 + 引号
     End Function
 
     ''' <summary>

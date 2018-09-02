@@ -24,12 +24,12 @@ Partial Class 程序设置
     Private Sub InitializeComponent()
         Me.Tabs = New System.Windows.Forms.TabControl()
         Me.Tab1 = New System.Windows.Forms.TabPage()
+        Me.ButDelete = New System.Windows.Forms.Button()
         Me.ButCreateSC = New System.Windows.Forms.Button()
         Me.CheckStartUP = New System.Windows.Forms.CheckBox()
         Me.CheckHide = New System.Windows.Forms.CheckBox()
         Me.CheckUpdate = New System.Windows.Forms.CheckBox()
         Me.CheckExit = New System.Windows.Forms.CheckBox()
-        Me.ButDelete = New System.Windows.Forms.Button()
         Me.Tabs.SuspendLayout()
         Me.Tab1.SuspendLayout()
         Me.SuspendLayout()
@@ -61,6 +61,17 @@ Partial Class 程序设置
         Me.Tab1.Text = "杂项"
         Me.Tab1.UseVisualStyleBackColor = True
         '
+        'ButDelete
+        '
+        Me.ButDelete.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.ButDelete.Location = New System.Drawing.Point(146, 180)
+        Me.ButDelete.Name = "ButDelete"
+        Me.ButDelete.Size = New System.Drawing.Size(121, 53)
+        Me.ButDelete.TabIndex = 7
+        Me.ButDelete.TabStop = False
+        Me.ButDelete.Text = "卸载本程序"
+        Me.ButDelete.UseVisualStyleBackColor = True
+        '
         'ButCreateSC
         '
         Me.ButCreateSC.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
@@ -75,7 +86,7 @@ Partial Class 程序设置
         'CheckStartUP
         '
         Me.CheckStartUP.AutoSize = True
-        Me.CheckStartUP.Location = New System.Drawing.Point(3, 89)
+        Me.CheckStartUP.Location = New System.Drawing.Point(3, 87)
         Me.CheckStartUP.Name = "CheckStartUP"
         Me.CheckStartUP.Size = New System.Drawing.Size(275, 23)
         Me.CheckStartUP.TabIndex = 5
@@ -86,7 +97,7 @@ Partial Class 程序设置
         'CheckHide
         '
         Me.CheckHide.AutoSize = True
-        Me.CheckHide.Location = New System.Drawing.Point(6, 6)
+        Me.CheckHide.Location = New System.Drawing.Point(3, 6)
         Me.CheckHide.Name = "CheckHide"
         Me.CheckHide.Size = New System.Drawing.Size(340, 23)
         Me.CheckHide.TabIndex = 2
@@ -97,7 +108,7 @@ Partial Class 程序设置
         'CheckUpdate
         '
         Me.CheckUpdate.AutoSize = True
-        Me.CheckUpdate.Location = New System.Drawing.Point(6, 60)
+        Me.CheckUpdate.Location = New System.Drawing.Point(3, 60)
         Me.CheckUpdate.Name = "CheckUpdate"
         Me.CheckUpdate.Size = New System.Drawing.Size(392, 23)
         Me.CheckUpdate.TabIndex = 1
@@ -108,24 +119,13 @@ Partial Class 程序设置
         'CheckExit
         '
         Me.CheckExit.AutoSize = True
-        Me.CheckExit.Location = New System.Drawing.Point(6, 33)
+        Me.CheckExit.Location = New System.Drawing.Point(3, 33)
         Me.CheckExit.Name = "CheckExit"
         Me.CheckExit.Size = New System.Drawing.Size(314, 23)
         Me.CheckExit.TabIndex = 0
         Me.CheckExit.TabStop = False
         Me.CheckExit.Text = "关闭主页的时候直接退出程序，而不是隐藏到后台"
         Me.CheckExit.UseVisualStyleBackColor = True
-        '
-        'ButDelete
-        '
-        Me.ButDelete.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.ButDelete.Location = New System.Drawing.Point(146, 180)
-        Me.ButDelete.Name = "ButDelete"
-        Me.ButDelete.Size = New System.Drawing.Size(121, 53)
-        Me.ButDelete.TabIndex = 7
-        Me.ButDelete.TabStop = False
-        Me.ButDelete.Text = "卸载本程序"
-        Me.ButDelete.UseVisualStyleBackColor = True
         '
         '程序设置
         '

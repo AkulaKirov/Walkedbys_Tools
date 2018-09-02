@@ -327,6 +327,51 @@ Module 文件处理
         Return t
     End Function
 
+    ''' <summary>
+    ''' 读取我自己的加密文本
+    ''' </summary>
+    Public Function 读加密文件(文件 As String) As String
+        If Not 文件可用(文件) Then Return ""
+        Dim r As New BinaryReader(File.OpenRead(文件))
+        Dim hash As Integer = r.ReadInt32()
+        Dim n As Integer = r.ReadByte, n2 As Integer = r.ReadByte
+        Dim s As New List(Of Byte)
+        For i = 6 To r.BaseStream.Length - 1
+            Dim b As Byte = r.ReadByte
+            If b > n2 Then s.Add(b - n2)
+        Next
+        Dim f As String = 字节转文字(s.ToArray)
+        If f.GetHashCode = hash Then
+            Return HttpUtility.UrlDecode(f)
+        Else
+            Return ""
+        End If
+    End Function
+
+    ''' <summary>
+    ''' 保存我自己加密过的文本
+    ''' </summary>
+    Public Sub 写加密文件(文件 As String, 内容 As String)
+        If Not 文件可读写(文件) Then Exit Sub
+        删除(文件)
+        Dim r As New BinaryWriter(File.OpenWrite(文件))
+        内容 = HttpUtility.UrlEncode(内容)
+        Dim n As Byte = 随机.整数(1, 99), n2 As Byte = 随机.整数(10, 99), i As Integer
+        r.Write(内容.GetHashCode)
+        r.Write(n)
+        r.Write(n2)
+        Dim b As Byte() = 文字转字节(内容)
+        For i = 0 To b.Count - 1
+            b(i) += n2
+            If b(i) < n2 Then PRT(b(i))
+            r.Write(b(i))
+            If 随机.真假(20) Then
+                r.Write(CType(随机.整数(0, n2 - 1), Byte))
+            End If
+        Next
+        r.Close()
+    End Sub
+
     Public Class 简易XML
 
         Public Property 全文本 As String
@@ -337,8 +382,7 @@ Module 文件处理
             根元素 = 根
             全文本 = Trim(原始文本)
             提纯()
-            本地文件 = 文件
-            从本地读取()
+            本地文件 = 文件.ToLower
         End Sub
 
         Private Sub 提出根元素()
@@ -361,13 +405,23 @@ Module 文件处理
         End Sub
 
         Public Sub 保存到本地()
+            本地文件 = 本地文件.ToLower
             If 本地文件.Length < 5 Then Exit Sub
-            写文件(本地文件, ToString)
+            If 文件后缀(本地文件) = "wbxml" Then
+                写加密文件(本地文件, ToString)
+            Else
+                写文件(本地文件, ToString)
+            End If
         End Sub
 
         Public Sub 从本地读取()
+            本地文件 = 本地文件.ToLower
             If 本地文件.Length < 5 Then Exit Sub
-            全文本 = 读文件(本地文件)
+            If 文件后缀(本地文件) = "wbxml" Then
+                全文本 = 读加密文件(本地文件)
+            Else
+                全文本 = 读文件(本地文件)
+            End If
             提纯()
         End Sub
 

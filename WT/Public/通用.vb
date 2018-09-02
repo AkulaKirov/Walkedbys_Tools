@@ -4,7 +4,7 @@ Module 通用
     Friend 工具列表 As New List(Of 工具)
     Friend 工具收藏 As New List(Of 工具)
     Friend 版本 As Single = 版本转小数(My.Application.Info.Version)
-    Friend 设置 As New 简易XML("WT", "", 程序文件目录() + "wt_save.xml")
+    Friend 设置 As New 简易XML("WT", "")
     Friend TempF As String = 程序文件目录() + "WalkedbysTemps\"
     Friend 图标 As Icon = My.Resources.ico
     Friend 最后窗体 As Form = 启动器
@@ -95,44 +95,62 @@ Module 通用
         Return False
     End Function
 
+    Public Sub 配色(c As Control)
+        Dim bc As Color = 启动器.BackColor
+        Dim fc As Color = 启动器.ForeColor
+        c.BackColor = bc
+        c.ForeColor = fc
+        If c.HasChildren Then
+            For Each i As Control In c.Controls
+                配色(i)
+            Next
+        End If
+    End Sub
+
     Public Class 工具
 
         Public Property 名字 As String
         Public Property 简介 As String
         Public Property 窗体 As Form
         Public Property ID As String
+        Public Property 启动过了 As Boolean
 
         Public Sub New(name As String, win As Form, 内部id As String, description As String, 预加载 As Boolean)
             名字 = name
             窗体 = win
-            If 预加载 Then
-                With 窗体
+            启动过了 = False
+            简介 = description
+            ID = 内部id.ToLower
+            With 窗体
+                AddHandler .Activated, Sub()
+                                           启动过了 = True
+                                       End Sub
+                .Icon = 图标
+                .ImeMode = 启动器.ImeMode
+                .ShowInTaskbar = True
+                .MaximizeBox = False
+                配色(窗体)
+                .AutoScaleMode = AutoScaleMode.Dpi
+                If 预加载 Then
                     .StartPosition = FormStartPosition.Manual
                     .ShowInTaskbar = False
                     .Top = My.Computer.Screen.Bounds.Height + 100
                     .Show()
                     .Hide()
-                End With
-            End If
-            简介 = description
-            ID = 内部id.ToLower
-            窗体.Icon = 图标
-            窗体.ImeMode = 启动器.ImeMode
-            窗体.ShowInTaskbar = True
-            窗体.MaximizeBox = False
-            窗体.AutoScaleMode = AutoScaleMode.Dpi
-            AddHandler 窗体.FormClosing, Sub(sender As Object, e As FormClosingEventArgs)
-                                           e.Cancel = True
-                                           窗体.Hide()
-                                           窗体.ShowInTaskbar = False
-                                           启动器.Location = 窗体.Location
-                                           启动器.WindowState = FormWindowState.Normal
-                                           启动器.Show()
-                                           启动器.Location = 窗体.Location
-                                           最后窗体 = 启动器
-                                           最后窗体.ShowInTaskbar = True
-                                       End Sub
-            AddHandler 窗体.SizeChanged, AddressOf 最小化隐藏
+                End If
+                AddHandler .FormClosing, Sub(sender As Object, e As FormClosingEventArgs)
+                                             e.Cancel = True
+                                             .Hide()
+                                             .ShowInTaskbar = False
+                                             启动器.Location = .Location
+                                             启动器.WindowState = FormWindowState.Normal
+                                             启动器.Show()
+                                             启动器.Location = .Location
+                                             最后窗体 = 启动器
+                                             最后窗体.ShowInTaskbar = True
+                                         End Sub
+                AddHandler .SizeChanged, AddressOf 最小化隐藏
+            End With
         End Sub
 
         Public Sub 启动()
