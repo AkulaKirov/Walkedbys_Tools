@@ -35,13 +35,14 @@ Partial Class 启动器
         Me.LabAbout = New System.Windows.Forms.Label()
         Me.GBabout = New System.Windows.Forms.GroupBox()
         Me.LabTime = New System.Windows.Forms.Label()
-        Me.TimerX = New System.Windows.Forms.Timer(Me.components)
+        Me.Opener = New System.Windows.Forms.Timer(Me.components)
         Me.Nico = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.NicoMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.显示窗口ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.返回启动器ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LabFun = New System.Windows.Forms.Label()
         Me.TimerC = New System.Windows.Forms.Timer(Me.components)
+        Me.AutoSave = New System.Windows.Forms.Timer(Me.components)
         Me.GBallTools.SuspendLayout()
         Me.GBupdate.SuspendLayout()
         Me.GBabout.SuspendLayout()
@@ -178,7 +179,7 @@ Partial Class 启动器
         Me.LabTime.TabIndex = 4
         Me.LabTime.Text = "已经用了："
         '
-        'TimerX
+        'Opener
         '
         '
         'Nico
@@ -220,6 +221,10 @@ Partial Class 启动器
         'TimerC
         '
         Me.TimerC.Interval = 1000
+        '
+        'AutoSave
+        '
+        Me.AutoSave.Interval = 20000
         '
         '启动器
         '
@@ -263,7 +268,7 @@ Partial Class 启动器
     Friend WithEvents TxtUpdate As TextBox
     Friend WithEvents LabAbout As Label
     Friend WithEvents GBabout As GroupBox
-    Friend WithEvents TimerX As System.Windows.Forms.Timer
+    Friend WithEvents Opener As System.Windows.Forms.Timer
     Friend WithEvents Nico As NotifyIcon
     Friend WithEvents NicoMenu As ContextMenuStrip
     Friend WithEvents 显示窗口ToolStripMenuItem As ToolStripMenuItem
@@ -273,4 +278,5 @@ Partial Class 启动器
     Friend WithEvents TxtToolInfo As TextBox
     Friend WithEvents LabTime As Label
     Friend WithEvents TimerC As Forms.Timer
+    Friend WithEvents AutoSave As Forms.Timer
 End Class

@@ -102,7 +102,7 @@ Public Class B站AV变化
         End If
     End Sub
 
-    Function 略过分区(s As 分区) As Boolean
+    Private Function 略过分区(s As 分区) As Boolean
         If CheckMovies.Checked Then
             If 是当中一个(s.名字, "电影", "TV剧", "纪录片", "国创") Then
                 Return True
@@ -125,7 +125,7 @@ Public Class B站AV变化
 
 End Class
 
-Public Class 分区
+ Class 分区
 
     Public Property 名字 As String
     Public Property 最大AV As Long

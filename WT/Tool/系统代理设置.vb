@@ -37,17 +37,6 @@ Public Class 系统代理设置
         End If
     End Sub
 
-    Private Sub ButCheckGoogle_Click(sender As Object, e As EventArgs) Handles ButCheckGoogle.Click
-        Dim h As New 简易HTTP("http://clients3.google.com/generate_204")
-        h.超时 = 5
-        Dim s As String = h.获得回应
-        If s.Length = 0 Then
-            MsgBox("测试成功！")
-        Else
-            MsgBox("测试失败！" + vbCrLf + s, MsgBoxStyle.Critical)
-        End If
-    End Sub
-
     Private Sub 系统代理设置_Activated(sender As Object, e As EventArgs) Handles Me.Activated
         TxtIP.Text = "本机IP："
         If NetworkInterface.GetIsNetworkAvailable Then

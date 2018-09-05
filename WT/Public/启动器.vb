@@ -3,7 +3,6 @@ Public Class 启动器
 
     Friend 收藏按纽 As New List(Of Button)
     Dim 关于链接 As New List(Of LinkLabel)
-    Dim 计时 As Integer = 0
     Dim 彩蛋码 As String
     Dim 已退出 As Boolean = False
     Dim 开始时间 As Date, 原时长 As Long
@@ -32,6 +31,7 @@ Public Class 启动器
         新工具("B站催更器", B站催更器, "BilibiliPushYou", "会提醒你B站多久没更视频的一个工具。")
         新工具("B站实时最大AV", B站AV变化, "BilibiliAV", "直观地显示一下B站各分区的最大AV号的实时情况。")
         新工具("随机生成器", 随机生成器, "RandomG", "随机生成中英文句子或者数字等。")
+        新工具("网络检测", 网络检测, "NetTest", "如果你觉得你的网络不正常可以一直看着这个。")
         If 在列表(启动参数, "-tryfix") Then 新工具("信息修改器", 信息修改器, "TryFix", "设置保存信息的修改器。")
         AddHandler SizeChanged, AddressOf 最小化隐藏
         For Each t In 工具列表
@@ -76,7 +76,6 @@ Public Class 启动器
         新增关于链接("源码", "https://github.com/gordonwalkedby/Walkedbys_Tools")
         新增关于链接("下载最新版", "https://github.com/gordonwalkedby/Walkedbys_Tools/releases")
         新增关于链接("请我喝好的", "https://walkedby.com/donateme/")
-        TimerX.Enabled = True
         GBallTools.Text += 括((ListTools.Items.Count - 1).ToString)
         原时长 = 设置.读取数("OpenTime")
         开始时间 = Now
@@ -105,8 +104,8 @@ Public Class 启动器
 "8848 钛金显卡~",
 "真高兴我的计算机几乎都不是学校教的。",
 "风水轮流转。",
-"那太不幸了。",
 "要试试直接对着主页输入steam吗？",
+"那太不幸了。",
 "正义之子面对有悖常理的世界，会让世界天翻地覆。",
 "我不喜欢吵架或者辱骂，我也不支持断绝交流的大门。",
 "我有一个男友，可惜他关键时刻派不上用场。",
@@ -124,9 +123,12 @@ Public Class 启动器
 "我播放量最高的那个马化腾的视频其实是个垃圾视频，只花了我两个小时做好的。",
 "我已经等不急玩GTA6或者半条命2EP3了。",
 "曾经有一个朋友让我电脑登录他的steam账号帮他做点事情，我很高兴，因为他信任我，被信任真好。",
-"人啊，不要有点成功就开始来点名言警句教人家做人，结果到头来反而被自己说的大道理压死。——敖厂长"
+"人啊，不要有点成功就开始来点名言警句教人家做人，结果到头来反而被自己说的大道理压死。——敖厂长",
+"男友一直对他QQ群里的人：自己百度去。但是在我面前，有问题都是第一时间问我，他自己都不肯百度。"
 ).ToString
         Refresh()
+        AutoSave.Enabled = True
+        Opener.Enabled = True
     End Sub
 
     Private Sub 启动器_FormClosing(sender As Form, e As FormClosingEventArgs) Handles Me.FormClosing
@@ -259,25 +261,19 @@ Public Class 启动器
         End With
     End Sub
 
-    Private Sub TimerX_Tick(sender As Object, e As EventArgs) Handles TimerX.Tick
-        计时 += 1
-        Select Case 计时
-            Case 1
-                Dim t As 工具, g As String
-                If 启动参数.Count > 0 Then
-                    For Each g In 启动参数
-                        If g.StartsWith("-") Then
-                            t = ID工具(去左(g, 1))
-                            If Not IsNothing(t) Then
-                                t.启动()
-                                Exit For
-                            End If
-                        End If
-                    Next
+    Private Sub Opener_Tick(sender As Object, e As EventArgs) Handles Opener.Tick
+        Dim t As 工具, g As String
+        If 启动参数.Count > 0 Then
+            For Each g In 启动参数
+                If g.StartsWith("-") Then
+                    t = ID工具(去左(g, 1))
+                    If Not IsNothing(t) Then
+                        t.启动()
+                        Opener.Enabled = False
+                        Exit Sub
+                    End If
                 End If
-        End Select
-        If 计时 Mod 60 * (1000 / TimerX.Interval) = 0 Then
-            设置.保存到本地()
+            Next
         End If
     End Sub
 
@@ -366,6 +362,10 @@ Public Class 启动器
                                 End Sub
             nt.Enabled = True
         End If
+    End Sub
+
+    Private Sub AutoSave_Tick(sender As Object, e As EventArgs) Handles AutoSave.Tick
+        设置.保存到本地()
     End Sub
 
     Private Sub TimerC_Tick() Handles TimerC.Tick

@@ -17,10 +17,6 @@ Public Class 程序设置
                               End Sub
     End Sub
 
-    Private Sub LinkReport_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs)
-        Process.Start("https://s1.ax1x.com/2018/08/15/P2oz36.png")
-    End Sub
-
     Public Sub ButCreateSC_Click() Handles ButCreateSC.Click
         Try
             创建快捷方式(追加斜杠(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)) + 中英文快捷方式名(), 程序文件目录 + "wt.exe")

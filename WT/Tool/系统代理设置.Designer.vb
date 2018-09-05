@@ -35,7 +35,6 @@ Partial Class 系统代理设置
         Me.LabProxy = New System.Windows.Forms.Label()
         Me.ButCheckIP = New System.Windows.Forms.Button()
         Me.TxtIP = New System.Windows.Forms.TextBox()
-        Me.ButCheckGoogle = New System.Windows.Forms.Button()
         Me.GBtemps = New System.Windows.Forms.GroupBox()
         Me.ButCheckSystem = New System.Windows.Forms.Button()
         Me.GBtemps.SuspendLayout()
@@ -171,16 +170,6 @@ Partial Class 系统代理设置
         Me.TxtIP.TabStop = False
         Me.TxtIP.Text = "本地IP："
         '
-        'ButCheckGoogle
-        '
-        Me.ButCheckGoogle.Location = New System.Drawing.Point(384, 288)
-        Me.ButCheckGoogle.Name = "ButCheckGoogle"
-        Me.ButCheckGoogle.Size = New System.Drawing.Size(289, 35)
-        Me.ButCheckGoogle.TabIndex = 16
-        Me.ButCheckGoogle.TabStop = False
-        Me.ButCheckGoogle.Text = "检测是否可连接到 Google"
-        Me.ButCheckGoogle.UseVisualStyleBackColor = True
-        '
         'GBtemps
         '
         Me.GBtemps.Controls.Add(Me.ListTemps)
@@ -212,7 +201,6 @@ Partial Class 系统代理设置
         Me.ClientSize = New System.Drawing.Size(682, 334)
         Me.Controls.Add(Me.ButCheckSystem)
         Me.Controls.Add(Me.GBtemps)
-        Me.Controls.Add(Me.ButCheckGoogle)
         Me.Controls.Add(Me.TxtIP)
         Me.Controls.Add(Me.ButCheckIP)
         Me.Controls.Add(Me.LabProxy)
@@ -247,7 +235,6 @@ Partial Class 系统代理设置
     Friend WithEvents LabProxy As Label
     Friend WithEvents ButCheckIP As Button
     Friend WithEvents TxtIP As TextBox
-    Friend WithEvents ButCheckGoogle As Button
     Friend WithEvents GBtemps As GroupBox
     Friend WithEvents ButCheckSystem As Button
 End Class

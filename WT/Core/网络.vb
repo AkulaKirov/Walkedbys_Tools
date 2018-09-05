@@ -158,7 +158,8 @@
         ''' </summary>
         Public Function 获得回应(Optional 解码 As Boolean = True) As String
             Try
-                Dim i As String = 读取流(h.GetResponse.GetResponseStream)
+                Dim r As WebResponse = h.GetResponse
+                Dim i As String = 读取流(r.GetResponseStream)
                 If 解码 Then i = Regex.Unescape(i)
                 Return 非空字符串(i)
             Catch ex As Exception

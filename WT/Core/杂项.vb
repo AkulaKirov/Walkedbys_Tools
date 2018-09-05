@@ -159,8 +159,10 @@ Module 杂项
     ''' <summary>
     ''' 把线程强制中断
     ''' </summary>
-    Public Sub 中断线程(线程 As Thread)
-        If (Not IsNothing(线程)) AndAlso 线程.IsAlive Then 线程.Abort()
+    Public Sub 中断线程(ParamArray s() As Thread)
+        For Each 线程 As Thread In s
+            If (Not IsNothing(线程)) AndAlso 线程.IsAlive Then 线程.Abort()
+        Next
     End Sub
 
     ''' <summary>
