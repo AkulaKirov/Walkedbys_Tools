@@ -486,8 +486,8 @@ Module 文件处理
             End If
         End Function
 
-        Public Function 读取日期(名字 As String) As Date
-            Dim n As Date = #2000/01/01 00:00:00#
+        Public Function 读取日期(名字 As String, Optional 默认 As Date = #2000/01/01 00:00:00#) As DateTime
+            Dim n As Date = 默认
             Dim s As String = 元素(名字)
             If s.Length < 3 Then Return n
             Try

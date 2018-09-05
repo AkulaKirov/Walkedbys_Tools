@@ -25,6 +25,8 @@ Partial Class 启动器
         Me.components = New System.ComponentModel.Container()
         Me.GBfavorites = New System.Windows.Forms.GroupBox()
         Me.GBallTools = New System.Windows.Forms.GroupBox()
+        Me.TxtToolInfo = New System.Windows.Forms.TextBox()
+        Me.TxtToolName = New System.Windows.Forms.TextBox()
         Me.ButAddToFavor = New System.Windows.Forms.Button()
         Me.ButOpenTool = New System.Windows.Forms.Button()
         Me.ListTools = New System.Windows.Forms.ListBox()
@@ -32,14 +34,14 @@ Partial Class 启动器
         Me.TxtUpdate = New System.Windows.Forms.TextBox()
         Me.LabAbout = New System.Windows.Forms.Label()
         Me.GBabout = New System.Windows.Forms.GroupBox()
+        Me.LabTime = New System.Windows.Forms.Label()
         Me.TimerX = New System.Windows.Forms.Timer(Me.components)
         Me.Nico = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.NicoMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.显示窗口ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.返回启动器ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LabFun = New System.Windows.Forms.Label()
-        Me.TxtToolName = New System.Windows.Forms.TextBox()
-        Me.TxtToolInfo = New System.Windows.Forms.TextBox()
+        Me.TimerC = New System.Windows.Forms.Timer(Me.components)
         Me.GBallTools.SuspendLayout()
         Me.GBupdate.SuspendLayout()
         Me.GBabout.SuspendLayout()
@@ -68,6 +70,25 @@ Partial Class 启动器
         Me.GBallTools.TabIndex = 1
         Me.GBallTools.TabStop = False
         Me.GBallTools.Text = "全部工具"
+        '
+        'TxtToolInfo
+        '
+        Me.TxtToolInfo.Location = New System.Drawing.Point(207, 50)
+        Me.TxtToolInfo.Multiline = True
+        Me.TxtToolInfo.Name = "TxtToolInfo"
+        Me.TxtToolInfo.ReadOnly = True
+        Me.TxtToolInfo.Size = New System.Drawing.Size(168, 134)
+        Me.TxtToolInfo.TabIndex = 5
+        Me.TxtToolInfo.TabStop = False
+        '
+        'TxtToolName
+        '
+        Me.TxtToolName.Location = New System.Drawing.Point(207, 20)
+        Me.TxtToolName.Name = "TxtToolName"
+        Me.TxtToolName.ReadOnly = True
+        Me.TxtToolName.Size = New System.Drawing.Size(168, 24)
+        Me.TxtToolName.TabIndex = 4
+        Me.TxtToolName.TabStop = False
         '
         'ButAddToFavor
         '
@@ -138,6 +159,7 @@ Partial Class 启动器
         '
         'GBabout
         '
+        Me.GBabout.Controls.Add(Me.LabTime)
         Me.GBabout.Controls.Add(Me.LabAbout)
         Me.GBabout.Location = New System.Drawing.Point(397, 263)
         Me.GBabout.Name = "GBabout"
@@ -145,6 +167,16 @@ Partial Class 启动器
         Me.GBabout.TabIndex = 4
         Me.GBabout.TabStop = False
         Me.GBabout.Text = "关于 "
+        '
+        'LabTime
+        '
+        Me.LabTime.AutoSize = True
+        Me.LabTime.BackColor = System.Drawing.Color.Transparent
+        Me.LabTime.Location = New System.Drawing.Point(6, 84)
+        Me.LabTime.Name = "LabTime"
+        Me.LabTime.Size = New System.Drawing.Size(73, 17)
+        Me.LabTime.TabIndex = 4
+        Me.LabTime.Text = "已经用了："
         '
         'TimerX
         '
@@ -185,24 +217,9 @@ Partial Class 启动器
         Me.LabFun.TabIndex = 5
         Me.LabFun.Text = "fun~"
         '
-        'TxtToolName
+        'TimerC
         '
-        Me.TxtToolName.Location = New System.Drawing.Point(207, 20)
-        Me.TxtToolName.Name = "TxtToolName"
-        Me.TxtToolName.ReadOnly = True
-        Me.TxtToolName.Size = New System.Drawing.Size(168, 24)
-        Me.TxtToolName.TabIndex = 4
-        Me.TxtToolName.TabStop = False
-        '
-        'TxtToolInfo
-        '
-        Me.TxtToolInfo.Location = New System.Drawing.Point(207, 50)
-        Me.TxtToolInfo.Multiline = True
-        Me.TxtToolInfo.Name = "TxtToolInfo"
-        Me.TxtToolInfo.ReadOnly = True
-        Me.TxtToolInfo.Size = New System.Drawing.Size(168, 134)
-        Me.TxtToolInfo.TabIndex = 5
-        Me.TxtToolInfo.TabStop = False
+        Me.TimerC.Interval = 1000
         '
         '启动器
         '
@@ -254,4 +271,6 @@ Partial Class 启动器
     Friend WithEvents LabFun As Label
     Friend WithEvents TxtToolName As TextBox
     Friend WithEvents TxtToolInfo As TextBox
+    Friend WithEvents LabTime As Label
+    Friend WithEvents TimerC As Forms.Timer
 End Class

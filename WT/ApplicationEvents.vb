@@ -41,16 +41,6 @@ Namespace My
             报错退出(s)
         End Sub
 
-        Sub 报错退出(s As String)
-            MsgBox(s, MsgBoxStyle.Exclamation, "有东西出错！")
-            Try
-                启动器.Nico.Visible = False
-                删除(TempF)
-            Catch ex As Exception
-            End Try
-            End
-        End Sub
-
     End Class
 
 End Namespace

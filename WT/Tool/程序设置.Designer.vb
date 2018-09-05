@@ -26,7 +26,6 @@ Partial Class 程序设置
         Me.Tab1 = New System.Windows.Forms.TabPage()
         Me.ButDelete = New System.Windows.Forms.Button()
         Me.ButCreateSC = New System.Windows.Forms.Button()
-        Me.CheckStartUP = New System.Windows.Forms.CheckBox()
         Me.CheckHide = New System.Windows.Forms.CheckBox()
         Me.CheckUpdate = New System.Windows.Forms.CheckBox()
         Me.CheckExit = New System.Windows.Forms.CheckBox()
@@ -49,7 +48,6 @@ Partial Class 程序设置
         '
         Me.Tab1.Controls.Add(Me.ButDelete)
         Me.Tab1.Controls.Add(Me.ButCreateSC)
-        Me.Tab1.Controls.Add(Me.CheckStartUP)
         Me.Tab1.Controls.Add(Me.CheckHide)
         Me.Tab1.Controls.Add(Me.CheckUpdate)
         Me.Tab1.Controls.Add(Me.CheckExit)
@@ -83,17 +81,6 @@ Partial Class 程序设置
         Me.ButCreateSC.Text = "在桌面上建立" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "本程序的快捷方式"
         Me.ButCreateSC.UseVisualStyleBackColor = True
         '
-        'CheckStartUP
-        '
-        Me.CheckStartUP.AutoSize = True
-        Me.CheckStartUP.Location = New System.Drawing.Point(3, 87)
-        Me.CheckStartUP.Name = "CheckStartUP"
-        Me.CheckStartUP.Size = New System.Drawing.Size(275, 23)
-        Me.CheckStartUP.TabIndex = 5
-        Me.CheckStartUP.TabStop = False
-        Me.CheckStartUP.Text = "开机启动本程序（可能会被安全软件拦截）"
-        Me.CheckStartUP.UseVisualStyleBackColor = True
-        '
         'CheckHide
         '
         Me.CheckHide.AutoSize = True
@@ -124,7 +111,7 @@ Partial Class 程序设置
         Me.CheckExit.Size = New System.Drawing.Size(314, 23)
         Me.CheckExit.TabIndex = 0
         Me.CheckExit.TabStop = False
-        Me.CheckExit.Text = "关闭主页的时候直接退出程序，而不是隐藏到后台"
+        Me.CheckExit.Text = "关闭主页的时候隐藏到后台，而不是直接退出程序"
         Me.CheckExit.UseVisualStyleBackColor = True
         '
         '程序设置
@@ -152,7 +139,6 @@ Partial Class 程序设置
     Friend WithEvents CheckExit As CheckBox
     Friend WithEvents CheckUpdate As CheckBox
     Friend WithEvents CheckHide As CheckBox
-    Friend WithEvents CheckStartUP As CheckBox
     Friend WithEvents ButCreateSC As Button
     Friend WithEvents ButDelete As Button
 End Class

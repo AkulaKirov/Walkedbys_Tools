@@ -227,24 +227,36 @@ Module 杂项
         Dim d As Long = 24 * 60 * 60
         If i < d Then
             If 一天以内详细 Then
-                If i < 90 Then
-                    Return i & "秒"
-                ElseIf i < 60 * 120 Then
-                    Return Int(i / 60) + 1 & "分"
-                Else
-                    Return Int(i / 60 / 60) + 1 & "个小时"
-                End If
+                Return 时间文字(i)
             Else
                 Return "不到一天"
+            End If
+        Else
+            Return 时间文字(i)
+        End If
+    End Function
+
+    ''' <summary>
+    ''' 给一个秒的时间，返回一个中文文字
+    ''' </summary>
+    Public Function 时间文字(i As Long) As String
+        Dim d As Long = 24 * 60 * 60
+        If i < d Then
+            If i < 90 Then
+                Return i & "秒"
+            ElseIf i < 60 * 120 Then
+                Return Fix(i / 60) & "分"
+            Else
+                Return Fix(i / 60 / 60) & "个小时"
             End If
         Else
             i = i / d + 1
             If i < 60 Then
                 Return i & "天"
             ElseIf i < 30 * 18 Then
-                Return Int(i / 30) & "个月"
+                Return Fix(i / 30) & "个月"
             Else
-                Return Int(i / 365) & "年"
+                Return Fix(i / 365) & "年"
             End If
         End If
     End Function

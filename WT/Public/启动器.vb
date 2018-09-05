@@ -6,6 +6,7 @@ Public Class 启动器
     Dim 计时 As Integer = 0
     Dim 彩蛋码 As String
     Dim 已退出 As Boolean = False
+    Dim 开始时间 As Date, 原时长 As Long
 
     Private Sub 启动器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Icon = 图标
@@ -31,6 +32,7 @@ Public Class 启动器
         新工具("B站催更器", B站催更器, "BilibiliPushYou", "会提醒你B站多久没更视频的一个工具。")
         新工具("B站实时最大AV", B站AV变化, "BilibiliAV", "直观地显示一下B站各分区的最大AV号的实时情况。")
         新工具("随机生成器", 随机生成器, "RandomG", "随机生成中英文句子或者数字等。")
+        If 在列表(启动参数, "-tryfix") Then 新工具("信息修改器", 信息修改器, "TryFix", "设置保存信息的修改器。")
         AddHandler SizeChanged, AddressOf 最小化隐藏
         For Each t In 工具列表
             ListTools.Items.Add(t.名字)
@@ -76,6 +78,9 @@ Public Class 启动器
         新增关于链接("请我喝好的", "https://walkedby.com/donateme/")
         TimerX.Enabled = True
         GBallTools.Text += 括((ListTools.Items.Count - 1).ToString)
+        原时长 = 设置.读取数("OpenTime")
+        开始时间 = Now
+        TimerC_Tick()
         If Not 设置.读取真假("NoUpdateAtMain") Then
             新线程(Sub()
                     Dim h As New 简易HTTP("https://raw.githubusercontent.com/gordonwalkedby/Walkedbys_Tools/master/WT/updater.xml")
@@ -99,40 +104,42 @@ Public Class 启动器
         LabFun.Text = 随机.多选一("",
 "8848 钛金显卡~",
 "真高兴我的计算机几乎都不是学校教的。",
-引("风水轮流转。"),
+"风水轮流转。",
 "那太不幸了。",
 "要试试直接对着主页输入steam吗？",
-引("正义之子面对有悖常理的世界，会让世界天翻地覆。"),
+"正义之子面对有悖常理的世界，会让世界天翻地覆。",
 "我不喜欢吵架或者辱骂，我也不支持断绝交流的大门。",
 "我有一个男友，可惜他关键时刻派不上用场。",
 "迅雷其实是功能最齐全的下载软件，可惜他越做越差。",
-"一个朋友曾对我说：" + 引("steam没被墙，只是被DNS污染了。"),
-引("You forget a thousand things every day, make sure this is one of them."),
+"一个朋友曾对我说：steam没被墙，只是被DNS污染了。",
+"You forget a thousand things every day, make sure this is one of them.",
 "做地图做到想吐，赚钱好难啊。",
 "做傻瓜式软件救不了中国人。",
 "别和差的比，越差越有理。",
-引("有钱能使鬼推磨。"),
+"有钱能使鬼推磨。",
 "我喜欢喝可乐，我更喜欢喝热茶，就是那种便宜的绿茶，茶叶买回来泡开水喝。",
 "你猜猜这里一共可以出现几句话？",
 "我也曾是个小学生，我先玩的CF，然后玩的CS1.6，然后学了怎么做CS1.6地图。",
 "我用的麦克风大概卖30元。",
 "我播放量最高的那个马化腾的视频其实是个垃圾视频，只花了我两个小时做好的。",
 "我已经等不急玩GTA6或者半条命2EP3了。",
-"曾经有一个朋友让我电脑登录他的steam账号帮他做点事情，我很高兴，因为他信任我，被信任真好。"
+"曾经有一个朋友让我电脑登录他的steam账号帮他做点事情，我很高兴，因为他信任我，被信任真好。",
+"人啊，不要有点成功就开始来点名言警句教人家做人，结果到头来反而被自己说的大道理压死。——敖厂长"
 ).ToString
         Refresh()
     End Sub
 
     Private Sub 启动器_FormClosing(sender As Form, e As FormClosingEventArgs) Handles Me.FormClosing
         If 设置.读取真假("ExitAtMain") Then
-            退出()
-        Else
             e.Cancel = True
             隐藏到后台(sender)
+        Else
+            退出()
         End If
     End Sub
 
     Public Sub 退出()
+        设置.元素("OpenTime") = 原时长 + Abs(DateDiff(DateInterval.Second, Now, 开始时间))
         Nico.Visible = False
         For Each t As Thread In 多线程
             中断线程(t)
@@ -146,7 +153,11 @@ Public Class 启动器
         End
     End Sub
 
-    Sub 检查推送() Handles Me.Activated, TxtUpdate.LostFocus, TxtUpdate.GotFocus
+    Sub 启动器_Activated() Handles Me.Activated
+        检查推送()
+    End Sub
+
+    Sub 检查推送() Handles TxtUpdate.LostFocus, TxtUpdate.GotFocus
         TxtUpdate.Text = ""
         Dim s As String = ""
         For Each t As 工具 In 工具列表
@@ -264,18 +275,9 @@ Public Class 启动器
                         End If
                     Next
                 End If
-            Case 2
         End Select
         If 计时 Mod 60 * (1000 / TimerX.Interval) = 0 Then
             设置.保存到本地()
-        End If
-        If 已退出 Then
-            Do While True
-                PRT("die")
-                End
-            Loop
-        Else
-            Nico.Visible = True
         End If
     End Sub
 
@@ -364,6 +366,14 @@ Public Class 启动器
                                 End Sub
             nt.Enabled = True
         End If
+    End Sub
+
+    Private Sub TimerC_Tick() Handles TimerC.Tick
+        If 已退出 Then Exit Sub
+        TimerC.Enabled = True
+        Dim u As Long = 原时长 + Abs(DateDiff(DateInterval.Second, Now, 开始时间))
+        Dim s As String = "你已用本软件：" + 时间文字(u) + " " + 括(u.ToString + "s")
+        LabTime.Text = s
     End Sub
 
 End Class
