@@ -294,4 +294,16 @@
 
     End Class
 
+    ''' <summary>
+    ''' 利用淘宝的API返回网络的准确时间
+    ''' </summary>
+    Public Function 网络时间() As Date
+        Dim h As New 简易HTTP("https://api.m.taobao.com/rest/api3.do?api=mtop.common.getTimestamp")
+        h.超时 = 1
+        Dim i As String = 去除(h.获得回应(False), 引号)
+        Dim t As Long = Val(去右(提取(i, "data:{t:", "}"), 3))
+        If t > 1500000000 Then Return UNIX时间恢复(t)
+        Return 北京时间(Now)
+    End Function
+
 End Module

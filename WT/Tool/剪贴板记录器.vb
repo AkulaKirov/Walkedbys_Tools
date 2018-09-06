@@ -22,7 +22,7 @@ Public Class 剪贴板记录器
     Private Sub Watching_Tick(sender As Object, e As EventArgs) Handles Watching.Tick
         If 后台定时器启用(ListOption) Then
             Dim s As String = TxtText.Text, m As String
-            If s.Length > 0 Then
+            If s.Length > 0 AndAlso 文件可用(s) Then
                 m = Forms.Clipboard.GetText
                 If Not IsNothing(m) Then
                     If m <> LastTxt Then
@@ -32,7 +32,7 @@ Public Class 剪贴板记录器
                 End If
             End If
             s = TxtPic.Text
-            If s.Length > 0 Then
+            If s.Length > 0 AndAlso 文件夹存在(s) Then
                 Dim i As Image = Forms.Clipboard.GetImage
                 If Not IsNothing(i) Then
                     If Not 图片一样(LastPic, i, True) Then
