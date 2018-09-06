@@ -198,6 +198,12 @@
     <Compile Include="Tool\剪贴板记录器.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Tool\字符画图片制作.Designer.vb">
+      <DependentUpon>字符画图片制作.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\字符画图片制作.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Tool\文件夹创建器.Designer.vb">
       <DependentUpon>文件夹创建器.vb</DependentUpon>
     </Compile>
@@ -298,6 +304,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\剪贴板记录器.resx">
       <DependentUpon>剪贴板记录器.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\字符画图片制作.resx">
+      <DependentUpon>字符画图片制作.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\文件夹创建器.resx">
       <DependentUpon>文件夹创建器.vb</DependentUpon>
