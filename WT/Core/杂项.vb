@@ -49,7 +49,7 @@ Module 杂项
     ''' <summary>
     ''' 随机来点东西
     ''' </summary>
-    Public MustInherit Class 随机
+    Public Class 随机
 
         ''' <summary>
         ''' 运行 Randomize
