@@ -29,7 +29,6 @@ Partial Class 系统代理设置
         Me.ListTemps = New System.Windows.Forms.ComboBox()
         Me.ButAdd = New System.Windows.Forms.Button()
         Me.TxtTempName = New System.Windows.Forms.TextBox()
-        Me.ButUSE = New System.Windows.Forms.Button()
         Me.ButRM = New System.Windows.Forms.Button()
         Me.LabPAC = New System.Windows.Forms.Label()
         Me.LabProxy = New System.Windows.Forms.Label()
@@ -91,9 +90,9 @@ Partial Class 系统代理设置
         'ButAdd
         '
         Me.ButAdd.Enabled = False
-        Me.ButAdd.Location = New System.Drawing.Point(180, 55)
+        Me.ButAdd.Location = New System.Drawing.Point(6, 88)
         Me.ButAdd.Name = "ButAdd"
-        Me.ButAdd.Size = New System.Drawing.Size(109, 27)
+        Me.ButAdd.Size = New System.Drawing.Size(144, 27)
         Me.ButAdd.TabIndex = 7
         Me.ButAdd.TabStop = False
         Me.ButAdd.Text = "新存为模板"
@@ -104,20 +103,9 @@ Partial Class 系统代理设置
         Me.TxtTempName.Location = New System.Drawing.Point(6, 57)
         Me.TxtTempName.MaxLength = 20
         Me.TxtTempName.Name = "TxtTempName"
-        Me.TxtTempName.Size = New System.Drawing.Size(168, 25)
+        Me.TxtTempName.Size = New System.Drawing.Size(279, 25)
         Me.TxtTempName.TabIndex = 8
         Me.TxtTempName.TabStop = False
-        '
-        'ButUSE
-        '
-        Me.ButUSE.Enabled = False
-        Me.ButUSE.Location = New System.Drawing.Point(6, 88)
-        Me.ButUSE.Name = "ButUSE"
-        Me.ButUSE.Size = New System.Drawing.Size(144, 27)
-        Me.ButUSE.TabIndex = 9
-        Me.ButUSE.TabStop = False
-        Me.ButUSE.Text = "读取该模板"
-        Me.ButUSE.UseVisualStyleBackColor = True
         '
         'ButRM
         '
@@ -176,7 +164,6 @@ Partial Class 系统代理设置
         Me.GBtemps.Controls.Add(Me.TxtTempName)
         Me.GBtemps.Controls.Add(Me.ButAdd)
         Me.GBtemps.Controls.Add(Me.ButRM)
-        Me.GBtemps.Controls.Add(Me.ButUSE)
         Me.GBtemps.Location = New System.Drawing.Point(384, 106)
         Me.GBtemps.Name = "GBtemps"
         Me.GBtemps.Size = New System.Drawing.Size(295, 134)
@@ -229,7 +216,6 @@ Partial Class 系统代理设置
     Friend WithEvents ListTemps As ComboBox
     Friend WithEvents ButAdd As Button
     Friend WithEvents TxtTempName As TextBox
-    Friend WithEvents ButUSE As Button
     Friend WithEvents ButRM As Button
     Friend WithEvents LabPAC As Label
     Friend WithEvents LabProxy As Label

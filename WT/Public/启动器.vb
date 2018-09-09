@@ -28,15 +28,15 @@ Public Class 启动器
         新工具("文件筛选", 文件筛选, "FileChoose", "把A文件夹B文件夹的文件选择性的复制到C文件夹。")
         新工具("Workshop物品篡改器", 创意工坊篡改器, "WorkshopCut", "可以直接修改 Steam Workshop 指定物品的信息，但是你必须是这个物品的上传者或贡献者。")
         '新工具("临时工具", 临时工具, "Whatever", "临时用的工具，你不应该在公开发布版里面看见我。")
-        新工具("剪贴板记录器", 剪贴板记录器, "clipboardrecord", "在后台记录剪贴板的内容到硬盘里。", True)
-        新工具("模型贴图打包器", 起源模型贴图打包器, "sourcemodelpacker", "给 Source 的模型文件批量打包贴图文件。")
-        新工具("RunSringLUA制作器", RunStringLUA制作器, "runstringlua", "算是给 GMod LUA 加密？")
+        新工具("剪贴板记录器", 剪贴板记录器, "ClipBoardRecord", "在后台记录剪贴板的内容到硬盘里。", True)
+        新工具("模型贴图打包器", 起源模型贴图打包器, "SourceModelPacker", "给 Source 的模型文件批量打包贴图文件。")
+        新工具("RunSringLUA制作器", RunStringLUA制作器, "RunStringLua", "算是给 GMod LUA 加密？")
         新工具("B站催更器", B站催更器, "BilibiliPushYou", "会提醒你B站多久没更视频的一个工具。")
         新工具("B站实时最大AV", B站AV变化, "BilibiliAV", "直观地显示一下B站各分区的最大AV号的实时情况。")
         新工具("随机生成器", 随机生成器, "RandomG", "随机生成中英文句子或者数字等。")
         新工具("网络检测", 网络检测, "NetTest", "如果你觉得你的网络不正常可以一直看着这个。")
         新工具("字符画图片制作", 字符画图片制作, "CharPic", "用字符画表示图片。")
-        新工具("有没有少Steam好友", Steam好友列表检查, "steamfriends", "检查你的Steam好友列表是不是少人了。")
+        新工具("有没有少Steam好友", Steam好友列表检查, "SteamFriends", "检查你的Steam好友列表是不是少人了。")
         AddHandler SizeChanged, AddressOf 最小化隐藏
         For Each t In 工具列表
             ListTools.Items.Add(t.名字)
@@ -54,14 +54,14 @@ Public Class 启动器
                 .Left = IIf(i > 4, IIf(i - 4 > 1, (i - 5) * wd + 10, 10), IIf(i > 1, (i - 1) * wd + 10, 10))
                 .Top = IIf(i > 4, 70, 20)
                 AddHandler .Click, Sub()
-                                       ID工具(.Tag).启动()
+                                       名字工具(.Tag).启动()
                                    End Sub
             End With
         Next
         Dim mc As New List(Of String)
         文字转列表(mc, 设置.元素("FAVOR"))
         For Each g In mc
-            t = ID工具(g)
+            t = 名字工具(g)
             If Not IsNothing(t) Then
                 工具收藏.Add(t)
             End If
@@ -184,6 +184,7 @@ Public Class 启动器
         If i < 0 Then Exit Sub
         Dim t As 工具 = 名字工具(ListTools.SelectedItem.ToString)
         TxtToolInfo.Text = t.简介
+        TxtToolID.Text = t.ID
         TxtToolName.Text = t.名字
         ButOpenTool.Enabled = True
         With ButAddToFavor
@@ -274,7 +275,7 @@ Public Class 启动器
         If 启动参数.Count > 0 Then
             For Each g In 启动参数
                 If g.StartsWith("-") Then
-                    t = ID工具(去左(g, 1))
+                    t = 名字工具(去左(g, 1))
                     If Not IsNothing(t) Then
                         t.启动()
                         Opener.Enabled = False
@@ -382,6 +383,10 @@ Public Class 启动器
         Dim u As Long = 原时长 + Abs(DateDiff(DateInterval.Second, Now, 开始时间))
         Dim s As String = "你已用本软件：" + 时间文字(u) + " " + 括(u.ToString + "s")
         LabTime.Text = s
+    End Sub
+
+    Private Sub ButShortCut_Click(sender As Object, e As EventArgs) Handles ButShortCut.Click
+        Process.Start("https://s1.ax1x.com/2018/09/09/iiRZBq.png")
     End Sub
 
 End Class

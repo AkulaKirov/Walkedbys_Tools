@@ -7,7 +7,7 @@ Public Class VMT生成器
         TxtPath.Text = 设置.元素("vmtPATH")
         TxtVMT.Text = 设置.元素("vmtLAST")
         TxtSkip.Text = 设置.元素("vmtSKIP")
-        mz = New 模板组("VMTG", ListTemps, TxtTempName, ButADD, ButDEL, ButUSE)
+        mz = New 模板组("VMTG", ListTemps, TxtTempName, ButADD, ButDEL)
         CheckSon.Checked = 设置.读取真假("vmtSON")
         文本框拖入文件夹(TxtPath)
     End Sub
@@ -52,8 +52,9 @@ Public Class VMT生成器
 
     Private Sub CBtemplete_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListTemps.SelectedIndexChanged
         Dim i As Integer = ListTemps.SelectedIndex
-        ButUSE.Enabled = (i > -1)
-        ButDEL.Enabled = ButUSE.Enabled
+        If i < 0 Then Exit Sub
+        Dim n As 模板 = mz.读取当前项
+        TxtVMT.Text = n.元素("pars")
     End Sub
 
     Private Sub ButGen_Click(sender As Object, e As EventArgs) Handles ButGen.Click
@@ -100,11 +101,6 @@ Public Class VMT生成器
         Dim n As New 模板(TxtTempName.Text)
         n.元素("pars") = TxtVMT.Text
         mz.新增(n)
-    End Sub
-
-    Private Sub ButUSE_Click(sender As Object, e As EventArgs) Handles ButUSE.Click
-        Dim n As 模板 = mz.读取当前项
-        TxtVMT.Text = n.元素("pars")
     End Sub
 
 End Class

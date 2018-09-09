@@ -31,7 +31,6 @@ Partial Class VMT生成器
         Me.ListTemps = New System.Windows.Forms.ComboBox()
         Me.ButADD = New System.Windows.Forms.Button()
         Me.ButDEL = New System.Windows.Forms.Button()
-        Me.ButUSE = New System.Windows.Forms.Button()
         Me.TxtTempName = New System.Windows.Forms.TextBox()
         Me.LabSkip = New System.Windows.Forms.Label()
         Me.TxtSkip = New System.Windows.Forms.TextBox()
@@ -95,7 +94,6 @@ Partial Class VMT生成器
         Me.GBtemps.Controls.Add(Me.ListTemps)
         Me.GBtemps.Controls.Add(Me.ButADD)
         Me.GBtemps.Controls.Add(Me.ButDEL)
-        Me.GBtemps.Controls.Add(Me.ButUSE)
         Me.GBtemps.Controls.Add(Me.TxtTempName)
         Me.GBtemps.Location = New System.Drawing.Point(487, 102)
         Me.GBtemps.Name = "GBtemps"
@@ -117,7 +115,7 @@ Partial Class VMT生成器
         'ButADD
         '
         Me.ButADD.Enabled = False
-        Me.ButADD.Location = New System.Drawing.Point(94, 57)
+        Me.ButADD.Location = New System.Drawing.Point(3, 98)
         Me.ButADD.Name = "ButADD"
         Me.ButADD.Size = New System.Drawing.Size(91, 36)
         Me.ButADD.TabIndex = 5
@@ -136,24 +134,13 @@ Partial Class VMT生成器
         Me.ButDEL.Text = "删除此模板"
         Me.ButDEL.UseVisualStyleBackColor = True
         '
-        'ButUSE
-        '
-        Me.ButUSE.Enabled = False
-        Me.ButUSE.Location = New System.Drawing.Point(3, 98)
-        Me.ButUSE.Name = "ButUSE"
-        Me.ButUSE.Size = New System.Drawing.Size(91, 36)
-        Me.ButUSE.TabIndex = 7
-        Me.ButUSE.TabStop = False
-        Me.ButUSE.Text = "使用此模板"
-        Me.ButUSE.UseVisualStyleBackColor = True
-        '
         'TxtTempName
         '
         Me.TxtTempName.Font = New System.Drawing.Font("微软雅黑", 8.0!)
         Me.TxtTempName.Location = New System.Drawing.Point(3, 66)
         Me.TxtTempName.MaxLength = 10
         Me.TxtTempName.Name = "TxtTempName"
-        Me.TxtTempName.Size = New System.Drawing.Size(91, 22)
+        Me.TxtTempName.Size = New System.Drawing.Size(182, 22)
         Me.TxtTempName.TabIndex = 8
         Me.TxtTempName.TabStop = False
         '
@@ -259,7 +246,6 @@ Partial Class VMT生成器
     Friend WithEvents ListTemps As ComboBox
     Friend WithEvents ButADD As Button
     Friend WithEvents ButDEL As Button
-    Friend WithEvents ButUSE As Button
     Friend WithEvents TxtTempName As TextBox
     Friend WithEvents ButGen As Button
     Friend WithEvents Watching As System.Windows.Forms.Timer

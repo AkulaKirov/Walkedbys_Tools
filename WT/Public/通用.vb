@@ -13,6 +13,10 @@ Module 通用
     Private 只做一次列表 As New List(Of Integer)
     Friend 开始时间 As Date
 
+    ''' <summary>
+    ''' 开启一个新的线程并自动运行，并且会在程序结束的时候自动结束进程
+    ''' </summary>
+    ''' <param name="start"></param>
     Public Sub 新线程(start As ThreadStart)
         Dim n As New Thread(start)
         多线程.Add(n)
@@ -31,10 +35,17 @@ Module 通用
         End If
     End Function
 
+    ''' <summary>
+    ''' 添加一个新的工具
+    ''' </summary>
     Public Sub 新工具(名字 As String, 窗体 As Form, ID As String, 简介 As String, Optional 预加载 As Boolean = False)
         工具列表.Add(New 工具(名字, 窗体, ID, 简介, 预加载))
     End Sub
 
+    ''' <summary>
+    ''' 弹出一个报错框并结束程序
+    ''' </summary>
+    ''' <param name="s"></param>
     Public Sub 报错退出(s As String)
         MsgBox(s, MsgBoxStyle.Exclamation, "有东西出错！")
         Try
@@ -45,20 +56,19 @@ Module 通用
         End
     End Sub
 
-    Public Function ID工具(id As String) As 工具
-        For Each t As 工具 In 工具列表
-            If t.ID.ToLower = id.ToLower Then Return t
-        Next
-        Return Nothing
-    End Function
-
+    ''' <summary>
+    ''' 通过名字或者ID来获得对应的工具
+    ''' </summary>
     Public Function 名字工具(名字 As String) As 工具
         For Each t As 工具 In 工具列表
-            If 包含(t.名字, 名字) Then Return t
+            If 包含(t.名字, 名字) OrElse 包含(t.ID.ToLower, 名字.ToLower) OrElse 包含(t.窗体.Name, 名字) Then Return t
         Next
         Return Nothing
     End Function
 
+    ''' <summary>
+    ''' 在任务栏的图标弹出一个框框
+    ''' </summary>
     Public Sub 消息(s As String, Optional 警告 As Boolean = False)
         With 启动器.Nico
             .BalloonTipIcon = IIf(警告, ToolTipIcon.Warning, ToolTipIcon.Info)
@@ -68,6 +78,9 @@ Module 通用
         End With
     End Sub
 
+    ''' <summary>
+    ''' 隐藏或者显示到前台
+    ''' </summary>
     Public Sub 最小化隐藏(sender As Form, e As EventArgs)
         Select Case sender.WindowState
             Case FormWindowState.Minimized
@@ -77,6 +90,9 @@ Module 通用
         End Select
     End Sub
 
+    ''' <summary>
+    ''' 把窗体隐藏并且不显示在任务栏里
+    ''' </summary>
     Public Sub 隐藏到后台(sender As Form)
         With sender
             .ShowInTaskbar = False
@@ -84,6 +100,9 @@ Module 通用
         End With
     End Sub
 
+    ''' <summary>
+    ''' 显示到前台和任务栏
+    ''' </summary>
     Public Sub 显示到前台(sender As Form)
         With sender
             .ShowInTaskbar = True
@@ -94,6 +113,12 @@ Module 通用
         End With
     End Sub
 
+    ''' <summary>
+    ''' 根据ComboBox的选项进行timer的启用调整，
+    ''' 0 只在本工具运行的时候，
+    ''' 1 本软件运行的时候，
+    ''' 2 现在不记录
+    ''' </summary>
     Public Function 后台定时器启用(c As ComboBox) As Boolean
         Dim i As Integer = c.SelectedIndex
         If i < 0 OrElse i > 2 Then i = 0
@@ -106,6 +131,9 @@ Module 通用
         Return False
     End Function
 
+    ''' <summary>
+    ''' 把窗体和控件的配色调整到和启动器一样的配色
+    ''' </summary>
     Public Sub 配色(c As Control)
         Dim bc As Color = 启动器.BackColor
         Dim fc As Color = 启动器.ForeColor
@@ -187,9 +215,9 @@ Module 通用
     Public Class 模板组
 
         Dim n As String, g As New List(Of 模板)
-        Dim 列表 As ComboBox, 文本框 As TextBox, 新增按纽 As Button, 移除按纽 As Button, 读取按纽 As Button
+        Dim 列表 As ComboBox, 文本框 As TextBox, 新增按纽 As Button, 移除按纽 As Button
 
-        Public Sub New(名字 As String, 列表控件 As ComboBox, 文本控件 As TextBox, 新增 As Button, 移除 As Button, 读取 As Button)
+        Public Sub New(名字 As String, 列表控件 As ComboBox, 文本控件 As TextBox, 新增 As Button, 移除 As Button)
             n = "模板组___" + 名字
             Dim x As New 简易XML(n, 设置.元素(n))
             列表 = 列表控件
@@ -197,10 +225,8 @@ Module 通用
             文本框.MaxLength = 10
             新增按纽 = 新增
             移除按纽 = 移除
-            读取按纽 = 读取
             新增按纽.Enabled = False
             移除按纽.Enabled = False
-            读取按纽.Enabled = False
             AddHandler 列表.SelectedIndexChanged, AddressOf 刷新
             AddHandler 文本框.TextChanged, AddressOf 刷新
             AddHandler 移除按纽.Click, Sub()
@@ -233,7 +259,6 @@ Module 通用
             Dim i As Integer = 列表.SelectedIndex
             Dim b As Boolean = (i > -1)
             移除按纽.Enabled = b
-            读取按纽.Enabled = b
         End Sub
 
         Public Sub 新增(s As 模板)

@@ -25,6 +25,8 @@ Partial Class 启动器
         Me.components = New System.ComponentModel.Container()
         Me.GBfavorites = New System.Windows.Forms.GroupBox()
         Me.GBallTools = New System.Windows.Forms.GroupBox()
+        Me.ButShortCut = New System.Windows.Forms.Button()
+        Me.TxtToolID = New System.Windows.Forms.TextBox()
         Me.TxtToolInfo = New System.Windows.Forms.TextBox()
         Me.TxtToolName = New System.Windows.Forms.TextBox()
         Me.ButAddToFavor = New System.Windows.Forms.Button()
@@ -60,6 +62,8 @@ Partial Class 启动器
         '
         'GBallTools
         '
+        Me.GBallTools.Controls.Add(Me.ButShortCut)
+        Me.GBallTools.Controls.Add(Me.TxtToolID)
         Me.GBallTools.Controls.Add(Me.TxtToolInfo)
         Me.GBallTools.Controls.Add(Me.TxtToolName)
         Me.GBallTools.Controls.Add(Me.ButAddToFavor)
@@ -72,13 +76,33 @@ Partial Class 启动器
         Me.GBallTools.TabStop = False
         Me.GBallTools.Text = "全部工具"
         '
+        'ButShortCut
+        '
+        Me.ButShortCut.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.ButShortCut.Location = New System.Drawing.Point(341, 50)
+        Me.ButShortCut.Name = "ButShortCut"
+        Me.ButShortCut.Size = New System.Drawing.Size(34, 24)
+        Me.ButShortCut.TabIndex = 7
+        Me.ButShortCut.TabStop = False
+        Me.ButShortCut.Text = "？"
+        Me.ButShortCut.UseVisualStyleBackColor = True
+        '
+        'TxtToolID
+        '
+        Me.TxtToolID.Location = New System.Drawing.Point(207, 50)
+        Me.TxtToolID.Name = "TxtToolID"
+        Me.TxtToolID.ReadOnly = True
+        Me.TxtToolID.Size = New System.Drawing.Size(128, 24)
+        Me.TxtToolID.TabIndex = 6
+        Me.TxtToolID.TabStop = False
+        '
         'TxtToolInfo
         '
-        Me.TxtToolInfo.Location = New System.Drawing.Point(207, 50)
+        Me.TxtToolInfo.Location = New System.Drawing.Point(207, 80)
         Me.TxtToolInfo.Multiline = True
         Me.TxtToolInfo.Name = "TxtToolInfo"
         Me.TxtToolInfo.ReadOnly = True
-        Me.TxtToolInfo.Size = New System.Drawing.Size(168, 134)
+        Me.TxtToolInfo.Size = New System.Drawing.Size(168, 104)
         Me.TxtToolInfo.TabIndex = 5
         Me.TxtToolInfo.TabStop = False
         '
@@ -133,7 +157,7 @@ Partial Class 启动器
         Me.GBupdate.Size = New System.Drawing.Size(342, 121)
         Me.GBupdate.TabIndex = 2
         Me.GBupdate.TabStop = False
-        Me.GBupdate.Text = "新消息："
+        Me.GBupdate.Text = "推送："
         '
         'TxtUpdate
         '
@@ -279,4 +303,6 @@ Partial Class 启动器
     Friend WithEvents LabTime As Label
     Friend WithEvents TimerC As Forms.Timer
     Friend WithEvents AutoSave As Forms.Timer
+    Friend WithEvents TxtToolID As TextBox
+    Friend WithEvents ButShortCut As Button
 End Class
