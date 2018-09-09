@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class B站催更器
     Inherits System.Windows.Forms.Form
 
     'Form 重写 Dispose，以清理组件列表。
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class B站催更器
     '注意: 以下过程是 Windows 窗体设计器所必需的
     '可以使用 Windows 窗体设计器修改它。  
     '不要使用代码编辑器修改它。
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.LabID = New System.Windows.Forms.Label()
@@ -62,7 +62,7 @@ Partial Class B站催更器
         'LabOut
         '
         Me.LabOut.AutoSize = True
-        Me.LabOut.Location = New System.Drawing.Point(12, 108)
+        Me.LabOut.Location = New System.Drawing.Point(12, 109)
         Me.LabOut.Name = "LabOut"
         Me.LabOut.Size = New System.Drawing.Size(141, 19)
         Me.LabOut.TabIndex = 4

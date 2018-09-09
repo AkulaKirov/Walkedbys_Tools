@@ -1,13 +1,13 @@
 ﻿Public Class B站催更器
 
-    Private Sub TxtID_TextChanged(sender As Object, e As EventArgs) Handles TxtID.TextChanged
-        TxtID.Text = 只要数字(TxtID.Text)
-        ButTell.Enabled = (TxtID.TextLength > 0 AndAlso CoolDown.Enabled = False)
-    End Sub
-
     Private Sub B站催更器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TxtID.Text = 设置.元素("bilibiliUID")
         LabOut.Text = ""
+    End Sub
+
+    Private Sub TxtID_TextChanged(sender As Object, e As EventArgs) Handles TxtID.TextChanged
+        TxtID.Text = 只要数字(TxtID.Text)
+        ButTell.Enabled = (TxtID.TextLength > 0 AndAlso CoolDown.Enabled = False)
     End Sub
 
     Private Sub B站催更器_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
