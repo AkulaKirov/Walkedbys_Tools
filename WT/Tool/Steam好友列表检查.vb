@@ -42,7 +42,6 @@ Public Class Steam好友列表检查
                                 Dim mc As MatchCollection
                                 If 包含(u, "friendslist") Then
                                     If 肯定少人 Then u += "steamid:" + 随机.数字(17) + ","
-                                    PRT(右(u, 30))
                                     mc = Regex.Matches(u, "steamid:[0-9]{17},")
                                     For Each i As Match In mc
                                         id = i.ToString
