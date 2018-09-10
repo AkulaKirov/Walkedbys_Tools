@@ -26,9 +26,6 @@ Partial Class 程序设置
         Me.Tab1 = New System.Windows.Forms.TabPage()
         Me.ButDelete = New System.Windows.Forms.Button()
         Me.ButCreateSC = New System.Windows.Forms.Button()
-        Me.CheckHide = New System.Windows.Forms.CheckBox()
-        Me.CheckUpdate = New System.Windows.Forms.CheckBox()
-        Me.CheckExit = New System.Windows.Forms.CheckBox()
         Me.Tabs.SuspendLayout()
         Me.Tab1.SuspendLayout()
         Me.SuspendLayout()
@@ -48,9 +45,6 @@ Partial Class 程序设置
         '
         Me.Tab1.Controls.Add(Me.ButDelete)
         Me.Tab1.Controls.Add(Me.ButCreateSC)
-        Me.Tab1.Controls.Add(Me.CheckHide)
-        Me.Tab1.Controls.Add(Me.CheckUpdate)
-        Me.Tab1.Controls.Add(Me.CheckExit)
         Me.Tab1.Location = New System.Drawing.Point(4, 28)
         Me.Tab1.Name = "Tab1"
         Me.Tab1.Padding = New System.Windows.Forms.Padding(3)
@@ -81,39 +75,6 @@ Partial Class 程序设置
         Me.ButCreateSC.Text = "在桌面上建立" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "本程序的快捷方式"
         Me.ButCreateSC.UseVisualStyleBackColor = True
         '
-        'CheckHide
-        '
-        Me.CheckHide.AutoSize = True
-        Me.CheckHide.Location = New System.Drawing.Point(8, 6)
-        Me.CheckHide.Name = "CheckHide"
-        Me.CheckHide.Size = New System.Drawing.Size(340, 23)
-        Me.CheckHide.TabIndex = 2
-        Me.CheckHide.TabStop = False
-        Me.CheckHide.Text = "最小化的时候直接隐藏到后台，而不是停留在任务栏里"
-        Me.CheckHide.UseVisualStyleBackColor = True
-        '
-        'CheckUpdate
-        '
-        Me.CheckUpdate.AutoSize = True
-        Me.CheckUpdate.Location = New System.Drawing.Point(8, 60)
-        Me.CheckUpdate.Name = "CheckUpdate"
-        Me.CheckUpdate.Size = New System.Drawing.Size(392, 23)
-        Me.CheckUpdate.TabIndex = 1
-        Me.CheckUpdate.TabStop = False
-        Me.CheckUpdate.Text = "启动程序的时候不检查更新（关闭后请自行去我博客查询更新）"
-        Me.CheckUpdate.UseVisualStyleBackColor = True
-        '
-        'CheckExit
-        '
-        Me.CheckExit.AutoSize = True
-        Me.CheckExit.Location = New System.Drawing.Point(8, 33)
-        Me.CheckExit.Name = "CheckExit"
-        Me.CheckExit.Size = New System.Drawing.Size(314, 23)
-        Me.CheckExit.TabIndex = 0
-        Me.CheckExit.TabStop = False
-        Me.CheckExit.Text = "关闭主页的时候隐藏到后台，而不是直接退出程序"
-        Me.CheckExit.UseVisualStyleBackColor = True
-        '
         '程序设置
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -129,16 +90,12 @@ Partial Class 程序设置
         Me.Text = "程序设置"
         Me.Tabs.ResumeLayout(False)
         Me.Tab1.ResumeLayout(False)
-        Me.Tab1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents Tabs As TabControl
     Friend WithEvents Tab1 As TabPage
-    Friend WithEvents CheckExit As CheckBox
-    Friend WithEvents CheckUpdate As CheckBox
-    Friend WithEvents CheckHide As CheckBox
     Friend WithEvents ButCreateSC As Button
     Friend WithEvents ButDelete As Button
 End Class

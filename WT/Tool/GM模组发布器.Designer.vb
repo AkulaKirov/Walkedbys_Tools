@@ -292,6 +292,7 @@ Partial Class GM模组发布器
         Me.Pn.Name = "Pn"
         Me.Pn.Size = New System.Drawing.Size(577, 387)
         Me.Pn.TabIndex = 6
+        Me.Pn.Visible = False
         '
         'PicThumb
         '

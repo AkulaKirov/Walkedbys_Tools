@@ -45,7 +45,6 @@ Module 通用
     ''' <summary>
     ''' 弹出一个报错框并结束程序
     ''' </summary>
-    ''' <param name="s"></param>
     Public Sub 报错退出(s As String)
         MsgBox(s, MsgBoxStyle.Exclamation, "有东西出错！")
         Try
@@ -139,6 +138,7 @@ Module 通用
         Dim fc As Color = 启动器.ForeColor
         c.BackColor = bc
         c.ForeColor = fc
+        c.TabStop = False
         If c.HasChildren Then
             For Each i As Control In c.Controls
                 配色(i)
@@ -168,7 +168,6 @@ Module 通用
                 .ImeMode = 启动器.ImeMode
                 .ShowInTaskbar = True
                 .MaximizeBox = False
-                配色(窗体)
                 .AutoScaleMode = AutoScaleMode.Dpi
                 If 预加载 Then
                     .StartPosition = FormStartPosition.Manual

@@ -162,7 +162,7 @@ Partial Class 启动器
         'TxtUpdate
         '
         Me.TxtUpdate.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TxtUpdate.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.0!)
+        Me.TxtUpdate.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.TxtUpdate.Location = New System.Drawing.Point(3, 20)
         Me.TxtUpdate.Multiline = True
         Me.TxtUpdate.Name = "TxtUpdate"

@@ -28,6 +28,7 @@ Partial Class B站催更器
         Me.ButTell = New System.Windows.Forms.Button()
         Me.LabOut = New System.Windows.Forms.Label()
         Me.CoolDown = New System.Windows.Forms.Timer(Me.components)
+        Me.CheckAuto = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'LabID
@@ -62,7 +63,7 @@ Partial Class B站催更器
         'LabOut
         '
         Me.LabOut.AutoSize = True
-        Me.LabOut.Location = New System.Drawing.Point(12, 109)
+        Me.LabOut.Location = New System.Drawing.Point(12, 114)
         Me.LabOut.Name = "LabOut"
         Me.LabOut.Size = New System.Drawing.Size(141, 19)
         Me.LabOut.TabIndex = 4
@@ -72,11 +73,23 @@ Partial Class B站催更器
         '
         Me.CoolDown.Interval = 20000
         '
+        'CheckAuto
+        '
+        Me.CheckAuto.AutoSize = True
+        Me.CheckAuto.Location = New System.Drawing.Point(16, 88)
+        Me.CheckAuto.Name = "CheckAuto"
+        Me.CheckAuto.Size = New System.Drawing.Size(145, 23)
+        Me.CheckAuto.TabIndex = 5
+        Me.CheckAuto.TabStop = False
+        Me.CheckAuto.Text = "启动的时候检查一次"
+        Me.CheckAuto.UseVisualStyleBackColor = True
+        '
         'B站催更器
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(398, 208)
+        Me.Controls.Add(Me.CheckAuto)
         Me.Controls.Add(Me.LabOut)
         Me.Controls.Add(Me.ButTell)
         Me.Controls.Add(Me.TxtID)
@@ -97,4 +110,5 @@ Partial Class B站催更器
     Friend WithEvents ButTell As Button
     Friend WithEvents LabOut As Label
     Friend WithEvents CoolDown As Forms.Timer
+    Friend WithEvents CheckAuto As CheckBox
 End Class

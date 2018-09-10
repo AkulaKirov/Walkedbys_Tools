@@ -30,6 +30,7 @@ Partial Class Steam好友列表检查
         Me.TxtLog = New System.Windows.Forms.TextBox()
         Me.ButClear = New System.Windows.Forms.Button()
         Me.TimerC = New System.Windows.Forms.Timer(Me.components)
+        Me.CheckAuto = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'LabID
@@ -72,7 +73,7 @@ Partial Class Steam好友列表检查
         '
         'TxtLog
         '
-        Me.TxtLog.Location = New System.Drawing.Point(12, 68)
+        Me.TxtLog.Location = New System.Drawing.Point(12, 96)
         Me.TxtLog.Multiline = True
         Me.TxtLog.Name = "TxtLog"
         Me.TxtLog.ReadOnly = True
@@ -95,11 +96,23 @@ Partial Class Steam好友列表检查
         '
         Me.TimerC.Interval = 10000
         '
+        'CheckAuto
+        '
+        Me.CheckAuto.AutoSize = True
+        Me.CheckAuto.Location = New System.Drawing.Point(16, 67)
+        Me.CheckAuto.Name = "CheckAuto"
+        Me.CheckAuto.Size = New System.Drawing.Size(171, 23)
+        Me.CheckAuto.TabIndex = 3
+        Me.CheckAuto.TabStop = False
+        Me.CheckAuto.Text = "软件开启时自动检查一次"
+        Me.CheckAuto.UseVisualStyleBackColor = True
+        '
         'Steam好友列表检查
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(570, 330)
+        Me.ClientSize = New System.Drawing.Size(570, 358)
+        Me.Controls.Add(Me.CheckAuto)
         Me.Controls.Add(Me.TxtLog)
         Me.Controls.Add(Me.ButClear)
         Me.Controls.Add(Me.ButCheck)
@@ -126,4 +139,5 @@ Partial Class Steam好友列表检查
     Friend WithEvents TxtLog As TextBox
     Friend WithEvents ButClear As Button
     Friend WithEvents TimerC As Forms.Timer
+    Friend WithEvents CheckAuto As CheckBox
 End Class

@@ -8,11 +8,11 @@ Public Class 启动器
     Dim 原时长 As Long
 
     Private Sub 启动器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        随机.刷新()
         Icon = 图标
         Text = "走過去的工具箱 测试版 v" + 版本.ToString
         Nico.Icon = 图标
         Directory.CreateDirectory(TempF)
-        配色(Me)
         Dim t As 工具, b As Button, i As Integer, g As String
         If 在列表(启动参数, "-tryfix") Then
             新工具("信息修改器", 信息修改器, "TryFix", "设置保存信息的修改器。")
@@ -31,12 +31,12 @@ Public Class 启动器
         新工具("剪贴板记录器", 剪贴板记录器, "ClipBoardRecord", "在后台记录剪贴板的内容到硬盘里。", True)
         新工具("模型贴图打包器", 起源模型贴图打包器, "SourceModelPacker", "给 Source 的模型文件批量打包贴图文件。")
         新工具("RunSringLUA制作器", RunStringLUA制作器, "RunStringLua", "算是给 GMod LUA 加密？")
-        新工具("B站催更器", B站催更器, "BilibiliPushYou", "会提醒你B站多久没更视频的一个工具。")
+        新工具("B站催更器", B站催更器, "BilibiliPushYou", "会提醒你B站多久没更视频的一个工具。", 设置.读取真假("CheckBilibiliAtStart"))
         新工具("B站实时最大AV", B站AV变化, "BilibiliAV", "直观地显示一下B站各分区的最大AV号的实时情况。")
         新工具("随机生成器", 随机生成器, "RandomG", "随机生成中英文句子或者数字等。")
         新工具("网络检测", 网络检测, "NetTest", "如果你觉得你的网络不正常可以一直看着这个。")
         新工具("字符画图片制作", 字符画图片制作, "CharPic", "用字符画表示图片。")
-        新工具("有没有少Steam好友", Steam好友列表检查, "SteamFriends", "检查你的Steam好友列表是不是少人了。")
+        新工具("有没有少Steam好友", Steam好友列表检查, "SteamFriends", "检查你的Steam好友列表是不是少人了。", 设置.读取真假("CheckSteamFriendsAtStart"))
         AddHandler SizeChanged, AddressOf 最小化隐藏
         For Each t In 工具列表
             ListTools.Items.Add(t.名字)
@@ -137,11 +137,14 @@ Public Class 启动器
         Refresh()
         AutoSave.Enabled = True
         Opener.Enabled = True
-        g = 程序文件目录 + "wt_save_backup\"
-        Directory.CreateDirectory(g)
-        g += 下划线日期(Today) + ".wbxml"
-        If Not 文件存在(g) Then
-            If 文件可读写(g) Then File.Copy(设置.本地文件, g, True)
+        配色(Me)
+        If 设置.读取真假("SaveBACKUP") Then
+            g = 程序文件目录 + "wt_save_backup\"
+            Directory.CreateDirectory(g)
+            g += 下划线日期(Today) + ".wbxml"
+            If Not 文件存在(g) Then
+                If 文件可读写(g) Then File.Copy(设置.本地文件, g, True)
+            End If
         End If
     End Sub
 
@@ -167,22 +170,6 @@ Public Class 启动器
         删除(TempF)
         已退出 = True
         End
-    End Sub
-
-    Sub 启动器_Activated() Handles Me.Activated
-        检查推送()
-    End Sub
-
-    Sub 检查推送() Handles TxtUpdate.LostFocus, TxtUpdate.GotFocus
-        TxtUpdate.Text = ""
-        Dim s As String = ""
-        For Each t As 工具 In 工具列表
-            If t.推送.Length > 0 Then s += t.推送 + vbCrLf
-        Next
-        s = 去右(s, 2)
-        TxtUpdate.Text = s
-        If s.Length > 50 Then s = 左(s, 50) + "..."
-        Nico.Text = "走過去的工具箱" + vbCrLf + s
     End Sub
 
     Private Sub ListTools_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListTools.SelectedIndexChanged
@@ -389,6 +376,14 @@ Public Class 启动器
         Dim u As Long = 原时长 + Abs(DateDiff(DateInterval.Second, Now, 开始时间))
         Dim s As String = "你已用本软件：" + 时间文字(u) + " " + 括(u.ToString + "s")
         LabTime.Text = s
+        s = ""
+        For Each t As 工具 In 工具列表
+            If t.推送.Length > 0 Then s += t.推送 + vbCrLf
+        Next
+        s = 去右(s, 2)
+        If s <> TxtUpdate.Text Then TxtUpdate.Text = s
+        If s.Length > 50 Then s = 左(s, 50) + "..."
+        Nico.Text = "走過去的工具箱" + vbCrLf + s
     End Sub
 
     Private Sub ButShortCut_Click(sender As Object, e As EventArgs) Handles ButShortCut.Click

@@ -5,8 +5,6 @@ Namespace My
     Partial Friend Class MyApplication
 
         Private Sub MyApplication_Startup(sender As Object, e As StartupEventArgs) Handles Me.Startup
-            随机.刷新()
-            线程越界()
             Dim i As String
             i = 程序文件目录.ToLower
             If 全部包含(i, "c:\users", "\appdata\", "\temp\") Then 报错退出("对不起，请不要把本程序在压缩包内直接打开。")
@@ -33,6 +31,7 @@ Namespace My
                 n = MsgBox("你想在桌面上建立本程序的快捷方式吗？", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "欢迎使用走過去的工具箱~")
                 If n = MsgBoxResult.Yes Then 程序设置.ButCreateSC_Click()
             End If
+            线程越界()
             开始时间 = Now
         End Sub
 
