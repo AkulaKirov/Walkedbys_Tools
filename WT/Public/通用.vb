@@ -84,7 +84,7 @@ Module 通用
     Public Sub 最小化隐藏(sender As Form, e As EventArgs)
         Select Case sender.WindowState
             Case FormWindowState.Minimized
-                If Not 设置.读取真假("HideWindowAtMin") Then 隐藏到后台(sender)
+                If 设置.读取真假("HideWindowAtMin") Then 隐藏到后台(sender)
             Case FormWindowState.Normal
                 显示到前台(sender)
         End Select

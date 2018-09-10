@@ -77,9 +77,9 @@ Public Class 启动器
         Next
         GBfavorites.Text = "工具收藏夹" + 括(工具收藏.Count.ToString + "/8")
         新增关于链接("博客", "https://walkedby.com/wt")
-        新增关于链接("源码", "https://github.com/gordonwalkedby/Walkedbys_Tools")
         新增关于链接("下载最新版", "https://github.com/gordonwalkedby/Walkedbys_Tools/releases")
         新增关于链接("请我喝好的", "https://walkedby.com/donateme/")
+        新增关于链接("反馈", "https://steamcn.com/t422593-1-1")
         GBallTools.Text += 括((ListTools.Items.Count - 1).ToString)
         原时长 = 设置.读取数("OpenTime")
         TimerC_Tick()
@@ -137,6 +137,12 @@ Public Class 启动器
         Refresh()
         AutoSave.Enabled = True
         Opener.Enabled = True
+        g = 程序文件目录 + "wt_save_backup\"
+        Directory.CreateDirectory(g)
+        g += 下划线日期(Today) + ".wbxml"
+        If Not 文件存在(g) Then
+            If 文件可读写(g) Then File.Copy(设置.本地文件, g, True)
+        End If
     End Sub
 
     Private Sub 启动器_FormClosing(sender As Form, e As FormClosingEventArgs) Handles Me.FormClosing

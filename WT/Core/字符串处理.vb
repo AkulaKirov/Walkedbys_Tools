@@ -310,4 +310,24 @@ Module 字符串处理
         Return s
     End Function
 
+    ''' <summary>
+    ''' 如果文字的长度过短，就用0来填补前面的空缺。
+    ''' </summary>
+    Public Function 补零(文字 As String, 个数 As Integer) As String
+        Dim i As Integer = 文字.Length
+        If i < 个数 Then
+            For n As Integer = i + 1 To 个数
+                文字 = "0" + 文字
+            Next
+        End If
+        Return 文字
+    End Function
+
+    ''' <summary>
+    ''' 把日期变成 2018_01_05 这类的文字
+    ''' </summary>
+    Public Function 下划线日期(s As Date) As String
+        Return 补零(s.Year.ToString, 4) + "_" + 补零(s.Month.ToString, 2) + "_" + 补零(s.Day.ToString, 2)
+    End Function
+
 End Module

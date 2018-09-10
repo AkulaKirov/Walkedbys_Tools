@@ -84,18 +84,18 @@ Partial Class 程序设置
         'CheckHide
         '
         Me.CheckHide.AutoSize = True
-        Me.CheckHide.Location = New System.Drawing.Point(3, 6)
+        Me.CheckHide.Location = New System.Drawing.Point(8, 6)
         Me.CheckHide.Name = "CheckHide"
         Me.CheckHide.Size = New System.Drawing.Size(340, 23)
         Me.CheckHide.TabIndex = 2
         Me.CheckHide.TabStop = False
-        Me.CheckHide.Text = "最小化的时候停留在任务栏里，而不是直接隐藏到后台"
+        Me.CheckHide.Text = "最小化的时候直接隐藏到后台，而不是停留在任务栏里"
         Me.CheckHide.UseVisualStyleBackColor = True
         '
         'CheckUpdate
         '
         Me.CheckUpdate.AutoSize = True
-        Me.CheckUpdate.Location = New System.Drawing.Point(3, 60)
+        Me.CheckUpdate.Location = New System.Drawing.Point(8, 60)
         Me.CheckUpdate.Name = "CheckUpdate"
         Me.CheckUpdate.Size = New System.Drawing.Size(392, 23)
         Me.CheckUpdate.TabIndex = 1
@@ -106,7 +106,7 @@ Partial Class 程序设置
         'CheckExit
         '
         Me.CheckExit.AutoSize = True
-        Me.CheckExit.Location = New System.Drawing.Point(3, 33)
+        Me.CheckExit.Location = New System.Drawing.Point(8, 33)
         Me.CheckExit.Name = "CheckExit"
         Me.CheckExit.Size = New System.Drawing.Size(314, 23)
         Me.CheckExit.TabIndex = 0
