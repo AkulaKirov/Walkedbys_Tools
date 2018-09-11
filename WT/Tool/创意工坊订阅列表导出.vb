@@ -24,6 +24,9 @@ Public Class 创意工坊订阅列表导出
         TxtOut.Text = ""
         Dim once As Boolean = 包含(url, "sharedfiles/filedetails/?id=")
         url = 正则去除(url, "&p=[0-9]*", "&numperpage=[0-9]*")
+        If Not 包含(url, "/?") Then
+            url += IIf(url.EndsWith("/"), "?", "/?")
+        End If
         If once = False Then url += "&numperpage=30"
         Dim p As Integer = 1, out As String = "", s As String, m As Match, mc As MatchCollection, n As String, c As Integer = 0, name As String
         Do While True
