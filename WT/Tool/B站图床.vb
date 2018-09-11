@@ -28,8 +28,8 @@ Public Class B站图床
         If 文件可用(m) AndAlso 是当中一个(文件后缀(m), "jpg", "png", "gif") AndAlso 文件大小(m) < 20 Then
             LabDoit.Text = "上传中：" + vbCrLf + m
             If 文件后缀(m) = "gif" Then
-                图片 = TempF + "bi.gif"
-                File.Copy(m, TempF + "bi.gif", True)
+                图片 = 缓存目录 + "bi.gif"
+                File.Copy(m, 缓存目录 + "bi.gif", True)
                 预览图 = Image.FromFile(m)
             Else
                 图片 = m
@@ -80,7 +80,7 @@ Public Class B站图床
             ButCopy.Enabled = False
         Else
             Try
-                Dim i As String = TempF + "bilibilitemp.png"
+                Dim i As String = 缓存目录 + "bilibilitemp.png"
                 m.Save(i)
                 m.Dispose()
                 检查图片(i)
@@ -92,7 +92,7 @@ Public Class B站图床
 
     Private Sub ButRetry_Click(sender As Object, e As EventArgs) Handles ButRetry.Click
         Dim n As Image = PicBox.Image
-        Dim i As String = TempF + "bilibilitemp.png"
+        Dim i As String = 缓存目录 + "bilibilitemp.png"
         n.Save(i)
         检查图片(i)
     End Sub

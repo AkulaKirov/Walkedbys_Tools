@@ -5,7 +5,7 @@ Module 通用
     Friend 工具收藏 As New List(Of 工具)
     Friend 版本 As Single = 版本转小数(My.Application.Info.Version)
     Friend 设置 As New 简易XML("WT", "")
-    Friend TempF As String = 程序文件目录() + "WalkedbysTemps\"
+    Friend 缓存目录 As String = 程序文件目录() + "WalkedbysTemps\"
     Friend 图标 As Icon = My.Resources.ico
     Friend 最后窗体 As Form = 启动器
     Friend 启动参数 As New List(Of String)
@@ -16,7 +16,6 @@ Module 通用
     ''' <summary>
     ''' 开启一个新的线程并自动运行，并且会在程序结束的时候自动结束进程
     ''' </summary>
-    ''' <param name="start"></param>
     Public Sub 新线程(start As ThreadStart)
         Dim n As New Thread(start)
         多线程.Add(n)
@@ -49,7 +48,7 @@ Module 通用
         MsgBox(s, MsgBoxStyle.Exclamation, "有东西出错！")
         Try
             启动器.Nico.Visible = False
-            删除(TempF)
+            删除(缓存目录)
         Catch ex As Exception
         End Try
         End

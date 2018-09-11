@@ -2,8 +2,8 @@
 Public Class GM模组发布器
 
     Const JSON As String = "{""title"": ""标题"",""type"":""类型"", ""tags"":[ ""标签1"",""标签2""],""ignore"":[""*.psd"",""*.vcproj"",""*.svn*""]}"
-    Dim log As String = TempF + "gmodlog.txt"
-    Dim tgma As String = TempF + "t.gma"
+    Dim log As String = 缓存目录 + "gmodlog.txt"
+    Dim tgma As String = 缓存目录 + "t.gma"
     Dim GMODbin As String = ""
     Dim 上次更新日期 As Date
 

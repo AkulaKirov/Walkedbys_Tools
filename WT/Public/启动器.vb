@@ -12,7 +12,7 @@ Public Class 启动器
         Icon = 图标
         Text = "走過去的工具箱 测试版 v" + 版本.ToString
         Nico.Icon = 图标
-        Directory.CreateDirectory(TempF)
+        Directory.CreateDirectory(缓存目录)
         Dim t As 工具, b As Button, i As Integer, g As String
         If 在列表(启动参数, "-tryfix") Then
             新工具("信息修改器", 信息修改器, "TryFix", "设置保存信息的修改器。")
@@ -167,7 +167,7 @@ Public Class 启动器
             If n.启动过了 Then n.窗体.Dispose()
         Next
         设置.保存到本地()
-        删除(TempF)
+        删除(缓存目录)
         已退出 = True
         End
     End Sub
