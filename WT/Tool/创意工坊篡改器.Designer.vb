@@ -39,13 +39,15 @@ Partial Class 创意工坊篡改器
         Me.TxtID = New System.Windows.Forms.TextBox()
         Me.LabID = New System.Windows.Forms.Label()
         Me.LabInfo = New System.Windows.Forms.Label()
+        Me.GBsteamCookie = New System.Windows.Forms.GroupBox()
         Me.Pn.SuspendLayout()
+        Me.GBsteamCookie.SuspendLayout()
         Me.SuspendLayout()
         '
         'LabSession
         '
         Me.LabSession.AutoSize = True
-        Me.LabSession.Location = New System.Drawing.Point(70, 9)
+        Me.LabSession.Location = New System.Drawing.Point(64, 18)
         Me.LabSession.Name = "LabSession"
         Me.LabSession.Size = New System.Drawing.Size(74, 19)
         Me.LabSession.TabIndex = 0
@@ -54,7 +56,7 @@ Partial Class 创意工坊篡改器
         'LabLoginSecure
         '
         Me.LabLoginSecure.AutoSize = True
-        Me.LabLoginSecure.Location = New System.Drawing.Point(12, 37)
+        Me.LabLoginSecure.Location = New System.Drawing.Point(6, 46)
         Me.LabLoginSecure.Name = "LabLoginSecure"
         Me.LabLoginSecure.Size = New System.Drawing.Size(132, 19)
         Me.LabLoginSecure.TabIndex = 1
@@ -63,20 +65,20 @@ Partial Class 创意工坊篡改器
         'TxtSession
         '
         Me.TxtSession.Font = New System.Drawing.Font("微软雅黑", 8.0!)
-        Me.TxtSession.Location = New System.Drawing.Point(150, 6)
+        Me.TxtSession.Location = New System.Drawing.Point(143, 15)
         Me.TxtSession.MaxLength = 24
         Me.TxtSession.Name = "TxtSession"
-        Me.TxtSession.Size = New System.Drawing.Size(501, 22)
+        Me.TxtSession.Size = New System.Drawing.Size(478, 22)
         Me.TxtSession.TabIndex = 2
         Me.TxtSession.TabStop = False
         '
         'TxtLoginSecure
         '
         Me.TxtLoginSecure.Font = New System.Drawing.Font("微软雅黑", 8.0!)
-        Me.TxtLoginSecure.Location = New System.Drawing.Point(150, 37)
+        Me.TxtLoginSecure.Location = New System.Drawing.Point(143, 43)
         Me.TxtLoginSecure.MaxLength = 63
         Me.TxtLoginSecure.Name = "TxtLoginSecure"
-        Me.TxtLoginSecure.Size = New System.Drawing.Size(501, 22)
+        Me.TxtLoginSecure.Size = New System.Drawing.Size(478, 22)
         Me.TxtLoginSecure.TabIndex = 63
         Me.TxtLoginSecure.TabStop = False
         Me.TxtLoginSecure.UseSystemPasswordChar = True
@@ -94,7 +96,7 @@ Partial Class 创意工坊篡改器
         Me.Pn.Controls.Add(Me.LabLanguage)
         Me.Pn.Controls.Add(Me.TxtID)
         Me.Pn.Controls.Add(Me.LabID)
-        Me.Pn.Location = New System.Drawing.Point(12, 127)
+        Me.Pn.Location = New System.Drawing.Point(12, 141)
         Me.Pn.Name = "Pn"
         Me.Pn.Size = New System.Drawing.Size(639, 379)
         Me.Pn.TabIndex = 64
@@ -211,24 +213,34 @@ Partial Class 创意工坊篡改器
         'LabInfo
         '
         Me.LabInfo.AutoSize = True
-        Me.LabInfo.Location = New System.Drawing.Point(12, 67)
+        Me.LabInfo.Location = New System.Drawing.Point(12, 81)
         Me.LabInfo.Name = "LabInfo"
         Me.LabInfo.Size = New System.Drawing.Size(490, 57)
         Me.LabInfo.TabIndex = 0
         Me.LabInfo.Text = "本工具是用来强行修改 Steam Workshop 物品简介的，" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "包括因为 Steam 方面的 BUG，物品的贡献者也可以修改物品信息。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "请谨慎使用本工具，不" &
     "提供备份保存等功能。完成修改后请自行去浏览器检查情况。"
         '
+        'GBsteamCookie
+        '
+        Me.GBsteamCookie.Controls.Add(Me.LabLoginSecure)
+        Me.GBsteamCookie.Controls.Add(Me.LabSession)
+        Me.GBsteamCookie.Controls.Add(Me.TxtLoginSecure)
+        Me.GBsteamCookie.Controls.Add(Me.TxtSession)
+        Me.GBsteamCookie.Location = New System.Drawing.Point(12, 1)
+        Me.GBsteamCookie.Name = "GBsteamCookie"
+        Me.GBsteamCookie.Size = New System.Drawing.Size(639, 77)
+        Me.GBsteamCookie.TabIndex = 65
+        Me.GBsteamCookie.TabStop = False
+        Me.GBsteamCookie.Text = "Steam Cookie"
+        '
         '创意工坊篡改器
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(663, 518)
+        Me.ClientSize = New System.Drawing.Size(662, 531)
         Me.Controls.Add(Me.LabInfo)
         Me.Controls.Add(Me.Pn)
-        Me.Controls.Add(Me.TxtLoginSecure)
-        Me.Controls.Add(Me.TxtSession)
-        Me.Controls.Add(Me.LabLoginSecure)
-        Me.Controls.Add(Me.LabSession)
+        Me.Controls.Add(Me.GBsteamCookie)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.ImeMode = System.Windows.Forms.ImeMode.Off
@@ -239,6 +251,8 @@ Partial Class 创意工坊篡改器
         Me.Text = "Steam Workshop 物品信息篡改器"
         Me.Pn.ResumeLayout(False)
         Me.Pn.PerformLayout()
+        Me.GBsteamCookie.ResumeLayout(False)
+        Me.GBsteamCookie.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -261,4 +275,5 @@ Partial Class 创意工坊篡改器
     Friend WithEvents ButGo As Button
     Friend WithEvents TxtBack As TextBox
     Friend WithEvents ButGoBrowser As Button
+    Friend WithEvents GBsteamCookie As GroupBox
 End Class

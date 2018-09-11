@@ -26,6 +26,7 @@ Partial Class 信息修改器
         Me.TxtInfo = New System.Windows.Forms.TextBox()
         Me.ButBack = New System.Windows.Forms.Button()
         Me.ButSave = New System.Windows.Forms.Button()
+        Me.ButRefresh = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'ListT
@@ -70,11 +71,22 @@ Partial Class 信息修改器
         Me.ButSave.Text = "保存该项"
         Me.ButSave.UseVisualStyleBackColor = True
         '
+        'ButRefresh
+        '
+        Me.ButRefresh.Location = New System.Drawing.Point(274, 332)
+        Me.ButRefresh.Name = "ButRefresh"
+        Me.ButRefresh.Size = New System.Drawing.Size(99, 33)
+        Me.ButRefresh.TabIndex = 4
+        Me.ButRefresh.TabStop = False
+        Me.ButRefresh.Text = "刷新"
+        Me.ButRefresh.UseVisualStyleBackColor = True
+        '
         '信息修改器
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(839, 377)
+        Me.Controls.Add(Me.ButRefresh)
         Me.Controls.Add(Me.ButSave)
         Me.Controls.Add(Me.ButBack)
         Me.Controls.Add(Me.TxtInfo)
@@ -95,4 +107,5 @@ Partial Class 信息修改器
     Friend WithEvents TxtInfo As TextBox
     Friend WithEvents ButBack As Button
     Friend WithEvents ButSave As Button
+    Friend WithEvents ButRefresh As Button
 End Class

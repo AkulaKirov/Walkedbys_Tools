@@ -145,6 +145,58 @@ Module 通用
         End If
     End Sub
 
+    ''' <summary>
+    ''' 确认这个groupbox里的steamcookie是否填写正确
+    ''' </summary>
+    Private Function 检测steamCookie() As Boolean
+        Dim s As String = Trim(设置.元素("SteamSession"))
+        If s.Length = 24 Then
+            s = Trim(设置.元素("SteamLoginSecure"))
+            If s.Length = 63 Then
+                If Regex.IsMatch(s, "765611[0-9]{11}%.{2}%.+") Then
+                    Return True
+                End If
+            End If
+        End If
+        Return False
+    End Function
+
+    ''' <summary>
+    ''' 需要一个标准的steamcookie填写groupbox，然后在修改cookie的时候会呼唤起方法
+    ''' </summary>
+    Public Sub 填写steamCookie(g As GroupBox, Optional 方法 As ThreadStart = Nothing)
+        g.Tag = False
+        Dim t As TextBox = g.Controls("TxtSession")
+        AddHandler t.TextChanged, Sub()
+                                      设置.元素("SteamSession") = Trim(t.Text)
+                                      g.Tag = 检测steamCookie()
+                                      If Not IsNothing(方法) Then
+                                          方法.Invoke
+                                      End If
+                                  End Sub
+        Dim t2 As TextBox = g.Controls("TxtLoginSecure")
+        AddHandler t2.TextChanged, Sub()
+                                       设置.元素("SteamLoginSecure") = Trim(t2.Text)
+                                       g.Tag = 检测steamCookie()
+                                       If Not IsNothing(方法) Then
+                                           方法.Invoke
+                                       End If
+                                   End Sub
+        t2.Text = 设置.元素("SteamLoginSecure")
+        t.Text = 设置.元素("SteamSession")
+    End Sub
+
+    ''' <summary>
+    ''' 输出steamcookie的完整形式
+    ''' </summary>
+    Public Function 输出steamCookie() As String
+        If 检测steamCookie() Then
+            Return "steamLoginSecure=" + 设置.元素("SteamLoginSecure") + "; sessionid=" + 设置.元素("SteamSession")
+        Else
+            Return ""
+        End If
+    End Function
+
     Public Class 工具
 
         Public Property 名字 As String

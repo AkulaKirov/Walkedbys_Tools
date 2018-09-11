@@ -2,8 +2,9 @@
 Public Class 创意工坊篡改器
 
     Private Sub 创意工坊篡改器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        TxtLoginSecure.Text = 设置.元素("SteamLoginSecure")
-        TxtSession.Text = 设置.元素("SteamSession")
+        填写steamCookie(GBsteamCookie, Sub()
+                                         Pn.Visible = GBsteamCookie.Tag
+                                     End Sub)
         Dim i As Integer = 设置.读取数("WorkshopLanguage")
         If i >= ListLanguage.Items.Count Then i = 0
         ListLanguage.SelectedIndex = i
@@ -13,16 +14,10 @@ Public Class 创意工坊篡改器
     End Sub
 
     Private Sub 创意工坊篡改器_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        设置.元素("SteamLoginSecure") = TxtLoginSecure.Text
-        设置.元素("SteamSession") = TxtSession.Text
         设置.元素("WorkshopTitle") = TxtTitle.Text
         设置.元素("WorkshopDes") = TxtDes.Text
         设置.元素("WorkshopLanguage") = ListLanguage.SelectedIndex.ToString
         设置.元素("WorkshopID") = TxtID.Text
-    End Sub
-
-    Private Sub TxtSession_TextChanged(sender As Object, e As EventArgs) Handles TxtSession.TextChanged, TxtLoginSecure.TextChanged
-        Pn.Visible = (TxtSession.TextLength = TxtSession.MaxLength AndAlso TxtLoginSecure.TextLength = TxtLoginSecure.MaxLength)
     End Sub
 
     Private Sub TxtID_TextChanged(sender As Object, e As EventArgs) Handles TxtID.TextChanged
@@ -33,9 +28,9 @@ Public Class 创意工坊篡改器
     Private Sub ButGo_Click(sender As Object, e As EventArgs) Handles ButGo.Click
         TxtBack.Text = ""
         Dim h As New 简易HTTP("https://steamcommunity.com/sharedfiles/itemedittext/", "POST")
-        Dim id As String = TxtID.Text, sid As String = TxtSession.Text
+        Dim id As String = TxtID.Text
         h.内容Type = "application/x-www-form-urlencoded"
-        h.Cookie = "steamLoginSecure=" + TxtLoginSecure.Text + "; sessionid=" + sid
+        h.Cookie = 输出steamCookie()
         h.Origin = "https://steamcommunity.com"
         h.Referer = "https://steamcommunity.com/sharedfiles/itemedittext/?id=" + id
         h.超时 = 5

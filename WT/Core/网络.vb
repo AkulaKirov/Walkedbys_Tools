@@ -17,9 +17,10 @@
     ''' </summary>
     Public Class 简易HTTP
 
-        Dim h As HttpWebRequest
+        Private h As HttpWebRequest, url As String
 
         Public Sub New(链接 As String, Optional 请求方法 As String = "GET")
+            url = 链接
             Dim u As New Uri(链接)
             h = WebRequest.Create(u)
             UA = 浏览器UA.Chrome64
@@ -27,6 +28,12 @@
             方法 = 请求方法
             超时 = 8
         End Sub
+
+        Public ReadOnly Property 链接() As String
+            Get
+                Return url
+            End Get
+        End Property
 
         ''' <summary>
         ''' HttpWebRequest 本体

@@ -37,4 +37,13 @@ Public Class 信息修改器
         Next
     End Sub
 
+    Private Sub ButRefresh_Click(sender As Object, e As EventArgs) Handles ButRefresh.Click
+        TxtInfo.Text = ""
+        刷新列表()
+    End Sub
+
+    Private Sub 信息修改器_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        ButRefresh.PerformClick()
+    End Sub
+
 End Class
