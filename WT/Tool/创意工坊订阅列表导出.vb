@@ -50,9 +50,6 @@ Public Class 创意工坊订阅列表导出
                     If name.Length > 0 Then
                         out += name + " " + 括(提取(n, "id:", ",")) + vbCrLf
                         c += 1
-                        PRT(name, c)
-                    Else
-                        PRT(n)
                     End If
                 Next
             End If

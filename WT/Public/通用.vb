@@ -214,6 +214,7 @@ Module 通用
             With 窗体
                 AddHandler .Activated, Sub()
                                            启动过了 = True
+                                           配色(窗体)
                                        End Sub
                 .Icon = 图标
                 .ImeMode = 启动器.ImeMode
