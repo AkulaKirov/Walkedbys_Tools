@@ -45,7 +45,7 @@ Module 通用
     ''' 弹出一个报错框并结束程序
     ''' </summary>
     Public Sub 报错退出(s As String)
-        MsgBox(s, MsgBoxStyle.Exclamation, "有东西出错！")
+        MsgBox(s, MsgBoxStyle.Exclamation, "出错！走過去的工具箱 v" + 版本.ToString)
         Try
             启动器.Nico.Visible = False
             删除(缓存目录)
@@ -218,6 +218,7 @@ Module 通用
                                        End Sub
                 .Icon = 图标
                 .ImeMode = 启动器.ImeMode
+                .Font = 启动器.Font
                 .ShowInTaskbar = True
                 .MaximizeBox = False
                 .AutoScaleMode = AutoScaleMode.Dpi

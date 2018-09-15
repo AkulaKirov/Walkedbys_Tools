@@ -89,15 +89,17 @@ Partial Class 启动器
         '
         'TxtToolID
         '
+        Me.TxtToolID.BackColor = System.Drawing.Color.White
         Me.TxtToolID.Location = New System.Drawing.Point(207, 50)
         Me.TxtToolID.Name = "TxtToolID"
         Me.TxtToolID.ReadOnly = True
-        Me.TxtToolID.Size = New System.Drawing.Size(128, 24)
+        Me.TxtToolID.Size = New System.Drawing.Size(128, 25)
         Me.TxtToolID.TabIndex = 6
         Me.TxtToolID.TabStop = False
         '
         'TxtToolInfo
         '
+        Me.TxtToolInfo.BackColor = System.Drawing.Color.White
         Me.TxtToolInfo.Location = New System.Drawing.Point(207, 80)
         Me.TxtToolInfo.Multiline = True
         Me.TxtToolInfo.Name = "TxtToolInfo"
@@ -108,10 +110,11 @@ Partial Class 启动器
         '
         'TxtToolName
         '
+        Me.TxtToolName.BackColor = System.Drawing.Color.White
         Me.TxtToolName.Location = New System.Drawing.Point(207, 20)
         Me.TxtToolName.Name = "TxtToolName"
         Me.TxtToolName.ReadOnly = True
-        Me.TxtToolName.Size = New System.Drawing.Size(168, 24)
+        Me.TxtToolName.Size = New System.Drawing.Size(168, 25)
         Me.TxtToolName.TabIndex = 4
         Me.TxtToolName.TabStop = False
         '
@@ -140,11 +143,11 @@ Partial Class 启动器
         'ListTools
         '
         Me.ListTools.FormattingEnabled = True
-        Me.ListTools.ItemHeight = 17
+        Me.ListTools.ItemHeight = 19
         Me.ListTools.Location = New System.Drawing.Point(11, 23)
         Me.ListTools.Name = "ListTools"
         Me.ListTools.ScrollAlwaysVisible = True
-        Me.ListTools.Size = New System.Drawing.Size(190, 208)
+        Me.ListTools.Size = New System.Drawing.Size(190, 194)
         Me.ListTools.Sorted = True
         Me.ListTools.TabIndex = 0
         Me.ListTools.TabStop = False
@@ -161,14 +164,15 @@ Partial Class 启动器
         '
         'TxtUpdate
         '
+        Me.TxtUpdate.BackColor = System.Drawing.Color.White
         Me.TxtUpdate.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TxtUpdate.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.TxtUpdate.Location = New System.Drawing.Point(3, 20)
+        Me.TxtUpdate.Location = New System.Drawing.Point(3, 21)
         Me.TxtUpdate.Multiline = True
         Me.TxtUpdate.Name = "TxtUpdate"
         Me.TxtUpdate.ReadOnly = True
         Me.TxtUpdate.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtUpdate.Size = New System.Drawing.Size(336, 98)
+        Me.TxtUpdate.Size = New System.Drawing.Size(336, 97)
         Me.TxtUpdate.TabIndex = 0
         Me.TxtUpdate.TabStop = False
         '
@@ -178,7 +182,7 @@ Partial Class 启动器
         Me.LabAbout.BackColor = System.Drawing.Color.Transparent
         Me.LabAbout.Location = New System.Drawing.Point(6, 20)
         Me.LabAbout.Name = "LabAbout"
-        Me.LabAbout.Size = New System.Drawing.Size(208, 34)
+        Me.LabAbout.Size = New System.Drawing.Size(209, 38)
         Me.LabAbout.TabIndex = 3
         Me.LabAbout.Text = "走過去的工具箱 Walkedby's Tools" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "编写：戈登走過去"
         '
@@ -199,7 +203,7 @@ Partial Class 启动器
         Me.LabTime.BackColor = System.Drawing.Color.Transparent
         Me.LabTime.Location = New System.Drawing.Point(6, 84)
         Me.LabTime.Name = "LabTime"
-        Me.LabTime.Size = New System.Drawing.Size(73, 17)
+        Me.LabTime.Size = New System.Drawing.Size(74, 19)
         Me.LabTime.TabIndex = 4
         Me.LabTime.Text = "已经用了："
         '
@@ -238,7 +242,7 @@ Partial Class 启动器
         Me.LabFun.AutoSize = True
         Me.LabFun.Location = New System.Drawing.Point(17, 373)
         Me.LabFun.Name = "LabFun"
-        Me.LabFun.Size = New System.Drawing.Size(39, 17)
+        Me.LabFun.Size = New System.Drawing.Size(40, 19)
         Me.LabFun.TabIndex = 5
         Me.LabFun.Text = "fun~"
         '
@@ -262,7 +266,7 @@ Partial Class 启动器
         Me.Controls.Add(Me.GBallTools)
         Me.Controls.Add(Me.GBfavorites)
         Me.DoubleBuffered = True
-        Me.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.ForeColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(44, Byte), Integer), CType(CType(61, Byte), Integer))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.ImeMode = System.Windows.Forms.ImeMode.Off

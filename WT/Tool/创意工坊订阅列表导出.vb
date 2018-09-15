@@ -32,7 +32,7 @@ Public Class 创意工坊订阅列表导出
         Do While True
             Dim h As New 简易HTTP(url + IIf(once, "", "&p=" + p.ToString))
             h.Cookie = 输出steamCookie()
-            s = h.获得回应()
+            s = h.获得回应(False)
             If s.Length < 1000 Then
                 out += "出错：" + vbCrLf + s
                 Exit Do
@@ -45,7 +45,7 @@ Public Class 创意工坊订阅列表导出
             mc = Regex.Matches(s, "SharedFileBindMouseHover\( ([\s\S]*?)\);")
             If mc.Count > 0 Then
                 For Each m In mc
-                    n = 去除(m.ToString, 引号, vbCr, vbLf)
+                    n = Regex.Unescape(去除(m.ToString, 引号, vbCr, vbLf))
                     name = 提取(n, "title:", ",description:")
                     If name.Length > 0 Then
                         out += name + " " + 括(提取(n, "id:", ",")) + vbCrLf
@@ -54,12 +54,11 @@ Public Class 创意工坊订阅列表导出
                 Next
             End If
             If mc.Count < 30 OrElse once Then
-                out += "列表导出完毕。"
                 Exit Do
             End If
             p += 1
         Loop
-        TxtOut.Text = "共计：" + c.ToString + vbCrLf + out
+        TxtOut.Text = "工作结束，共计：" + c.ToString + vbCrLf + out
     End Sub
 
 End Class
