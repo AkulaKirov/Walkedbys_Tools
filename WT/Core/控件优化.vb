@@ -95,6 +95,9 @@ Module 控件优化
         End If
     End Sub
 
+    ''' <summary>
+    ''' 确定这些文本框都有文字而不是空的
+    ''' </summary>
     Public Function 文本框都有字(ParamArray t() As TextBox) As Boolean
         For Each i As TextBox In t
             If i.TextLength < 1 Then Return False
@@ -102,6 +105,9 @@ Module 控件优化
         Return True
     End Function
 
+    ''' <summary>
+    ''' 把textbox的文字有改变的时候，自动拖动文本框的滚动条到末尾
+    ''' </summary>
     Public Sub 文本框自动拖到最后(ParamArray t() As TextBox)
         For Each i As TextBox In t
             AddHandler i.TextChanged, Sub()
@@ -110,5 +116,12 @@ Module 控件优化
                                       End Sub
         Next
     End Sub
+
+    ''' <summary>
+    ''' 获得控件的小写名字
+    ''' </summary>
+    Public Function 控件类型(i As Control) As String
+        Return 去除(i.GetType.ToString, "System.Windows.Forms.").ToLower
+    End Function
 
 End Module

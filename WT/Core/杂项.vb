@@ -239,7 +239,7 @@ Module 杂项
     End Function
 
     ''' <summary>
-    ''' 给一个秒的时间，返回一个中文文字
+    ''' 给秒的时间，返回中文文字
     ''' </summary>
     Public Function 时间文字(i As Long) As String
         Dim d As Long = 24 * 60 * 60
@@ -247,7 +247,7 @@ Module 杂项
             If i < 90 Then
                 Return i & "秒"
             ElseIf i < 60 * 120 Then
-                Return Fix(i / 60) & "分"
+                Return Fix(i / 60) & "分钟"
             Else
                 Return Fix(i / 60 / 60) & "个小时"
             End If

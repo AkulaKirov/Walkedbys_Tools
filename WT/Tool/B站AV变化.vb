@@ -77,7 +77,7 @@ Public Class B站AV变化
             If 略过分区(n) = False AndAlso n.最大AV > 1000 Then
                 Dim s As String = TxtAV.Text
                 If s.Length > 0 Then
-                    s =( Val(s) - n.最大AV).ToString
+                    s = (Val(s) - n.最大AV).ToString
                 Else
                     s = n.最大AV.ToString
                 End If
@@ -125,7 +125,7 @@ Public Class B站AV变化
 
 End Class
 
- Class 分区
+Class 分区
 
     Public Property 名字 As String
     Public Property 最大AV As Long

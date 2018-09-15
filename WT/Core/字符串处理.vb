@@ -20,10 +20,15 @@ Module 字符串处理
     End Function
 
     ''' <summary>
+    ''' 把版本 1.0 变成 字符串 1.0
+    ''' </summary>
+    Public Function 版本号(版本 As Version) As String
+        Return 版本.Major & "." & 版本.Minor
+    End Function
+
+    ''' <summary>
     ''' 把版本号变成小数
     ''' </summary>
-    ''' <param name="版本"></param>
-    ''' <returns></returns>
     Public Function 版本转小数(版本 As Version) As Single
         Return 版本.Major + 版本.Minor * 0.1
     End Function

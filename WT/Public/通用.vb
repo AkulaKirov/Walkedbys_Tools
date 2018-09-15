@@ -3,7 +3,7 @@ Module 通用
 
     Friend 工具列表 As New List(Of 工具)
     Friend 工具收藏 As New List(Of 工具)
-    Friend 版本 As Single = 版本转小数(My.Application.Info.Version)
+    Friend 版本 As String = 版本号(My.Application.Info.Version)
     Friend 设置 As New 简易XML("WT", "")
     Friend 缓存目录 As String = 程序文件目录() + "WalkedbysTemps\"
     Friend 图标 As Icon = My.Resources.ico
