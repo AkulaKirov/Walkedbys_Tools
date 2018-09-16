@@ -252,7 +252,7 @@ Module 杂项
                 Return Fix(i / 60 / 60) & "个小时"
             End If
         Else
-            i = i / d + 1
+            i = Int(i / d + 0.5)
             If i < 60 Then
                 Return i & "天"
             ElseIf i < 30 * 18 Then

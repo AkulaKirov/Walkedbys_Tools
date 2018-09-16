@@ -210,7 +210,7 @@ Module 通用
             窗体 = win
             启动过了 = False
             简介 = description
-            ID = 内部id.ToLower
+            ID = 内部id
             With 窗体
                 AddHandler .Activated, Sub()
                                            启动过了 = True
