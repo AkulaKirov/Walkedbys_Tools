@@ -12,7 +12,7 @@
     <ProjectView>ProjectFiles</ProjectView>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <StartArguments>-tryfix -whatever</StartArguments>
+    <StartArguments>-whatever</StartArguments>
     <StartAction>Project</StartAction>
   </PropertyGroup>
 </Project>

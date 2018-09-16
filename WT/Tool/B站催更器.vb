@@ -41,9 +41,13 @@ Public Class B站催更器
                                 Else
                                     s = 去除(s, vbCr, vbLf, 引号)
                                     s = 提取(s, "author", "length")
-                                    id = 时间差(UNIX时间恢复(Val(提取(s, "created:", ","))), Now, True)
+                                    id = 时间差(UNIX时间恢复(Val(提取(s, "created:", ","))), Now, False)
                                     out = "你是：" + 提取(s, ":", ",") + vbCrLf + "距离你上一次发视频已经过去了：" + id
-                                    Tag = "你已经" + id + "没更B站了！"
+                                    If id <> "不到一天" Then
+                                        Tag = "你已经" + id + "没更B站了！"
+                                    Else
+                                        Tag = "你今天已经更新过B站啦~"
+                                    End If
                                 End If
                             Else
                                 out = "获得网站信息失败，错误信息：" + vbCrLf + s
