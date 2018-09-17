@@ -11,6 +11,7 @@ Public Class B站图床
         ButRetry.Enabled = False
         ButCopy.Enabled = False
         PicBox.Image = Nothing
+        CheckAuto.Checked = 设置.读取真假("bilibiliautocopy")
     End Sub
 
     Private Sub B站图床_DragDrop(sender As Object, e As Forms.DragEventArgs) Handles Me.DragDrop
@@ -47,8 +48,11 @@ Public Class B站图床
             If 包含(s, "{""code"":0,""message"":""success"",""") Then
                 LabDoit.Text = 提取(s, "image_url"":""", """,""image_width")
                 ButCopy.Enabled = True
+                If CheckAuto.Checked Then
+                    剪贴板.文本 = LabDoit.Text
+                End If
             Else
-                LabDoit.Text = "失败！" + vbCrLf + s
+                    LabDoit.Text = "失败！" + vbCrLf + s
                 ButRetry.Enabled = True
             End If
             ButPaste.Enabled = True
@@ -67,14 +71,15 @@ Public Class B站图床
         LabDoit.Text = LabDoit.Tag
         PicBox.Image = Nothing
         ButCopy.Enabled = False
+        设置.元素("bilibiliautocopy") = CheckAuto.Checked.ToString
     End Sub
 
     Private Sub ButCopy_Click(sender As Object, e As EventArgs) Handles ButCopy.Click
-        Forms.Clipboard.SetText(LabDoit.Text)
+        剪贴板.文本 = LabDoit.Text
     End Sub
 
     Private Sub ButPaste_Click(sender As Object, e As EventArgs) Handles ButPaste.Click
-        Dim m As Image = Forms.Clipboard.GetImage
+        Dim m As Image = 剪贴板.图片
         If IsNothing(m) Then
             LabDoit.Text = "剪贴板里没有图片！"
             ButCopy.Enabled = False

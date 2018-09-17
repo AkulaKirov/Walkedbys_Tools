@@ -28,7 +28,6 @@ Partial Class 创意工坊篡改器
         Me.TxtLoginSecure = New System.Windows.Forms.TextBox()
         Me.Pn = New System.Windows.Forms.Panel()
         Me.ButGoBrowser = New System.Windows.Forms.Button()
-        Me.TxtBack = New System.Windows.Forms.TextBox()
         Me.ButGo = New System.Windows.Forms.Button()
         Me.TxtDes = New System.Windows.Forms.TextBox()
         Me.LabDes = New System.Windows.Forms.Label()
@@ -40,6 +39,7 @@ Partial Class 创意工坊篡改器
         Me.LabID = New System.Windows.Forms.Label()
         Me.LabInfo = New System.Windows.Forms.Label()
         Me.GBsteamCookie = New System.Windows.Forms.GroupBox()
+        Me.Labout = New System.Windows.Forms.Label()
         Me.Pn.SuspendLayout()
         Me.GBsteamCookie.SuspendLayout()
         Me.SuspendLayout()
@@ -85,8 +85,8 @@ Partial Class 创意工坊篡改器
         '
         'Pn
         '
+        Me.Pn.Controls.Add(Me.Labout)
         Me.Pn.Controls.Add(Me.ButGoBrowser)
-        Me.Pn.Controls.Add(Me.TxtBack)
         Me.Pn.Controls.Add(Me.ButGo)
         Me.Pn.Controls.Add(Me.TxtDes)
         Me.Pn.Controls.Add(Me.LabDes)
@@ -98,7 +98,7 @@ Partial Class 创意工坊篡改器
         Me.Pn.Controls.Add(Me.LabID)
         Me.Pn.Location = New System.Drawing.Point(12, 141)
         Me.Pn.Name = "Pn"
-        Me.Pn.Size = New System.Drawing.Size(639, 379)
+        Me.Pn.Size = New System.Drawing.Size(639, 306)
         Me.Pn.TabIndex = 64
         Me.Pn.Visible = False
         '
@@ -111,17 +111,6 @@ Partial Class 创意工坊篡改器
         Me.ButGoBrowser.TabStop = False
         Me.ButGoBrowser.Text = "去浏览器检查"
         Me.ButGoBrowser.UseVisualStyleBackColor = True
-        '
-        'TxtBack
-        '
-        Me.TxtBack.Location = New System.Drawing.Point(17, 300)
-        Me.TxtBack.Multiline = True
-        Me.TxtBack.Name = "TxtBack"
-        Me.TxtBack.ReadOnly = True
-        Me.TxtBack.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtBack.Size = New System.Drawing.Size(604, 63)
-        Me.TxtBack.TabIndex = 72
-        Me.TxtBack.TabStop = False
         '
         'ButGo
         '
@@ -233,11 +222,20 @@ Partial Class 创意工坊篡改器
         Me.GBsteamCookie.TabStop = False
         Me.GBsteamCookie.Text = "Steam Cookie"
         '
+        'Labout
+        '
+        Me.Labout.AutoSize = True
+        Me.Labout.Location = New System.Drawing.Point(171, 115)
+        Me.Labout.Name = "Labout"
+        Me.Labout.Size = New System.Drawing.Size(33, 19)
+        Me.Labout.TabIndex = 74
+        Me.Labout.Text = "Out"
+        '
         '创意工坊篡改器
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(662, 531)
+        Me.ClientSize = New System.Drawing.Size(662, 460)
         Me.Controls.Add(Me.LabInfo)
         Me.Controls.Add(Me.Pn)
         Me.Controls.Add(Me.GBsteamCookie)
@@ -273,7 +271,7 @@ Partial Class 创意工坊篡改器
     Friend WithEvents TxtDes As TextBox
     Friend WithEvents LabDes As Label
     Friend WithEvents ButGo As Button
-    Friend WithEvents TxtBack As TextBox
     Friend WithEvents ButGoBrowser As Button
     Friend WithEvents GBsteamCookie As GroupBox
+    Friend WithEvents Labout As Label
 End Class

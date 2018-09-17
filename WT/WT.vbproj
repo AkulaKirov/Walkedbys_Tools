@@ -192,6 +192,12 @@
     <Compile Include="Tool\信息修改器.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Tool\创意工坊合集物品批量添加.Designer.vb">
+      <DependentUpon>创意工坊合集物品批量添加.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\创意工坊合集物品批量添加.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Tool\创意工坊订阅列表导出.Designer.vb">
       <DependentUpon>创意工坊订阅列表导出.vb</DependentUpon>
     </Compile>
@@ -313,6 +319,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\信息修改器.resx">
       <DependentUpon>信息修改器.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\创意工坊合集物品批量添加.resx">
+      <DependentUpon>创意工坊合集物品批量添加.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\创意工坊订阅列表导出.resx">
       <DependentUpon>创意工坊订阅列表导出.vb</DependentUpon>

@@ -27,6 +27,7 @@ Partial Class B站图床
         Me.ButPaste = New System.Windows.Forms.Button()
         Me.PicBox = New System.Windows.Forms.PictureBox()
         Me.ButRetry = New System.Windows.Forms.Button()
+        Me.CheckAuto = New System.Windows.Forms.CheckBox()
         CType(Me.PicBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -42,7 +43,7 @@ Partial Class B站图床
         'ButCopy
         '
         Me.ButCopy.Enabled = False
-        Me.ButCopy.Location = New System.Drawing.Point(411, 304)
+        Me.ButCopy.Location = New System.Drawing.Point(112, 304)
         Me.ButCopy.Name = "ButCopy"
         Me.ButCopy.Size = New System.Drawing.Size(96, 34)
         Me.ButCopy.TabIndex = 1
@@ -52,7 +53,7 @@ Partial Class B站图床
         '
         'ButPaste
         '
-        Me.ButPaste.Location = New System.Drawing.Point(513, 304)
+        Me.ButPaste.Location = New System.Drawing.Point(214, 304)
         Me.ButPaste.Name = "ButPaste"
         Me.ButPaste.Size = New System.Drawing.Size(99, 34)
         Me.ButPaste.TabIndex = 2
@@ -62,9 +63,9 @@ Partial Class B站图床
         '
         'PicBox
         '
-        Me.PicBox.Location = New System.Drawing.Point(12, 48)
+        Me.PicBox.Location = New System.Drawing.Point(12, 47)
         Me.PicBox.Name = "PicBox"
-        Me.PicBox.Size = New System.Drawing.Size(600, 290)
+        Me.PicBox.Size = New System.Drawing.Size(600, 251)
         Me.PicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PicBox.TabIndex = 3
         Me.PicBox.TabStop = False
@@ -72,7 +73,7 @@ Partial Class B站图床
         'ButRetry
         '
         Me.ButRetry.Enabled = False
-        Me.ButRetry.Location = New System.Drawing.Point(309, 304)
+        Me.ButRetry.Location = New System.Drawing.Point(10, 304)
         Me.ButRetry.Name = "ButRetry"
         Me.ButRetry.Size = New System.Drawing.Size(96, 34)
         Me.ButRetry.TabIndex = 4
@@ -80,12 +81,24 @@ Partial Class B站图床
         Me.ButRetry.Text = "重试上传"
         Me.ButRetry.UseVisualStyleBackColor = True
         '
+        'CheckAuto
+        '
+        Me.CheckAuto.AutoSize = True
+        Me.CheckAuto.Location = New System.Drawing.Point(319, 311)
+        Me.CheckAuto.Name = "CheckAuto"
+        Me.CheckAuto.Size = New System.Drawing.Size(210, 23)
+        Me.CheckAuto.TabIndex = 5
+        Me.CheckAuto.TabStop = False
+        Me.CheckAuto.Text = "上传完成自动复制链接到剪贴板"
+        Me.CheckAuto.UseVisualStyleBackColor = True
+        '
         'B站图床
         '
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(626, 357)
+        Me.ClientSize = New System.Drawing.Size(626, 350)
+        Me.Controls.Add(Me.CheckAuto)
         Me.Controls.Add(Me.ButRetry)
         Me.Controls.Add(Me.ButPaste)
         Me.Controls.Add(Me.ButCopy)
@@ -108,4 +121,5 @@ Partial Class B站图床
     Friend WithEvents ButPaste As Button
     Friend WithEvents PicBox As PictureBox
     Friend WithEvents ButRetry As Button
+    Friend WithEvents CheckAuto As CheckBox
 End Class

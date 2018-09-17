@@ -11,6 +11,7 @@ Public Class 创意工坊篡改器
         TxtTitle.Text = 设置.元素("WorkshopTitle")
         TxtDes.Text = 设置.元素("WorkshopDes")
         TxtID.Text = 设置.元素("WorkshopID")
+        Labout.Text = ""
     End Sub
 
     Private Sub 创意工坊篡改器_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
@@ -26,7 +27,7 @@ Public Class 创意工坊篡改器
     End Sub
 
     Private Sub ButGo_Click(sender As Object, e As EventArgs) Handles ButGo.Click
-        TxtBack.Text = ""
+        Labout.Text = ""
         Dim h As New 简易HTTP("https://steamcommunity.com/sharedfiles/itemedittext/", "POST")
         Dim id As String = TxtID.Text
         h.内容Type = "application/x-www-form-urlencoded"
@@ -58,7 +59,7 @@ Public Class 创意工坊篡改器
                 End If
             End If
         End If
-        TxtBack.Text += i
+        Labout.Text += i
     End Sub
 
     Private Sub ButGoBrowser_Click(sender As Object, e As EventArgs) Handles ButGoBrowser.Click
@@ -68,6 +69,10 @@ Public Class 创意工坊篡改器
         Else
             Process.Start("https://steamcommunity.com/my/myworkshopfiles/")
         End If
+    End Sub
+
+    Private Sub Labout_Click(sender As Object, e As EventArgs) Handles Labout.Click
+        Labout.Text = ""
     End Sub
 
 End Class

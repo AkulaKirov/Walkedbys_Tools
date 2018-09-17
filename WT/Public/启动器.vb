@@ -27,7 +27,7 @@ Public Class 启动器
         新工具("GMod模组发布器", GM模组发布器, "GMAddonPu", "打包GMA文件，发布或更新 Addon 到 Garry's Mod Workshop")
         新工具("未响应图片制作器", 未响应图片制作器, "NoResPic", "制作假装程序未响应的假图片")
         新工具("文件筛选", 文件筛选, "FileChoose", "把A文件夹B文件夹的文件选择性的复制到C文件夹")
-        新工具("Workshop物品篡改器", 创意工坊篡改器, "WorkshopCut", "可以直接修改 Steam Workshop 指定物品的信息，但是你必须是这个物品的上传者或贡献者")
+        新工具("创意工坊物品篡改器", 创意工坊篡改器, "WorkshopCut", "可以直接修改 Steam Workshop 指定物品的信息，但是你必须是这个物品的上传者或贡献者")
         新工具("剪贴板记录器", 剪贴板记录器, "ClipBoardRecord", "在后台记录剪贴板的内容到硬盘里", True)
         新工具("模型贴图打包器", 起源模型贴图打包器, "SourceModelPacker", "给 Source 的模型文件批量打包贴图文件")
         新工具("RunSringLUA制作器", RunStringLUA制作器, "RunStringLua", "算是给 GMod LUA 加密？")
@@ -37,7 +37,8 @@ Public Class 启动器
         新工具("网络检测", 网络检测, "NetTest", "如果你觉得你的网络不正常可以一直看着这个")
         新工具("字符画图片制作", 字符画图片制作, "CharPic", "用字符画表示图片")
         新工具("有没有少Steam好友", Steam好友列表检查, "SteamFriends", "检查你的Steam好友列表是不是少人了", 设置.读取真假("CheckSteamFriendsAtStart"))
-        新工具("Workshop物品列表导出", 创意工坊订阅列表导出, "WorkshopListOut", "把你的workshop订阅的或者是收藏夹里的或者是你发布的或者合集里的物品都导出成一个列表")
+        新工具("创意工坊物品列表导出", 创意工坊订阅列表导出, "WorkshopListOut", "把你的workshop订阅的或者是收藏夹里的或者是你发布的或者合集里的物品都导出成一个列表")
+        新工具("创意工坊合集物品批量添加", 创意工坊合集物品批量添加, "WorkshopCollectionAdd", "可以先用Workshop物品列表导出工具导出物品列表，然后在这里导入到指定的合集。")
         AddHandler SizeChanged, AddressOf 最小化隐藏
         For Each t In 工具列表
             ListTools.Items.Add(t.名字)
@@ -108,7 +109,7 @@ Public Class 启动器
 "8848 钛金显卡~",
 "真高兴我的计算机几乎都不是学校教的。",
 "风水轮流转。",
-"要试试直接对着我输入 " + 随机.多选一("steam", "stcn") + " 吗？",
+"要试试直接对着我输入 " + 随机.多选一("steam", "stcn", "2233") + " 吗？",
 "那太不幸了。",
 "正义之子面对有悖常理的世界，会让世界天翻地覆。",
 "我不喜欢吵架或者辱骂，我也不支持断绝交流的大门。",
@@ -135,7 +136,8 @@ Public Class 启动器
 "美国圣地亚戈国际农业集团总裁——威廉伯爵，享有与美国总统同等的荣誉。",
 "一个比一个干净，反过来看，一个比一个肮脏。",
 "你喜欢聊天吗w",
-"我也想做合法的事情，如果合法手段有用的话。"
+"我也想做合法的事情，如果合法手段有用的话。",
+"我很不敢相信，有的人碰过智能手机，没有碰过电脑的鼠标键盘。"
 ).ToString
         Refresh()
         AutoSave.Enabled = True
@@ -332,7 +334,7 @@ Public Class 启动器
     End Sub
 
     Private Sub 启动器_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp
-        彩蛋码 += 左(e.KeyCode.ToString, 1).ToLower
+        彩蛋码 += 右(e.KeyCode.ToString, 1).ToLower
         彩蛋码 = 右(彩蛋码, 30)
         Dim i As Integer, lc As List(Of Label), l As Label, c As Integer
         If 彩蛋码.EndsWith("steam") AndAlso 只做一次(3156) Then
@@ -368,6 +370,8 @@ Public Class 启动器
             nt.Enabled = True
         ElseIf 彩蛋码.EndsWith("stcn") AndAlso 只做一次(2157) Then
             Process.Start("https://steamcn.com/suid-581001")
+        ElseIf 彩蛋码.EndsWith("2233") AndAlso 只做一次(2354) Then
+            Process.Start("https://wx4.sinaimg.cn/large/aa1dc371gy1fvaj53qa1kj22rb1uo4qs.jpg")
         End If
     End Sub
 

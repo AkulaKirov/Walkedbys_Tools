@@ -292,4 +292,33 @@ Module 杂项
         Return s.Length = 17 AndAlso s.StartsWith("765611")
     End Function
 
+    ''' <summary>
+    ''' 获得或者设置剪贴板的信息，只包括常用信息
+    ''' </summary>
+    Public Class 剪贴板
+
+        Public Shared Property 文本 As String
+            Set(v As String)
+                Forms.Clipboard.SetText(v)
+            End Set
+            Get
+                Return 非空字符串(Forms.Clipboard.GetText)
+            End Get
+        End Property
+
+        Public Shared Property 图片 As Image
+            Set(v As Image)
+                Forms.Clipboard.SetImage(v)
+            End Set
+            Get
+                Return Forms.Clipboard.GetImage
+            End Get
+        End Property
+
+        Public Shared Sub 清空()
+            Forms.Clipboard.Clear()
+        End Sub
+
+    End Class
+
 End Module
