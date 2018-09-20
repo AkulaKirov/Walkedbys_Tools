@@ -92,9 +92,9 @@ Public Class 启动器
                     Dim ta As String = h.获得回应
                     Dim out As String = ""
                     If 全部包含(ta, "这是一个检查更新版本用的", "<root>") Then
-                        Dim v As Single = Val(提取XML(ta, "root", "ver"))
+                        Dim v As New Version(提取XML(ta, "root", "ver"))
                         ta = v.ToString + "）"
-                        If 版本 < v Then
+                        If My.Application.Info.Version < v Then
                             GBabout.Text += "（检测到新版本：v" + ta
                         Else
                             GBabout.Text += "（已是最新版本：v" + ta
