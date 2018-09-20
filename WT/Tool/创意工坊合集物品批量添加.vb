@@ -15,14 +15,14 @@ Public Class 创意工坊合集物品批量添加
     Private Sub 创意工坊合集物品批量添加_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         设置.元素("WorkshopCollectionID") = TxtID.Text
         设置.元素("WorkshopCollectionInput") = TxtInput.Text
-        ButStart.Enabled = True
+        Pn.Enabled = True
         GBsteamCookie.Enabled = True
         TxtOut.Text = ""
         中断线程(TH)
     End Sub
 
     Private Sub ButStart_Click(sender As Object, e As EventArgs) Handles ButStart.Click
-        ButStart.Enabled = False
+        Pn.Enabled = False
         GBsteamCookie.Enabled = False
         TxtOut.Text = "开始工作：" + Now.ToString + vbCrLf
         TH = New Thread(Sub()
@@ -75,7 +75,7 @@ Public Class 创意工坊合集物品批量添加
                             Else
                                 TxtOut.Text = "没有检查到任何要批量加入的物品数据。"
                             End If
-                            ButStart.Enabled = True
+                            Pn.Enabled = True
                             GBsteamCookie.Enabled = True
                         End Sub)
         TH.Start()

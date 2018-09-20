@@ -92,7 +92,6 @@ Partial Class 创意工坊合集物品批量添加
         '
         'Pn
         '
-        Me.Pn.Controls.Add(Me.TxtOut)
         Me.Pn.Controls.Add(Me.ButStart)
         Me.Pn.Controls.Add(Me.TxtInput)
         Me.Pn.Controls.Add(Me.LabInput)
@@ -100,13 +99,13 @@ Partial Class 创意工坊合集物品批量添加
         Me.Pn.Controls.Add(Me.LabID)
         Me.Pn.Location = New System.Drawing.Point(1, 83)
         Me.Pn.Name = "Pn"
-        Me.Pn.Size = New System.Drawing.Size(639, 341)
+        Me.Pn.Size = New System.Drawing.Size(639, 231)
         Me.Pn.TabIndex = 67
         Me.Pn.Visible = False
         '
         'TxtOut
         '
-        Me.TxtOut.Location = New System.Drawing.Point(10, 223)
+        Me.TxtOut.Location = New System.Drawing.Point(11, 320)
         Me.TxtOut.Multiline = True
         Me.TxtOut.Name = "TxtOut"
         Me.TxtOut.ReadOnly = True
@@ -169,6 +168,7 @@ Partial Class 创意工坊合集物品批量添加
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(643, 434)
+        Me.Controls.Add(Me.TxtOut)
         Me.Controls.Add(Me.Pn)
         Me.Controls.Add(Me.GBsteamCookie)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -185,6 +185,7 @@ Partial Class 创意工坊合集物品批量添加
         Me.Pn.ResumeLayout(False)
         Me.Pn.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
