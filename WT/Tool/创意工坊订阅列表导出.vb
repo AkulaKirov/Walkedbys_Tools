@@ -8,8 +8,8 @@ Public Class 创意工坊订阅列表导出
                                          Pn.Visible = GBsteamCookie.Tag
                                      End Sub)
         TxtLink.Text = 设置.元素("SteamWorkshopURL")
-        TxtStart.Value = 设置.读取数("SteamWorkshopGetStart")
-        TxtMax.Value = 设置.读取数("SteamWorkshopGetMax")
+        TxtStart.Value = 设置.读取数("SteamWorkshopGetStart", 1)
+        TxtMax.Value = 设置.读取数("SteamWorkshopGetMax", 99)
     End Sub
 
     Private Sub 创意工坊订阅列表导出_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing

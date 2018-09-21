@@ -228,7 +228,6 @@ Module 通用
                 .AutoScaleMode = AutoScaleMode.Dpi
                 If 预加载 Then
                     .StartPosition = FormStartPosition.Manual
-                    .ShowInTaskbar = False
                     .Top = My.Computer.Screen.Bounds.Height + 100
                     .Show()
                     .Hide()
@@ -236,13 +235,11 @@ Module 通用
                 AddHandler .FormClosing, Sub(sender As Object, e As FormClosingEventArgs)
                                              e.Cancel = True
                                              .Hide()
-                                             .ShowInTaskbar = False
                                              启动器.Location = .Location
                                              启动器.WindowState = FormWindowState.Normal
                                              启动器.Show()
                                              启动器.Location = .Location
                                              最后窗体 = 启动器
-                                             最后窗体.ShowInTaskbar = True
                                          End Sub
                 AddHandler .SizeChanged, AddressOf 最小化隐藏
             End With
