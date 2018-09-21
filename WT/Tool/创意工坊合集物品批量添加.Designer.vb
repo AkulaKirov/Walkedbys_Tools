@@ -28,18 +28,20 @@ Partial Class 创意工坊合集物品批量添加
         Me.TxtLoginSecure = New System.Windows.Forms.TextBox()
         Me.TxtSession = New System.Windows.Forms.TextBox()
         Me.Pn = New System.Windows.Forms.Panel()
-        Me.TxtOut = New System.Windows.Forms.TextBox()
         Me.ButStart = New System.Windows.Forms.Button()
         Me.TxtInput = New System.Windows.Forms.TextBox()
         Me.LabInput = New System.Windows.Forms.Label()
         Me.TxtID = New System.Windows.Forms.TextBox()
         Me.LabID = New System.Windows.Forms.Label()
+        Me.TxtOut = New System.Windows.Forms.TextBox()
+        Me.ButHowToGetCookie = New System.Windows.Forms.Button()
         Me.GBsteamCookie.SuspendLayout()
         Me.Pn.SuspendLayout()
         Me.SuspendLayout()
         '
         'GBsteamCookie
         '
+        Me.GBsteamCookie.Controls.Add(Me.ButHowToGetCookie)
         Me.GBsteamCookie.Controls.Add(Me.LabLoginSecure)
         Me.GBsteamCookie.Controls.Add(Me.LabSession)
         Me.GBsteamCookie.Controls.Add(Me.TxtLoginSecure)
@@ -103,18 +105,6 @@ Partial Class 创意工坊合集物品批量添加
         Me.Pn.TabIndex = 67
         Me.Pn.Visible = False
         '
-        'TxtOut
-        '
-        Me.TxtOut.Location = New System.Drawing.Point(11, 320)
-        Me.TxtOut.Multiline = True
-        Me.TxtOut.Name = "TxtOut"
-        Me.TxtOut.ReadOnly = True
-        Me.TxtOut.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtOut.Size = New System.Drawing.Size(619, 100)
-        Me.TxtOut.TabIndex = 6
-        Me.TxtOut.TabStop = False
-        Me.TxtOut.Text = "请注意：" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "先记得把合集创建好" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "而不要合集的创建工作都没彻底完成就来这里添加" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "否则会出BUG" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        '
         'ButStart
         '
         Me.ButStart.Enabled = False
@@ -163,6 +153,30 @@ Partial Class 创意工坊合集物品批量添加
         Me.LabID.TabIndex = 0
         Me.LabID.Text = "你的合集的ID："
         '
+        'TxtOut
+        '
+        Me.TxtOut.Location = New System.Drawing.Point(11, 320)
+        Me.TxtOut.Multiline = True
+        Me.TxtOut.Name = "TxtOut"
+        Me.TxtOut.ReadOnly = True
+        Me.TxtOut.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TxtOut.Size = New System.Drawing.Size(619, 100)
+        Me.TxtOut.TabIndex = 6
+        Me.TxtOut.TabStop = False
+        Me.TxtOut.Text = "请注意：" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "先记得把合集创建好" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "而不要合集的创建工作都没彻底完成就来这里添加" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "否则会出BUG" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'ButHowToGetCookie
+        '
+        Me.ButHowToGetCookie.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.ButHowToGetCookie.Location = New System.Drawing.Point(11, 18)
+        Me.ButHowToGetCookie.Name = "ButHowToGetCookie"
+        Me.ButHowToGetCookie.Size = New System.Drawing.Size(28, 25)
+        Me.ButHowToGetCookie.TabIndex = 65
+        Me.ButHowToGetCookie.TabStop = False
+        Me.ButHowToGetCookie.Text = "？"
+        Me.ButHowToGetCookie.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.ButHowToGetCookie.UseVisualStyleBackColor = True
+        '
         '创意工坊合集物品批量添加
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -201,4 +215,5 @@ Partial Class 创意工坊合集物品批量添加
     Friend WithEvents TxtInput As TextBox
     Friend WithEvents ButStart As Button
     Friend WithEvents TxtOut As TextBox
+    Friend WithEvents ButHowToGetCookie As Button
 End Class

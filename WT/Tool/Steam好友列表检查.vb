@@ -84,6 +84,10 @@ Public Class Steam好友列表检查
         ButCheck.Text = "点我检查"
     End Sub
 
+    Private Sub LabID_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LabID.LinkClicked
+        Process.Start("https://steamrepcn.com/")
+    End Sub
+
     Private Sub CheckAuto_CheckedChanged(sender As Object, e As EventArgs) Handles CheckAuto.CheckedChanged
         设置.元素("CheckSteamFriendsAtStart") = CheckAuto.Checked.ToString
     End Sub

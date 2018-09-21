@@ -36,7 +36,7 @@ Public Class 启动器
         新工具("随机生成器", 随机生成器, "RandomG", "随机生成中英文句子或者数字等")
         新工具("网络检测", 网络检测, "NetTest", "如果你觉得你的网络不正常可以一直看着这个")
         新工具("字符画图片制作", 字符画图片制作, "CharPic", "用字符画表示图片")
-        新工具("有没有少Steam好友", Steam好友列表检查, "SteamFriends", "检查你的Steam好友列表是不是少人了", 设置.读取真假("CheckSteamFriendsAtStart"))
+        新工具("有没有少Steam好友", Steam好友列表检查, "SteamFriends", "检查你的Steam好友里是不是有人把你删了", 设置.读取真假("CheckSteamFriendsAtStart"))
         新工具("创意工坊物品列表导出", 创意工坊订阅列表导出, "WorkshopListOut", "把你的workshop订阅的或者是收藏夹里的或者是你发布的或者合集里的物品都导出成一个列表")
         新工具("创意工坊合集物品批量添加", 创意工坊合集物品批量添加, "WorkshopCollectionAdd", "可以先用Workshop物品列表导出工具导出物品列表，然后在这里导入到指定的合集。")
         AddHandler SizeChanged, AddressOf 最小化隐藏

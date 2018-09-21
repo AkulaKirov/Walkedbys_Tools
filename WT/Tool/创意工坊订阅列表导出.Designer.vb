@@ -23,22 +23,29 @@ Partial Class 创意工坊订阅列表导出
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GBsteamCookie = New System.Windows.Forms.GroupBox()
+        Me.ButHowToGetCookie = New System.Windows.Forms.Button()
         Me.LabLoginSecure = New System.Windows.Forms.Label()
         Me.LabSession = New System.Windows.Forms.Label()
         Me.TxtLoginSecure = New System.Windows.Forms.TextBox()
         Me.TxtSession = New System.Windows.Forms.TextBox()
         Me.Pn = New System.Windows.Forms.Panel()
-        Me.LabLink = New System.Windows.Forms.Label()
-        Me.TxtLink = New System.Windows.Forms.TextBox()
-        Me.LabWarn = New System.Windows.Forms.Label()
-        Me.ButStart = New System.Windows.Forms.Button()
+        Me.TxtMax = New System.Windows.Forms.NumericUpDown()
+        Me.LabMax = New System.Windows.Forms.Label()
+        Me.TxtStart = New System.Windows.Forms.NumericUpDown()
+        Me.LabStart = New System.Windows.Forms.Label()
         Me.TxtOut = New System.Windows.Forms.TextBox()
+        Me.ButStart = New System.Windows.Forms.Button()
+        Me.TxtLink = New System.Windows.Forms.TextBox()
+        Me.LabLink = New System.Windows.Forms.Label()
         Me.GBsteamCookie.SuspendLayout()
         Me.Pn.SuspendLayout()
+        CType(Me.TxtMax, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TxtStart, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GBsteamCookie
         '
+        Me.GBsteamCookie.Controls.Add(Me.ButHowToGetCookie)
         Me.GBsteamCookie.Controls.Add(Me.LabLoginSecure)
         Me.GBsteamCookie.Controls.Add(Me.LabSession)
         Me.GBsteamCookie.Controls.Add(Me.TxtLoginSecure)
@@ -49,6 +56,18 @@ Partial Class 创意工坊订阅列表导出
         Me.GBsteamCookie.TabIndex = 66
         Me.GBsteamCookie.TabStop = False
         Me.GBsteamCookie.Text = "Steam Cookie"
+        '
+        'ButHowToGetCookie
+        '
+        Me.ButHowToGetCookie.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.ButHowToGetCookie.Location = New System.Drawing.Point(16, 18)
+        Me.ButHowToGetCookie.Name = "ButHowToGetCookie"
+        Me.ButHowToGetCookie.Size = New System.Drawing.Size(28, 25)
+        Me.ButHowToGetCookie.TabIndex = 64
+        Me.ButHowToGetCookie.TabStop = False
+        Me.ButHowToGetCookie.Text = "？"
+        Me.ButHowToGetCookie.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.ButHowToGetCookie.UseVisualStyleBackColor = True
         '
         'LabLoginSecure
         '
@@ -91,25 +110,81 @@ Partial Class 创意工坊订阅列表导出
         '
         'Pn
         '
+        Me.Pn.Controls.Add(Me.TxtMax)
+        Me.Pn.Controls.Add(Me.LabMax)
+        Me.Pn.Controls.Add(Me.TxtStart)
+        Me.Pn.Controls.Add(Me.LabStart)
         Me.Pn.Controls.Add(Me.TxtOut)
         Me.Pn.Controls.Add(Me.ButStart)
-        Me.Pn.Controls.Add(Me.LabWarn)
         Me.Pn.Controls.Add(Me.TxtLink)
         Me.Pn.Controls.Add(Me.LabLink)
         Me.Pn.Location = New System.Drawing.Point(3, 83)
         Me.Pn.Name = "Pn"
-        Me.Pn.Size = New System.Drawing.Size(639, 306)
+        Me.Pn.Size = New System.Drawing.Size(639, 339)
         Me.Pn.TabIndex = 67
         Me.Pn.Visible = False
         '
-        'LabLink
+        'TxtMax
         '
-        Me.LabLink.AutoSize = True
-        Me.LabLink.Location = New System.Drawing.Point(9, 15)
-        Me.LabLink.Name = "LabLink"
-        Me.LabLink.Size = New System.Drawing.Size(243, 19)
-        Me.LabLink.TabIndex = 0
-        Me.LabLink.Text = "物品列表的网页链接（第一页的即可）："
+        Me.TxtMax.Location = New System.Drawing.Point(251, 72)
+        Me.TxtMax.Maximum = New Decimal(New Integer() {999, 0, 0, 0})
+        Me.TxtMax.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.TxtMax.Name = "TxtMax"
+        Me.TxtMax.Size = New System.Drawing.Size(84, 25)
+        Me.TxtMax.TabIndex = 8
+        Me.TxtMax.TabStop = False
+        Me.TxtMax.Value = New Decimal(New Integer() {999, 0, 0, 0})
+        '
+        'LabMax
+        '
+        Me.LabMax.AutoSize = True
+        Me.LabMax.Location = New System.Drawing.Point(171, 74)
+        Me.LabMax.Name = "LabMax"
+        Me.LabMax.Size = New System.Drawing.Size(74, 19)
+        Me.LabMax.TabIndex = 7
+        Me.LabMax.Text = "最多页数："
+        '
+        'TxtStart
+        '
+        Me.TxtStart.Location = New System.Drawing.Point(63, 72)
+        Me.TxtStart.Maximum = New Decimal(New Integer() {999, 0, 0, 0})
+        Me.TxtStart.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.TxtStart.Name = "TxtStart"
+        Me.TxtStart.Size = New System.Drawing.Size(84, 25)
+        Me.TxtStart.TabIndex = 6
+        Me.TxtStart.TabStop = False
+        Me.TxtStart.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        '
+        'LabStart
+        '
+        Me.LabStart.AutoSize = True
+        Me.LabStart.Location = New System.Drawing.Point(9, 74)
+        Me.LabStart.Name = "LabStart"
+        Me.LabStart.Size = New System.Drawing.Size(48, 19)
+        Me.LabStart.TabIndex = 5
+        Me.LabStart.Text = "开始："
+        '
+        'TxtOut
+        '
+        Me.TxtOut.Location = New System.Drawing.Point(13, 103)
+        Me.TxtOut.Multiline = True
+        Me.TxtOut.Name = "TxtOut"
+        Me.TxtOut.ReadOnly = True
+        Me.TxtOut.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TxtOut.Size = New System.Drawing.Size(617, 225)
+        Me.TxtOut.TabIndex = 4
+        Me.TxtOut.TabStop = False
+        '
+        'ButStart
+        '
+        Me.ButStart.Enabled = False
+        Me.ButStart.Location = New System.Drawing.Point(491, 68)
+        Me.ButStart.Name = "ButStart"
+        Me.ButStart.Size = New System.Drawing.Size(131, 28)
+        Me.ButStart.TabIndex = 3
+        Me.ButStart.TabStop = False
+        Me.ButStart.Text = "开始生成列表"
+        Me.ButStart.UseVisualStyleBackColor = True
         '
         'TxtLink
         '
@@ -120,42 +195,20 @@ Partial Class 创意工坊订阅列表导出
         Me.TxtLink.TabIndex = 1
         Me.TxtLink.TabStop = False
         '
-        'LabWarn
+        'LabLink
         '
-        Me.LabWarn.AutoSize = True
-        Me.LabWarn.Location = New System.Drawing.Point(9, 75)
-        Me.LabWarn.Name = "LabWarn"
-        Me.LabWarn.Size = New System.Drawing.Size(428, 19)
-        Me.LabWarn.TabIndex = 2
-        Me.LabWarn.Text = "警告：不要故意玩我，因为我会每页读取30个物品，读取直到最后一页。"
-        '
-        'ButStart
-        '
-        Me.ButStart.Enabled = False
-        Me.ButStart.Location = New System.Drawing.Point(443, 68)
-        Me.ButStart.Name = "ButStart"
-        Me.ButStart.Size = New System.Drawing.Size(147, 28)
-        Me.ButStart.TabIndex = 3
-        Me.ButStart.TabStop = False
-        Me.ButStart.Text = "开始生成列表"
-        Me.ButStart.UseVisualStyleBackColor = True
-        '
-        'TxtOut
-        '
-        Me.TxtOut.Location = New System.Drawing.Point(13, 107)
-        Me.TxtOut.Multiline = True
-        Me.TxtOut.Name = "TxtOut"
-        Me.TxtOut.ReadOnly = True
-        Me.TxtOut.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtOut.Size = New System.Drawing.Size(617, 196)
-        Me.TxtOut.TabIndex = 4
-        Me.TxtOut.TabStop = False
+        Me.LabLink.AutoSize = True
+        Me.LabLink.Location = New System.Drawing.Point(9, 15)
+        Me.LabLink.Name = "LabLink"
+        Me.LabLink.Size = New System.Drawing.Size(243, 19)
+        Me.LabLink.TabIndex = 0
+        Me.LabLink.Text = "物品列表的网页链接（第一页的即可）："
         '
         '创意工坊订阅列表导出
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(645, 401)
+        Me.ClientSize = New System.Drawing.Size(645, 423)
         Me.Controls.Add(Me.Pn)
         Me.Controls.Add(Me.GBsteamCookie)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -169,6 +222,8 @@ Partial Class 创意工坊订阅列表导出
         Me.GBsteamCookie.PerformLayout()
         Me.Pn.ResumeLayout(False)
         Me.Pn.PerformLayout()
+        CType(Me.TxtMax, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TxtStart, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -181,7 +236,11 @@ Partial Class 创意工坊订阅列表导出
     Friend WithEvents Pn As Panel
     Friend WithEvents LabLink As Label
     Friend WithEvents TxtLink As TextBox
-    Friend WithEvents LabWarn As Label
     Friend WithEvents ButStart As Button
     Friend WithEvents TxtOut As TextBox
+    Friend WithEvents LabStart As Label
+    Friend WithEvents TxtStart As NumericUpDown
+    Friend WithEvents LabMax As Label
+    Friend WithEvents TxtMax As NumericUpDown
+    Friend WithEvents ButHowToGetCookie As Button
 End Class

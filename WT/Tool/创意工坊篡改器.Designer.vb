@@ -27,6 +27,7 @@ Partial Class 创意工坊篡改器
         Me.TxtSession = New System.Windows.Forms.TextBox()
         Me.TxtLoginSecure = New System.Windows.Forms.TextBox()
         Me.Pn = New System.Windows.Forms.Panel()
+        Me.Labout = New System.Windows.Forms.Label()
         Me.ButGoBrowser = New System.Windows.Forms.Button()
         Me.ButGo = New System.Windows.Forms.Button()
         Me.TxtDes = New System.Windows.Forms.TextBox()
@@ -39,7 +40,7 @@ Partial Class 创意工坊篡改器
         Me.LabID = New System.Windows.Forms.Label()
         Me.LabInfo = New System.Windows.Forms.Label()
         Me.GBsteamCookie = New System.Windows.Forms.GroupBox()
-        Me.Labout = New System.Windows.Forms.Label()
+        Me.ButHowToGetCookie = New System.Windows.Forms.Button()
         Me.Pn.SuspendLayout()
         Me.GBsteamCookie.SuspendLayout()
         Me.SuspendLayout()
@@ -101,6 +102,15 @@ Partial Class 创意工坊篡改器
         Me.Pn.Size = New System.Drawing.Size(639, 306)
         Me.Pn.TabIndex = 64
         Me.Pn.Visible = False
+        '
+        'Labout
+        '
+        Me.Labout.AutoSize = True
+        Me.Labout.Location = New System.Drawing.Point(171, 115)
+        Me.Labout.Name = "Labout"
+        Me.Labout.Size = New System.Drawing.Size(33, 19)
+        Me.Labout.TabIndex = 74
+        Me.Labout.Text = "Out"
         '
         'ButGoBrowser
         '
@@ -211,6 +221,7 @@ Partial Class 创意工坊篡改器
         '
         'GBsteamCookie
         '
+        Me.GBsteamCookie.Controls.Add(Me.ButHowToGetCookie)
         Me.GBsteamCookie.Controls.Add(Me.LabLoginSecure)
         Me.GBsteamCookie.Controls.Add(Me.LabSession)
         Me.GBsteamCookie.Controls.Add(Me.TxtLoginSecure)
@@ -222,14 +233,17 @@ Partial Class 创意工坊篡改器
         Me.GBsteamCookie.TabStop = False
         Me.GBsteamCookie.Text = "Steam Cookie"
         '
-        'Labout
+        'ButHowToGetCookie
         '
-        Me.Labout.AutoSize = True
-        Me.Labout.Location = New System.Drawing.Point(171, 115)
-        Me.Labout.Name = "Labout"
-        Me.Labout.Size = New System.Drawing.Size(33, 19)
-        Me.Labout.TabIndex = 74
-        Me.Labout.Text = "Out"
+        Me.ButHowToGetCookie.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.ButHowToGetCookie.Location = New System.Drawing.Point(17, 18)
+        Me.ButHowToGetCookie.Name = "ButHowToGetCookie"
+        Me.ButHowToGetCookie.Size = New System.Drawing.Size(28, 25)
+        Me.ButHowToGetCookie.TabIndex = 66
+        Me.ButHowToGetCookie.TabStop = False
+        Me.ButHowToGetCookie.Text = "？"
+        Me.ButHowToGetCookie.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.ButHowToGetCookie.UseVisualStyleBackColor = True
         '
         '创意工坊篡改器
         '
@@ -274,4 +288,5 @@ Partial Class 创意工坊篡改器
     Friend WithEvents ButGoBrowser As Button
     Friend WithEvents GBsteamCookie As GroupBox
     Friend WithEvents Labout As Label
+    Friend WithEvents ButHowToGetCookie As Button
 End Class

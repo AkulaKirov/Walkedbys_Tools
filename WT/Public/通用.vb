@@ -182,6 +182,10 @@ Module 通用
                                            方法.Invoke
                                        End If
                                    End Sub
+        Dim b As Button = g.Controls("ButHowToGetCookie")
+        AddHandler b.Click, Sub()
+                                Process.Start("https://s1.ax1x.com/2018/09/20/inFtrq.png")
+                            End Sub
         t2.Text = 设置.元素("SteamLoginSecure")
         t.Text = 设置.元素("SteamSession")
     End Sub

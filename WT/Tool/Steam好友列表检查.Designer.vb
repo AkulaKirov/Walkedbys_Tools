@@ -23,7 +23,6 @@ Partial Class Steam好友列表检查
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Me.LabID = New System.Windows.Forms.Label()
         Me.LabNote = New System.Windows.Forms.Label()
         Me.TxtID64 = New System.Windows.Forms.TextBox()
         Me.ButCheck = New System.Windows.Forms.Button()
@@ -31,16 +30,8 @@ Partial Class Steam好友列表检查
         Me.ButClear = New System.Windows.Forms.Button()
         Me.TimerC = New System.Windows.Forms.Timer(Me.components)
         Me.CheckAuto = New System.Windows.Forms.CheckBox()
+        Me.LabID = New System.Windows.Forms.LinkLabel()
         Me.SuspendLayout()
-        '
-        'LabID
-        '
-        Me.LabID.AutoSize = True
-        Me.LabID.Location = New System.Drawing.Point(12, 37)
-        Me.LabID.Name = "LabID"
-        Me.LabID.Size = New System.Drawing.Size(138, 19)
-        Me.LabID.TabIndex = 0
-        Me.LabID.Text = "你的 Steam 64位ID："
         '
         'LabNote
         '
@@ -107,18 +98,28 @@ Partial Class Steam好友列表检查
         Me.CheckAuto.Text = "软件开启时自动检查一次"
         Me.CheckAuto.UseVisualStyleBackColor = True
         '
+        'LabID
+        '
+        Me.LabID.AutoSize = True
+        Me.LabID.Location = New System.Drawing.Point(12, 37)
+        Me.LabID.Name = "LabID"
+        Me.LabID.Size = New System.Drawing.Size(138, 19)
+        Me.LabID.TabIndex = 4
+        Me.LabID.TabStop = True
+        Me.LabID.Text = "你的 Steam 64位ID："
+        '
         'Steam好友列表检查
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(570, 358)
+        Me.Controls.Add(Me.LabID)
         Me.Controls.Add(Me.CheckAuto)
         Me.Controls.Add(Me.TxtLog)
         Me.Controls.Add(Me.ButClear)
         Me.Controls.Add(Me.ButCheck)
         Me.Controls.Add(Me.TxtID64)
         Me.Controls.Add(Me.LabNote)
-        Me.Controls.Add(Me.LabID)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.ImeMode = System.Windows.Forms.ImeMode.Off
@@ -131,8 +132,6 @@ Partial Class Steam好友列表检查
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents LabID As Label
     Friend WithEvents LabNote As Label
     Friend WithEvents TxtID64 As TextBox
     Friend WithEvents ButCheck As Button
@@ -140,4 +139,5 @@ Partial Class Steam好友列表检查
     Friend WithEvents ButClear As Button
     Friend WithEvents TimerC As Forms.Timer
     Friend WithEvents CheckAuto As CheckBox
+    Friend WithEvents LabID As LinkLabel
 End Class
