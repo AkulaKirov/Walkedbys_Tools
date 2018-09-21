@@ -15,7 +15,7 @@ Public Class 启动器
         Directory.CreateDirectory(缓存目录)
         Dim t As 工具, b As Button, i As Integer, g As String
         If 在列表(启动参数, "-tryfix") Then
-            新工具("信息修改器", 信息修改器, "TryFix", "设置保存信息的修改器")
+            新工具("内部信息修改器", 信息修改器, "TryFix", "程序设置实际保存信息的修改器")
         End If
         '新工具("临时工具", 临时工具, "Whatever", "临时用的工具，你不应该在公开发布版里面看见我")
         新工具(" 工具箱设置", 程序设置, "AllSettings", "关于本工具箱的一些设置")
