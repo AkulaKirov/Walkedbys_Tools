@@ -7,7 +7,11 @@ Namespace My
         Private Sub MyApplication_Startup(sender As Object, e As StartupEventArgs) Handles Me.Startup
             Dim i As String
             i = 程序文件目录.ToLower
-            If 全部包含(i, "c:\users", "\appdata\", "\temp\") Then 报错退出("对不起，请不要把本程序在压缩包内直接打开。")
+            If 全部包含(i, "c:\users", "\appdata\", "\temp\") Then
+                报错退出("对不起，请不要把本程序在压缩包内直接打开。")
+            ElseIf i.EndsWith("\desktop\") Then
+                报错退出("对不起，为了桌面的美观，请不要在桌面直接运行本程序。")
+            End If
             If 版本转小数(Environment.OSVersion.Version) < 6.09 Then 报错退出("对不起，本程序不支持低于 Windows 7 的系统。")
             i = Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full", "Release", "")
             If Val(i) < 460000 Then 报错退出("对不起，请安装 .NET Framework 4.7 或以上版本。")

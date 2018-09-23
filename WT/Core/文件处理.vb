@@ -363,7 +363,6 @@ Module 文件处理
         Dim b As Byte() = 文字转字节(内容)
         For i = 0 To b.Count - 1
             b(i) += n2
-            If b(i) < n2 Then PRT(b(i))
             r.Write(b(i))
             If 随机.真假(20) Then
                 r.Write(CType(随机.整数(0, n2 - 1), Byte))

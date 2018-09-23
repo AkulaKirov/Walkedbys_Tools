@@ -87,25 +87,26 @@ Public Class 启动器
         TimerC_Tick()
         If Not 设置.读取真假("NoUpdateAtMain") Then
             新线程(Sub()
-                    Dim h As New 简易HTTP("https://raw.githubusercontent.com/gordonwalkedby/Walkedbys_Tools/master/WT/updater.xml")
-                    h.超时 = 5
-                    Dim ta As String = h.获得回应
-                    Dim out As String = ""
-                    If 全部包含(ta, "这是一个检查更新版本用的", "<root>") Then
-                        Dim v As New Version(提取XML(ta, "root", "ver"))
-                        ta = v.ToString + "）"
-                        If My.Application.Info.Version < v Then
-                            GBabout.Text += "（检测到新版本：v" + ta
+                    Dim h As New 简易HTTP("https://raw.githubusercontent.com/gordonwalkedby/my-blog/master/wt/index.html")
+                    h.超时 = 4
+                    Dim o As String = 去除(h.获得回应, 引号)
+                    If o.Length > 1000 AndAlso 全部包含(o, "走過去的部落格", " Visual Basic ", "最新版本：</h1>", "更新于") Then
+                        o = 提取(o, "最新版本：</h1>", "更新于")
+                        o = Regex.Match(o, "[0-9]*\.[0-9]*").ToString
+                        Dim nv As New Version(o)
+                        If nv > My.Application.Info.Version Then
+                            o = "检测到新版本：" + nv.ToString
                         Else
-                            GBabout.Text += "（已是最新版本：v" + ta
+                            o = "已是最新版本：" + nv.ToString
                         End If
                     Else
-                        GBabout.Text += "（检查更新失败）"
+                        o = "检查更新失败"
                     End If
+                    GBabout.Text += 括(o, "（）")
                 End Sub)
         End If
         彩蛋码 = ""
-        LabFun.Text = 随机.多选一("",
+        LabFun.Text = 随机.多选一("w",
 "8848 钛金显卡~",
 "真高兴我的计算机几乎都不是学校教的。",
 "风水轮流转。",
@@ -137,7 +138,10 @@ Public Class 启动器
 "一个比一个干净，反过来看，一个比一个肮脏。",
 "你喜欢聊天吗w",
 "我也想做合法的事情，如果合法手段有用的话。",
-"我很不敢相信，有的人碰过智能手机，没有碰过电脑的鼠标键盘。"
+"我很不敢相信，有的人碰过智能手机，没有碰过电脑的鼠标键盘。",
+"sv_cheats 1",
+"v0.9以下的版本碰见v0.10就会识别成v0.1，然后一直：已是最新版本。",
+"戈登~戈登~戈登登~"
 ).ToString
         Refresh()
         AutoSave.Enabled = True

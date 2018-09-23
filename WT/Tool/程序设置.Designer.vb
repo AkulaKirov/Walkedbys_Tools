@@ -24,7 +24,6 @@ Partial Class 程序设置
     Private Sub InitializeComponent()
         Me.Tabs = New System.Windows.Forms.TabControl()
         Me.Tab1 = New System.Windows.Forms.TabPage()
-        Me.ButDelete = New System.Windows.Forms.Button()
         Me.ButCreateSC = New System.Windows.Forms.Button()
         Me.Tabs.SuspendLayout()
         Me.Tab1.SuspendLayout()
@@ -43,7 +42,6 @@ Partial Class 程序设置
         '
         'Tab1
         '
-        Me.Tab1.Controls.Add(Me.ButDelete)
         Me.Tab1.Controls.Add(Me.ButCreateSC)
         Me.Tab1.Location = New System.Drawing.Point(4, 28)
         Me.Tab1.Name = "Tab1"
@@ -52,17 +50,6 @@ Partial Class 程序设置
         Me.Tab1.TabIndex = 0
         Me.Tab1.Text = "杂项"
         Me.Tab1.UseVisualStyleBackColor = True
-        '
-        'ButDelete
-        '
-        Me.ButDelete.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.ButDelete.Location = New System.Drawing.Point(146, 180)
-        Me.ButDelete.Name = "ButDelete"
-        Me.ButDelete.Size = New System.Drawing.Size(121, 53)
-        Me.ButDelete.TabIndex = 7
-        Me.ButDelete.TabStop = False
-        Me.ButDelete.Text = "卸载本程序"
-        Me.ButDelete.UseVisualStyleBackColor = True
         '
         'ButCreateSC
         '
@@ -97,5 +84,4 @@ Partial Class 程序设置
     Friend WithEvents Tabs As TabControl
     Friend WithEvents Tab1 As TabPage
     Friend WithEvents ButCreateSC As Button
-    Friend WithEvents ButDelete As Button
 End Class

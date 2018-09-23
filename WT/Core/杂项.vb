@@ -8,9 +8,9 @@ Module 杂项
     End Property
 
     ''' <summary>
-    ''' 把输入的东西进行 DEBUG 输出
+    ''' 把输入的东西进行 debug.print
     ''' </summary>
-    Public Sub PRT(ParamArray 输入() As Object)
+    Public Sub DP(ParamArray 输入() As Object)
         Dim s As String = ""
         For Each i As Object In 输入
             If IsNothing(i) Then
