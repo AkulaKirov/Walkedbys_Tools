@@ -2,7 +2,7 @@
 Module 通用
 
     Friend 工具列表 As New List(Of 工具)
-    Friend 工具收藏 As New List(Of 工具)
+    Friend 最后使用的工具 As New List(Of 工具)
     Friend 版本 As String = 版本号(My.Application.Info.Version)
     Friend 设置 As New 简易XML("WT", "")
     Friend 缓存目录 As String = 程序文件目录() + "WalkedbysTemps\"
@@ -37,8 +37,8 @@ Module 通用
     ''' <summary>
     ''' 添加一个新的工具
     ''' </summary>
-    Public Sub 新工具(名字 As String, 窗体 As Form, ID As String, 简介 As String, Optional 预加载 As Boolean = False)
-        工具列表.Add(New 工具(名字, 窗体, ID, 简介, 预加载))
+    Public Sub 新工具(名字 As String, 窗体 As Form, id As String, 简介 As String, Optional 预加载 As Boolean = False)
+        工具列表.Add(New 工具(名字, 窗体, id, 简介, 预加载))
     End Sub
 
     ''' <summary>
@@ -206,15 +206,15 @@ Module 通用
         Public Property 名字 As String
         Public Property 简介 As String
         Public Property 窗体 As Form
-        Public Property ID As String
         Public Property 启动过了 As Boolean
+        Public Property ID As String
 
         Public Sub New(name As String, win As Form, 内部id As String, description As String, 预加载 As Boolean)
             名字 = name
             窗体 = win
+            ID = 内部id
             启动过了 = False
             简介 = description
-            ID = 内部id
             With 窗体
                 AddHandler .Activated, Sub()
                                            启动过了 = True
@@ -224,6 +224,7 @@ Module 通用
                 .ImeMode = 启动器.ImeMode
                 .Font = 启动器.Font
                 .ShowInTaskbar = True
+                .KeyPreview = True
                 .MaximizeBox = False
                 .AutoScaleMode = AutoScaleMode.Dpi
                 If 预加载 Then
@@ -242,19 +243,26 @@ Module 通用
                                              最后窗体 = 启动器
                                          End Sub
                 AddHandler .SizeChanged, AddressOf 最小化隐藏
+                AddHandler .KeyUp, Sub(sender As Object, e As KeyEventArgs)
+                                       If e.Control AndAlso e.KeyCode = Keys.W Then
+                                           .Close()
+                                       End If
+                                   End Sub
             End With
         End Sub
 
         Public Sub 启动()
-            最后窗体.Hide()
+            If 最后窗体.Text = 窗体.Text Then Exit Sub
+            If 最后窗体.Text <> 启动器.Text Then
+                最后窗体.Close()
+            End If
             显示到前台(窗体)
+            启动器.Hide()
             窗体.Location = 最后窗体.Location
             最后窗体 = 窗体
+            最后使用的工具.Remove(Me)
+            最后使用的工具.Add(Me)
         End Sub
-
-        Public Overrides Function ToString() As String
-            Return ID
-        End Function
 
         Public ReadOnly Property 推送 As String
             Get
@@ -262,6 +270,10 @@ Module 通用
                 Return 非空字符串(窗体.Tag.ToString)
             End Get
         End Property
+
+        Public Overrides Function ToString() As String
+            Return ID
+        End Function
 
     End Class
 

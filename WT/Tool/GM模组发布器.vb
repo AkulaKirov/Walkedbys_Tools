@@ -64,6 +64,7 @@ Public Class GM模组发布器
         设置.元素("GMAtime") = 上次更新日期.ToString
         设置.元素("GMAw") = ListAddons.SelectedIndex
         删除(tgma, log)
+
     End Sub
 
     Private Sub TxtGMod_TextChanged(sender As Object, e As EventArgs) Handles TxtGMod.TextChanged

@@ -1,7 +1,6 @@
 ﻿
 Public Class 启动器
 
-    Friend 收藏按纽 As New List(Of Button)
     Dim 关于链接 As New List(Of LinkLabel)
     Dim 彩蛋码 As String
     Dim 已退出 As Boolean = False
@@ -13,7 +12,7 @@ Public Class 启动器
         Text = "走過去的工具箱 测试版 v" + 版本.ToString
         Nico.Icon = 图标
         Directory.CreateDirectory(缓存目录)
-        Dim t As 工具, b As Button, i As Integer, g As String
+        Dim t As 工具, g As String
         If 在列表(启动参数, "-tryfix") Then
             新工具("内部信息修改器", 信息修改器, "TryFix", "程序设置实际保存信息的修改器")
         End If
@@ -44,45 +43,14 @@ Public Class 启动器
         For Each t In 工具列表
             ListTools.Items.Add(t.名字)
         Next
-        For i = 1 To 8
-            b = New Button
-            GBfavorites.Controls.Add(b)
-            收藏按纽.Add(b)
-            With b
-                .Visible = False
-                Dim wd As Integer = 170
-                .Width = wd
-                wd += 10
-                .Height = 32
-                .Left = IIf(i > 4, IIf(i - 4 > 1, (i - 5) * wd + 10, 10), IIf(i > 1, (i - 1) * wd + 10, 10))
-                .Top = IIf(i > 4, 70, 20)
-                AddHandler .Click, Sub()
-                                       名字工具(.Tag).启动()
-                                   End Sub
-            End With
-        Next
-        Dim mc As New List(Of String)
-        文字转列表(mc, 设置.元素("FAVOR"))
-        For Each g In mc
-            t = 名字工具(g)
-            If Not IsNothing(t) Then
-                工具收藏.Add(t)
-            End If
-            If 工具收藏.Count >= 8 Then Exit For
-        Next
-        For i = 0 To 工具收藏.Count - 1
-            If 工具收藏.Count < 1 Then Exit For
-            b = 收藏按纽.Item(i)
-            t = 工具收藏.Item(i)
-            b.Text = t.名字
-            b.Tag = t.ID
-            b.Visible = True
-        Next
-        GBfavorites.Text = "工具收藏夹" + 括(工具收藏.Count.ToString + "/8")
         新增关于链接("博客", "https://walkedby.com/wt")
         新增关于链接("下载最新版", "https://github.com/gordonwalkedby/Walkedbys_Tools/releases")
         新增关于链接("请我喝好的", "https://walkedby.com/donateme/")
         新增关于链接("反馈", "https://steamcn.com/t422593-1-1")
+        For Each g In 分割(设置.元素("HistoryTool"), vbCrLf)
+            t = 名字工具(g)
+            If Not IsNothing(t) Then 最后使用的工具.Add(t)
+        Next
         GBallTools.Text += 括((ListTools.Items.Count - 1).ToString)
         原时长 = 设置.读取数("OpenTime")
         TimerC_Tick()
@@ -132,7 +100,6 @@ Public Class 启动器
 "曾经有一个朋友让我电脑登录他的steam账号帮他做点事情，我很高兴，因为他信任我，被信任真好。",
 "人啊，不要有点成功就开始来点名言警句教人家做人，结果到头来反而被自己说的大道理压死。——敖厂长",
 "男友一直对他QQ群里的人：自己百度去。但是在我面前，有问题都是第一时间问我，他自己都不肯百度。",
-"幸福很难，自由也很难，尤其在中国，两者几乎不能兼得。",
 "Turn down for what!",
 "男友可有钱了，就是希望他智商和修养也能和他的余额一样高。",
 "美国圣地亚戈国际农业集团总裁——威廉伯爵，享有与美国总统同等的荣誉。",
@@ -142,11 +109,11 @@ Public Class 启动器
 "我很不敢相信，有的人碰过智能手机，没有碰过电脑的鼠标键盘。",
 "sv_cheats 1",
 "v0.9以下的版本碰见v0.10就会识别成v0.1，然后一直：已是最新版本。",
-"戈登~戈登~戈登登~"
+"戈登~戈登~戈登登~",
+"我的steam 50级了，不知道什么时候才100级。"
 ).ToString
         Refresh()
         AutoSave.Enabled = True
-        Opener.Enabled = True
         配色(Me)
         If 设置.读取真假("SaveBACKUP") Then
             g = 程序文件目录 + "wt_save_backup\"
@@ -169,6 +136,7 @@ Public Class 启动器
 
     Public Sub 退出()
         设置.元素("OpenTime") = 原时长 + Abs(DateDiff(DateInterval.Second, Now, 开始时间))
+        设置.元素("HistoryTool") = 列表转文字(最后使用的工具)
         Nico.Visible = False
         For Each t As Thread In 多线程
             中断线程(t)
@@ -187,23 +155,8 @@ Public Class 启动器
         If i < 0 Then Exit Sub
         Dim t As 工具 = 名字工具(ListTools.SelectedItem.ToString)
         TxtToolInfo.Text = t.简介
-        TxtToolID.Text = t.ID
         TxtToolName.Text = t.名字
         ButOpenTool.Enabled = True
-        With ButAddToFavor
-            If 在列表(工具收藏, t) Then
-                .Enabled = True
-                .Text = "取消收藏"
-            Else
-                If 工具收藏.Count < 8 Then
-                    .Enabled = True
-                    .Text = "收藏"
-                Else
-                    .Enabled = False
-                    .Text = "收藏夹已满"
-                End If
-            End If
-        End With
     End Sub
 
     Private Sub ListTools_DoubleClick(sender As Object, e As EventArgs) Handles ListTools.DoubleClick
@@ -216,31 +169,6 @@ Public Class 启动器
     Private Sub ButOpenTool_Click(sender As Object, e As EventArgs) Handles ButOpenTool.Click
         Dim t As 工具 = 名字工具(ListTools.SelectedItem.ToString)
         t.启动()
-    End Sub
-
-    Private Sub ButAddToFavor_Click(sender As Object, e As EventArgs) Handles ButAddToFavor.Click
-        Dim t As 工具 = 名字工具(ListTools.SelectedItem.ToString)
-        If Not 在列表(工具收藏, t) Then
-            If 工具收藏.Count < 8 Then 工具收藏.Add(t)
-        Else
-            工具收藏.Remove(t)
-        End If
-        Dim i As Integer = 0
-        For i = 0 To 7
-            收藏按纽.Item(i).Visible = False
-        Next
-        If 工具收藏.Count > 0 Then
-            For i = 0 To 工具收藏.Count - 1
-                Dim b As Button = 收藏按纽.Item(i)
-                t = 工具收藏.Item(i)
-                b.Text = t.名字
-                b.Tag = t.ID
-                b.Visible = True
-            Next
-        End If
-        设置.元素("FAVOR") = 列表转文字(工具收藏)
-        ListTools_SelectedIndexChanged(sender, e)
-        GBfavorites.Text = "工具收藏夹" + 括(工具收藏.Count.ToString + "/8")
     End Sub
 
     Sub 新增关于链接(文字 As String, 链接 As String)
@@ -273,69 +201,57 @@ Public Class 启动器
         End With
     End Sub
 
-    Private Sub Opener_Tick(sender As Object, e As EventArgs) Handles Opener.Tick
-        Dim t As 工具, g As String
-        If 启动参数.Count > 0 Then
-            For Each g In 启动参数
-                If g.StartsWith("-") Then
-                    t = 名字工具(去左(g, 1))
-                    If Not IsNothing(t) Then
-                        t.启动()
-                        Opener.Enabled = False
-                        Exit Sub
-                    End If
-                End If
-            Next
-        End If
-    End Sub
-
     Private Sub Nico_MouseUp(sender As Object, e As MouseEventArgs) Handles Nico.MouseUp
         If e.Button = MouseButtons.Left Then
             显示到前台(最后窗体)
         End If
     End Sub
 
-    Private Sub 显示窗口ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 显示窗口ToolStripMenuItem.Click
-        Nico_MouseUp(sender, New MouseEventArgs(MouseButtons.Left, 1, 0, 0, 0))
-    End Sub
-
-    Private Sub NicoMenu_Opening(sender As Object, e As CancelEventArgs) Handles NicoMenu.Opening
-        Dim f As New List(Of ToolStripMenuItem)
+    Private Sub NicoMenu_Opening() Handles NicoMenu.Opening
         Dim i As ToolStripMenuItem
-        For Each i In NicoMenu.Items
-            If i.Tag <> "" Then
-                f.Add(i)
-            End If
-        Next
-        For Each i In f
-            NicoMenu.Items.Remove(i)
-        Next
-        For Each n As 工具 In 工具收藏
+        NicoMenu.Items.Clear()
+        Dim f As Integer = 0, n As Integer, t As 工具
+        For n = 最后使用的工具.Count - 1 To 0 Step -1
+            f += 1
+            t = 最后使用的工具.Item(n)
             i = New ToolStripMenuItem
             With i
-                .Text = n.名字
-                .Tag = "工具"
-                AddHandler i.Click, Sub()
+                .Text = t.名字
+                AddHandler i.Click, Sub(sender As Object, e As EventArgs)
                                         显示到前台(最后窗体)
-                                        n.启动()
+                                        名字工具(sender.text).启动()
                                     End Sub
             End With
             NicoMenu.Items.Add(i)
+            If f >= 5 Then Exit For
         Next
+        If NicoMenu.Items.Count > 0 Then NicoMenu.Items.Add(New ToolStripSeparator)
+        i = New ToolStripMenuItem
+        With i
+            .Text = "显示窗口"
+            AddHandler i.Click, Sub()
+                                    显示到前台(最后窗体)
+                                End Sub
+        End With
+        NicoMenu.Items.Add(i)
+        i = New ToolStripMenuItem
+        With i
+            .Text = "返回主页"
+            AddHandler i.Click, Sub()
+                                    If Not 最后窗体.Equals(Me) Then 最后窗体.Close()
+                                    显示到前台(最后窗体)
+                                End Sub
+        End With
+        NicoMenu.Items.Add(i)
+        NicoMenu.Items.Add(New ToolStripSeparator)
         i = New ToolStripMenuItem
         With i
             .Text = "退出"
-            .Tag = "退出"
             AddHandler i.Click, Sub()
                                     退出()
                                 End Sub
         End With
         NicoMenu.Items.Add(i)
-    End Sub
-
-    Private Sub 返回启动器ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 返回启动器ToolStripMenuItem.Click
-        显示到前台(最后窗体)
-        If Not 最后窗体.Equals(Me) Then 最后窗体.Close()
     End Sub
 
     Private Sub 启动器_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp
@@ -398,10 +314,6 @@ Public Class 启动器
         If s <> TxtUpdate.Text Then TxtUpdate.Text = s
         If s.Length > 50 Then s = 左(s, 50) + "..."
         Nico.Text = "走過去的工具箱" + vbCrLf + s
-    End Sub
-
-    Private Sub ButShortCut_Click(sender As Object, e As EventArgs) Handles ButShortCut.Click
-        Process.Start("https://s1.ax1x.com/2018/09/09/iiRZBq.png")
     End Sub
 
 End Class
