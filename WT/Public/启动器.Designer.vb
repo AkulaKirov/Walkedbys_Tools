@@ -203,7 +203,6 @@ Partial Class 启动器
         '
         Me.TxtUpdate.BackColor = System.Drawing.Color.White
         Me.TxtUpdate.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TxtUpdate.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.TxtUpdate.Location = New System.Drawing.Point(3, 21)
         Me.TxtUpdate.Multiline = True
         Me.TxtUpdate.Name = "TxtUpdate"
@@ -212,6 +211,7 @@ Partial Class 启动器
         Me.TxtUpdate.Size = New System.Drawing.Size(336, 79)
         Me.TxtUpdate.TabIndex = 0
         Me.TxtUpdate.TabStop = False
+        Me.TxtUpdate.WordWrap = False
         '
         '启动器
         '

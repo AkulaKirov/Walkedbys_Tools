@@ -58,24 +58,22 @@ Public Class 启动器
         TimerC_Tick()
         If Not 设置.读取真假("NoUpdateAtMain") Then
             新线程(Sub()
-                    Dim h As New 简易HTTP("https://raw.githubusercontent.com/gordonwalkedby/my-blog/master/wt/index.html")
-                    h.超时 = 4
-                    Dim o As String = 去除(h.获得回应, 引号)
-                    If o.Length > 1000 AndAlso 全部包含(o, "走過去的部落格", " Visual Basic ", "最新版本：</h1>", "更新于") Then
-                        o = 提取(o, "最新版本：</h1>", "更新于")
-                        o = Regex.Match(o, "[0-9]*\.[0-9]*").ToString
-                        Dim nv As New Version(o)
+                    Dim h As New 简易HTTP("https://raw.githubusercontent.com/gordonwalkedby/Walkedbys_Tools/master/WT/updater.xml")
+                    Dim o As String = h.获得回应
+                    If o.Length > 50 AndAlso 全部包含(o, "<version>", "<note>这是一个检查更新版本用的 XML 文件。</note>", "</info>", "<v012>") Then
+                        Dim nv As New Version(提取(o, "<version>", "</version>"))
                         If nv > My.Application.Info.Version Then
                             GBupdate.Top = 154
                             GBpush.Height = 135
-                            GBupdate.Text = "检测到新版本：" + nv.ToString
+                            GBupdate.Text = "检测到新版本：v" + nv.ToString
+                            o = o.Replace("- ", vbCrLf + "●")
+                            TxtUpdate.Text = "更新内容：" + 提取(o, "<info>", "</info>")
                         Else
-                            o = "已是最新版本：" + nv.ToString
+                            o = "已是最新版本：v" + nv.ToString
                             GBabout.Text += 括(o, "（）")
                         End If
                     Else
-                        o = "检查更新失败"
-                        GBabout.Text += 括(o, "（）")
+                        GBabout.Text += "（检查更新失败）"
                     End If
                 End Sub)
         End If
