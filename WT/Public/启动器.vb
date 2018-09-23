@@ -28,7 +28,7 @@ Public Class 启动器
         新工具("未响应图片制作器", 未响应图片制作器, "NoResPic", "制作假装程序未响应的假图片")
         新工具("文件筛选", 文件筛选, "FileChoose", "把A文件夹B文件夹的文件选择性的复制到C文件夹")
         新工具("创意工坊物品篡改器", 创意工坊篡改器, "WorkshopCut", "可以直接修改 Steam Workshop 指定物品的信息，但是你必须是这个物品的上传者或贡献者")
-        新工具("剪贴板记录器", 剪贴板记录器, "ClipBoardRecord", "在后台记录剪贴板的内容到硬盘里", True)
+        新工具("剪贴板记录器", 剪贴板记录器, "ClipBoardRecord", "在后台记录剪贴板的内容到硬盘里", Val(设置.元素("CBwhen")) <> 2)
         新工具("模型贴图打包器", 起源模型贴图打包器, "SourceModelPacker", "给 Source 的模型文件批量打包贴图文件")
         新工具("RunSringLUA制作器", RunStringLUA制作器, "RunStringLua", "算是给 GMod LUA 加密？")
         新工具("B站催更器", B站催更器, "BilibiliPushYou", "会提醒你B站多久没更视频的一个工具", 设置.读取真假("CheckBilibiliAtStart"))
@@ -39,6 +39,7 @@ Public Class 启动器
         新工具("有没有少Steam好友", Steam好友列表检查, "SteamFriends", "检查你的Steam好友里是不是有人把你删了", 设置.读取真假("CheckSteamFriendsAtStart"))
         新工具("创意工坊物品列表导出", 创意工坊订阅列表导出, "WorkshopListOut", "把你的workshop订阅的或者是收藏夹里的或者是你发布的或者合集里的物品都导出成一个列表")
         新工具("创意工坊合集物品批量添加", 创意工坊合集物品批量添加, "WorkshopCollectionAdd", "可以先用Workshop物品列表导出工具导出物品列表，然后在这里导入到指定的合集。")
+        新工具("输入法辅助框", 输入法辅助框, "InputHelper", "在临时窗口上打字来避免一些垃圾软件对输入法的不支持。", Val(设置.元素("IMEwhen")) <> 2)
         AddHandler SizeChanged, AddressOf 最小化隐藏
         For Each t In 工具列表
             ListTools.Items.Add(t.名字)
