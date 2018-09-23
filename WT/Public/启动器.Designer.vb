@@ -23,13 +23,9 @@ Partial Class 启动器
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Me.GBfavorites = New System.Windows.Forms.GroupBox()
         Me.GBallTools = New System.Windows.Forms.GroupBox()
-        Me.ButShortCut = New System.Windows.Forms.Button()
-        Me.TxtToolID = New System.Windows.Forms.TextBox()
         Me.TxtToolInfo = New System.Windows.Forms.TextBox()
         Me.TxtToolName = New System.Windows.Forms.TextBox()
-        Me.ButAddToFavor = New System.Windows.Forms.Button()
         Me.ButOpenTool = New System.Windows.Forms.Button()
         Me.ListTools = New System.Windows.Forms.ListBox()
         Me.GBupdate = New System.Windows.Forms.GroupBox()
@@ -37,74 +33,37 @@ Partial Class 启动器
         Me.LabAbout = New System.Windows.Forms.Label()
         Me.GBabout = New System.Windows.Forms.GroupBox()
         Me.LabTime = New System.Windows.Forms.Label()
-        Me.Opener = New System.Windows.Forms.Timer(Me.components)
         Me.Nico = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.NicoMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.显示窗口ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.返回启动器ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LabFun = New System.Windows.Forms.Label()
         Me.TimerC = New System.Windows.Forms.Timer(Me.components)
         Me.AutoSave = New System.Windows.Forms.Timer(Me.components)
         Me.GBallTools.SuspendLayout()
         Me.GBupdate.SuspendLayout()
         Me.GBabout.SuspendLayout()
-        Me.NicoMenu.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'GBfavorites
-        '
-        Me.GBfavorites.Location = New System.Drawing.Point(9, 12)
-        Me.GBfavorites.Name = "GBfavorites"
-        Me.GBfavorites.Size = New System.Drawing.Size(730, 117)
-        Me.GBfavorites.TabIndex = 0
-        Me.GBfavorites.TabStop = False
-        Me.GBfavorites.Text = "工具收藏夹"
         '
         'GBallTools
         '
-        Me.GBallTools.Controls.Add(Me.ButShortCut)
-        Me.GBallTools.Controls.Add(Me.TxtToolID)
         Me.GBallTools.Controls.Add(Me.TxtToolInfo)
         Me.GBallTools.Controls.Add(Me.TxtToolName)
-        Me.GBallTools.Controls.Add(Me.ButAddToFavor)
         Me.GBallTools.Controls.Add(Me.ButOpenTool)
         Me.GBallTools.Controls.Add(Me.ListTools)
-        Me.GBallTools.Location = New System.Drawing.Point(9, 135)
+        Me.GBallTools.Location = New System.Drawing.Point(9, 12)
         Me.GBallTools.Name = "GBallTools"
-        Me.GBallTools.Size = New System.Drawing.Size(382, 235)
+        Me.GBallTools.Size = New System.Drawing.Size(382, 358)
         Me.GBallTools.TabIndex = 1
         Me.GBallTools.TabStop = False
         Me.GBallTools.Text = "全部工具"
         '
-        'ButShortCut
-        '
-        Me.ButShortCut.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.ButShortCut.Location = New System.Drawing.Point(341, 50)
-        Me.ButShortCut.Name = "ButShortCut"
-        Me.ButShortCut.Size = New System.Drawing.Size(34, 24)
-        Me.ButShortCut.TabIndex = 7
-        Me.ButShortCut.TabStop = False
-        Me.ButShortCut.Text = "？"
-        Me.ButShortCut.UseVisualStyleBackColor = True
-        '
-        'TxtToolID
-        '
-        Me.TxtToolID.BackColor = System.Drawing.Color.White
-        Me.TxtToolID.Location = New System.Drawing.Point(207, 50)
-        Me.TxtToolID.Name = "TxtToolID"
-        Me.TxtToolID.ReadOnly = True
-        Me.TxtToolID.Size = New System.Drawing.Size(128, 25)
-        Me.TxtToolID.TabIndex = 6
-        Me.TxtToolID.TabStop = False
-        '
         'TxtToolInfo
         '
         Me.TxtToolInfo.BackColor = System.Drawing.Color.White
-        Me.TxtToolInfo.Location = New System.Drawing.Point(207, 80)
+        Me.TxtToolInfo.Location = New System.Drawing.Point(207, 51)
         Me.TxtToolInfo.Multiline = True
         Me.TxtToolInfo.Name = "TxtToolInfo"
         Me.TxtToolInfo.ReadOnly = True
-        Me.TxtToolInfo.Size = New System.Drawing.Size(168, 104)
+        Me.TxtToolInfo.Size = New System.Drawing.Size(168, 254)
         Me.TxtToolInfo.TabIndex = 5
         Me.TxtToolInfo.TabStop = False
         '
@@ -118,23 +77,12 @@ Partial Class 启动器
         Me.TxtToolName.TabIndex = 4
         Me.TxtToolName.TabStop = False
         '
-        'ButAddToFavor
-        '
-        Me.ButAddToFavor.Enabled = False
-        Me.ButAddToFavor.Location = New System.Drawing.Point(284, 190)
-        Me.ButAddToFavor.Name = "ButAddToFavor"
-        Me.ButAddToFavor.Size = New System.Drawing.Size(91, 39)
-        Me.ButAddToFavor.TabIndex = 3
-        Me.ButAddToFavor.TabStop = False
-        Me.ButAddToFavor.Text = "收藏"
-        Me.ButAddToFavor.UseVisualStyleBackColor = True
-        '
         'ButOpenTool
         '
         Me.ButOpenTool.Enabled = False
-        Me.ButOpenTool.Location = New System.Drawing.Point(207, 190)
+        Me.ButOpenTool.Location = New System.Drawing.Point(207, 311)
         Me.ButOpenTool.Name = "ButOpenTool"
-        Me.ButOpenTool.Size = New System.Drawing.Size(71, 39)
+        Me.ButOpenTool.Size = New System.Drawing.Size(168, 39)
         Me.ButOpenTool.TabIndex = 2
         Me.ButOpenTool.TabStop = False
         Me.ButOpenTool.Text = "运行"
@@ -147,7 +95,7 @@ Partial Class 启动器
         Me.ListTools.Location = New System.Drawing.Point(11, 23)
         Me.ListTools.Name = "ListTools"
         Me.ListTools.ScrollAlwaysVisible = True
-        Me.ListTools.Size = New System.Drawing.Size(190, 194)
+        Me.ListTools.Size = New System.Drawing.Size(190, 327)
         Me.ListTools.Sorted = True
         Me.ListTools.TabIndex = 0
         Me.ListTools.TabStop = False
@@ -155,9 +103,9 @@ Partial Class 启动器
         'GBupdate
         '
         Me.GBupdate.Controls.Add(Me.TxtUpdate)
-        Me.GBupdate.Location = New System.Drawing.Point(400, 135)
+        Me.GBupdate.Location = New System.Drawing.Point(400, 12)
         Me.GBupdate.Name = "GBupdate"
-        Me.GBupdate.Size = New System.Drawing.Size(342, 121)
+        Me.GBupdate.Size = New System.Drawing.Size(342, 245)
         Me.GBupdate.TabIndex = 2
         Me.GBupdate.TabStop = False
         Me.GBupdate.Text = "推送："
@@ -172,7 +120,7 @@ Partial Class 启动器
         Me.TxtUpdate.Name = "TxtUpdate"
         Me.TxtUpdate.ReadOnly = True
         Me.TxtUpdate.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtUpdate.Size = New System.Drawing.Size(336, 97)
+        Me.TxtUpdate.Size = New System.Drawing.Size(336, 221)
         Me.TxtUpdate.TabIndex = 0
         Me.TxtUpdate.TabStop = False
         '
@@ -207,9 +155,6 @@ Partial Class 启动器
         Me.LabTime.TabIndex = 4
         Me.LabTime.Text = "已经用了："
         '
-        'Opener
-        '
-        '
         'Nico
         '
         Me.Nico.BalloonTipText = "走過去的工具箱"
@@ -220,22 +165,9 @@ Partial Class 启动器
         'NicoMenu
         '
         Me.NicoMenu.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.NicoMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.显示窗口ToolStripMenuItem, Me.返回启动器ToolStripMenuItem})
         Me.NicoMenu.Name = "NicoMenu"
         Me.NicoMenu.ShowItemToolTips = False
-        Me.NicoMenu.Size = New System.Drawing.Size(131, 52)
-        '
-        '显示窗口ToolStripMenuItem
-        '
-        Me.显示窗口ToolStripMenuItem.Name = "显示窗口ToolStripMenuItem"
-        Me.显示窗口ToolStripMenuItem.Size = New System.Drawing.Size(130, 24)
-        Me.显示窗口ToolStripMenuItem.Text = "显示窗口"
-        '
-        '返回启动器ToolStripMenuItem
-        '
-        Me.返回启动器ToolStripMenuItem.Name = "返回启动器ToolStripMenuItem"
-        Me.返回启动器ToolStripMenuItem.Size = New System.Drawing.Size(130, 24)
-        Me.返回启动器ToolStripMenuItem.Text = "返回主页"
+        Me.NicoMenu.Size = New System.Drawing.Size(61, 4)
         '
         'LabFun
         '
@@ -264,7 +196,6 @@ Partial Class 启动器
         Me.Controls.Add(Me.GBabout)
         Me.Controls.Add(Me.GBupdate)
         Me.Controls.Add(Me.GBallTools)
-        Me.Controls.Add(Me.GBfavorites)
         Me.DoubleBuffered = True
         Me.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.ForeColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(44, Byte), Integer), CType(CType(61, Byte), Integer))
@@ -281,32 +212,23 @@ Partial Class 启动器
         Me.GBupdate.PerformLayout()
         Me.GBabout.ResumeLayout(False)
         Me.GBabout.PerformLayout()
-        Me.NicoMenu.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents GBfavorites As GroupBox
     Friend WithEvents GBallTools As GroupBox
     Friend WithEvents ListTools As ListBox
     Friend WithEvents ButOpenTool As Button
-    Friend WithEvents ButAddToFavor As Button
     Friend WithEvents GBupdate As GroupBox
     Friend WithEvents TxtUpdate As TextBox
     Friend WithEvents LabAbout As Label
     Friend WithEvents GBabout As GroupBox
-    Friend WithEvents Opener As System.Windows.Forms.Timer
     Friend WithEvents Nico As NotifyIcon
     Friend WithEvents NicoMenu As ContextMenuStrip
-    Friend WithEvents 显示窗口ToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents 返回启动器ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LabFun As Label
     Friend WithEvents TxtToolName As TextBox
     Friend WithEvents TxtToolInfo As TextBox
     Friend WithEvents LabTime As Label
     Friend WithEvents TimerC As Forms.Timer
     Friend WithEvents AutoSave As Forms.Timer
-    Friend WithEvents TxtToolID As TextBox
-    Friend WithEvents ButShortCut As Button
 End Class
