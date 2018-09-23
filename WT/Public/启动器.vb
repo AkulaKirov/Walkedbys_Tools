@@ -316,5 +316,9 @@ Public Class 启动器
         Nico.Text = "走過去的工具箱" + vbCrLf + s
     End Sub
 
+    Private Sub ButShortCut_Click(sender As Object, e As EventArgs) Handles ButShortCut.Click
+        Process.Start("https://s1.ax1x.com/2018/09/09/iiRZBq.png")
+    End Sub
+
 End Class
 
