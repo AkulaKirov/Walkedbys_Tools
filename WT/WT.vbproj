@@ -444,5 +444,8 @@
   <ItemGroup>
     <None Include="Res\xp未响应2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="updater.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

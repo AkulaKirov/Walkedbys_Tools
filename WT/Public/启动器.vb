@@ -16,6 +16,8 @@ Public Class 启动器
         If 在列表(启动参数, "-tryfix") Then
             新工具("内部信息修改器", 信息修改器, "TryFix", "程序设置实际保存信息的修改器")
         End If
+        GBpush.Height = 240
+        GBupdate.Top = 4000
         '新工具("临时工具", 临时工具, "Whatever", "临时用的工具，你不应该在公开发布版里面看见我")
         新工具(" 工具箱设置", 程序设置, "AllSettings", "关于本工具箱的一些设置")
         新工具("文件夹创建器", 文件夹创建器, "MKDIR", "输入一个路径，就能新建好你要的文件夹")
@@ -64,14 +66,17 @@ Public Class 启动器
                         o = Regex.Match(o, "[0-9]*\.[0-9]*").ToString
                         Dim nv As New Version(o)
                         If nv > My.Application.Info.Version Then
-                            o = "检测到新版本：" + nv.ToString
+                            GBupdate.Top = 154
+                            GBpush.Height = 135
+                            GBupdate.Text = "检测到新版本：" + nv.ToString
                         Else
                             o = "已是最新版本：" + nv.ToString
+                            GBabout.Text += 括(o, "（）")
                         End If
                     Else
                         o = "检查更新失败"
+                        GBabout.Text += 括(o, "（）")
                     End If
-                    GBabout.Text += 括(o, "（）")
                 End Sub)
         End If
         彩蛋码 = ""
@@ -311,14 +316,9 @@ Public Class 启动器
             If t.推送.Length > 0 Then s += t.推送 + vbCrLf
         Next
         s = 去右(s, 2)
-        If s <> TxtUpdate.Text Then TxtUpdate.Text = s
+        If s <> TxtPush.Text Then TxtPush.Text = s
         If s.Length > 50 Then s = 左(s, 50) + "..."
         Nico.Text = "走過去的工具箱" + vbCrLf + s
     End Sub
 
-    Private Sub ButShortCut_Click(sender As Object, e As EventArgs) Handles ButShortCut.Click
-        Process.Start("https://s1.ax1x.com/2018/09/09/iiRZBq.png")
-    End Sub
-
 End Class
-

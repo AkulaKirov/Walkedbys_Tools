@@ -28,8 +28,8 @@ Partial Class 启动器
         Me.TxtToolName = New System.Windows.Forms.TextBox()
         Me.ButOpenTool = New System.Windows.Forms.Button()
         Me.ListTools = New System.Windows.Forms.ListBox()
-        Me.GBupdate = New System.Windows.Forms.GroupBox()
-        Me.TxtUpdate = New System.Windows.Forms.TextBox()
+        Me.GBpush = New System.Windows.Forms.GroupBox()
+        Me.TxtPush = New System.Windows.Forms.TextBox()
         Me.LabAbout = New System.Windows.Forms.Label()
         Me.GBabout = New System.Windows.Forms.GroupBox()
         Me.LabTime = New System.Windows.Forms.Label()
@@ -38,9 +38,12 @@ Partial Class 启动器
         Me.LabFun = New System.Windows.Forms.Label()
         Me.TimerC = New System.Windows.Forms.Timer(Me.components)
         Me.AutoSave = New System.Windows.Forms.Timer(Me.components)
+        Me.GBupdate = New System.Windows.Forms.GroupBox()
+        Me.TxtUpdate = New System.Windows.Forms.TextBox()
         Me.GBallTools.SuspendLayout()
-        Me.GBupdate.SuspendLayout()
+        Me.GBpush.SuspendLayout()
         Me.GBabout.SuspendLayout()
+        Me.GBupdate.SuspendLayout()
         Me.SuspendLayout()
         '
         'GBallTools
@@ -100,29 +103,29 @@ Partial Class 启动器
         Me.ListTools.TabIndex = 0
         Me.ListTools.TabStop = False
         '
-        'GBupdate
+        'GBpush
         '
-        Me.GBupdate.Controls.Add(Me.TxtUpdate)
-        Me.GBupdate.Location = New System.Drawing.Point(400, 12)
-        Me.GBupdate.Name = "GBupdate"
-        Me.GBupdate.Size = New System.Drawing.Size(342, 245)
-        Me.GBupdate.TabIndex = 2
-        Me.GBupdate.TabStop = False
-        Me.GBupdate.Text = "推送："
+        Me.GBpush.Controls.Add(Me.TxtPush)
+        Me.GBpush.Location = New System.Drawing.Point(400, 12)
+        Me.GBpush.Name = "GBpush"
+        Me.GBpush.Size = New System.Drawing.Size(342, 136)
+        Me.GBpush.TabIndex = 2
+        Me.GBpush.TabStop = False
+        Me.GBpush.Text = "推送："
         '
-        'TxtUpdate
+        'TxtPush
         '
-        Me.TxtUpdate.BackColor = System.Drawing.Color.White
-        Me.TxtUpdate.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TxtUpdate.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.TxtUpdate.Location = New System.Drawing.Point(3, 21)
-        Me.TxtUpdate.Multiline = True
-        Me.TxtUpdate.Name = "TxtUpdate"
-        Me.TxtUpdate.ReadOnly = True
-        Me.TxtUpdate.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtUpdate.Size = New System.Drawing.Size(336, 221)
-        Me.TxtUpdate.TabIndex = 0
-        Me.TxtUpdate.TabStop = False
+        Me.TxtPush.BackColor = System.Drawing.Color.White
+        Me.TxtPush.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TxtPush.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.TxtPush.Location = New System.Drawing.Point(3, 21)
+        Me.TxtPush.Multiline = True
+        Me.TxtPush.Name = "TxtPush"
+        Me.TxtPush.ReadOnly = True
+        Me.TxtPush.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TxtPush.Size = New System.Drawing.Size(336, 112)
+        Me.TxtPush.TabIndex = 0
+        Me.TxtPush.TabStop = False
         '
         'LabAbout
         '
@@ -186,15 +189,40 @@ Partial Class 启动器
         '
         Me.AutoSave.Interval = 20000
         '
+        'GBupdate
+        '
+        Me.GBupdate.Controls.Add(Me.TxtUpdate)
+        Me.GBupdate.Location = New System.Drawing.Point(400, 154)
+        Me.GBupdate.Name = "GBupdate"
+        Me.GBupdate.Size = New System.Drawing.Size(342, 103)
+        Me.GBupdate.TabIndex = 6
+        Me.GBupdate.TabStop = False
+        Me.GBupdate.Text = "新版本："
+        '
+        'TxtUpdate
+        '
+        Me.TxtUpdate.BackColor = System.Drawing.Color.White
+        Me.TxtUpdate.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TxtUpdate.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.TxtUpdate.Location = New System.Drawing.Point(3, 21)
+        Me.TxtUpdate.Multiline = True
+        Me.TxtUpdate.Name = "TxtUpdate"
+        Me.TxtUpdate.ReadOnly = True
+        Me.TxtUpdate.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TxtUpdate.Size = New System.Drawing.Size(336, 79)
+        Me.TxtUpdate.TabIndex = 0
+        Me.TxtUpdate.TabStop = False
+        '
         '启动器
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(754, 396)
+        Me.Controls.Add(Me.GBupdate)
         Me.Controls.Add(Me.LabFun)
         Me.Controls.Add(Me.GBabout)
-        Me.Controls.Add(Me.GBupdate)
+        Me.Controls.Add(Me.GBpush)
         Me.Controls.Add(Me.GBallTools)
         Me.DoubleBuffered = True
         Me.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
@@ -208,10 +236,12 @@ Partial Class 启动器
         Me.Text = "走過去的工具箱"
         Me.GBallTools.ResumeLayout(False)
         Me.GBallTools.PerformLayout()
-        Me.GBupdate.ResumeLayout(False)
-        Me.GBupdate.PerformLayout()
+        Me.GBpush.ResumeLayout(False)
+        Me.GBpush.PerformLayout()
         Me.GBabout.ResumeLayout(False)
         Me.GBabout.PerformLayout()
+        Me.GBupdate.ResumeLayout(False)
+        Me.GBupdate.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -219,8 +249,8 @@ Partial Class 启动器
     Friend WithEvents GBallTools As GroupBox
     Friend WithEvents ListTools As ListBox
     Friend WithEvents ButOpenTool As Button
-    Friend WithEvents GBupdate As GroupBox
-    Friend WithEvents TxtUpdate As TextBox
+    Friend WithEvents GBpush As GroupBox
+    Friend WithEvents TxtPush As TextBox
     Friend WithEvents LabAbout As Label
     Friend WithEvents GBabout As GroupBox
     Friend WithEvents Nico As NotifyIcon
@@ -231,4 +261,6 @@ Partial Class 启动器
     Friend WithEvents LabTime As Label
     Friend WithEvents TimerC As Forms.Timer
     Friend WithEvents AutoSave As Forms.Timer
+    Friend WithEvents GBupdate As GroupBox
+    Friend WithEvents TxtUpdate As TextBox
 End Class
