@@ -14,7 +14,7 @@ Public Class 启动器
         Directory.CreateDirectory(缓存目录)
         Dim t As 工具, g As String
         If 在列表(启动参数, "-tryfix") Then
-            新工具("内部信息修改器", 信息修改器, "TryFix", "程序设置实际保存信息的修改器")
+            新工具(" 内部信息修改器", 信息修改器, "TryFix", "程序设置实际保存信息的修改器")
         End If
         GBpush.Height = 240
         GBupdate.Top = 4000
@@ -63,8 +63,8 @@ Public Class 启动器
                     If o.Length > 50 AndAlso 全部包含(o, "<version>", "<note>这是一个检查更新版本用的 XML 文件。</note>", "</info>", "<v012>") Then
                         Dim nv As New Version(提取(o, "<version>", "</version>"))
                         If nv > My.Application.Info.Version Then
-                            GBupdate.Top = 154
-                            GBpush.Height = 135
+                            GBupdate.Top = 170
+                            GBpush.Height = 150
                             GBupdate.Text = "检测到新版本：v" + nv.ToString
                             o = o.Replace("- ", vbCrLf + "●")
                             TxtUpdate.Text = "更新内容：" + 提取(o, "<info>", "</info>")

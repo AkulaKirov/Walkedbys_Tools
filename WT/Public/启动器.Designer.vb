@@ -108,7 +108,7 @@ Partial Class 启动器
         Me.GBpush.Controls.Add(Me.TxtPush)
         Me.GBpush.Location = New System.Drawing.Point(400, 12)
         Me.GBpush.Name = "GBpush"
-        Me.GBpush.Size = New System.Drawing.Size(342, 136)
+        Me.GBpush.Size = New System.Drawing.Size(342, 154)
         Me.GBpush.TabIndex = 2
         Me.GBpush.TabStop = False
         Me.GBpush.Text = "推送："
@@ -123,7 +123,7 @@ Partial Class 启动器
         Me.TxtPush.Name = "TxtPush"
         Me.TxtPush.ReadOnly = True
         Me.TxtPush.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtPush.Size = New System.Drawing.Size(336, 112)
+        Me.TxtPush.Size = New System.Drawing.Size(336, 130)
         Me.TxtPush.TabIndex = 0
         Me.TxtPush.TabStop = False
         '
@@ -192,9 +192,9 @@ Partial Class 启动器
         'GBupdate
         '
         Me.GBupdate.Controls.Add(Me.TxtUpdate)
-        Me.GBupdate.Location = New System.Drawing.Point(400, 154)
+        Me.GBupdate.Location = New System.Drawing.Point(400, 172)
         Me.GBupdate.Name = "GBupdate"
-        Me.GBupdate.Size = New System.Drawing.Size(342, 103)
+        Me.GBupdate.Size = New System.Drawing.Size(342, 85)
         Me.GBupdate.TabIndex = 6
         Me.GBupdate.TabStop = False
         Me.GBupdate.Text = "新版本："
@@ -208,7 +208,7 @@ Partial Class 启动器
         Me.TxtUpdate.Name = "TxtUpdate"
         Me.TxtUpdate.ReadOnly = True
         Me.TxtUpdate.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtUpdate.Size = New System.Drawing.Size(336, 79)
+        Me.TxtUpdate.Size = New System.Drawing.Size(336, 61)
         Me.TxtUpdate.TabIndex = 0
         Me.TxtUpdate.TabStop = False
         Me.TxtUpdate.WordWrap = False
