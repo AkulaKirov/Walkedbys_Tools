@@ -18,7 +18,7 @@ Public Class 启动器
         End If
         GBpush.Height = 240
         GBupdate.Top = 4000
-        '新工具("临时工具", 临时工具, "Whatever", "临时用的工具，你不应该在公开发布版里面看见我")
+        If 程序运行中("VBCSCompiler") AndAlso 程序运行中("devenv") Then 新工具("临时工具", 临时工具, "Whatever", "临时用的工具，一般是拿来测试的，如果你运行了 Visual Studio 的话，我就会显示在这里。")
         新工具(" 工具箱设置", 程序设置, "AllSettings", "关于本工具箱的一些设置")
         新工具("文件夹创建器", 文件夹创建器, "MKDIR", "输入一个路径，就能新建好你要的文件夹")
         新工具("B站图床", B站图床, "BilibiliPic", "把20MB以下的图片无损放到B站服务器还行")

@@ -45,7 +45,7 @@ Module 通用
     ''' 弹出一个报错框并结束程序
     ''' </summary>
     Public Sub 报错退出(s As String)
-        MsgBox(s, MsgBoxStyle.Exclamation, "出错！走過去的工具箱 v" + 版本.ToString)
+        MsgBox(s, MsgBoxStyle.Critical, "出错！走過去的工具箱 v" + 版本.ToString)
         Try
             启动器.Nico.Visible = False
             删除(缓存目录)
@@ -58,6 +58,8 @@ Module 通用
     ''' 通过名字或者ID来获得对应的工具
     ''' </summary>
     Public Function 名字工具(名字 As String) As 工具
+        名字 = Trim(名字)
+        If 名字.Length < 1 Then Return Nothing
         For Each t As 工具 In 工具列表
             If 包含(t.名字, 名字) OrElse 包含(t.ID.ToLower, 名字.ToLower) OrElse 包含(t.窗体.Name, 名字) Then Return t
         Next
