@@ -23,6 +23,7 @@ Partial Class 创意工坊合集物品批量添加
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GBsteamCookie = New System.Windows.Forms.GroupBox()
+        Me.ButHowToGetCookie = New System.Windows.Forms.Button()
         Me.LabLoginSecure = New System.Windows.Forms.Label()
         Me.LabSession = New System.Windows.Forms.Label()
         Me.TxtLoginSecure = New System.Windows.Forms.TextBox()
@@ -34,7 +35,6 @@ Partial Class 创意工坊合集物品批量添加
         Me.TxtID = New System.Windows.Forms.TextBox()
         Me.LabID = New System.Windows.Forms.Label()
         Me.TxtOut = New System.Windows.Forms.TextBox()
-        Me.ButHowToGetCookie = New System.Windows.Forms.Button()
         Me.GBsteamCookie.SuspendLayout()
         Me.Pn.SuspendLayout()
         Me.SuspendLayout()
@@ -52,6 +52,18 @@ Partial Class 创意工坊合集物品批量添加
         Me.GBsteamCookie.TabIndex = 66
         Me.GBsteamCookie.TabStop = False
         Me.GBsteamCookie.Text = "Steam Cookie"
+        '
+        'ButHowToGetCookie
+        '
+        Me.ButHowToGetCookie.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.ButHowToGetCookie.Location = New System.Drawing.Point(11, 18)
+        Me.ButHowToGetCookie.Name = "ButHowToGetCookie"
+        Me.ButHowToGetCookie.Size = New System.Drawing.Size(28, 25)
+        Me.ButHowToGetCookie.TabIndex = 65
+        Me.ButHowToGetCookie.TabStop = False
+        Me.ButHowToGetCookie.Text = "？"
+        Me.ButHowToGetCookie.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.ButHowToGetCookie.UseVisualStyleBackColor = True
         '
         'LabLoginSecure
         '
@@ -74,7 +86,7 @@ Partial Class 创意工坊合集物品批量添加
         'TxtLoginSecure
         '
         Me.TxtLoginSecure.Font = New System.Drawing.Font("微软雅黑", 8.0!)
-        Me.TxtLoginSecure.Location = New System.Drawing.Point(143, 43)
+        Me.TxtLoginSecure.Location = New System.Drawing.Point(151, 43)
         Me.TxtLoginSecure.MaxLength = 63
         Me.TxtLoginSecure.Name = "TxtLoginSecure"
         Me.TxtLoginSecure.Size = New System.Drawing.Size(478, 22)
@@ -85,7 +97,7 @@ Partial Class 创意工坊合集物品批量添加
         'TxtSession
         '
         Me.TxtSession.Font = New System.Drawing.Font("微软雅黑", 8.0!)
-        Me.TxtSession.Location = New System.Drawing.Point(143, 15)
+        Me.TxtSession.Location = New System.Drawing.Point(151, 15)
         Me.TxtSession.MaxLength = 24
         Me.TxtSession.Name = "TxtSession"
         Me.TxtSession.Size = New System.Drawing.Size(478, 22)
@@ -165,22 +177,9 @@ Partial Class 创意工坊合集物品批量添加
         Me.TxtOut.TabStop = False
         Me.TxtOut.Text = "请注意：" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "先记得把合集创建好" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "而不要合集的创建工作都没彻底完成就来这里添加" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "否则会出BUG" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
-        'ButHowToGetCookie
-        '
-        Me.ButHowToGetCookie.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.ButHowToGetCookie.Location = New System.Drawing.Point(11, 18)
-        Me.ButHowToGetCookie.Name = "ButHowToGetCookie"
-        Me.ButHowToGetCookie.Size = New System.Drawing.Size(28, 25)
-        Me.ButHowToGetCookie.TabIndex = 65
-        Me.ButHowToGetCookie.TabStop = False
-        Me.ButHowToGetCookie.Text = "？"
-        Me.ButHowToGetCookie.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.ButHowToGetCookie.UseVisualStyleBackColor = True
-        '
         '创意工坊合集物品批量添加
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(643, 434)
         Me.Controls.Add(Me.TxtOut)
         Me.Controls.Add(Me.Pn)

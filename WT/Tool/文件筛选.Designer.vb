@@ -141,8 +141,7 @@ Partial Class 文件筛选
         '
         '文件筛选
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(598, 241)
         Me.Controls.Add(Me.TxtFC)
         Me.Controls.Add(Me.LabFc)

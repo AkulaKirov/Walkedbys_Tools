@@ -95,8 +95,7 @@ Partial Class 字符画图片制作
         '
         '字符画图片制作
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(932, 507)
         Me.Controls.Add(Me.ListStyle)
         Me.Controls.Add(Me.LabStyle)

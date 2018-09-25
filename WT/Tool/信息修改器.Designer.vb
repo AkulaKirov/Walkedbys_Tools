@@ -83,8 +83,7 @@ Partial Class 信息修改器
         '
         '信息修改器
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(839, 377)
         Me.Controls.Add(Me.ButRefresh)
         Me.Controls.Add(Me.ButSave)

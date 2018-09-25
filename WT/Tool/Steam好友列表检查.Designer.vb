@@ -110,8 +110,7 @@ Partial Class Steam好友列表检查
         '
         'Steam好友列表检查
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(570, 358)
         Me.Controls.Add(Me.LabID)
         Me.Controls.Add(Me.CheckAuto)

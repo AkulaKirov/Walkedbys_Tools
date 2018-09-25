@@ -158,8 +158,7 @@ Partial Class 日子提醒
         '
         '日子提醒
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(509, 348)
         Me.Controls.Add(Me.CheckCN)
         Me.Controls.Add(Me.CBremind)

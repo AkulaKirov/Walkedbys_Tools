@@ -84,8 +84,7 @@ Partial Class RunStringLUA制作器
         '
         'RunStringLUA制作器
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(704, 373)
         Me.Controls.Add(Me.LabProblem)
         Me.Controls.Add(Me.LabLen)

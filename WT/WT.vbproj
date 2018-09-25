@@ -227,12 +227,6 @@
     <Compile Include="Tool\字符画图片制作.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tool\文件夹创建器.Designer.vb">
-      <DependentUpon>文件夹创建器.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Tool\文件夹创建器.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Tool\文件筛选.Designer.vb">
       <DependentUpon>文件筛选.vb</DependentUpon>
     </Compile>
@@ -346,9 +340,6 @@
     <EmbeddedResource Include="Tool\字符画图片制作.resx">
       <DependentUpon>字符画图片制作.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tool\文件夹创建器.resx">
-      <DependentUpon>文件夹创建器.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Tool\文件筛选.resx">
       <DependentUpon>文件筛选.vb</DependentUpon>
     </EmbeddedResource>
@@ -403,6 +394,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="NEW.md" />
     <None Include="Res\ico.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -438,7 +430,6 @@
     <Content Include="updater.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="updater2.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

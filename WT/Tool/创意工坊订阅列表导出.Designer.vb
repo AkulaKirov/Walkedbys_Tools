@@ -90,7 +90,7 @@ Partial Class 创意工坊订阅列表导出
         'TxtLoginSecure
         '
         Me.TxtLoginSecure.Font = New System.Drawing.Font("微软雅黑", 8.0!)
-        Me.TxtLoginSecure.Location = New System.Drawing.Point(143, 43)
+        Me.TxtLoginSecure.Location = New System.Drawing.Point(155, 43)
         Me.TxtLoginSecure.MaxLength = 63
         Me.TxtLoginSecure.Name = "TxtLoginSecure"
         Me.TxtLoginSecure.Size = New System.Drawing.Size(478, 22)
@@ -101,7 +101,7 @@ Partial Class 创意工坊订阅列表导出
         'TxtSession
         '
         Me.TxtSession.Font = New System.Drawing.Font("微软雅黑", 8.0!)
-        Me.TxtSession.Location = New System.Drawing.Point(144, 15)
+        Me.TxtSession.Location = New System.Drawing.Point(156, 15)
         Me.TxtSession.MaxLength = 24
         Me.TxtSession.Name = "TxtSession"
         Me.TxtSession.Size = New System.Drawing.Size(478, 22)
@@ -206,8 +206,7 @@ Partial Class 创意工坊订阅列表导出
         '
         '创意工坊订阅列表导出
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(645, 423)
         Me.Controls.Add(Me.Pn)
         Me.Controls.Add(Me.GBsteamCookie)

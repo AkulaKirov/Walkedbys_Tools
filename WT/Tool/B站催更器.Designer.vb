@@ -86,8 +86,7 @@ Partial Class B站催更器
         '
         'B站催更器
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(398, 208)
         Me.Controls.Add(Me.CheckAuto)
         Me.Controls.Add(Me.LabOut)

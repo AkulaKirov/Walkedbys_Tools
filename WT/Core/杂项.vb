@@ -324,18 +324,4 @@ Module 杂项
 
     End Class
 
-    ''' <summary>
-    ''' 获得系统屏幕显示的DPI
-    ''' </summary>
-    Public Function 系统DPI() As Single
-        Dim n As Integer = Registry.GetValue("HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics", "AppliedDPI", 100)
-        For i As Integer = 50 To 600 Step 25
-            If Abs(i - n) < 12.5 Then
-                n = i
-                Exit For
-            End If
-        Next
-        Return n / 100
-    End Function
-
 End Module

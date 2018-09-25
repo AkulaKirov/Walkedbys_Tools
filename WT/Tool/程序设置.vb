@@ -11,11 +11,11 @@ Public Class 程序设置
     End Sub
 
     Sub 新选项(名字 As String, 文字 As String)
-        Dim c As New CheckBox
+        Dim c As New CheckBox, d As Single = 系统DPI()
         With c
             .Name = 名字
             .Left = 8
-            .Top = 选项数量 * 30 + 5
+            .Top = 选项数量 * 30 * d + 5 * d
             .AutoSize = True
             .Text = 文字
             .TabStop = False

@@ -140,6 +140,10 @@ Module 通用
         c.BackColor = bc
         c.ForeColor = fc
         c.TabStop = False
+        If 控件类型(c) = "button" Then
+            Dim b As Button = c
+            b.FlatStyle = FlatStyle.System
+        End If
         If c.HasChildren Then
             For Each i As Control In c.Controls
                 配色(i)
@@ -217,6 +221,7 @@ Module 通用
             ID = 内部id
             启动过了 = False
             简介 = description
+            控件DPI修正(窗体)
             With 窗体
                 AddHandler .Activated, Sub()
                                            启动过了 = True
@@ -228,7 +233,8 @@ Module 通用
                 .ShowInTaskbar = True
                 .KeyPreview = True
                 .MaximizeBox = False
-                .AutoScaleMode = AutoScaleMode.Dpi
+                .AutoScaleMode = AutoScaleMode.None
+                .FormBorderStyle = FormBorderStyle.Fixed3D
                 If 预加载 Then
                     .StartPosition = FormStartPosition.Manual
                     .Top = My.Computer.Screen.Bounds.Height + 100

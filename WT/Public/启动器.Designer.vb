@@ -83,6 +83,7 @@ Partial Class 启动器
         'ButOpenTool
         '
         Me.ButOpenTool.Enabled = False
+        Me.ButOpenTool.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.ButOpenTool.Location = New System.Drawing.Point(207, 311)
         Me.ButOpenTool.Name = "ButOpenTool"
         Me.ButOpenTool.Size = New System.Drawing.Size(168, 39)
@@ -216,9 +217,7 @@ Partial Class 启动器
         '
         '启动器
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.AutoSize = True
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(754, 396)
         Me.Controls.Add(Me.GBupdate)

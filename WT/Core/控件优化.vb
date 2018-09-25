@@ -1,6 +1,8 @@
 ﻿
 Module 控件优化
 
+    Private dpi As Single = 0
+
     ''' <summary>
     ''' 使文本框支持拖入一个文件或文件夹
     ''' </summary>
@@ -123,5 +125,49 @@ Module 控件优化
     Public Function 控件类型(i As Control) As String
         Return 去除(i.GetType.ToString, "System.Windows.Forms.").ToLower
     End Function
+
+    ''' <summary>
+    ''' 获得系统屏幕显示的DPI
+    ''' </summary>
+    Public Function 系统DPI() As Single
+        If dpi > 0 Then Return dpi
+        Dim n As Integer = Registry.GetValue("HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics", "AppliedDPI", 100)
+        For i As Integer = 50 To 600 Step 25
+            If Abs(i - n) < 12.5 Then
+                n = i
+                Exit For
+            End If
+        Next
+        dpi = n / 100
+        Return dpi
+    End Function
+
+    ''' <summary>
+    ''' 根据系统的DPI对控件进行缩放
+    ''' </summary>
+    Public Sub 控件DPI修正(f As Control)
+        Dim d As Single = 系统DPI()
+        If d = 1 Then Exit Sub
+        Dim b As Boolean = True, s As String = 控件类型(f)
+        If s = "label" Then
+            Dim l As Label = f
+            If l.AutoSize Then
+                b = False
+            End If
+        End If
+        If b Then
+            f.Height *= d
+            f.Width *= d
+        End If
+        If Not s.StartsWith(My.Application.Info.AssemblyName.ToLower + ".") Then
+            f.Left *= d
+            f.Top *= d
+        End If
+        If f.HasChildren Then
+            For Each n As Control In f.Controls
+                控件DPI修正(n)
+            Next
+        End If
+    End Sub
 
 End Module

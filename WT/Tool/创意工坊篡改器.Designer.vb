@@ -66,7 +66,7 @@ Partial Class 创意工坊篡改器
         'TxtSession
         '
         Me.TxtSession.Font = New System.Drawing.Font("微软雅黑", 8.0!)
-        Me.TxtSession.Location = New System.Drawing.Point(143, 15)
+        Me.TxtSession.Location = New System.Drawing.Point(155, 15)
         Me.TxtSession.MaxLength = 24
         Me.TxtSession.Name = "TxtSession"
         Me.TxtSession.Size = New System.Drawing.Size(478, 22)
@@ -76,7 +76,7 @@ Partial Class 创意工坊篡改器
         'TxtLoginSecure
         '
         Me.TxtLoginSecure.Font = New System.Drawing.Font("微软雅黑", 8.0!)
-        Me.TxtLoginSecure.Location = New System.Drawing.Point(143, 43)
+        Me.TxtLoginSecure.Location = New System.Drawing.Point(155, 43)
         Me.TxtLoginSecure.MaxLength = 63
         Me.TxtLoginSecure.Name = "TxtLoginSecure"
         Me.TxtLoginSecure.Size = New System.Drawing.Size(478, 22)
@@ -247,8 +247,7 @@ Partial Class 创意工坊篡改器
         '
         '创意工坊篡改器
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(662, 460)
         Me.Controls.Add(Me.LabInfo)
         Me.Controls.Add(Me.Pn)

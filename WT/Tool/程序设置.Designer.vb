@@ -53,7 +53,6 @@ Partial Class 程序设置
         '
         'ButCreateSC
         '
-        Me.ButCreateSC.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.ButCreateSC.Location = New System.Drawing.Point(8, 180)
         Me.ButCreateSC.Name = "ButCreateSC"
         Me.ButCreateSC.Size = New System.Drawing.Size(132, 53)
@@ -64,8 +63,7 @@ Partial Class 程序设置
         '
         '程序设置
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(494, 276)
         Me.Controls.Add(Me.Tabs)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -74,7 +72,7 @@ Partial Class 程序设置
         Me.MaximizeBox = False
         Me.Name = "程序设置"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "程序设置"
+        Me.Text = "工具箱设置"
         Me.Tabs.ResumeLayout(False)
         Me.Tab1.ResumeLayout(False)
         Me.ResumeLayout(False)

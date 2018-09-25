@@ -59,7 +59,6 @@ Partial Class 未响应图片制作器
         '
         'ButOut
         '
-        Me.ButOut.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.ButOut.Location = New System.Drawing.Point(6, 377)
         Me.ButOut.Name = "ButOut"
         Me.ButOut.Size = New System.Drawing.Size(155, 32)
@@ -81,8 +80,7 @@ Partial Class 未响应图片制作器
         '
         '未响应图片制作器
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(655, 421)
         Me.Controls.Add(Me.ListStyle)

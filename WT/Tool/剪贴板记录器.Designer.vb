@@ -102,8 +102,7 @@ Partial Class 剪贴板记录器
         '
         '剪贴板记录器
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(626, 192)
         Me.Controls.Add(Me.LabBlank)
         Me.Controls.Add(Me.LabWhen)

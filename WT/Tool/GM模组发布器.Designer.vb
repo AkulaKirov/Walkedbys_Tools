@@ -109,7 +109,7 @@ Partial Class GM模组发布器
         'LabNO
         '
         Me.LabNO.AutoSize = True
-        Me.LabNO.Location = New System.Drawing.Point(3, 13)
+        Me.LabNO.Location = New System.Drawing.Point(3, 4)
         Me.LabNO.Name = "LabNO"
         Me.LabNO.Size = New System.Drawing.Size(496, 17)
         Me.LabNO.TabIndex = 2
@@ -288,11 +288,10 @@ Partial Class GM模组发布器
         Me.Pn.Controls.Add(Me.TxtPath)
         Me.Pn.Controls.Add(Me.TxtJPGfile)
         Me.Pn.Controls.Add(Me.LabJpgfile)
-        Me.Pn.Location = New System.Drawing.Point(6, 29)
+        Me.Pn.Location = New System.Drawing.Point(6, 36)
         Me.Pn.Name = "Pn"
         Me.Pn.Size = New System.Drawing.Size(577, 387)
         Me.Pn.TabIndex = 6
-        Me.Pn.Visible = False
         '
         'PicThumb
         '
@@ -306,8 +305,7 @@ Partial Class GM模组发布器
         '
         'GM模组发布器
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(595, 428)
         Me.Controls.Add(Me.Pn)
         Me.Controls.Add(Me.TxtGMod)

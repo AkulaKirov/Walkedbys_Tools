@@ -85,8 +85,7 @@ Partial Class 随机生成器
         '
         '随机生成器
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(626, 358)
         Me.Controls.Add(Me.ListObj)
         Me.Controls.Add(Me.TxtLen)

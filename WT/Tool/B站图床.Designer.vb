@@ -95,8 +95,7 @@ Partial Class B站图床
         'B站图床
         '
         Me.AllowDrop = True
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(626, 350)
         Me.Controls.Add(Me.CheckAuto)
         Me.Controls.Add(Me.ButRetry)
