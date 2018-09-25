@@ -245,11 +245,11 @@ Module 通用
                                              最后窗体 = 启动器
                                          End Sub
                 AddHandler .SizeChanged, AddressOf 最小化隐藏
-                AddHandler .KeyUp, Sub(sender As Object, e As KeyEventArgs)
-                                       If e.Control AndAlso e.KeyCode = Keys.W Then
-                                           .Close()
-                                       End If
-                                   End Sub
+                AddHandler .KeyDown, Sub(sender As Object, e As KeyEventArgs)
+                                         If e.Control AndAlso e.KeyCode = Keys.W Then
+                                             .Close()
+                                         End If
+                                     End Sub
             End With
         End Sub
 

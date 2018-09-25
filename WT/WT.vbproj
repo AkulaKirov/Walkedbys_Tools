@@ -149,12 +149,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Tool\B站AV变化.Designer.vb">
-      <DependentUpon>B站AV变化.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Tool\B站AV变化.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Tool\B站催更器.Designer.vb">
       <DependentUpon>B站催更器.vb</DependentUpon>
     </Compile>
@@ -313,9 +307,6 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tool\B站AV变化.resx">
-      <DependentUpon>B站AV变化.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Tool\B站催更器.resx">
       <DependentUpon>B站催更器.vb</DependentUpon>
     </EmbeddedResource>
@@ -393,7 +384,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -445,7 +435,9 @@
     <None Include="Res\xp未响应2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="updater.xml" />
+    <Content Include="updater.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

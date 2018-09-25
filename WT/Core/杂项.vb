@@ -1,6 +1,9 @@
 ﻿
 Module 杂项
 
+    ''' <summary>
+    ''' 当前windows用户的用户名
+    ''' </summary>
     Public ReadOnly Property 当前用户名 As String
         Get
             Return 去左(Regex.Match(My.User.Name, "\\.*").ToString(), 1)
@@ -10,7 +13,7 @@ Module 杂项
     ''' <summary>
     ''' 把输入的东西进行 debug.print
     ''' </summary>
-    Public Sub DP(ParamArray 输入() As Object)
+    Public Sub Dp(ParamArray 输入() As Object)
         Dim s As String = ""
         For Each i As Object In 输入
             If IsNothing(i) Then
@@ -293,7 +296,7 @@ Module 杂项
     End Function
 
     ''' <summary>
-    ''' 获得或者设置剪贴板的信息，只包括常用信息
+    ''' 获得或者设置剪贴板的信息
     ''' </summary>
     Public Class 剪贴板
 
@@ -320,5 +323,19 @@ Module 杂项
         End Sub
 
     End Class
+
+    ''' <summary>
+    ''' 获得系统屏幕显示的DPI
+    ''' </summary>
+    Public Function 系统DPI() As Single
+        Dim n As Integer = Registry.GetValue("HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics", "AppliedDPI", 100)
+        For i As Integer = 50 To 600 Step 25
+            If Abs(i - n) < 12.5 Then
+                n = i
+                Exit For
+            End If
+        Next
+        Return n / 100
+    End Function
 
 End Module

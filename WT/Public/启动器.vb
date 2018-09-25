@@ -12,15 +12,18 @@ Public Class 启动器
         Text = "走過去的工具箱 测试版 v" + 版本.ToString
         Nico.Icon = 图标
         Directory.CreateDirectory(缓存目录)
-        Dim t As 工具, g As String
+        Dim t As 工具, g As String, i As Integer
         If 在列表(启动参数, "-tryfix") Then
             新工具(" 内部信息修改器", 信息修改器, "TryFix", "程序设置实际保存信息的修改器")
         End If
-        GBpush.Height = 240
-        GBupdate.Top = 4000
+        i = 10 * 系统DPI()
+        GBpush.Height = GBabout.Top - i - GBpush.Top
+        GBupdate.Top = -1000
+        ListTools.Height = GBallTools.Height - ListTools.Top - i
+        ButOpenTool.Top = GBallTools.Height - ButOpenTool.Height - i
+        TxtToolInfo.Height = ButOpenTool.Top - 10 - TxtToolInfo.Top
         If 程序运行中("VBCSCompiler") AndAlso 程序运行中("devenv") Then 新工具("临时工具", 临时工具, "Whatever", "临时用的工具，一般是拿来测试的，如果你运行了 Visual Studio 的话，我就会显示在这里。")
         新工具(" 工具箱设置", 程序设置, "AllSettings", "关于本工具箱的一些设置")
-        新工具("文件夹创建器", 文件夹创建器, "MKDIR", "输入一个路径，就能新建好你要的文件夹")
         新工具("B站图床", B站图床, "BilibiliPic", "把20MB以下的图片无损放到B站服务器还行")
         新工具("日子提醒器", 日子提醒, "DayReminder", "提醒生日或者重要的啥日子", True)
         新工具("监视式VMT生成器", VMT生成器, "VMTG", "给一个贴图文件夹监视式地批量生成 VMT 文件")
@@ -33,7 +36,6 @@ Public Class 启动器
         新工具("模型贴图打包器", 起源模型贴图打包器, "SourceModelPacker", "给 Source 的模型文件批量打包贴图文件")
         新工具("RunSringLUA制作器", RunStringLUA制作器, "RunStringLua", "算是给 GMod LUA 加密？")
         新工具("B站催更器", B站催更器, "BilibiliPushYou", "会提醒你B站多久没更视频的一个工具", 设置.读取真假("CheckBilibiliAtStart"))
-        新工具("B站实时最大AV", B站AV变化, "BilibiliAV", "直观地显示一下B站各分区的最大AV号的实时情况")
         新工具("随机生成器", 随机生成器, "RandomG", "随机生成中英文句子或者数字等")
         新工具("网络检测", 网络检测, "NetTest", "如果你觉得你的网络不正常可以一直看着这个")
         新工具("字符画图片制作", 字符画图片制作, "CharPic", "用字符画表示图片")
@@ -63,8 +65,8 @@ Public Class 启动器
                     If o.Length > 50 AndAlso 全部包含(o, "<version>", "<note>这是一个检查更新版本用的 XML 文件。</note>", "</info>", "<v012>") Then
                         Dim nv As New Version(提取(o, "<version>", "</version>"))
                         If nv > My.Application.Info.Version Then
-                            GBupdate.Top = 170
-                            GBpush.Height = 150
+                            GBupdate.Top = GBabout.Top - 10 - GBupdate.Height
+                            GBpush.Height = GBupdate.Top - 10 - GBpush.Top
                             GBupdate.Text = "检测到新版本：v" + nv.ToString
                             o = o.Replace("- ", vbCrLf + "●")
                             TxtUpdate.Text = "更新内容：" + 提取(o, "<info>", "</info>")

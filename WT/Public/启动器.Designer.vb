@@ -98,7 +98,7 @@ Partial Class 启动器
         Me.ListTools.Location = New System.Drawing.Point(11, 23)
         Me.ListTools.Name = "ListTools"
         Me.ListTools.ScrollAlwaysVisible = True
-        Me.ListTools.Size = New System.Drawing.Size(190, 327)
+        Me.ListTools.Size = New System.Drawing.Size(190, 308)
         Me.ListTools.Sorted = True
         Me.ListTools.TabIndex = 0
         Me.ListTools.TabStop = False
@@ -168,6 +168,7 @@ Partial Class 启动器
         'NicoMenu
         '
         Me.NicoMenu.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.NicoMenu.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.NicoMenu.Name = "NicoMenu"
         Me.NicoMenu.ShowItemToolTips = False
         Me.NicoMenu.Size = New System.Drawing.Size(61, 4)
@@ -217,6 +218,7 @@ Partial Class 启动器
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.AutoSize = True
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(754, 396)
         Me.Controls.Add(Me.GBupdate)
