@@ -438,6 +438,7 @@
     <Content Include="updater.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="updater2.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
