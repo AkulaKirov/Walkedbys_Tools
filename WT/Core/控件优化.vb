@@ -155,19 +155,28 @@ Module 控件优化
                 b = False
             End If
         End If
+        If s.StartsWith(My.Application.Info.AssemblyName.ToLower + ".") Then
+        Else
+            f.Left *= d
+            f.Top *= d
+        End If
         If b Then
             f.Height *= d
             f.Width *= d
-        End If
-        If Not s.StartsWith(My.Application.Info.AssemblyName.ToLower + ".") Then
-            f.Left *= d
-            f.Top *= d
         End If
         If f.HasChildren Then
             For Each n As Control In f.Controls
                 控件DPI修正(n)
             Next
         End If
+    End Sub
+
+    Sub CtrlW关闭(s As Form)
+        AddHandler s.KeyDown, Sub(sender As Object, e As KeyEventArgs)
+                                  If e.Control AndAlso e.KeyCode = Keys.W Then
+                                      s.Close()
+                                  End If
+                              End Sub
     End Sub
 
 End Module

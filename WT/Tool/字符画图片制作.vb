@@ -5,12 +5,12 @@
     End Sub
 
     Private Sub ButGetPic_Click(sender As Object, e As EventArgs) Handles ButGetPic.Click
-        If IsNothing(Forms.Clipboard.GetImage) Then
+        Dim bc As Image = 剪贴板.图片
+        If IsNothing(bc) Then
             TxtOut.Text = "no image!"
             Exit Sub
         End If
         If ListStyle.SelectedIndex < 0 Then ListStyle.SelectedIndex = 0
-        Dim bc As Image = Forms.Clipboard.GetImage
         Dim n As Integer = TxtHeight.Value
         Dim b As New Bitmap(bc, bc.Width * (n / bc.Height) * 1.8, n)
         Dim l As String = ListStyle.Text

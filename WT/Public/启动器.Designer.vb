@@ -99,7 +99,7 @@ Partial Class 启动器
         Me.ListTools.Location = New System.Drawing.Point(11, 23)
         Me.ListTools.Name = "ListTools"
         Me.ListTools.ScrollAlwaysVisible = True
-        Me.ListTools.Size = New System.Drawing.Size(190, 308)
+        Me.ListTools.Size = New System.Drawing.Size(190, 327)
         Me.ListTools.Sorted = True
         Me.ListTools.TabIndex = 0
         Me.ListTools.TabStop = False

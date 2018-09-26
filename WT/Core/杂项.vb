@@ -270,7 +270,7 @@ Module 杂项
     ''' 是否有这个名字的程序运行，名字不需要后缀
     ''' </summary>
     Public Function 程序运行中(程序名 As String) As Boolean
-        Dim ps() As Process = Process.GetProcessesByName(程序名)
+        Dim ps() As Process = Process.GetProcessesByName(程序名.ToLower)
         Return (ps.Count > 0)
     End Function
 
@@ -314,7 +314,11 @@ Module 杂项
                 Forms.Clipboard.SetImage(v)
             End Set
             Get
-                Return Forms.Clipboard.GetImage
+                If Forms.Clipboard.ContainsImage Then
+                    Return Forms.Clipboard.GetImage
+                Else
+                    Return Nothing
+                End If
             End Get
         End Property
 

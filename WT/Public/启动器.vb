@@ -9,14 +9,18 @@ Public Class 启动器
     Private Sub 启动器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         随机.刷新()
         Icon = 图标
-        控件DPI修正(Me)
         Text = "走過去的工具箱 测试版 v" + 版本.ToString
         Nico.Icon = 图标
+        控件DPI修正(Me)
         Directory.CreateDirectory(缓存目录)
         Dim t As 工具, g As String, i As Integer
         If 在列表(启动参数, "-tryfix") Then
             新工具(" 内部信息修改器", 信息修改器, "TryFix", "程序设置实际保存信息的修改器")
         End If
+        CtrlW关闭(Me)
+        i = 10 * 系统DPI()
+        GBpush.Height = GBabout.Top - i - GBpush.Top
+        GBupdate.Top = -1000
         If 程序运行中("VBCSCompiler") AndAlso 程序运行中("devenv") Then 新工具("临时工具", 临时工具, "Whatever", "临时用的工具，一般是拿来测试的，如果你运行了 Visual Studio 的话，我就会显示在这里。")
         新工具(" 工具箱设置", 程序设置, "AllSettings", "关于本工具箱的一些设置")
         新工具("B站图床", B站图床, "BilibiliPic", "把20MB以下的图片无损放到B站服务器还行")
@@ -177,9 +181,9 @@ Public Class 启动器
         With m
             .Top = LabAbout.Bottom + 5
             If 关于链接.Count = 0 Then
-                .Left = 6
+                .Left = 6 * 系统DPI()
             Else
-                .Left = 关于链接.Last.Right + 6
+                .Left = 关于链接.Last.Right + 6 * 系统DPI()
             End If
             .Width = 100
             .Height = 100
@@ -195,7 +199,7 @@ Public Class 启动器
 
     Private Sub GBabout_Paint(sender As Object, e As PaintEventArgs) Handles GBabout.Paint
         Dim i As Image = My.Resources.LogoPng
-        Dim b As Single = 0.4
+        Dim b As Single = 0.4 * 系统DPI()
         With GBabout
             e.Graphics.DrawImage(i, .Width - i.Width * b, .Height - i.Height * b, i.Width * b, i.Height * b)
         End With
