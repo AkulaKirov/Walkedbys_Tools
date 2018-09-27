@@ -65,7 +65,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Res\ico.ico</ApplicationIcon>
+    <ApplicationIcon>Res\icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
@@ -395,7 +395,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="NEW.md" />
-    <None Include="Res\ico.ico" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="IWshRuntimeLibrary">
@@ -427,6 +426,7 @@
     <None Include="Res\xp未响应2.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Res\icon.ico" />
     <Content Include="updater.xml">
       <SubType>Designer</SubType>
     </Content>
