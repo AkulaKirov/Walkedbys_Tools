@@ -304,6 +304,15 @@ Module 字符串处理
     End Function
 
     ''' <summary>
+    ''' 简易提取json的内容
+    ''' </summary>
+    Public Function 提取JSON(json As String, 名字 As String) As String
+        If json.Length < 4 Then Return ""
+        json = Regex.Match(json, 引(名字) + ":.*?""([\s\S]*?)""").ToString
+        Return 去右(提取(提取(json, 名字 + 引号), 引号), 1)
+    End Function
+
+    ''' <summary>
     ''' 可以把 char() 转成一个 string 
     ''' </summary>
     ''' <returns></returns>

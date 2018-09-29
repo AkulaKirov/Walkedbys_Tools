@@ -27,7 +27,7 @@ Partial Class 临时工具
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(157, 81)
+        Me.Button1.Location = New System.Drawing.Point(430, 175)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(85, 64)
         Me.Button1.TabIndex = 0

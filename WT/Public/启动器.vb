@@ -114,7 +114,8 @@ Public Class 启动器
 "sv_cheats 1",
 "v0.9以下的版本碰见v0.10就会识别成v0.1，然后一直：已是最新版本。",
 "戈登~戈登~戈登登~",
-"我的steam 50级了，不知道什么时候才100级。"
+"我的steam 50级了，不知道什么时候才100级。",
+"刷Q币吗？100元10个！刷不到三倍包赔！"
 ).ToString
         Refresh()
         AutoSave.Enabled = True
