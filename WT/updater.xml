@@ -2,13 +2,11 @@
   <note>这是一个检查更新版本用的 XML 文件。</note>
   <ver>1.1</ver>
   <v012>
-    <version>0.13</version>
+    <version>0.14</version>
     <info>
-      - 针对DPI变化做了修复
-      - 移除工具：B站实时最大AV
-      - 移除工具：文件夹创建器
-      - 现在支持 ctrl+w 关闭窗口了
-      - 修复了一些 BUG
+- 换了新的程序图标！
+- 修复了一些 BUG
+- 最近没做啥新功能（
     </info>
   </v012>
 </root>
