@@ -178,7 +178,9 @@ Partial Class VMT生成器
         Me.ListParms.Font = New System.Drawing.Font("微软雅黑", 8.0!)
         Me.ListParms.FormattingEnabled = True
         Me.ListParms.ItemHeight = 16
-        Me.ListParms.Items.AddRange(New Object() {"VertexlitGeneric \n{\n\n}", "UnlitGeneric \n{\n\n}", "LightmappedGeneric \n{\n\n}", "$basetexture ""%文件名%""", "$bumpmap ""%文件名%_normal""", "$halflambert 1", "$alphatest 1", "$nocull 1", "$translucent 1", "$model 1", "$envmap env_cubemap", "$nodecal 1", "$nofog 1", "$surfaceprop brick", "$surfaceprop metal", "$surfaceprop wood", "$surfaceprop grass", "$surfaceprop flesh", "$surfaceprop rubber"})
+        Me.ListParms.Items.AddRange(New Object() {"VertexlitGeneric \n{\n\n}", "UnlitGeneric \n{\n\n}", "LightmappedGeneric \n{\n\n}", "$basetexture ""%文件名%""", "$bumpmap ""%文件名%_normal""", "$bumpmap ""%文件名%_n""", "$decal  1", "$decalscale  0.25", "$halflambert 1", "$alphatest 1", "$nocull 1", "$translucent 1", "$model 1", "$envmap env_cubemap", "$nodecal 1", "$nofog 1", "$surfaceprop brick", "$surfaceprop metal", "$surfaceprop wood", "$surfaceprop grass", "$surfaceprop flesh", "$surfaceprop rubber", "Proxies\n {\n AnimatedTexture\n {\n animatedtexturevar $basetexture\n animatedtex" &
+                "tureframenumvar $frame\n animatedtextureframerate 25\n }\n }", "$phong 1\n$phongboost 1\n$PhongFresnelRanges ""[0 0.5 1]""\n$PhongExponent 5\n$ligh" &
+                "twarptexture ""%路径%\shader""", "$rimlight 1\n$rimlightexponent 2\n$rimlightboost .2"})
         Me.ListParms.Location = New System.Drawing.Point(282, 24)
         Me.ListParms.Name = "ListParms"
         Me.ListParms.Size = New System.Drawing.Size(199, 212)

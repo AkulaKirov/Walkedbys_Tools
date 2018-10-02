@@ -65,7 +65,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Res\icon.ico</ApplicationIcon>
+    <ApplicationIcon>Res\ico.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
@@ -408,12 +408,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Res\logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Res\bigico.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Res\win7无响应.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -426,7 +420,8 @@
     <None Include="Res\xp未响应2.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Res\icon.ico" />
+    <None Include="Res\head.png" />
+    <None Include="Res\ico.ico" />
     <Content Include="updater.xml">
       <SubType>Designer</SubType>
     </Content>

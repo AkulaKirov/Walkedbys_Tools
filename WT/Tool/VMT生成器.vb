@@ -79,11 +79,13 @@ Public Class VMT生成器
         For Each i In f
             Dim m As String = i.ToLower.Replace(".vtf", ".vmt")
             If Not 文件存在(m) Then
-                Dim s As String = TxtVMT.Text, t As String = 正则去除(m, ".*materials\\", "\.vmt")
+                Dim s As String = TxtVMT.Text, t As String = 正则去除(m, ".*materials\\", "\.vmt"), t2 As String = 去右(去除(t, 文件名(t)), 1)
+                Dp(t2)
                 If t.Length > 0 Then
                     Dim sw As String = TxtSkip.Text
                     If (sw.Length > 0 AndAlso Not Regex.IsMatch(t, sw)) OrElse (sw.Length < 1) Then
                         s = s.Replace("%文件名%", t)
+                        s = s.Replace("%路径%", t2)
                         写文件(m, s)
                         TxtLOG.Text += vbCrLf + "已生成：" + t
                     End If

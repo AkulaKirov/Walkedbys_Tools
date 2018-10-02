@@ -199,7 +199,7 @@ Public Class 启动器
     End Sub
 
     Private Sub GBabout_Paint(sender As Object, e As PaintEventArgs) Handles GBabout.Paint
-        Dim i As Image = My.Resources.LogoPng
+        Dim i As Image = My.Resources.head
         Dim b As Single = 0.4 * 系统DPI()
         With GBabout
             e.Graphics.DrawImage(i, .Width - i.Width * b, .Height - i.Height * b, i.Width * b, i.Height * b)
