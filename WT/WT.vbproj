@@ -65,7 +65,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Res\ico.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\ico.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
@@ -408,20 +408,20 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Res\win7无响应.jpg" />
+    <None Include="Resources\win7无响应.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Res\win10未响应.jpg" />
+    <None Include="Resources\win10未响应.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Res\xp未响应.jpg" />
+    <None Include="Resources\xp未响应.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Res\xp未响应2.png" />
+    <None Include="Resources\xp未响应2.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Res\head.png" />
-    <None Include="Res\ico.ico" />
+    <None Include="Resources\head.png" />
+    <None Include="Resources\ico.ico" />
     <Content Include="updater.xml">
       <SubType>Designer</SubType>
     </Content>
