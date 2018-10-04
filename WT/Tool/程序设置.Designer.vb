@@ -36,7 +36,7 @@ Partial Class 程序设置
         Me.Tabs.Location = New System.Drawing.Point(0, 0)
         Me.Tabs.Name = "Tabs"
         Me.Tabs.SelectedIndex = 0
-        Me.Tabs.Size = New System.Drawing.Size(494, 276)
+        Me.Tabs.Size = New System.Drawing.Size(689, 277)
         Me.Tabs.TabIndex = 0
         Me.Tabs.TabStop = False
         '
@@ -46,7 +46,7 @@ Partial Class 程序设置
         Me.Tab1.Location = New System.Drawing.Point(4, 28)
         Me.Tab1.Name = "Tab1"
         Me.Tab1.Padding = New System.Windows.Forms.Padding(3)
-        Me.Tab1.Size = New System.Drawing.Size(486, 244)
+        Me.Tab1.Size = New System.Drawing.Size(681, 245)
         Me.Tab1.TabIndex = 0
         Me.Tab1.Text = "杂项"
         Me.Tab1.UseVisualStyleBackColor = True
@@ -64,7 +64,7 @@ Partial Class 程序设置
         '程序设置
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(494, 276)
+        Me.ClientSize = New System.Drawing.Size(689, 277)
         Me.Controls.Add(Me.Tabs)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
