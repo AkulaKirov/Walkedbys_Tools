@@ -49,7 +49,7 @@ Public Class 启动器
         新增关于链接("博客", "https://walkedby.com/wt")
         新增关于链接("下载最新版", "https://github.com/gordonwalkedby/Walkedbys_Tools/releases")
         新增关于链接("请我喝好的", "https://walkedby.com/donateme/")
-        新增关于链接("反馈", "https://steamcn.com/t422593-1-1")
+        新增关于链接("反馈", "https://github.com/gordonwalkedby/Walkedbys_Tools/issues")
         For Each g In 分割(设置.元素("HistoryTool"), vbCrLf)
             t = 名字工具(g)
             If Not IsNothing(t) Then 最后使用的工具.Add(t)
@@ -117,7 +117,8 @@ Public Class 启动器
 "我的steam 50级了，不知道什么时候才100级。",
 "刷Q币吗？100元10个！刷不到三倍包赔！",
 "上千的手机有什么好买的？给我400元我给你买个iPhone5用用。",
-"av87519"
+"av87519",
+"好的评价都是主观的，但不代表我的观点你就必须要认同，你完全可以保留自己的观点。——黑镖客梦回"
 ).ToString
         Refresh()
         AutoSave.Enabled = True

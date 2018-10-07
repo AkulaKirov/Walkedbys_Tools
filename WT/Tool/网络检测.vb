@@ -16,6 +16,7 @@ Public Class 网络检测
         新测试("Twitter", "https://twitter.com/")
         新测试("Wikipedia", "https://en.wikipedia.org/wiki/Main_Page")
         新测试("Cloudflare", "https://www.cloudflare.com/")
+        ButStart.BringToFront()
     End Sub
 
     Sub 新测试(名字 As String, url As String, Optional 长度 As Integer = 3000, Optional 超过 As Boolean = True)
@@ -50,9 +51,9 @@ Public Class 网络检测
     Private Sub TimerOut_Tick(sender As Object, e As EventArgs) Handles TimerOut.Tick
         If Visible = False Then Exit Sub
         Dim g As String = "    ", g2 As String = g + g + g
-        Dim i As 测试, out As String = "网站" + g + "连续成功次数" + g + "连续超时次数" + g + "用时(ms)" + vbCrLf
+        Dim i As 测试, out As String = "网站" + g + "连续成功次数" + g + "连续超时次数" + g + "用时" + vbCrLf
         For Each i In 测试列表
-            out += i.Name + g2 + i.连续成功次数.ToString + g2 + g + i.连续超时次数.ToString + g2 + g2 + i.用时.ToString
+            out += i.Name + g2 + i.连续成功次数.ToString + g2 + g + i.连续超时次数.ToString + g2 + g2 + i.用时信息
             out += vbCrLf
         Next
         LabOut.Text = out
@@ -70,6 +71,7 @@ Class 测试
     Public Property 要求超过 As Boolean
     Public Property 要求长度 As Integer
     Public Property 用时 As Integer
+    Public Property 用时信息 As String
 
     Public Sub New(名字 As String, url As String, Optional 长度 As Integer = 3000, Optional 超过 As Boolean = True)
         Name = 名字
@@ -86,11 +88,12 @@ Class 测试
                             Dim sta As Double
                             Do While True
                                 Dim h As New 简易HTTP(URL)
-                                h.超时 = 4
+                                h.超时 = 5
                                 h.Referer = URL
                                 h.Host = (New Uri(URL)).Host
                                 sta = DateAndTime.Timer
                                 Dim s As String = h.获得回应(False)
+                                用时信息 = s
                                 Dim i As Integer = s.Length
                                 用时 = (DateAndTime.Timer - sta) * 1000
                                 If 要求超过 Then
@@ -114,6 +117,7 @@ Class 测试
         If 成功 Then
             连续成功次数 += 1
             连续超时次数 = 0
+            用时信息 = 用时.ToString + "ms"
         Else
             连续超时次数 += 1
             用时 = -1
