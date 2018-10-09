@@ -23,6 +23,7 @@ Public Class 日子提醒
         ListDates.Items.Clear()
         文字转列表(ListDates.Items, 设置.元素("days"))
         提醒好日子()
+        CheckPop.Checked = 设置.读取真假("RemindTimePop")
     End Sub
 
     Private Sub ButRM_Click(sender As Object, e As EventArgs) Handles ButRM.Click
@@ -61,6 +62,7 @@ Public Class 日子提醒
     End Function
 
     Public Sub 提醒好日子()
+        Tag = ""
         If ListDates.Items.Count < 1 Then Exit Sub
         Dim ls As New ListBox, i As String, g As Integer, f As String
         For Each i In ListDates.Items
@@ -76,7 +78,6 @@ Public Class 日子提醒
                 ls.Items.Add(凑零(g) & " " & f)
             End If
         Next
-        Tag = ""
         For Each i In ls.Items
             g = Val(左(i, 2))
             f = 去左(i, 3)
@@ -114,7 +115,7 @@ Public Class 日子提醒
         非空字符串(Tag)
         If Tag.ToString.Length > 0 Then Tag += vbCrLf
         Tag += s
-        If 只做一次(1) Then 消息(s)
+        If 设置.读取真假("RemindTimePop") = False AndAlso 只做一次(1) Then 消息(s)
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -123,6 +124,10 @@ Public Class 日子提醒
             Timer1.Tag = Today.Day.ToString
             提醒好日子()
         End If
+    End Sub
+
+    Private Sub CheckPop_CheckedChanged(sender As Object, e As EventArgs) Handles CheckPop.CheckedChanged
+        设置.元素("RemindTimePop") = CheckPop.Checked.ToString
     End Sub
 
 End Class

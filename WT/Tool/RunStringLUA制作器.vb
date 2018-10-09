@@ -71,7 +71,7 @@ Public Class RunStringLUA制作器
     End Sub
 
     Private Sub ButCopy_Click(sender As Object, e As EventArgs) Handles ButCopy.Click
-        Forms.Clipboard.SetText(TxtLUA.Text)
+        剪贴板.文本 = TxtLUA.Text
     End Sub
 
     Private Sub RunStringLUA制作器_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing

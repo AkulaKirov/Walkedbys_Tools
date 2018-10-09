@@ -46,4 +46,8 @@ Public Class 信息修改器
         ButRefresh.PerformClick()
     End Sub
 
+    Private Sub ButExit_Click(sender As Object, e As EventArgs) Handles ButExit.Click
+        End
+    End Sub
+
 End Class

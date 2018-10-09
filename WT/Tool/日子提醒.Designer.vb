@@ -35,6 +35,7 @@ Partial Class 日子提醒
         Me.CBremind = New System.Windows.Forms.ComboBox()
         Me.CheckCN = New System.Windows.Forms.CheckBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.CheckPop = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'ListDates
@@ -156,10 +157,22 @@ Partial Class 日子提醒
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 10000
         '
+        'CheckPop
+        '
+        Me.CheckPop.AutoSize = True
+        Me.CheckPop.Location = New System.Drawing.Point(12, 345)
+        Me.CheckPop.Name = "CheckPop"
+        Me.CheckPop.Size = New System.Drawing.Size(184, 23)
+        Me.CheckPop.TabIndex = 11
+        Me.CheckPop.TabStop = False
+        Me.CheckPop.Text = "软件开启时不弹出气泡提醒"
+        Me.CheckPop.UseVisualStyleBackColor = True
+        '
         '日子提醒
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(509, 348)
+        Me.ClientSize = New System.Drawing.Size(509, 378)
+        Me.Controls.Add(Me.CheckPop)
         Me.Controls.Add(Me.CheckCN)
         Me.Controls.Add(Me.CBremind)
         Me.Controls.Add(Me.LabRange)
@@ -195,4 +208,5 @@ Partial Class 日子提醒
     Friend WithEvents CBremind As ComboBox
     Friend WithEvents CheckCN As CheckBox
     Friend WithEvents Timer1 As Forms.Timer
+    Friend WithEvents CheckPop As CheckBox
 End Class

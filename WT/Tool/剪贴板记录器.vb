@@ -23,7 +23,7 @@ Public Class 剪贴板记录器
         If 后台定时器启用(ListOption) Then
             Dim s As String = TxtText.Text, m As String
             If s.Length > 0 AndAlso 文件可用(s) Then
-                m = Forms.Clipboard.GetText
+                m = 剪贴板.文本
                 If Not IsNothing(m) Then
                     If m <> LastTxt Then
                         File.AppendAllText(s, vbCrLf + m)
@@ -33,7 +33,7 @@ Public Class 剪贴板记录器
             End If
             s = TxtPic.Text
             If s.Length > 0 AndAlso 文件夹存在(s) Then
-                Dim i As Image = Forms.Clipboard.GetImage
+                Dim i As Image = 剪贴板.图片
                 If Not IsNothing(i) Then
                     If Not 图片一样(LastPic, i, True) Then
                         i.Save(s + UNIX时间(Now).ToString + ".png")
@@ -50,7 +50,7 @@ Public Class 剪贴板记录器
         If i.Equals(j) Then Return True
         Dim a As Integer = i.Width - 1, b As Integer = i.Height - 1
         If 快速 Then
-            For x As Integer = 0 To 5
+            For x As Integer = 0 To 8
                 a = 随机.整数(0, a)
                 b = 随机.整数(0, b)
                 If i.GetPixel(a, b) <> j.GetPixel(a, b) Then

@@ -27,6 +27,7 @@ Partial Class 信息修改器
         Me.ButBack = New System.Windows.Forms.Button()
         Me.ButSave = New System.Windows.Forms.Button()
         Me.ButRefresh = New System.Windows.Forms.Button()
+        Me.ButExit = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'ListT
@@ -81,10 +82,21 @@ Partial Class 信息修改器
         Me.ButRefresh.Text = "刷新"
         Me.ButRefresh.UseVisualStyleBackColor = True
         '
+        'ButExit
+        '
+        Me.ButExit.Location = New System.Drawing.Point(707, 332)
+        Me.ButExit.Name = "ButExit"
+        Me.ButExit.Size = New System.Drawing.Size(120, 33)
+        Me.ButExit.TabIndex = 5
+        Me.ButExit.TabStop = False
+        Me.ButExit.Text = "强退程序"
+        Me.ButExit.UseVisualStyleBackColor = True
+        '
         '信息修改器
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(839, 377)
+        Me.Controls.Add(Me.ButExit)
         Me.Controls.Add(Me.ButRefresh)
         Me.Controls.Add(Me.ButSave)
         Me.Controls.Add(Me.ButBack)
@@ -107,4 +119,5 @@ Partial Class 信息修改器
     Friend WithEvents ButBack As Button
     Friend WithEvents ButSave As Button
     Friend WithEvents ButRefresh As Button
+    Friend WithEvents ButExit As Button
 End Class

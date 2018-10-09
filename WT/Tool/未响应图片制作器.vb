@@ -56,7 +56,7 @@ Public Class 未响应图片制作器
     End Sub
 
     Private Sub ButOut_Click(sender As Object, e As EventArgs) Handles ButOut.Click
-        If Not IsNothing(输出) Then Forms.Clipboard.SetImage(输出)
+        If Not IsNothing(输出) Then 剪贴板.图片 = 输出
     End Sub
 
     Private Sub ListStyle_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListStyle.SelectedIndexChanged, TxtName.TextChanged
