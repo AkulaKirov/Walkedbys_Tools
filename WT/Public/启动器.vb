@@ -3,8 +3,7 @@ Public Class 启动器
 
     Dim 关于链接 As New List(Of LinkLabel)
     Dim 彩蛋码 As String
-    Dim 已退出 As Boolean = False
-    Dim 原时长 As Long
+    Dim 时长 As Long
 
     Private Sub 启动器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         随机.刷新()
@@ -55,8 +54,9 @@ Public Class 启动器
             If Not IsNothing(t) Then 最后使用的工具.Add(t)
         Next
         GBallTools.Text += 括((ListTools.Items.Count - 1).ToString)
-        原时长 = 设置.读取数("OpenTime")
+        时长 = 设置.读取数("OpenTime")
         TimerC_Tick()
+        TimerC.Enabled = True
         If Not 设置.读取真假("NoUpdateAtMain") Then
             新线程(Sub()
                     Dim h As New 简易HTTP("https://raw.githubusercontent.com/gordonwalkedby/Walkedbys_Tools/master/WT/updater.xml")
@@ -83,7 +83,7 @@ Public Class 启动器
 "8848 钛金显卡~",
 "真高兴我的计算机几乎都不是学校教的。",
 "风水轮流转。",
-"要试试直接对着我输入 " + 随机.多选一("steam", "stcn", "2233") + " 吗？",
+"要试试直接对着我输入 " + 随机.多选一("steam", "stcn", "2233", "cat") + " 吗？",
 "那太不幸了。",
 "正义之子面对有悖常理的世界，会让世界天翻地覆。",
 "我不喜欢吵架或者辱骂，我也不支持断绝交流的大门。",
@@ -143,8 +143,7 @@ Public Class 启动器
     End Sub
 
     Public Sub 退出()
-        设置.元素("OpenTime") = 原时长 + Abs(DateDiff(DateInterval.Second, Now, 开始时间))
-        设置.元素("HistoryTool") = 列表转文字(最后使用的工具)
+        AutoSave_Tick(Nothing, Nothing)
         Nico.Visible = False
         For Each t As Thread In 多线程
             中断线程(t)
@@ -154,7 +153,6 @@ Public Class 启动器
         Next
         设置.保存到本地()
         删除(缓存目录)
-        已退出 = True
         End
     End Sub
 
@@ -301,18 +299,20 @@ Public Class 启动器
             Process.Start("https://steamcn.com/suid-581001")
         ElseIf 彩蛋码.EndsWith("2233") AndAlso 只做一次(2354) Then
             Process.Start("https://wx4.sinaimg.cn/large/aa1dc371gy1fvaj53qa1kj22rb1uo4qs.jpg")
+        ElseIf 彩蛋码.EndsWith("cat") AndAlso 只做一次(2358) Then
+            Process.Start("https://bongo.cat/")
         End If
     End Sub
 
     Private Sub AutoSave_Tick(sender As Object, e As EventArgs) Handles AutoSave.Tick
+        设置.元素("OpenTime") = 时长
+        设置.元素("HistoryTool") = 列表转文字(最后使用的工具)
         设置.保存到本地()
     End Sub
 
     Private Sub TimerC_Tick() Handles TimerC.Tick
-        If 已退出 Then Exit Sub
-        TimerC.Enabled = True
-        Dim u As Long = 原时长 + Abs(DateDiff(DateInterval.Second, Now, 开始时间))
-        Dim s As String = "你已用本软件：" + 时间文字(u) + " " + 括(u.ToString + "s")
+        时长 += 1
+        Dim s As String = "你已用本软件：" + 时间文字(时长) + " " + 括(时长.ToString + "s")
         LabTime.Text = s
         s = ""
         For Each t As 工具 In 工具列表

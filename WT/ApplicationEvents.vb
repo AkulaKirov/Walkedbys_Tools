@@ -36,7 +36,6 @@ Namespace My
                 If n = MsgBoxResult.Yes Then 程序设置.ButCreateSC_Click()
             End If
             线程越界()
-            开始时间 = Now
         End Sub
 
         Private Sub MyApplication_UnhandledException(sender As Object, e As UnhandledExceptionEventArgs) Handles Me.UnhandledException

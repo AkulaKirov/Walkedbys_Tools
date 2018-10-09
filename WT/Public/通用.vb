@@ -11,7 +11,6 @@ Module 通用
     Friend 启动参数 As New List(Of String)
     Friend 多线程 As New List(Of Thread)
     Private 只做一次列表 As New List(Of Integer)
-    Friend 开始时间 As Date
 
     ''' <summary>
     ''' 开启一个新的线程并自动运行，并且会在程序结束的时候自动结束进程

@@ -189,7 +189,7 @@ Partial Class 启动器
         '
         'AutoSave
         '
-        Me.AutoSave.Interval = 20000
+        Me.AutoSave.Interval = 30000
         '
         'GBupdate
         '
