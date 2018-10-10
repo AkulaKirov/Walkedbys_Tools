@@ -32,7 +32,7 @@ Public Class GM模组发布器
         GBjson.Visible = b
     End Sub
 
-    Private Sub Txtname_TextChanged(sender As Object, e As EventArgs) Handles Txtname.TextChanged, CBtype.SelectedIndexChanged, CBtags.MouseUp, TxtJPGfile.TextChanged, TxtPath.TextChanged, MyBase.Load
+    Private Sub Txtname_TextChanged(sender As Object, e As EventArgs) Handles Txtname.TextChanged, CBtype.SelectedIndexChanged, CBtags.MouseUp, TxtJPGfile.TextChanged, TxtPath.TextChanged, MyBase.Load, ButGetList.Click
         Dim nam As Boolean = (Trim(Txtname.Text).Length > 0 AndAlso CBtype.Text.Length > 0 AndAlso CBtags.CheckedItems.Count = 2 AndAlso GBjson.Visible)
         Dim s As String = TxtJPGfile.Text
         Dim jp As Boolean = (s.Length > 5 AndAlso 文件可用(s))
@@ -64,7 +64,6 @@ Public Class GM模组发布器
         设置.元素("GMAtime") = 上次更新日期.ToString
         设置.元素("GMAw") = ListAddons.SelectedIndex
         删除(tgma, log)
-
     End Sub
 
     Private Sub TxtGMod_TextChanged(sender As Object, e As EventArgs) Handles TxtGMod.TextChanged
