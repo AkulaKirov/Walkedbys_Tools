@@ -32,7 +32,7 @@ Public Class GM模组发布器
         GBjson.Visible = b
     End Sub
 
-    Private Sub Txtname_TextChanged(sender As Object, e As EventArgs) Handles Txtname.TextChanged, CBtype.SelectedIndexChanged, CBtags.MouseUp, TxtJPGfile.TextChanged, TxtPath.TextChanged, MyBase.Load, ButGetList.Click
+    Private Sub Txtname_TextChanged(sender As Object, e As EventArgs) Handles Txtname.TextChanged, CBtype.SelectedIndexChanged, CBtags.MouseUp, TxtJPGfile.TextChanged, TxtPath.TextChanged, MyBase.Load
         Dim nam As Boolean = (Trim(Txtname.Text).Length > 0 AndAlso CBtype.Text.Length > 0 AndAlso CBtags.CheckedItems.Count = 2 AndAlso GBjson.Visible)
         Dim s As String = TxtJPGfile.Text
         Dim jp As Boolean = (s.Length > 5 AndAlso 文件可用(s))
@@ -113,7 +113,10 @@ Public Class GM模组发布器
             Next
         End If
         上次更新日期 = Now
-        If ListAddons.Items.Count > 0 Then ListAddons.SelectedIndex = 0
+        If ListAddons.Items.Count > 0 Then
+            ListAddons.SelectedIndex = 0
+        End If
+        Txtname_TextChanged(sender, e)
     End Sub
 
     Private Sub ListAddons_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListAddons.SelectedIndexChanged
