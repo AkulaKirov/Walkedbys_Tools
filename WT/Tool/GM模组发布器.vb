@@ -6,6 +6,7 @@ Public Class GM模组发布器
     Dim tgma As String = 缓存目录 + "t.gma"
     Dim GMODbin As String = ""
     Dim 上次更新日期 As Date
+    Dim 冷却 As Integer = 0
 
     Private Sub GM模组发布器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         文本框拖入文件夹(TxtPath, TxtGMod)
@@ -85,16 +86,24 @@ Public Class GM模组发布器
         If 文件后缀(m) <> "jpg" Then TxtJPGfile.Text = ""
     End Sub
 
+    Sub 运行(s As String)
+        If 包含(s, " & pause") Then
+            CoolD_Tick()
+            CoolD.Enabled = True
+        End If
+        Shell("cmd.exe /c " + 左(GMODbin, 2) + " & " + s, AppWinStyle.NormalFocus, True)
+    End Sub
+
     Private Sub ButNew_Click(sender As Object, e As EventArgs) Handles ButNew.Click
         If 生成GMA() Then
-            Shell("cmd.exe /c " + 左(GMODbin, 2) + " & " + 引(GMODbin + "gmpublish.exe") + " create -icon " + 引(TxtJPGfile.Text) + " -addon " + 引(tgma) + " & pause ", AppWinStyle.NormalFocus, True)
+            运行(引(GMODbin + "gmpublish.exe") + " create -icon " + 引(TxtJPGfile.Text) + " -addon " + 引(tgma) + " & pause ")
             删除(tgma, log)
         End If
     End Sub
 
     Private Sub ButGetList_Click(sender As Object, e As EventArgs) Handles ButGetList.Click
         ListAddons.Items.Clear()
-        Shell("cmd.exe /c " + 左(GMODbin, 2) + " & " + 引(GMODbin + "gmpublish.exe") + " list > " + 引(log), AppWinStyle.NormalFocus, True)
+        运行(引(GMODbin + "gmpublish.exe") + " list > " + 引(log))
         Dim s As String = 读文件(log)
         If 全部包含(s, "Getting published files..", "Done.") Then
             s = 提取(s, "Getting published files..", "Done.")
@@ -125,18 +134,18 @@ Public Class GM模组发布器
 
     Private Sub ButUpdateGMA_Click(sender As Object, e As EventArgs) Handles ButUpdateGMA.Click
         If 生成GMA() Then
-            Shell("cmd.exe /c " + 左(GMODbin, 2) + " & " + 引(GMODbin + "gmpublish.exe") + " update -id " + Regex.Match(Trim(ListAddons.SelectedItem.ToString), "[0-9].*? ").ToString + " -addon " + 引(tgma) + " & pause", AppWinStyle.NormalFocus, True)
+            运行(引(GMODbin + "gmpublish.exe") + " update -id " + Regex.Match(Trim(ListAddons.SelectedItem.ToString), "[0-9].*? ").ToString + " -addon " + 引(tgma) + " & pause")
             删除(tgma, log)
         End If
     End Sub
 
     Private Sub ButUpdateJPG_Click(sender As Object, e As EventArgs) Handles ButUpdateJPG.Click
-        Shell("cmd.exe /c " + 左(GMODbin, 2) + " & " + 引(GMODbin + "gmpublish.exe") + " update -id " + Regex.Match(Trim(ListAddons.SelectedItem.ToString), "[0-9].*? ").ToString + " -icon " + 引(TxtJPGfile.Text) + " & pause", AppWinStyle.NormalFocus, True)
+        运行(引(GMODbin + "gmpublish.exe") + " update -id " + Regex.Match(Trim(ListAddons.SelectedItem.ToString), "[0-9].*? ").ToString + " -icon " + 引(TxtJPGfile.Text) + " & pause")
     End Sub
 
     Private Sub ButUpdateALL_Click(sender As Object, e As EventArgs) Handles ButUpdateALL.Click
         If 生成GMA() Then
-            Shell("cmd.exe /c " + 左(GMODbin, 2) + " & " + 引(GMODbin + "gmpublish.exe") + " update -id " + Regex.Match(Trim(ListAddons.SelectedItem.ToString), "[0-9].*? ").ToString + " -addon " + 引(tgma) + " -icon " + 引(TxtJPGfile.Text) + " & pause", AppWinStyle.NormalFocus, True)
+            运行(引(GMODbin + "gmpublish.exe") + " update -id " + Regex.Match(Trim(ListAddons.SelectedItem.ToString), "[0-9].*? ").ToString + " -addon " + 引(tgma) + " -icon " + 引(TxtJPGfile.Text) + " & pause")
         End If
     End Sub
 
@@ -155,8 +164,7 @@ Public Class GM模组发布器
         s = s.Replace("标签2", CBtags.CheckedItems.Item(1))
         写文件(追加斜杠(TxtPath.Text) + "addon.json", s)
         文件重命名(sy, sy.ToLower)
-        Dim sc As String = "cmd.exe /c " + 左(GMODbin, 2) + " & " + 引(GMODbin + "gmad.exe") + " create -folder " + 引(去右(sy, 1)) + " -out " + 引(tgma) + " > " + 引(log)
-        Shell(sc, AppWinStyle.NormalFocus, True)
+        运行(引(GMODbin + "gmad.exe") + " create -folder " + 引(去右(sy, 1)) + " -out " + 引(tgma) + " > " + 引(log))
         If 文件可用(tgma) Then
             Return True
         Else
@@ -167,5 +175,17 @@ Public Class GM模组发布器
             Return False
         End If
     End Function
+
+    Private Sub CoolD_Tick() Handles CoolD.Tick
+        TxtGMod.Enabled = False
+        Pn.Enabled = False
+        冷却 += CoolD.Interval
+        If 冷却 > 2 * 1000 Then
+            CoolD.Enabled = False
+            冷却 = 0
+            TxtGMod.Enabled = True
+            Pn.Enabled = True
+        End If
+    End Sub
 
 End Class

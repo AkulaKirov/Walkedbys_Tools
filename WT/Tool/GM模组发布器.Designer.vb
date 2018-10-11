@@ -22,6 +22,7 @@ Partial Class GM模组发布器
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.LabGMOD = New System.Windows.Forms.Label()
         Me.TxtGMod = New System.Windows.Forms.TextBox()
         Me.LabJpgfile = New System.Windows.Forms.Label()
@@ -46,6 +47,7 @@ Partial Class GM模组发布器
         Me.ListAddons = New System.Windows.Forms.ComboBox()
         Me.Pn = New System.Windows.Forms.Panel()
         Me.PicThumb = New System.Windows.Forms.PictureBox()
+        Me.CoolD = New System.Windows.Forms.Timer(Me.components)
         Me.GBjson.SuspendLayout()
         Me.GBupdate.SuspendLayout()
         Me.Pn.SuspendLayout()
@@ -303,6 +305,10 @@ Partial Class GM模组发布器
         Me.PicThumb.TabIndex = 15
         Me.PicThumb.TabStop = False
         '
+        'CoolD
+        '
+        Me.CoolD.Interval = 50
+        '
         'GM模组发布器
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -352,4 +358,5 @@ Partial Class GM模组发布器
     Friend WithEvents ButUpdateJPG As Button
     Friend WithEvents ButUpdateGMA As Button
     Friend WithEvents ButUpdateALL As Button
+    Friend WithEvents CoolD As Forms.Timer
 End Class
