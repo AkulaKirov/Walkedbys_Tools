@@ -68,10 +68,9 @@ Public Class 创意工坊订阅列表导出
                                         End If
                                     Next
                                 End If
-                                If mc.Count < 30 OrElse once Then
+                                If mc.Count < 10 OrElse once Then
                                     Exit For
                                 End If
-                                p += 1
                             Next
                             TxtOut.Text = "工作结束，共计：" + c.ToString + vbCrLf + TxtOut.Text
                             ButStart.Text = "开始生成列表"
