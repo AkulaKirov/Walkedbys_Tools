@@ -247,6 +247,7 @@
             Dim i As String = "Content-Disposition: form-data; name=" + 引(名字) + vbCrLf
             If 类型.Length > 1 Then i += "Content-Type: " + 类型
             i += vbCrLf + 值
+            数据 += i
             写入流(s, i)
         End Sub
 
@@ -295,7 +296,7 @@
         ''' </summary>
         Public ReadOnly Property 数据预览 As String
             Get
-                Return (数据 + vbCrLf + "--" + bd + "--").Replace(vbCrLf, vbCrLf + "-CRLF-")
+                Return 数据
             End Get
         End Property
 

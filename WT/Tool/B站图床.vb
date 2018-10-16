@@ -45,6 +45,7 @@ Public Class B站图床
             r.新参数("category", "daily")
             r.结束()
             Dim s As String = h.获得回应
+            Dp(s)
             If 包含(s, "{""code"":0,""message"":""success"",""") Then
                 LabDoit.Text = 提取(s, "image_url"":""", """,""image_width")
                 ButCopy.Enabled = True
