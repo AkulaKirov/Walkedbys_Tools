@@ -41,6 +41,7 @@ Public Class 启动器
         新工具("创意工坊物品列表导出", 创意工坊订阅列表导出, "WorkshopListOut", "把你的workshop订阅的或者是收藏夹里的或者是你发布的或者合集里的物品都导出成一个列表")
         新工具("创意工坊合集物品批量添加", 创意工坊合集物品批量添加, "WorkshopCollectionAdd", "可以先用Workshop物品列表导出工具导出物品列表，然后在这里导入到指定的合集。")
         新工具("输入法辅助框", 输入法辅助框, "InputHelper", "在临时窗口上打字来避免一些垃圾软件对输入法的不支持。", Val(设置.元素("IMEwhen")) <> 2)
+        新工具("快速闹钟", 快速闹钟, "QuickClock", "设置几分钟后发出声音和气泡提醒我。")
         AddHandler SizeChanged, AddressOf 最小化隐藏
         For Each t In 工具列表
             ListTools.Items.Add(t.名字)
