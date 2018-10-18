@@ -344,4 +344,18 @@ Module 字符串处理
         Return 补零(s.Year.ToString, 4) + "_" + 补零(s.Month.ToString, 2) + "_" + 补零(s.Day.ToString, 2)
     End Function
 
+    ''' <summary>
+    ''' 把文字里的内容进行批量替换
+    ''' </summary>
+    Public Function 替换(文字 As String, ParamArray 寻找() As String) As String
+        Dim s As String = 文字, c As Integer = 寻找.Count - 1
+        If c Mod 2 = 0 Then c -= 1
+        If s.Length > 0 AndAlso c > 0 Then
+            For i As Integer = 0 To c Step 2
+                s = s.Replace(寻找(i), 寻找(i + 1))
+            Next
+        End If
+        Return s
+    End Function
+
 End Module

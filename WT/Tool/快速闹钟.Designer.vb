@@ -41,7 +41,7 @@ Partial Class 快速闹钟
         Me.LabNote.Name = "LabNote"
         Me.LabNote.Size = New System.Drawing.Size(471, 20)
         Me.LabNote.TabIndex = 0
-        Me.LabNote.Text = "注意：闹钟每次设置都只工作一次，而且只在本软件开着的时候才能工作。"
+        Me.LabNote.Text = "注意：闹钟每次设置都只提醒一次，而且只在本软件开着的时候才能工作。"
         '
         'LabWhen
         '

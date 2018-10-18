@@ -176,6 +176,18 @@ Module 文件处理
     End Function
 
     ''' <summary>
+    ''' 返回一个路径下是否存在指定的多个文件
+    ''' </summary>
+    Public Function 批量文件存在(路径 As String, ParamArray 文件() As String) As Boolean
+        路径 = 追加斜杠(路径)
+        If Not 文件夹存在(路径) Then Return False
+        For Each i As String In 文件
+            If Not 文件存在(路径 + i) Then Return False
+        Next
+        Return True
+    End Function
+
+    ''' <summary>
     ''' 返回文件的小写后缀名，不带第一个点
     ''' </summary>
     Public Function 文件后缀(文件 As String) As String

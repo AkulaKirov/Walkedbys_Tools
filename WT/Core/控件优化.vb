@@ -4,6 +4,18 @@ Module 控件优化
     Private dpi As Single = 0
 
     ''' <summary>
+    ''' 让列表控件选中对应项目，如果超出就不选择
+    ''' </summary>
+    Public Sub 列表控件选中项(列表 As Object, 数字 As Integer)
+        Dim c As Integer = 列表.Items.Count
+        If c > 数字 Then
+            列表.SelectedIndex = 数字
+        ElseIf c > 0 Then
+            列表.SelectedIndex = 0
+        End If
+    End Sub
+
+    ''' <summary>
     ''' 使文本框支持拖入一个文件或文件夹
     ''' </summary>
     Public Sub 文本框拖入文件(ParamArray 文本框() As TextBox)

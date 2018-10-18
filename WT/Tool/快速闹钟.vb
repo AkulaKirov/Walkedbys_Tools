@@ -27,7 +27,7 @@
 
     Private Sub Timer1_Tick() Handles Timer1.Tick
         Dim i As Integer = DateDiff(DateInterval.Second, Now, WantTime)
-        ButStart.Text = "还有 " & FormatNumber(i / 60, 2) & " 分钟"
+        ButStart.Text = "还有 " & FormatNumber(i / 60, 1) & " 分钟"
         If i < 3 Then
             ButStart_Click()
             rings = 0
