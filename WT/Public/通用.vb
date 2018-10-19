@@ -83,7 +83,7 @@ Module 通用
     Public Sub 最小化隐藏(sender As Form, e As EventArgs)
         Select Case sender.WindowState
             Case FormWindowState.Minimized
-                If 设置.读取真假("HideWindowAtMin") Then 隐藏到后台(sender)
+                If 设置.布林("HideWindowAtMin") Then 隐藏到后台(sender)
             Case FormWindowState.Normal
                 显示到前台(sender)
         End Select
@@ -154,9 +154,9 @@ Module 通用
     ''' 确认这个groupbox里的steamcookie是否填写正确
     ''' </summary>
     Private Function 检测steamCookie() As Boolean
-        Dim s As String = Trim(设置.元素("SteamSession"))
+        Dim s As String = Trim(设置.字符串("SteamSession"))
         If s.Length = 24 Then
-            s = Trim(设置.元素("SteamLoginSecure"))
+            s = Trim(设置.字符串("SteamLoginSecure"))
             If s.Length = 63 Then
                 If Regex.IsMatch(s, "765611[0-9]{11}%.{2}%.+") Then
                     Return True
@@ -173,7 +173,7 @@ Module 通用
         g.Tag = False
         Dim t As TextBox = g.Controls("TxtSession")
         AddHandler t.TextChanged, Sub()
-                                      设置.元素("SteamSession") = Trim(t.Text)
+                                      设置.字符串("SteamSession") = Trim(t.Text)
                                       g.Tag = 检测steamCookie()
                                       If Not IsNothing(方法) Then
                                           方法.Invoke
@@ -181,7 +181,7 @@ Module 通用
                                   End Sub
         Dim t2 As TextBox = g.Controls("TxtLoginSecure")
         AddHandler t2.TextChanged, Sub()
-                                       设置.元素("SteamLoginSecure") = Trim(t2.Text)
+                                       设置.字符串("SteamLoginSecure") = Trim(t2.Text)
                                        g.Tag = 检测steamCookie()
                                        If Not IsNothing(方法) Then
                                            方法.Invoke
@@ -191,8 +191,8 @@ Module 通用
         AddHandler b.Click, Sub()
                                 Process.Start("https://s1.ax1x.com/2018/09/20/inFtrq.png")
                             End Sub
-        t2.Text = 设置.元素("SteamLoginSecure")
-        t.Text = 设置.元素("SteamSession")
+        t2.Text = 设置.字符串("SteamLoginSecure")
+        t.Text = 设置.字符串("SteamSession")
     End Sub
 
     ''' <summary>
@@ -200,7 +200,7 @@ Module 通用
     ''' </summary>
     Public Function 输出steamCookie() As String
         If 检测steamCookie() Then
-            Return "steamLoginSecure=" + 设置.元素("SteamLoginSecure") + "; sessionid=" + 设置.元素("SteamSession")
+            Return "steamLoginSecure=" + 设置.字符串("SteamLoginSecure") + "; sessionid=" + 设置.字符串("SteamSession")
         Else
             Return ""
         End If
@@ -287,7 +287,7 @@ Module 通用
 
         Public Sub New(名字 As String, 列表控件 As ComboBox, 文本控件 As TextBox, 新增 As Button, 移除 As Button)
             n = "模板组___" + 名字
-            Dim x As New 简易XML(n, 设置.元素(n))
+            Dim x As New 简易XML(n, 设置.字符串(n))
             列表 = 列表控件
             文本框 = 文本控件
             文本框.MaxLength = 10
@@ -302,13 +302,13 @@ Module 通用
                                        刷新()
                                    End Sub
             AddHandler 移除按纽.FindForm.FormClosing, AddressOf 保存
-            Dim f As List(Of String) = 分割(设置.元素(n + "列表"), vbCrLf)
+            Dim f As List(Of String) = 分割(设置.字符串(n + "列表"), vbCrLf)
             Dim t As 模板
             If f.Count > 0 Then
                 For Each i As String In f
                     If i.Length > 0 Then
                         t = New 模板(i)
-                        t.读取(x.元素(i))
+                        t.读取(x.字符串(i))
                         g.Add(t)
                     End If
                 Next
@@ -366,8 +366,8 @@ Module 通用
         End Function
 
         Public Sub 保存()
-            设置.元素(n + "列表") = 列表转文字(列表.Items)
-            设置.元素(n) = ToString()
+            设置.字符串(n + "列表") = 列表转文字(列表.Items)
+            设置.字符串(n) = ToString()
         End Sub
 
         Public ReadOnly Property 模板列表 As List(Of 模板)
@@ -404,10 +404,10 @@ Module 通用
 
         Public Property 元素(name As String) As String
             Get
-                Return n.元素(name)
+                Return n.字符串(name)
             End Get
             Set(value As String)
-                n.元素(name) = value
+                n.字符串(name) = value
             End Set
         End Property
 
@@ -416,11 +416,11 @@ Module 通用
         End Function
 
         Public Function 读取真假(name As String) As Boolean
-            Return n.读取真假(name)
+            Return n.布林(name)
         End Function
 
         Public Function 读取数(name As String) As Double
-            Return n.读取数(name)
+            Return n.数字(name)
         End Function
 
     End Class

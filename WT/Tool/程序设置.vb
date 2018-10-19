@@ -19,13 +19,13 @@ Public Class 程序设置
             .AutoSize = True
             .Text = 文字
             .TabStop = False
-            .Checked = 设置.读取真假(名字)
+            .Checked = 设置.布林(名字)
             Tab1.Controls.Add(c)
             AddHandler .CheckedChanged, Sub()
-                                            设置.元素(名字) = c.Checked.ToString
+                                            设置.字符串(名字) = c.Checked.ToString
                                         End Sub
             AddHandler Activated, Sub()
-                                      c.Checked = 设置.读取真假(名字)
+                                      c.Checked = 设置.布林(名字)
                                   End Sub
         End With
         选项数量 += 1

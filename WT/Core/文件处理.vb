@@ -442,7 +442,12 @@ Module 文件处理
             Return 全文本
         End Function
 
-        Public Property 元素(名字 As String) As String
+        Public Sub 保存元素(名字 As String, 内容 As Object)
+            Dim s As String = 内容.ToString
+            If s.Length > 0 Then 字符串(名字) = s
+        End Sub
+
+        Public Property 字符串(名字 As String) As String
             Get
                 Return HttpUtility.UrlDecode(提取XML(全文本, 名字))
             End Get
@@ -466,48 +471,44 @@ Module 文件处理
             If s.Length > 5 Then
                 For Each m As Match In Regex.Matches(s, "<[^/]+?>")
                     Dim t As String = 去除(m.ToString, "<", ">")
-                    If 元素(t).Length > 0 Then n.Add(t)
+                    If 字符串(t).Length > 0 Then n.Add(t)
                 Next
             End If
             Return n
         End Function
 
-        Public Sub 保存元素(名字 As String, 内容 As String)
-            元素(名字) = 内容
-        End Sub
-
-        Public Function 读取字符串(名字 As String) As String
-            Return 元素(名字)
-        End Function
-
-        Public Function 读取数(名字 As String, Optional 默认 As Double = 0) As Double
-            Dim s As String = 元素(名字)
-            If s.Length > 0 Then
+        Public Property 数字(名字 As String, Optional 默认 As Double = 0) As Double
+            Get
+                Dim s As String = 字符串(名字)
+                If s.Length < 1 Then Return 默认
                 Return Val(s)
-            Else
-                Return 默认
-            End If
-        End Function
+            End Get
+            Set(value As Double)
+                字符串(名字) = value.ToString
+            End Set
+        End Property
 
-        Public Function 读取真假(名字 As String, Optional 默认 As Boolean = False) As Boolean
-            Dim s As String = 元素(名字).ToLower
-            If s.Length > 0 Then
-                Return (s = "true")
-            Else
-                Return 默认
-            End If
-        End Function
+        Public Property 布林(名字 As String, Optional 默认 As Boolean = False) As Boolean
+            Get
+                Dim s As String = 字符串(名字)
+                If s.Length < 1 Then Return 默认
+                Return s = "true"
+            End Get
+            Set(value As Boolean)
+                字符串(名字) = value.ToString
+            End Set
+        End Property
 
-        Public Function 读取日期(名字 As String, Optional 默认 As Date = #2000/01/01 00:00:00#) As DateTime
-            Dim n As Date = 默认
-            Dim s As String = 元素(名字)
-            If s.Length < 3 Then Return n
-            Try
+        Public Property 日期(名字 As String, Optional 默认 As Date = #2000/01/01 00:00:00#) As Date
+            Get
+                Dim s As String = 字符串(名字)
+                If s.Length < 3 Then Return 默认
                 Return Date.Parse(s)
-            Catch ex As Exception
-                Return n
-            End Try
-        End Function
+            End Get
+            Set(value As Date)
+                字符串(名字) = value.ToString
+            End Set
+        End Property
 
     End Class
 
@@ -528,8 +529,6 @@ Module 文件处理
     ''' <summary>
     ''' 针对 BinaryReader 进行操作，一直读取字符串直到特定的byte
     ''' </summary>
-    ''' <param name="r"></param>
-    ''' <returns></returns>
     Public Function 读取字符串到零(r As BinaryReader, Optional b As Byte = 0)
         Dim s As String = ""
         Do While True

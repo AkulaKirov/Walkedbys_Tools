@@ -3,13 +3,13 @@
     Dim WantTime As Date, rings As Integer = 0
 
     Private Sub 快速闹钟_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        TxtWhen.Value = 设置.读取数("ClockWhen", 10)
-        TxtWhat.Text = 设置.元素("ClockText")
+        TxtWhen.Value = 设置.数字("ClockWhen", 10)
+        TxtWhat.Text = 设置.字符串("ClockText")
     End Sub
 
     Private Sub 快速闹钟_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        设置.元素("ClockText") = TxtWhat.Text
-        设置.元素("ClockWhen") = TxtWhen.Value.ToString
+        设置.字符串("ClockText") = TxtWhat.Text
+        设置.字符串("ClockWhen") = TxtWhen.Value.ToString
     End Sub
 
     Private Sub ButStart_Click() Handles ButStart.Click

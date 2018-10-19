@@ -8,9 +8,9 @@ Public Class Steam好友列表检查
             .Tag = .Text
             .Text = ""
         End With
-        TxtID64.Text = 设置.元素("steam64id")
-        TxtLog.Text = 设置.元素("steamFriendLOG")
-        If 设置.读取真假("CheckSteamFriendsAtStart") Then
+        TxtID64.Text = 设置.字符串("steam64id")
+        TxtLog.Text = 设置.字符串("steamFriendLOG")
+        If 设置.布林("CheckSteamFriendsAtStart") Then
             CheckAuto.Checked = True
             If 只做一次(7458) Then
                 自动检查 = True
@@ -20,8 +20,8 @@ Public Class Steam好友列表检查
     End Sub
 
     Private Sub Steam好友列表检查_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        设置.元素("steam64id") = TxtID64.Text
-        设置.元素("steamFriendLOG") = TxtLog.Text
+        设置.字符串("steam64id") = TxtID64.Text
+        设置.字符串("steamFriendLOG") = TxtLog.Text
         中断线程(TH)
     End Sub
 
@@ -42,7 +42,7 @@ Public Class Steam好友列表检查
                             Dim out As String = Now.ToString + vbCrLf + "用户：" + uid + vbCrLf
                             Dim s As String = 去除(h.获得回应, 引号), 少人 As Boolean = False
                             If 包含(s, "friendslist") Then
-                                Dim u As String = 设置.元素("steamfriendslist" + uid), id As String, n As Integer = 0
+                                Dim u As String = 设置.字符串("steamfriendslist" + uid), id As String, n As Integer = 0
                                 Dim mc As MatchCollection
                                 If 包含(u, "friendslist") Then
                                     If 肯定少人 Then u += "steamid:" + 随机.数字(17) + ","
@@ -53,7 +53,7 @@ Public Class Steam好友列表检查
                                             n += 1
                                             out += "不再是好友：" + 只要数字(id) + vbCrLf
                                             少人 = True
-                                            If 设置.读取真假("CheckSteamFriendsAtStart") AndAlso 自动检查 Then
+                                            If 设置.布林("CheckSteamFriendsAtStart") AndAlso 自动检查 Then
                                                 Tag = "你的steam好友列表少人了！"
                                             End If
                                         End If
@@ -69,7 +69,7 @@ Public Class Steam好友列表检查
                                     out += "好友数：" + mc.Count.ToString + vbCrLf
                                     out += "第一次检查完成，日后检查才能发现少人。"
                                 End If
-                                设置.元素("steamfriendslist" + uid) = s
+                                设置.字符串("steamfriendslist" + uid) = s
                             Else
                                 out += "获取失败，原因：" + vbCrLf + s
                             End If
@@ -96,7 +96,7 @@ Public Class Steam好友列表检查
     End Sub
 
     Private Sub CheckAuto_CheckedChanged(sender As Object, e As EventArgs) Handles CheckAuto.CheckedChanged
-        设置.元素("CheckSteamFriendsAtStart") = CheckAuto.Checked.ToString
+        设置.字符串("CheckSteamFriendsAtStart") = CheckAuto.Checked.ToString
     End Sub
 
     Private Sub Steam好友列表检查_Activated(sender As Object, e As EventArgs) Handles Me.Activated

@@ -11,16 +11,16 @@ Public Class GM模组发布器
     Private Sub GM模组发布器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         文本框拖入文件夹(TxtPath, TxtGMod)
         文本框拖入文件(TxtJPGfile)
-        TxtPath.Text = 设置.元素("GMApath")
-        CBtype.SelectedIndex = Val(设置.元素("GMAtype"))
-        TxtGMod.Text = 设置.元素("GMODpath")
-        CBtags.SetItemChecked(Val(设置.元素("GMAtag1")), True)
-        CBtags.SetItemChecked(Val(设置.元素("GMAtag2")), True)
-        Txtname.Text = 设置.元素("GMAname")
-        TxtJPGfile.Text = 设置.元素("GMAjpg")
-        文字转列表(ListAddons.Items, 设置.读取字符串("GMODaddons"))
-        上次更新日期 = 设置.读取日期("GMAtime")
-        Dim i As Integer = 设置.读取数("GMAw", 0)
+        TxtPath.Text = 设置.字符串("GMApath")
+        CBtype.SelectedIndex = Val(设置.字符串("GMAtype"))
+        TxtGMod.Text = 设置.字符串("GMODpath")
+        CBtags.SetItemChecked(Val(设置.字符串("GMAtag1")), True)
+        CBtags.SetItemChecked(Val(设置.字符串("GMAtag2")), True)
+        Txtname.Text = 设置.字符串("GMAname")
+        TxtJPGfile.Text = 设置.字符串("GMAjpg")
+        文字转列表(ListAddons.Items, 设置.字符串("GMODaddons"))
+        上次更新日期 = 设置.日期("GMAtime")
+        Dim i As Integer = 设置.数字("GMAw", 0)
         If i < 0 Then i = 0
         If ListAddons.Items.Count > i Then ListAddons.SelectedIndex = i
         删除(tgma, log)
@@ -62,8 +62,8 @@ Public Class GM模组发布器
         设置.保存元素("GMAname", Txtname.Text)
         设置.保存元素("GMAjpg", TxtJPGfile.Text)
         设置.保存元素("GMODaddons", 列表转文字(ListAddons.Items))
-        设置.元素("GMAtime") = 上次更新日期.ToString
-        设置.元素("GMAw") = ListAddons.SelectedIndex
+        设置.字符串("GMAtime") = 上次更新日期.ToString
+        设置.字符串("GMAw") = ListAddons.SelectedIndex
         删除(tgma, log)
     End Sub
 

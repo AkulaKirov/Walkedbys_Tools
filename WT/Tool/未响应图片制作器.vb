@@ -5,13 +5,13 @@ Public Class 未响应图片制作器
     Dim 输出 As Image = Nothing
 
     Private Sub 未响应图片制作器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        TxtName.Text = 设置.元素("NoRESname")
-        ListStyle.SelectedIndex = 设置.读取数("NoRESstyle")
+        TxtName.Text = 设置.字符串("NoRESname")
+        ListStyle.SelectedIndex = 设置.数字("NoRESstyle")
     End Sub
 
     Private Sub 未响应图片制作器_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         设置.保存元素("NoRESname", TxtName.Text)
-        设置.元素("NoRESstyle") = ListStyle.SelectedIndex
+        设置.字符串("NoRESstyle") = ListStyle.SelectedIndex
     End Sub
 
     Private Sub 未响应图片制作器_Paint(sender As Object, e As PaintEventArgs) Handles Me.Paint

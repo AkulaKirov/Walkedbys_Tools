@@ -6,9 +6,9 @@ Public Class 起源模型贴图打包器
 
     Private Sub 起源模型贴图打包器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         文本框拖入文件夹(TxtMaterials, TxtModels, TxtCopy)
-        TxtMaterials.Text = 设置.元素("PackMaterial")
-        TxtModels.Text = 设置.元素("PackModel")
-        TxtCopy.Text = 设置.元素("PackCopy")
+        TxtMaterials.Text = 设置.字符串("PackMaterial")
+        TxtModels.Text = 设置.字符串("PackModel")
+        TxtCopy.Text = 设置.字符串("PackCopy")
         文本框自动拖到最后(TxtList)
     End Sub
 
@@ -19,9 +19,9 @@ Public Class 起源模型贴图打包器
     End Sub
 
     Private Sub 起源模型贴图打包器_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        设置.元素("PackMaterial") = TxtMaterials.Text
-        设置.元素("PackModel") = TxtModels.Text
-        设置.元素("PackCopy") = TxtCopy.Text
+        设置.字符串("PackMaterial") = TxtMaterials.Text
+        设置.字符串("PackModel") = TxtModels.Text
+        设置.字符串("PackCopy") = TxtCopy.Text
     End Sub
 
     Private Sub ButList_Click(sender As Object, e As EventArgs) Handles ButList.Click

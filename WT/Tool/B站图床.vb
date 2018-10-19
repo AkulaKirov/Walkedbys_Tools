@@ -11,7 +11,16 @@ Public Class B站图床
         ButRetry.Enabled = False
         ButCopy.Enabled = False
         PicBox.Image = Nothing
-        CheckAuto.Checked = 设置.读取真假("bilibiliautocopy")
+        CheckAuto.Checked = 设置.布林("bilibiliautocopy")
+        列表控件选中项(ListBed, 设置.数字("imagebed"))
+    End Sub
+
+    Private Sub B站图床_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        LabDoit.Text = LabDoit.Tag
+        PicBox.Image = Nothing
+        ButCopy.Enabled = False
+        设置.数字("imagebed") = ListBed.SelectedIndex
+        设置.字符串("bilibiliautocopy") = CheckAuto.Checked.ToString
     End Sub
 
     Private Sub B站图床_DragDrop(sender As Object, e As Forms.DragEventArgs) Handles Me.DragDrop
@@ -38,23 +47,48 @@ Public Class B站图床
             End If
             Refresh()
             ButPaste.Enabled = False
-            Dim h As New 简易HTTP("https://api.vc.bilibili.com/api/v1/image/upload", "POST")
-            Dim r As New 简易MultiPartFormData(h)
-            r.新文件("file_up", 图片, "image/jpeg")
-            r.新参数("biz", "draw")
-            r.新参数("category", "daily")
-            r.结束()
-            Dim s As String = h.获得回应
-            Dp(s)
-            If 包含(s, "{""code"":0,""message"":""success"",""") Then
-                LabDoit.Text = 提取(s, "image_url"":""", """,""image_width")
+            Dim s As String = "", succ As Boolean = False
+            Select Case ListBed.SelectedIndex
+                Case 0
+                    Dim h As New 简易HTTP("https://api.vc.bilibili.com/api/v1/image/upload", "POST")
+                    Dim r As New 简易MultiPartFormData(h)
+                    r.新文件("file_up", 图片, "image/jpeg")
+                    r.新参数("biz", "draw")
+                    r.新参数("category", "daily")
+                    r.结束()
+                    s = h.获得回应
+                    If 包含(s, "{""code"":0,""message"":""success"",""") Then
+                        s = 提取(s, "image_url"":""", """,""image_width")
+                        succ = True
+                    End If
+                Case 1
+                    Dim h As New 简易HTTP("http://img.tv.sohu.com/ndfs/uploadPhoto.do?appid=100114&allowGif=1&needCompress=false&isSupportHttps=true", "POST")
+                    Dim r As New 简易MultiPartFormData(h)
+                    r.新文件("file", 图片, "image/jpeg")
+                    r.结束()
+                    s = 去除(h.获得回应, 引号)
+                    If 全部包含(s, "{height:", ",urlKey:", "url://") Then
+                        s = "https://" + 提取(s, ",url://", ",size:")
+                        succ = True
+                    End If
+                Case 2
+                    Dim h As New 简易HTTP("https://sm.ms/api/upload", "POST")
+                    Dim r As New 简易MultiPartFormData(h)
+                    r.新文件("smfile", 图片, "image/jpeg")
+                    r.结束()
+                    s = 去除(h.获得回应, 引号)
+                    If 全部包含(s, "{code:success,data:", "filename:", ",url:http") Then
+                        s = "https://" + 提取(s, "url:https://", ",")
+                        succ = True
+                    End If
+            End Select
+            If succ Then
+                LabDoit.Text = s
                 ButCopy.Enabled = True
-                If CheckAuto.Checked Then
-                    剪贴板.文本 = LabDoit.Text
-                End If
+                If CheckAuto.Checked Then 剪贴板.文本 = LabDoit.Text
             Else
-                    LabDoit.Text = "失败！" + vbCrLf + s
                 ButRetry.Enabled = True
+                LabDoit.Text = "失败！" + vbCrLf + s
             End If
             ButPaste.Enabled = True
             LabDoit.BringToFront()
@@ -66,13 +100,6 @@ Public Class B站图床
 
     Private Sub B站图床_DragEnter(sender As Object, e As Forms.DragEventArgs) Handles Me.DragEnter
         e.Effect = Forms.DragDropEffects.Link
-    End Sub
-
-    Private Sub B站图床_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        LabDoit.Text = LabDoit.Tag
-        PicBox.Image = Nothing
-        ButCopy.Enabled = False
-        设置.元素("bilibiliautocopy") = CheckAuto.Checked.ToString
     End Sub
 
     Private Sub ButCopy_Click(sender As Object, e As EventArgs) Handles ButCopy.Click

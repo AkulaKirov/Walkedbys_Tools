@@ -15,15 +15,15 @@ Public Class 日子提醒
         For i = 3 To 60
             CBremind.Items.Add(i.ToString)
         Next
-        i = 设置.读取数("Remindtime")
+        i = 设置.数字("Remindtime")
         If i < 3 OrElse i > 60 Then i = 7
         CBremind.SelectedIndex = i
         CBday.SelectedIndex = 0
         CBmonth.SelectedIndex = 0
         ListDates.Items.Clear()
-        文字转列表(ListDates.Items, 设置.元素("days"))
+        文字转列表(ListDates.Items, 设置.字符串("days"))
         提醒好日子()
-        CheckPop.Checked = 设置.读取真假("RemindTimePop")
+        CheckPop.Checked = 设置.布林("RemindTimePop")
     End Sub
 
     Private Sub ButRM_Click(sender As Object, e As EventArgs) Handles ButRM.Click
@@ -115,7 +115,7 @@ Public Class 日子提醒
         非空字符串(Tag)
         If Tag.ToString.Length > 0 Then Tag += vbCrLf
         Tag += s
-        If 设置.读取真假("RemindTimePop") = False AndAlso 只做一次(1) Then 消息(s)
+        If 设置.布林("RemindTimePop") = False AndAlso 只做一次(1) Then 消息(s)
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -127,7 +127,7 @@ Public Class 日子提醒
     End Sub
 
     Private Sub CheckPop_CheckedChanged(sender As Object, e As EventArgs) Handles CheckPop.CheckedChanged
-        设置.元素("RemindTimePop") = CheckPop.Checked.ToString
+        设置.字符串("RemindTimePop") = CheckPop.Checked.ToString
     End Sub
 
 End Class

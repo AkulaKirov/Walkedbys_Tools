@@ -4,11 +4,11 @@ Public Class VMT生成器
     Dim mz As 模板组
 
     Private Sub VMT生成器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        TxtPath.Text = 设置.元素("vmtPATH")
-        TxtVMT.Text = 设置.元素("vmtLAST")
-        TxtSkip.Text = 设置.元素("vmtSKIP")
+        TxtPath.Text = 设置.字符串("vmtPATH")
+        TxtVMT.Text = 设置.字符串("vmtLAST")
+        TxtSkip.Text = 设置.字符串("vmtSKIP")
         mz = New 模板组("VMTG", ListTemps, TxtTempName, ButADD, ButDEL)
-        CheckSon.Checked = 设置.读取真假("vmtSON")
+        CheckSon.Checked = 设置.布林("vmtSON")
         文本框拖入文件夹(TxtPath)
     End Sub
 

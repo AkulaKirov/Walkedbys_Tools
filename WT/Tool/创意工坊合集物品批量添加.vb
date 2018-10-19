@@ -7,14 +7,14 @@ Public Class 创意工坊合集物品批量添加
         填写steamCookie(GBsteamCookie, Sub()
                                          Pn.Visible = GBsteamCookie.Tag
                                      End Sub)
-        TxtID.Text = 设置.元素("WorkshopCollectionID")
-        TxtInput.Text = 设置.元素("WorkshopCollectionInput")
+        TxtID.Text = 设置.字符串("WorkshopCollectionID")
+        TxtInput.Text = 设置.字符串("WorkshopCollectionInput")
         文本框自动拖到最后(TxtOut)
     End Sub
 
     Private Sub 创意工坊合集物品批量添加_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        设置.元素("WorkshopCollectionID") = TxtID.Text
-        设置.元素("WorkshopCollectionInput") = TxtInput.Text
+        设置.字符串("WorkshopCollectionID") = TxtID.Text
+        设置.字符串("WorkshopCollectionInput") = TxtInput.Text
         Pn.Enabled = True
         GBsteamCookie.Enabled = True
         TxtOut.Text = ""

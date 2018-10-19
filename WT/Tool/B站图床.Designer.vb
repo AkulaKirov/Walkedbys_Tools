@@ -28,6 +28,8 @@ Partial Class B站图床
         Me.PicBox = New System.Windows.Forms.PictureBox()
         Me.ButRetry = New System.Windows.Forms.Button()
         Me.CheckAuto = New System.Windows.Forms.CheckBox()
+        Me.LabBed = New System.Windows.Forms.Label()
+        Me.ListBed = New System.Windows.Forms.ComboBox()
         CType(Me.PicBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -92,11 +94,32 @@ Partial Class B站图床
         Me.CheckAuto.Text = "上传完成自动复制链接到剪贴板"
         Me.CheckAuto.UseVisualStyleBackColor = True
         '
+        'LabBed
+        '
+        Me.LabBed.AutoSize = True
+        Me.LabBed.Location = New System.Drawing.Point(12, 353)
+        Me.LabBed.Name = "LabBed"
+        Me.LabBed.Size = New System.Drawing.Size(48, 19)
+        Me.LabBed.TabIndex = 6
+        Me.LabBed.Text = "图床："
+        '
+        'ListBed
+        '
+        Me.ListBed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ListBed.FormattingEnabled = True
+        Me.ListBed.Items.AddRange(New Object() {"bilibili", "搜狐", "sm.ms"})
+        Me.ListBed.Location = New System.Drawing.Point(66, 350)
+        Me.ListBed.Name = "ListBed"
+        Me.ListBed.Size = New System.Drawing.Size(121, 27)
+        Me.ListBed.TabIndex = 7
+        '
         'B站图床
         '
         Me.AllowDrop = True
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(626, 350)
+        Me.ClientSize = New System.Drawing.Size(626, 381)
+        Me.Controls.Add(Me.ListBed)
+        Me.Controls.Add(Me.LabBed)
         Me.Controls.Add(Me.CheckAuto)
         Me.Controls.Add(Me.ButRetry)
         Me.Controls.Add(Me.ButPaste)
@@ -108,7 +131,7 @@ Partial Class B站图床
         Me.MaximizeBox = False
         Me.Name = "B站图床"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "B站图床"
+        Me.Text = "图床"
         CType(Me.PicBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -121,4 +144,6 @@ Partial Class B站图床
     Friend WithEvents PicBox As PictureBox
     Friend WithEvents ButRetry As Button
     Friend WithEvents CheckAuto As CheckBox
+    Friend WithEvents LabBed As Label
+    Friend WithEvents ListBed As ComboBox
 End Class

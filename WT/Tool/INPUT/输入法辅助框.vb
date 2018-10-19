@@ -4,13 +4,13 @@ Public Class 输入法辅助框
     Public 已经展示 As Boolean = False
 
     Private Sub 输入法辅助框_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ListWhen.SelectedIndex = Val(设置.元素("IMEwhen"))
+        ListWhen.SelectedIndex = Val(设置.字符串("IMEwhen"))
         临时输入框.Show()
         临时输入框.Focus()
     End Sub
 
     Private Sub 输入法辅助框_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        设置.元素("IMEwhen") = ListWhen.SelectedIndex.ToString
+        设置.字符串("IMEwhen") = ListWhen.SelectedIndex.ToString
     End Sub
 
     Private Sub Worker_Tick(sender As Object, e As EventArgs) Handles Worker.Tick

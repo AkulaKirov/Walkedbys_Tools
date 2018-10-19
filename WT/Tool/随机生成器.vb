@@ -2,13 +2,13 @@
 Public Class 随机生成器
 
     Private Sub 随机生成器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        TxtLen.Value = 设置.读取数("RandomLength", 100)
-        ListObj.SelectedIndex = 设置.读取数("RandomOBJ", 0)
+        TxtLen.Value = 设置.数字("RandomLength", 100)
+        ListObj.SelectedIndex = 设置.数字("RandomOBJ", 0)
     End Sub
 
     Private Sub 随机生成器_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        设置.元素("RandomLength") = TxtLen.Value.ToString
-        设置.元素("RandomOBJ") = ListObj.SelectedIndex.ToString
+        设置.字符串("RandomLength") = TxtLen.Value.ToString
+        设置.字符串("RandomOBJ") = ListObj.SelectedIndex.ToString
     End Sub
 
     Private Sub ButGen_Click(sender As Object, e As EventArgs) Handles ButGen.Click

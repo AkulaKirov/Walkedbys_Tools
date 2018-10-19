@@ -6,28 +6,28 @@ Public Class 起源地图编译
     Private Sub 起源地图编译_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         文本框拖入文件(TxtMap)
         文本框拖入文件夹(TxtBin)
-        TxtMap.Text = 设置.元素("Compilemap")
-        TxtBin.Text = 设置.元素("CompileBin")
-        TxtThread.Value = 设置.读取数("CompileThread", 4)
-        TxtGame.Text = 设置.元素("CompileGamePs")
-        列表控件选中项(ListMod, 设置.读取数("CompileMod"))
-        列表控件选中项(ListGame, 设置.读取数("CompileGame"))
+        TxtMap.Text = 设置.字符串("Compilemap")
+        TxtBin.Text = 设置.字符串("CompileBin")
+        TxtThread.Value = 设置.数字("CompileThread", 4)
+        TxtGame.Text = 设置.字符串("CompileGamePs")
+        列表控件选中项(ListMod, 设置.数字("CompileMod"))
+        列表控件选中项(ListGame, 设置.数字("CompileGame"))
         新编译器("vbsp", "漏洞测试", "-leaktest", "nodetail", "-nodetail", "清空", "")
         新编译器("vvis", "快速", "-fast", "nosort", "-nosort", "清空", "")
         新编译器("vrad", "快速", "-fast", "最终", "-final", "清空", "")
-        CheckCopyMap.Checked = 设置.读取真假("CompileCopyMap")
-        CheckOpenGame.Checked = 设置.读取真假("CompileOpenGame")
+        CheckCopyMap.Checked = 设置.布林("CompileCopyMap")
+        CheckOpenGame.Checked = 设置.布林("CompileOpenGame")
     End Sub
 
     Private Sub 起源地图编译_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        设置.元素("Compilemap") = TxtMap.Text
-        设置.元素("CompileThread") = TxtThread.Value.ToString
-        设置.元素("CompileBin") = TxtBin.Text
-        设置.元素("CompileMod") = ListMod.SelectedIndex.ToString
-        设置.元素("CompileGame") = ListGame.SelectedIndex.ToString
-        设置.元素("CompileGamePs") = TxtGame.Text
-        设置.元素("CompileOpenGame") = CheckOpenGame.Checked.ToString
-        设置.元素("CompileCopyMap") = CheckCopyMap.Checked.ToString
+        设置.字符串("Compilemap") = TxtMap.Text
+        设置.字符串("CompileThread") = TxtThread.Value.ToString
+        设置.字符串("CompileBin") = TxtBin.Text
+        设置.字符串("CompileMod") = ListMod.SelectedIndex.ToString
+        设置.字符串("CompileGame") = ListGame.SelectedIndex.ToString
+        设置.字符串("CompileGamePs") = TxtGame.Text
+        设置.字符串("CompileOpenGame") = CheckOpenGame.Checked.ToString
+        设置.字符串("CompileCopyMap") = CheckCopyMap.Checked.ToString
     End Sub
 
     Private Sub 起源地图编译_Activated(sender As Object, e As EventArgs) Handles Me.Activated
@@ -89,23 +89,23 @@ Public Class 起源地图编译
             .Left = LabBin.Left
             .Top = LabThread.Bottom + 15 * 系统DPI() + (.Height + 15) * 系统DPI() * 编译器列表.Count
             .TabStop = False
-            .Checked = 设置.读取真假("Compilerx" + 名字, True)
+            .Checked = 设置.布林("Compilerx" + 名字, True)
             AddHandler FormClosing, Sub()
-                                        设置.元素("Compilerx" + 名字) = .Checked.ToString
+                                        设置.字符串("Compilerx" + 名字) = .Checked.ToString
                                     End Sub
         End With
         Dim t1 As New TextBox
         Controls.Add(t1)
         With t1
             .Name = "Txt" + 名字
-            .Text = 设置.元素("Compiler" + 名字)
+            .Text = 设置.字符串("Compiler" + 名字)
             .MaxLength = 200
             .Left = 100 * 系统DPI()
             .Top = t.Top
             .Width = 380 * 系统DPI()
             .TabStop = False
             AddHandler FormClosing, Sub()
-                                        设置.元素("Compiler" + 名字) = .Text
+                                        设置.字符串("Compiler" + 名字) = .Text
                                     End Sub
         End With
         新预设(t1, 预设1, 预设1内容, 1)

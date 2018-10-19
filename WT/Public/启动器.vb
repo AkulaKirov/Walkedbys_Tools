@@ -22,7 +22,7 @@ Public Class 启动器
         GBupdate.Top = -1000
         If 程序运行中("VBCSCompiler") AndAlso 程序运行中("devenv") Then 新工具("临时工具", 临时工具, "Whatever", "临时用的工具，一般是拿来测试的，如果你运行了 Visual Studio 的话，我就会显示在这里。")
         新工具(" 工具箱设置", 程序设置, "AllSettings", "关于本工具箱的一些设置")
-        新工具("B站图床", B站图床, "BilibiliPic", "把20MB以下的图片无损放到B站服务器还行")
+        新工具("图床", B站图床, "bilibiliPic", "把图片快速放到B站等网站的服务器里")
         新工具("日子提醒器", 日子提醒, "DayReminder", "提醒生日或者重要的啥日子", True)
         新工具("监视式VMT生成器", VMT生成器, "VMTG", "给一个贴图文件夹监视式地批量生成 VMT 文件")
         新工具("系统代理设置", 系统代理设置, "ProxyManager", "快速设置系统代理")
@@ -30,17 +30,17 @@ Public Class 启动器
         新工具("未响应图片制作器", 未响应图片制作器, "NoResPic", "制作假装程序未响应的假图片")
         新工具("文件筛选", 文件筛选, "FileChoose", "把A文件夹B文件夹的文件选择性的复制到C文件夹")
         新工具("创意工坊物品篡改器", 创意工坊篡改器, "WorkshopCut", "可以直接修改 Steam Workshop 指定物品的信息，但是你必须是这个物品的上传者或贡献者")
-        新工具("剪贴板记录器", 剪贴板记录器, "ClipBoardRecord", "在后台记录剪贴板的内容到硬盘里", Val(设置.元素("CBwhen")) <> 2)
+        新工具("剪贴板记录器", 剪贴板记录器, "ClipBoardRecord", "在后台记录剪贴板的内容到硬盘里", Val(设置.字符串("CBwhen")) <> 2)
         新工具("起源模型贴图打包器", 起源模型贴图打包器, "SourceModelPacker", "给 Source 的模型文件批量打包贴图文件")
         新工具("RunSringLUA制作器", RunStringLUA制作器, "RunStringLua", "算是给 GMod LUA 加密？")
-        新工具("B站催更器", B站催更器, "BilibiliPushYou", "会提醒你B站多久没更视频的一个工具", 设置.读取真假("CheckBilibiliAtStart"))
+        新工具("B站催更器", B站催更器, "BilibiliPushYou", "会提醒你B站多久没更视频的一个工具", 设置.布林("CheckBilibiliAtStart"))
         新工具("随机生成器", 随机生成器, "RandomG", "随机生成中英文句子或者数字等")
         新工具("网络检测", 网络检测, "NetTest", "如果你觉得你的网络不正常可以一直看着这个")
         新工具("字符画图片制作", 字符画图片制作, "CharPic", "用字符画表示图片")
-        新工具("有没有少Steam好友", Steam好友列表检查, "SteamFriends", "检查你的Steam好友里是不是有人把你删了", 设置.读取真假("CheckSteamFriendsAtStart"))
+        新工具("有没有少Steam好友", Steam好友列表检查, "SteamFriends", "检查你的Steam好友里是不是有人把你删了", 设置.布林("CheckSteamFriendsAtStart"))
         新工具("创意工坊物品列表导出", 创意工坊订阅列表导出, "WorkshopListOut", "把你的workshop订阅的或者是收藏夹里的或者是你发布的或者合集里的物品都导出成一个列表")
         新工具("创意工坊合集物品批量添加", 创意工坊合集物品批量添加, "WorkshopCollectionAdd", "可以先用Workshop物品列表导出工具导出物品列表，然后在这里导入到指定的合集。")
-        新工具("输入法辅助框", 输入法辅助框, "InputHelper", "在临时窗口上打字来避免一些垃圾软件对输入法的不支持。", Val(设置.元素("IMEwhen")) <> 2)
+        新工具("输入法辅助框", 输入法辅助框, "InputHelper", "在临时窗口上打字来避免一些垃圾软件对输入法的不支持。", Val(设置.字符串("IMEwhen")) <> 2)
         新工具("快速闹钟", 快速闹钟, "QuickClock", "设置几分钟后发出声音和气泡提醒我。")
         新工具("起源地图编译器", 起源地图编译, "SourceMapCompile", "方便一些起源地图的编译操作。")
         AddHandler SizeChanged, AddressOf 最小化隐藏
@@ -51,15 +51,15 @@ Public Class 启动器
         新增关于链接("下载最新版", "https://github.com/gordonwalkedby/Walkedbys_Tools/releases")
         新增关于链接("请我喝好的", "https://walkedby.com/donateme/")
         新增关于链接("反馈", "https://github.com/gordonwalkedby/Walkedbys_Tools/issues")
-        For Each g In 分割(设置.元素("HistoryTool"), vbCrLf)
+        For Each g In 分割(设置.字符串("HistoryTool"), vbCrLf)
             t = 名字工具(g)
             If Not IsNothing(t) Then 最后使用的工具.Add(t)
         Next
         GBallTools.Text += 括((ListTools.Items.Count - 1).ToString)
-        时长 = 设置.读取数("OpenTime")
+        时长 = 设置.数字("OpenTime")
         TimerC_Tick()
         TimerC.Enabled = True
-        If Not 设置.读取真假("NoUpdateAtMain") Then
+        If Not 设置.布林("NoUpdateAtMain") Then
             新线程(Sub()
                     Dim h As New 简易HTTP("https://raw.githubusercontent.com/gordonwalkedby/Walkedbys_Tools/master/WT/updater.xml")
                     Dim o As String = h.获得回应
@@ -126,7 +126,7 @@ Public Class 启动器
         Refresh()
         AutoSave.Enabled = True
         配色(Me)
-        If 设置.读取真假("SaveBACKUP") Then
+        If 设置.布林("SaveBACKUP") Then
             g = 追加斜杠(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)) + "wt_save_backup\"
             Directory.CreateDirectory(g)
             g += 下划线日期(Today) + " wt_save.wbxml"
@@ -137,7 +137,7 @@ Public Class 启动器
     End Sub
 
     Private Sub 启动器_FormClosing(sender As Form, e As FormClosingEventArgs) Handles Me.FormClosing
-        If 设置.读取真假("ExitAtMain") Then
+        If 设置.布林("ExitAtMain") Then
             e.Cancel = True
             隐藏到后台(sender)
         Else
@@ -308,8 +308,8 @@ Public Class 启动器
     End Sub
 
     Private Sub AutoSave_Tick(sender As Object, e As EventArgs) Handles AutoSave.Tick
-        设置.元素("OpenTime") = 时长
-        设置.元素("HistoryTool") = 列表转文字(最后使用的工具)
+        设置.字符串("OpenTime") = 时长
+        设置.字符串("HistoryTool") = 列表转文字(最后使用的工具)
         设置.保存到本地()
     End Sub
 

@@ -4,9 +4,9 @@ Public Class B站催更器
     Dim Th As Thread
 
     Private Sub B站催更器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        TxtID.Text = 设置.元素("bilibiliUID")
+        TxtID.Text = 设置.字符串("bilibiliUID")
         LabOut.Text = ""
-        If 设置.读取真假("CheckBilibiliAtStart") Then
+        If 设置.布林("CheckBilibiliAtStart") Then
             CheckAuto.Checked = True
             If ButTell.Enabled Then
                 ButTell_Click(sender, e)
@@ -20,7 +20,7 @@ Public Class B站催更器
     End Sub
 
     Private Sub B站催更器_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        设置.元素("bilibiliUID") = TxtID.Text
+        设置.字符串("bilibiliUID") = TxtID.Text
         中断线程(Th)
     End Sub
 
@@ -64,7 +64,7 @@ Public Class B站催更器
     End Sub
 
     Private Sub CheckAuto_CheckedChanged(sender As Object, e As EventArgs) Handles CheckAuto.CheckedChanged
-        设置.元素("CheckBilibiliAtStart") = CheckAuto.Checked.ToString
+        设置.字符串("CheckBilibiliAtStart") = CheckAuto.Checked.ToString
     End Sub
 
 End Class

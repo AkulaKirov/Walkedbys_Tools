@@ -15,13 +15,13 @@ Public Class 信息修改器
         TxtInfo.Text = ""
         Dim i As Integer = ListT.SelectedIndex
         If i < 0 Then Exit Sub
-        TxtInfo.Text = 设置.元素(ListT.Items.Item(i))
+        TxtInfo.Text = 设置.字符串(ListT.Items.Item(i))
     End Sub
 
     Private Sub ButSave_Click(sender As Object, e As EventArgs) Handles ButSave.Click
         Dim i As Integer = ListT.SelectedIndex
         If i < 0 Then Exit Sub
-        设置.元素(ListT.Items.Item(i)) = TxtInfo.Text
+        设置.字符串(ListT.Items.Item(i)) = TxtInfo.Text
     End Sub
 
     Private Sub ButBack_Click(sender As Object, e As EventArgs) Handles ButBack.Click

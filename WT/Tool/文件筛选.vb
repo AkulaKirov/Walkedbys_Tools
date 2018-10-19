@@ -3,15 +3,15 @@ Public Class 文件筛选
 
     Private Sub 文件筛选_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         文本框拖入文件夹(TxtFA, TxtFB, TxtFC)
-        TxtFA.Text = 设置.元素("FileSelectA")
-        TxtFB.Text = 设置.元素("FileSelectB")
-        TxtFC.Text = 设置.元素("FileSelectC")
+        TxtFA.Text = 设置.字符串("FileSelectA")
+        TxtFB.Text = 设置.字符串("FileSelectB")
+        TxtFC.Text = 设置.字符串("FileSelectC")
     End Sub
 
     Private Sub 文件筛选_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        设置.元素("FileSelectA") = TxtFA.Text
-        设置.元素("FileSelectB") = TxtFB.Text
-        设置.元素("FileSelectC") = TxtFC.Text
+        设置.字符串("FileSelectA") = TxtFA.Text
+        设置.字符串("FileSelectB") = TxtFB.Text
+        设置.字符串("FileSelectC") = TxtFC.Text
     End Sub
 
     Private Sub TxtFA_TextChanged(sender As Object, e As EventArgs) Handles TxtFA.TextChanged, TxtFB.TextChanged, TxtFC.TextChanged

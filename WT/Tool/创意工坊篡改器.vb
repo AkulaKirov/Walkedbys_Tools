@@ -5,20 +5,20 @@ Public Class 创意工坊篡改器
         填写steamCookie(GBsteamCookie, Sub()
                                          Pn.Visible = GBsteamCookie.Tag
                                      End Sub)
-        Dim i As Integer = 设置.读取数("WorkshopLanguage")
+        Dim i As Integer = 设置.数字("WorkshopLanguage")
         If i >= ListLanguage.Items.Count Then i = 0
         ListLanguage.SelectedIndex = i
-        TxtTitle.Text = 设置.元素("WorkshopTitle")
-        TxtDes.Text = 设置.元素("WorkshopDes")
-        TxtID.Text = 设置.元素("WorkshopID")
+        TxtTitle.Text = 设置.字符串("WorkshopTitle")
+        TxtDes.Text = 设置.字符串("WorkshopDes")
+        TxtID.Text = 设置.字符串("WorkshopID")
         Labout.Text = ""
     End Sub
 
     Private Sub 创意工坊篡改器_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        设置.元素("WorkshopTitle") = TxtTitle.Text
-        设置.元素("WorkshopDes") = TxtDes.Text
-        设置.元素("WorkshopLanguage") = ListLanguage.SelectedIndex.ToString
-        设置.元素("WorkshopID") = TxtID.Text
+        设置.字符串("WorkshopTitle") = TxtTitle.Text
+        设置.字符串("WorkshopDes") = TxtDes.Text
+        设置.字符串("WorkshopLanguage") = ListLanguage.SelectedIndex.ToString
+        设置.字符串("WorkshopID") = TxtID.Text
     End Sub
 
     Private Sub TxtID_TextChanged(sender As Object, e As EventArgs) Handles TxtID.TextChanged

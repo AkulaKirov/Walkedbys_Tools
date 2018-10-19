@@ -7,20 +7,19 @@ Public Class 剪贴板记录器
     Public Sub 剪贴板记录器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         文本框拖入文件夹(TxtPic)
         文本框拖入文件(TxtText)
-        TxtPic.Text = 设置.元素("CBpic")
-        TxtText.Text = 设置.元素("CBtext")
-        ListOption.SelectedIndex = Val(设置.元素("CBwhen"))
+        TxtPic.Text = 设置.字符串("CBpic")
+        TxtText.Text = 设置.字符串("CBtext")
+        ListOption.SelectedIndex = Val(设置.字符串("CBwhen"))
     End Sub
 
     Private Sub 剪贴板记录器_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        设置.元素("CBpic") = TxtPic.Text
-        设置.元素("CBtext") = TxtText.Text
-        设置.元素("CBwhen") = ListOption.SelectedIndex.ToString
+        设置.字符串("CBpic") = TxtPic.Text
+        设置.字符串("CBtext") = TxtText.Text
+        设置.字符串("CBwhen") = ListOption.SelectedIndex.ToString
     End Sub
 
     Private Sub Watching_Tick(sender As Object, e As EventArgs) Handles Watching.Tick
         If 后台定时器启用(ListOption) Then
-            Dp("opened", Now)
             Dim s As String = TxtText.Text, m As String
             If s.Length > 0 AndAlso 文件可用(s) Then
                 m = 剪贴板.文本
