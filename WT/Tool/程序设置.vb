@@ -7,7 +7,7 @@ Public Class 程序设置
         新选项("HideWindowAtMin", "最小化的时候直接隐藏到后台，而不是停留在任务栏里")
         新选项("NoUpdateAtMain", "启动程序的时候不检查更新（关闭后请自行去我博客查询更新）")
         新选项("ExitAtMain", "关闭主页的时候隐藏到后台，而不是直接退出程序")
-        新选项("SaveBACKUP", "软件开启时保存一个备份的软件配置文件到wt_save_backup文件夹")
+        新选项("SaveBACKUP", "软件开启时保存一个备份的软件配置文件到我的文档下的wt_save_backup文件夹")
     End Sub
 
     Sub 新选项(名字 As String, 文字 As String)

@@ -59,7 +59,7 @@ Partial Class GM模组发布器
         Me.LabGMOD.AutoSize = True
         Me.LabGMOD.Location = New System.Drawing.Point(3, 9)
         Me.LabGMOD.Name = "LabGMOD"
-        Me.LabGMOD.Size = New System.Drawing.Size(183, 17)
+        Me.LabGMOD.Size = New System.Drawing.Size(184, 19)
         Me.LabGMOD.TabIndex = 4
         Me.LabGMOD.Text = "你的 Garry's Mod 游戏目录："
         '
@@ -77,7 +77,7 @@ Partial Class GM模组发布器
         Me.LabJpgfile.AutoSize = True
         Me.LabJpgfile.Location = New System.Drawing.Point(3, 65)
         Me.LabJpgfile.Name = "LabJpgfile"
-        Me.LabJpgfile.Size = New System.Drawing.Size(87, 17)
+        Me.LabJpgfile.Size = New System.Drawing.Size(88, 19)
         Me.LabJpgfile.TabIndex = 4
         Me.LabJpgfile.Text = "封面图 JPG："
         '
@@ -104,7 +104,7 @@ Partial Class GM模组发布器
         Me.LabPath.AutoSize = True
         Me.LabPath.Location = New System.Drawing.Point(3, 36)
         Me.LabPath.Name = "LabPath"
-        Me.LabPath.Size = New System.Drawing.Size(135, 17)
+        Me.LabPath.Size = New System.Drawing.Size(136, 19)
         Me.LabPath.TabIndex = 1
         Me.LabPath.Text = "你的 Addon 文件夹："
         '
@@ -113,7 +113,7 @@ Partial Class GM模组发布器
         Me.LabNO.AutoSize = True
         Me.LabNO.Location = New System.Drawing.Point(3, 4)
         Me.LabNO.Name = "LabNO"
-        Me.LabNO.Size = New System.Drawing.Size(496, 17)
+        Me.LabNO.Size = New System.Drawing.Size(497, 19)
         Me.LabNO.TabIndex = 2
         Me.LabNO.Text = "addon.json 以及 GMA 文件将由本程序生成，请勿自己手动制作，被覆盖不要怪我。"
         '
@@ -138,7 +138,7 @@ Partial Class GM模组发布器
         Me.LabGMAname.AutoSize = True
         Me.LabGMAname.Location = New System.Drawing.Point(4, 26)
         Me.LabGMAname.Name = "LabGMAname"
-        Me.LabGMAname.Size = New System.Drawing.Size(47, 17)
+        Me.LabGMAname.Size = New System.Drawing.Size(48, 19)
         Me.LabGMAname.TabIndex = 0
         Me.LabGMAname.Text = "名字："
         '
@@ -147,7 +147,7 @@ Partial Class GM模组发布器
         Me.LabGMAtype.AutoSize = True
         Me.LabGMAtype.Location = New System.Drawing.Point(4, 56)
         Me.LabGMAtype.Name = "LabGMAtype"
-        Me.LabGMAtype.Size = New System.Drawing.Size(47, 17)
+        Me.LabGMAtype.Size = New System.Drawing.Size(48, 19)
         Me.LabGMAtype.TabIndex = 1
         Me.LabGMAtype.Text = "类型："
         '
@@ -165,7 +165,7 @@ Partial Class GM模组发布器
         Me.LabTAGs.AutoSize = True
         Me.LabTAGs.Location = New System.Drawing.Point(4, 88)
         Me.LabTAGs.Name = "LabTAGs"
-        Me.LabTAGs.Size = New System.Drawing.Size(47, 17)
+        Me.LabTAGs.Size = New System.Drawing.Size(48, 19)
         Me.LabTAGs.TabIndex = 2
         Me.LabTAGs.Text = "标签："
         '
@@ -185,7 +185,7 @@ Partial Class GM模组发布器
         Me.CBtype.Items.AddRange(New Object() {"servercontent", "gamemode", "map", "weapon", "vehicle", "npc", "tool", "effects", "model"})
         Me.CBtype.Location = New System.Drawing.Point(62, 53)
         Me.CBtype.Name = "CBtype"
-        Me.CBtype.Size = New System.Drawing.Size(129, 25)
+        Me.CBtype.Size = New System.Drawing.Size(129, 27)
         Me.CBtype.TabIndex = 4
         Me.CBtype.TabStop = False
         '
@@ -253,7 +253,7 @@ Partial Class GM模组发布器
         Me.LabCount.AutoSize = True
         Me.LabCount.Location = New System.Drawing.Point(9, 60)
         Me.LabCount.Name = "LabCount"
-        Me.LabCount.Size = New System.Drawing.Size(55, 17)
+        Me.LabCount.Size = New System.Drawing.Size(56, 19)
         Me.LabCount.TabIndex = 15
         Me.LabCount.Text = "共计：0"
         '
@@ -274,7 +274,7 @@ Partial Class GM模组发布器
         Me.ListAddons.FormattingEnabled = True
         Me.ListAddons.Location = New System.Drawing.Point(6, 80)
         Me.ListAddons.Name = "ListAddons"
-        Me.ListAddons.Size = New System.Drawing.Size(334, 22)
+        Me.ListAddons.Size = New System.Drawing.Size(334, 24)
         Me.ListAddons.Sorted = True
         Me.ListAddons.TabIndex = 13
         Me.ListAddons.TabStop = False
@@ -294,6 +294,7 @@ Partial Class GM模组发布器
         Me.Pn.Name = "Pn"
         Me.Pn.Size = New System.Drawing.Size(577, 387)
         Me.Pn.TabIndex = 6
+        Me.Pn.Visible = False
         '
         'PicThumb
         '

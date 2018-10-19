@@ -127,9 +127,9 @@ Public Class 启动器
         AutoSave.Enabled = True
         配色(Me)
         If 设置.读取真假("SaveBACKUP") Then
-            g = 程序文件目录 + "wt_save_backup\"
+            g = 追加斜杠(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)) + "wt_save_backup\"
             Directory.CreateDirectory(g)
-            g += 下划线日期(Today) + ".wbxml"
+            g += 下划线日期(Today) + " wt_save.wbxml"
             If Not 文件存在(g) Then
                 If 文件可读写(g) Then File.Copy(设置.本地文件, g, True)
             End If
