@@ -300,6 +300,18 @@ Module 杂项
     ''' </summary>
     Public Class 剪贴板
 
+        Public Shared ReadOnly Property 有文本 As Boolean
+            Get
+                Return Forms.Clipboard.ContainsText
+            End Get
+        End Property
+
+        Public Shared ReadOnly Property 有图片 As Boolean
+            Get
+                Return Forms.Clipboard.ContainsImage
+            End Get
+        End Property
+
         Public Shared Property 文本 As String
             Set(v As String)
                 Forms.Clipboard.SetText(v)

@@ -492,7 +492,7 @@ Module 文件处理
             Get
                 Dim s As String = 字符串(名字)
                 If s.Length < 1 Then Return 默认
-                Return s = "true"
+                Return s.ToLower = "true"
             End Get
             Set(value As Boolean)
                 字符串(名字) = value.ToString

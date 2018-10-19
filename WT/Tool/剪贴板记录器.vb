@@ -10,6 +10,8 @@ Public Class 剪贴板记录器
         TxtPic.Text = 设置.字符串("CBpic")
         TxtText.Text = 设置.字符串("CBtext")
         ListOption.SelectedIndex = Val(设置.字符串("CBwhen"))
+        If 剪贴板.有图片 Then LastPic = 剪贴板.图片
+        If 剪贴板.有文本 Then LastTxt = 剪贴板.文本
     End Sub
 
     Private Sub 剪贴板记录器_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
