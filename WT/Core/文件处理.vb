@@ -340,9 +340,9 @@ Module 文件处理
     End Function
 
     ''' <summary>
-    ''' 读取我自己的加密文本
+    ''' 读取我自己的加密文本，如果检测到hash不对就会返回空字符串
     ''' </summary>
-    Public Function 读加密文件(文件 As String) As String
+    Public Function 读加密文件(文件 As String, Optional 不检测 As Boolean = False) As String
         If Not 文件可用(文件) Then Return ""
         Dim r As New BinaryReader(File.OpenRead(文件))
         Dim hash As Integer = r.ReadInt32()
@@ -353,7 +353,8 @@ Module 文件处理
             If b > n2 Then s.Add(b - n2)
         Next
         Dim f As String = 字节转文字(s.ToArray)
-        If f.GetHashCode = hash Then
+        Return HttpUtility.UrlDecode(f)
+        If 不检测 OrElse f.GetHashCode = hash Then
             Return HttpUtility.UrlDecode(f)
         Else
             Return ""
