@@ -98,7 +98,8 @@ Partial Class 剪贴板记录器
         '
         'Watching
         '
-        Me.Watching.Interval = 300
+        Me.Watching.Enabled = True
+        Me.Watching.Interval = 400
         '
         '剪贴板记录器
         '

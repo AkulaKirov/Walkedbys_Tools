@@ -31,6 +31,7 @@ Partial Class Steam好友列表检查
         Me.TimerC = New System.Windows.Forms.Timer(Me.components)
         Me.CheckAuto = New System.Windows.Forms.CheckBox()
         Me.LabID = New System.Windows.Forms.LinkLabel()
+        Me.LabAutoCheck = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'LabNote
@@ -108,10 +109,20 @@ Partial Class Steam好友列表检查
         Me.LabID.TabStop = True
         Me.LabID.Text = "你的 Steam 64位ID："
         '
+        'LabAutoCheck
+        '
+        Me.LabAutoCheck.AutoSize = True
+        Me.LabAutoCheck.Location = New System.Drawing.Point(243, 68)
+        Me.LabAutoCheck.Name = "LabAutoCheck"
+        Me.LabAutoCheck.Size = New System.Drawing.Size(204, 19)
+        Me.LabAutoCheck.TabIndex = 5
+        Me.LabAutoCheck.Text = "本次自动检查没有发现好友减少。"
+        '
         'Steam好友列表检查
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(570, 358)
+        Me.Controls.Add(Me.LabAutoCheck)
         Me.Controls.Add(Me.LabID)
         Me.Controls.Add(Me.CheckAuto)
         Me.Controls.Add(Me.TxtLog)
@@ -139,4 +150,5 @@ Partial Class Steam好友列表检查
     Friend WithEvents TimerC As Forms.Timer
     Friend WithEvents CheckAuto As CheckBox
     Friend WithEvents LabID As LinkLabel
+    Friend WithEvents LabAutoCheck As Label
 End Class

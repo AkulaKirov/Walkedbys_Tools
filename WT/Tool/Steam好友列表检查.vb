@@ -4,6 +4,10 @@ Public Class Steam好友列表检查
     Dim TH As Thread, 自动检查 As Boolean = False, 肯定少人 As Boolean = False
 
     Private Sub Steam好友列表检查_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        With LabAutoCheck
+            .Tag = .Text
+            .Text = ""
+        End With
         TxtID64.Text = 设置.元素("steam64id")
         TxtLog.Text = 设置.元素("steamFriendLOG")
         If 设置.读取真假("CheckSteamFriendsAtStart") Then
@@ -54,6 +58,9 @@ Public Class Steam好友列表检查
                                             End If
                                         End If
                                     Next
+                                    If n = 0 AndAlso 自动检查 Then
+                                        LabAutoCheck.Text = LabAutoCheck.Tag
+                                    End If
                                     mc = Regex.Matches(s, "steamid:[0-9]{17},")
                                     out += "好友数：" + mc.Count.ToString + vbCrLf
                                     out += "检查完毕" + IIf(n = 0, "，没有少人。", "。")

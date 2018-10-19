@@ -10,7 +10,6 @@ Public Class 剪贴板记录器
         TxtPic.Text = 设置.元素("CBpic")
         TxtText.Text = 设置.元素("CBtext")
         ListOption.SelectedIndex = Val(设置.元素("CBwhen"))
-        Watching.Enabled = True
     End Sub
 
     Private Sub 剪贴板记录器_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
@@ -21,6 +20,7 @@ Public Class 剪贴板记录器
 
     Private Sub Watching_Tick(sender As Object, e As EventArgs) Handles Watching.Tick
         If 后台定时器启用(ListOption) Then
+            Dp("opened", Now)
             Dim s As String = TxtText.Text, m As String
             If s.Length > 0 AndAlso 文件可用(s) Then
                 m = 剪贴板.文本
@@ -35,8 +35,9 @@ Public Class 剪贴板记录器
             If s.Length > 0 AndAlso 文件夹存在(s) Then
                 Dim i As Image = 剪贴板.图片
                 If Not IsNothing(i) Then
-                    If Not 图片一样(LastPic, i, True) Then
-                        i.Save(s + UNIX时间(Now).ToString + ".png")
+                    If 图片一样(LastPic, i, True) = False Then
+                        m = s + UNIX时间(Now).ToString + ".png"
+                        If 文件存在(m) = False Then i.Save(m)
                         LastPic = i
                     End If
                 End If
