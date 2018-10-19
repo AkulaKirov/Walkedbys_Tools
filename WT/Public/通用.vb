@@ -73,7 +73,7 @@ Module 通用
             .BalloonTipIcon = IIf(警告, ToolTipIcon.Warning, ToolTipIcon.Info)
             .BalloonTipText = 左(s, 30)
             .BalloonTipTitle = IIf(警告, "警告：", "通知：")
-            .ShowBalloonTip(100)
+            .ShowBalloonTip(10000)
         End With
     End Sub
 

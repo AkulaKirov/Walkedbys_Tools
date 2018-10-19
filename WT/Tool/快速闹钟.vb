@@ -42,9 +42,7 @@
         Beep()
         rings += 1
         Ring.Interval() = 随机.整数(150, 400)
-        If rings >= 10 Then
-            Ring.Enabled = False
-        End If
+        If rings >= 10 Then Ring.Enabled = False
     End Sub
 
 End Class

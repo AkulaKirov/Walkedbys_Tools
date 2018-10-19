@@ -134,7 +134,7 @@ Partial Class 起源地图编译
         'CheckOpenGame
         '
         Me.CheckOpenGame.AutoSize = True
-        Me.CheckOpenGame.Location = New System.Drawing.Point(298, 257)
+        Me.CheckOpenGame.Location = New System.Drawing.Point(322, 257)
         Me.CheckOpenGame.Name = "CheckOpenGame"
         Me.CheckOpenGame.Size = New System.Drawing.Size(182, 24)
         Me.CheckOpenGame.TabIndex = 10
