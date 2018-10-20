@@ -47,7 +47,7 @@ Module 通用
         MsgBox(s, MsgBoxStyle.Critical, "出错！走過去的工具箱 v" + 版本.ToString)
         Try
             启动器.Nico.Visible = False
-            删除(缓存目录)
+            If Process.GetProcessesByName("wt").Count = 1 Then 删除(缓存目录)
         Catch ex As Exception
         End Try
         End
