@@ -338,6 +338,17 @@ Module 字符串处理
     End Function
 
     ''' <summary>
+    ''' 把文字凑成指定的个数的文字
+    ''' </summary>
+    Public Function 凑(文字 As String, 个数 As Integer) As String
+        Dim s As String = ""
+        For i As Integer = 1 To 个数
+            s += 文字
+        Next
+        Return s
+    End Function
+
+    ''' <summary>
     ''' 把日期变成 2018_01_05 这类的文字
     ''' </summary>
     Public Function 下划线日期(s As Date) As String

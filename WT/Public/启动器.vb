@@ -81,7 +81,7 @@ Public Class 启动器
                 End Sub)
         End If
         彩蛋码 = ""
-        LabFun.Text = 随机.多选一("w",
+        LabFun.Text = 随机.多选一(凑("w", 随机.整数(25, 1)),
 "8848 钛金显卡~",
 "真高兴我的计算机几乎都不是学校教的。",
 "风水轮流转。",
@@ -121,7 +121,15 @@ Public Class 启动器
 "上千的手机有什么好买的？给我400元我给你买个iPhone5用用。",
 "av87519",
 "好的评价都是主观的，但不代表我的观点你就必须要认同，你完全可以保留自己的观点。——黑镖客梦回",
-"凡是要考试的，我基本上都做的很糟糕，然后很伤心。因为，有人和我竞争，有人比我好。"
+"凡是要考试的，我基本上都做的很糟糕，然后很伤心。因为，有人和我竞争，有人比我好。",
+"最重要的是发现自己的人生价值，不然就开始糟蹋自己甚至世界了。",
+"C 语言诡异离奇，缺陷重重，但却获得了巨大的成功 ——Dennis Ritchie",
+"你知道吗？开发 Steam 的和开发 BitTorrent 的是同一个人。",
+"花钱才是硬道理。",
+"我一般在北京时间下午5点去吃晚饭，很多人都觉得这个时间太早了。",
+"你刷牙了吗？",
+"本软件藏有一个临时工具，就是做一些奇奇怪怪的测试用的。",
+"我们都是中国人"
 ).ToString
         Refresh()
         AutoSave.Enabled = True
@@ -151,9 +159,12 @@ Public Class 启动器
         For Each t As Thread In 多线程
             中断线程(t)
         Next
-        For Each n As 工具 In 工具列表
-            If n.启动过了 Then n.窗体.Dispose()
-        Next
+        Try
+            For Each n As 工具 In 工具列表
+                If n.启动过了 Then n.窗体.Dispose()
+            Next
+        Catch ex As Exception
+        End Try
         设置.保存到本地()
         删除(缓存目录)
         End
