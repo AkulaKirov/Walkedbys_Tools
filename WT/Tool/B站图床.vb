@@ -85,7 +85,9 @@ Public Class B站图床
             If succ Then
                 LabDoit.Text = s
                 ButCopy.Enabled = True
-                If CheckAuto.Checked Then 剪贴板.文本 = LabDoit.Text
+                If CheckAuto.Checked Then
+                    剪贴板.文本 = LabDoit.Text
+                End If
             Else
                 ButRetry.Enabled = True
                 LabDoit.Text = "失败！" + vbCrLf + s
@@ -112,14 +114,10 @@ Public Class B站图床
             LabDoit.Text = "剪贴板里没有图片！"
             ButCopy.Enabled = False
         Else
-            Try
-                Dim i As String = 缓存目录 + "bilibilitemp.png"
-                m.Save(i)
-                m.Dispose()
-                检查图片(i)
-            Catch ex As Exception
-                LabDoit.Text = "剪贴板图片有误：" + vbCrLf + ex.Message
-            End Try
+            Dim i As String = 缓存目录 + "bilibilitemp.png"
+            m.Save(i)
+            m.Dispose()
+            检查图片(i)
         End If
     End Sub
 

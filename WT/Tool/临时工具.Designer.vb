@@ -22,41 +22,31 @@ Partial Class 临时工具
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.RTB = New System.Windows.Forms.RichTextBox()
-        Me.TxtPath = New System.Windows.Forms.TextBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'RTB
+        'Button1
         '
-        Me.RTB.Location = New System.Drawing.Point(12, 43)
-        Me.RTB.Name = "RTB"
-        Me.RTB.Size = New System.Drawing.Size(683, 400)
-        Me.RTB.TabIndex = 0
-        Me.RTB.Text = ""
-        '
-        'TxtPath
-        '
-        Me.TxtPath.Location = New System.Drawing.Point(12, 12)
-        Me.TxtPath.Name = "TxtPath"
-        Me.TxtPath.Size = New System.Drawing.Size(384, 25)
-        Me.TxtPath.TabIndex = 1
+        Me.Button1.Location = New System.Drawing.Point(126, 266)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(137, 72)
+        Me.Button1.TabIndex = 0
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         '临时工具
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(730, 467)
-        Me.Controls.Add(Me.TxtPath)
-        Me.Controls.Add(Me.RTB)
+        Me.Controls.Add(Me.Button1)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.Name = "临时工具"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "临时工具"
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents RTB As RichTextBox
-    Friend WithEvents TxtPath As TextBox
+    Friend WithEvents Button1 As Button
 End Class

@@ -314,7 +314,10 @@ Module 杂项
 
         Public Shared Property 文本 As String
             Set(v As String)
-                Forms.Clipboard.SetText(v)
+                Try
+                    Forms.Clipboard.SetText(v)
+                Catch ex As Exception
+                End Try
             End Set
             Get
                 Return 非空字符串(Forms.Clipboard.GetText)
@@ -323,7 +326,10 @@ Module 杂项
 
         Public Shared Property 图片 As Image
             Set(v As Image)
-                Forms.Clipboard.SetImage(v)
+                Try
+                    Forms.Clipboard.SetImage(v)
+                Catch ex As Exception
+                End Try
             End Set
             Get
                 If Forms.Clipboard.ContainsImage Then
