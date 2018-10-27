@@ -2,11 +2,10 @@
   <note>这是一个检查更新版本用的 XML 文件。</note>
   <ver>1.1</ver>
   <v012>
-    <version>0.19</version>
+    <version>0.20</version>
     <info>
-      - B站图床工具改称“图床”，提供B站以及搜狐等网站的图床服务
-      - 更新内容显示的方框变得更大
-      - 修复了一些BUG
+      - 【有没有少Steam好友】支持快速查询
+      - 修复一些BUG，加了一点点优化
     </info>
   </v012>
 </root>
