@@ -3,8 +3,8 @@ Public Class GM模组发布器
 
     Const JSON As String = "{""title"": ""标题"",""type"":""类型"", ""tags"":[ ""标签1"",""标签2""],""ignore"":[""*.psd"",""*.vcproj"",""*.svn*""]}"
     Dim log As String = 缓存目录 + "gmodlog.txt"
+    Dim bat As String = 缓存目录 + "xg.bat"
     Dim tgma As String = 缓存目录 + "t.gma"
-    Dim GMODbin As String = ""
     Dim 上次更新日期 As Date
     Dim 冷却 As Integer = 0
 
@@ -64,7 +64,7 @@ Public Class GM模组发布器
         设置.保存元素("GMODaddons", 列表转文字(ListAddons.Items))
         设置.字符串("GMAtime") = 上次更新日期.ToString
         设置.字符串("GMAw") = ListAddons.SelectedIndex
-        删除(tgma, log)
+        删除(tgma, log, bat)
     End Sub
 
     Private Sub TxtGMod_TextChanged(sender As Object, e As EventArgs) Handles TxtGMod.TextChanged
@@ -73,10 +73,8 @@ Public Class GM模组发布器
             i = 追加斜杠(i) + "bin\"
             If 文件存在(i + "gmad.exe") AndAlso 文件存在(i + "gmpublish.exe") Then
                 Pn.Visible = True
-                GMODbin = i
             Else
                 Pn.Visible = False
-                GMODbin = ""
             End If
         End If
     End Sub
@@ -86,24 +84,9 @@ Public Class GM模组发布器
         If 文件后缀(m) <> "jpg" Then TxtJPGfile.Text = ""
     End Sub
 
-    Sub 运行(s As String)
-        If 包含(s, " & pause") Then
-            CoolD_Tick()
-            CoolD.Enabled = True
-        End If
-        Shell("cmd.exe /c " + 左(GMODbin, 2) + " & " + s, AppWinStyle.NormalFocus, True)
-    End Sub
-
-    Private Sub ButNew_Click(sender As Object, e As EventArgs) Handles ButNew.Click
-        If 生成GMA() Then
-            运行(引(GMODbin + "gmpublish.exe") + " create -icon " + 引(TxtJPGfile.Text) + " -addon " + 引(tgma) + " & pause ")
-            删除(tgma, log)
-        End If
-    End Sub
-
     Private Sub ButGetList_Click(sender As Object, e As EventArgs) Handles ButGetList.Click
         ListAddons.Items.Clear()
-        运行(引(GMODbin + "gmpublish.exe") + " list > " + 引(log))
+        Shell("cmd.exe /c " + 左(TxtGMod.Text, 2) + " & " + 引(TxtGMod.Text + "bin\gmpublish.exe") + " list > " + 引(log), AppWinStyle.NormalFocus, True)
         Dim s As String = 读文件(log)
         If 全部包含(s, "Getting published files..", "Done.") Then
             s = 提取(s, "Getting published files..", "Done.")
@@ -128,28 +111,40 @@ Public Class GM模组发布器
         Txtname_TextChanged(sender, e)
     End Sub
 
+    Private Sub ButNew_Click(sender As Object, e As EventArgs) Handles ButNew.Click
+        运行BAT(生成gma, 发布新素材)
+    End Sub
+
     Private Sub ListAddons_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListAddons.SelectedIndexChanged
         LabCount.Text = "共计：" & ListAddons.Items.Count & "  上次更新日期时间：" & 上次更新日期
     End Sub
 
     Private Sub ButUpdateGMA_Click(sender As Object, e As EventArgs) Handles ButUpdateGMA.Click
-        If 生成GMA() Then
-            运行(引(GMODbin + "gmpublish.exe") + " update -id " + Regex.Match(Trim(ListAddons.SelectedItem.ToString), "[0-9].*? ").ToString + " -addon " + 引(tgma) + " & pause")
-            删除(tgma, log)
-        End If
+        运行BAT(生成gma, 更新素材GMA)
     End Sub
 
     Private Sub ButUpdateJPG_Click(sender As Object, e As EventArgs) Handles ButUpdateJPG.Click
-        运行(引(GMODbin + "gmpublish.exe") + " update -id " + Regex.Match(Trim(ListAddons.SelectedItem.ToString), "[0-9].*? ").ToString + " -icon " + 引(TxtJPGfile.Text) + " & pause")
+        运行BAT(更新素材JPG)
     End Sub
 
     Private Sub ButUpdateALL_Click(sender As Object, e As EventArgs) Handles ButUpdateALL.Click
-        If 生成GMA() Then
-            运行(引(GMODbin + "gmpublish.exe") + " update -id " + Regex.Match(Trim(ListAddons.SelectedItem.ToString), "[0-9].*? ").ToString + " -addon " + 引(tgma) + " -icon " + 引(TxtJPGfile.Text) + " & pause")
-        End If
+        运行BAT(生成gma, 更新素材)
     End Sub
 
-    Public Function 生成GMA() As Boolean
+    Sub 运行BAT(ParamArray l() As String)
+        CoolD_Tick()
+        CoolD.Enabled = True
+        Dim sy As String = TxtGMod.Text + "bin\"
+        Dim s As String = 左(sy, 2) + vbCrLf + "cd " + 引(sy) + vbCrLf
+        For Each m As String In l
+            s += m + vbCrLf
+        Next
+        s += "pause"
+        写文件(bat, s)
+        Shell(bat, AppWinStyle.NormalFocus, True)
+    End Sub
+
+    Function 生成gma() As String
         Dim sy As String = TxtPath.Text, s As String = JSON, i As String
         删除(tgma, log)
         For Each i In Directory.GetFiles(sy, "*", SearchOption.AllDirectories)
@@ -164,16 +159,23 @@ Public Class GM模组发布器
         s = s.Replace("标签2", CBtags.CheckedItems.Item(1))
         写文件(追加斜杠(TxtPath.Text) + "addon.json", s)
         文件重命名(sy, sy.ToLower)
-        运行(引(GMODbin + "gmad.exe") + " create -folder " + 引(去右(sy, 1)) + " -out " + 引(tgma) + " > " + 引(log))
-        If 文件可用(tgma) Then
-            Return True
-        Else
-            s = 读文件(log)
-            Dim m As Integer = Regex.Match(s, "\[([\s\S]*)\]").Index
-            s = "大致错误信息： " + vbCrLf + 左(去左(s, m - 30), 800)
-            MsgBox(s, MsgBoxStyle.Critical, "GMA 文件生成失败！")
-            Return False
-        End If
+        Return "gmad.exe create -folder " + 引(去右(TxtPath.Text, 1)) + " -out " + 引(tgma)
+    End Function
+
+    Function 发布新素材() As String
+        Return "gmpublish.exe create -icon " + 引(TxtJPGfile.Text) + " -addon " + 引(tgma)
+    End Function
+
+    Function 更新素材JPG() As String
+        Return "gmpublish.exe update -id " + Regex.Match(Trim(ListAddons.SelectedItem.ToString), "[0-9].*? ").ToString + " -icon " + 引(TxtJPGfile.Text)
+    End Function
+
+    Function 更新素材GMA() As String
+        Return "gmpublish.exe update -id " + Regex.Match(Trim(ListAddons.SelectedItem.ToString), "[0-9].*? ").ToString + " -addon " + 引(tgma)
+    End Function
+
+    Function 更新素材() As String
+        Return "gmpublish.exe update -id " + Regex.Match(Trim(ListAddons.SelectedItem.ToString), "[0-9].*? ").ToString + " -addon " + 引(tgma) + " -icon " + 引(TxtJPGfile.Text)
     End Function
 
     Private Sub CoolD_Tick() Handles CoolD.Tick

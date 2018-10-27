@@ -32,6 +32,7 @@ Partial Class Steam好友列表检查
         Me.CheckAuto = New System.Windows.Forms.CheckBox()
         Me.LabID = New System.Windows.Forms.LinkLabel()
         Me.LabAutoCheck = New System.Windows.Forms.Label()
+        Me.ButSearch = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'LabNote
@@ -118,10 +119,21 @@ Partial Class Steam好友列表检查
         Me.LabAutoCheck.TabIndex = 5
         Me.LabAutoCheck.Text = "本次自动检查没有发现好友减少。"
         '
+        'ButSearch
+        '
+        Me.ButSearch.Location = New System.Drawing.Point(140, 352)
+        Me.ButSearch.Name = "ButSearch"
+        Me.ButSearch.Size = New System.Drawing.Size(291, 27)
+        Me.ButSearch.TabIndex = 6
+        Me.ButSearch.Text = "查询："
+        Me.ButSearch.UseVisualStyleBackColor = True
+        Me.ButSearch.Visible = False
+        '
         'Steam好友列表检查
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(570, 358)
+        Me.ClientSize = New System.Drawing.Size(570, 386)
+        Me.Controls.Add(Me.ButSearch)
         Me.Controls.Add(Me.LabAutoCheck)
         Me.Controls.Add(Me.LabID)
         Me.Controls.Add(Me.CheckAuto)
@@ -151,4 +163,5 @@ Partial Class Steam好友列表检查
     Friend WithEvents CheckAuto As CheckBox
     Friend WithEvents LabID As LinkLabel
     Friend WithEvents LabAutoCheck As Label
+    Friend WithEvents ButSearch As Button
 End Class

@@ -346,4 +346,11 @@ Module 杂项
 
     End Class
 
+    ''' <summary>
+    ''' 把颜色变成#123456这种字符串
+    ''' </summary>
+    Function 颜色格式转换(颜色 As Color) As String
+        Return "#" + Hex(颜色.R) + Hex(颜色.G) + Hex(颜色.B)
+    End Function
+
 End Module

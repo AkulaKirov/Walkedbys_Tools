@@ -58,7 +58,7 @@ Public Class Steam好友列表检查
                                             End If
                                         End If
                                     Next
-                                    If n = 0 AndAlso 自动检查 Then
+                                    If n = 0 AndAlso 自动检查 AndAlso IsDisposed = False Then
                                         LabAutoCheck.Text = LabAutoCheck.Tag
                                     End If
                                     mc = Regex.Matches(s, "steamid:[0-9]{17},")
@@ -101,6 +101,20 @@ Public Class Steam好友列表检查
 
     Private Sub Steam好友列表检查_Activated(sender As Object, e As EventArgs) Handles Me.Activated
         Tag = ""
+    End Sub
+
+    Private Sub TxtLog_MouseUp(sender As Object, e As MouseEventArgs) Handles TxtLog.MouseUp
+        Dim s As String = 只要数字(TxtLog.SelectedText), b As Boolean = 是steam64ID(s)
+        With ButSearch
+            .Visible = b
+            If b Then
+                .Text = "查询：" + s + IIf(s = TxtID64.Text, "（你自己）", "")
+            End If
+        End With
+    End Sub
+
+    Private Sub ButSearch_Click(sender As Object, e As EventArgs) Handles ButSearch.Click
+        Process.Start("https://steamrepcn.com/profiles/" + 只要数字(ButSearch.Text))
     End Sub
 
 End Class
