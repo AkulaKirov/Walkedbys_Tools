@@ -72,8 +72,8 @@ Module 杂项
         ''' <summary>
         ''' 随机获得 True 或 False
         ''' </summary>
-        Public Shared Function 真假(Optional 百分比概率 As Integer = 50) As Boolean
-            Return (Rnd() > (百分比概率 / 100))
+        Public Shared Function 真假(Optional 为真概率 As Integer = 50) As Boolean
+            Return (Rnd() > 1 - (为真概率 / 100))
         End Function
 
         ''' <summary>
