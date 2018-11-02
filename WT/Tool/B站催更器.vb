@@ -46,7 +46,7 @@ Public Class B站催更器
                                     If id <> "不到一天" Then
                                         Tag = "你已经" + id + "没更B站了！"
                                     Else
-                                        Tag = "你今天已经更新过B站啦~"
+                                        Tag = "你最近已经更新过B站啦~"
                                     End If
                                 End If
                             Else

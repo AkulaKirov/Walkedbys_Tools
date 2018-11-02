@@ -43,6 +43,7 @@ Public Class 启动器
         新工具("输入法辅助框", 输入法辅助框, "InputHelper", "在临时窗口上打字来避免一些垃圾软件对输入法的不支持。", Val(设置.字符串("IMEwhen")) <> 2)
         新工具("快速闹钟", 快速闹钟, "QuickClock", "设置几分钟后发出声音和气泡提醒我。")
         新工具("起源地图编译器", 起源地图编译, "SourceMapCompile", "方便一些起源地图的编译操作。")
+        新工具("微博批量删除", 微博批量删除, "WeiboDelete", "可以批量删除指定范围内的全部发出去的新浪微博。")
         AddHandler SizeChanged, AddressOf 最小化隐藏
         For Each t In 工具列表
             ListTools.Items.Add(t.名字)

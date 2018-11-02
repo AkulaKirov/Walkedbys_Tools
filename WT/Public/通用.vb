@@ -179,6 +179,9 @@ Module 通用
                                           方法.Invoke
                                       End If
                                   End Sub
+        AddHandler t.KeyDown, Sub(sender As Object, e As KeyEventArgs)
+                                  If e.KeyCode = Keys.Back Then sender.Text = ""
+                              End Sub
         Dim t2 As TextBox = g.Controls("TxtLoginSecure")
         AddHandler t2.TextChanged, Sub()
                                        设置.字符串("SteamLoginSecure") = Trim(t2.Text)
@@ -187,6 +190,9 @@ Module 通用
                                            方法.Invoke
                                        End If
                                    End Sub
+        AddHandler t2.KeyDown, Sub(sender As Object, e As KeyEventArgs)
+                                   If e.KeyCode = Keys.Back Then sender.Text = ""
+                               End Sub
         Dim b As Button = g.Controls("ButHowToGetCookie")
         AddHandler b.Click, Sub()
                                 Process.Start("https://s1.ax1x.com/2018/10/28/ichxbT.png")

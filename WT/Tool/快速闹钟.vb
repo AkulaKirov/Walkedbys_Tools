@@ -17,7 +17,7 @@
         If Not b Then
             ButStart.Text = "启动闹钟"
         Else
-            WantTime = Now.AddMinutes(TxtWhen.Value)
+            WantTime = Now.AddMinutes(Int(TxtWhen.Value + 0.5))
             Timer1_Tick()
         End If
         Timer1.Enabled = b
@@ -27,7 +27,7 @@
 
     Private Sub Timer1_Tick() Handles Timer1.Tick
         Dim i As Integer = DateDiff(DateInterval.Second, Now, WantTime)
-        ButStart.Text = "还有 " & FormatNumber(i / 60, 1) & " 分钟"
+        ButStart.Text = "还有 " & FormatNumber(i / 60, 2) & " 分钟"
         If i < 3 Then
             ButStart_Click()
             rings = 0
@@ -36,6 +36,9 @@
                 消息(TxtWhat.Text)
             End If
         End If
+    End Sub
+
+    Private Sub TxtWhen_ValueChanged(sender As Object, e As EventArgs) Handles TxtWhen.ValueChanged
     End Sub
 
     Private Sub Ring_Tick(sender As Object, e As EventArgs) Handles Ring.Tick

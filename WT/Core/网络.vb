@@ -167,7 +167,10 @@
             Try
                 Dim r As WebResponse = h.GetResponse
                 Dim i As String = 读取流(r.GetResponseStream)
-                If 解码 Then i = Regex.Unescape(i)
+                If 解码 Then
+                    i = 替换(i, "\d", "\/d", "\w", "\/w")
+                    i = Regex.Unescape(i)
+                End If
                 Return 非空字符串(i)
             Catch ex As Exception
                 Return ex.Message
