@@ -20,7 +20,7 @@ Public Class 启动器
         i = 10 * 系统DPI()
         GBpush.Height = GBabout.Top - i - GBpush.Top
         GBupdate.Top = -1000
-        If 程序运行中("VBCSCompiler") AndAlso 程序运行中("devenv") Then 新工具("临时工具", 临时工具, "Whatever", "临时用的工具，一般是拿来测试的，如果你运行了 Visual Studio 的话，我就会显示在这里。")
+        If 程序运行中("devenv") Then 新工具(" 临时工具", 临时工具, "Whatever", "临时用的工具，一般是拿来测试的，如果你运行了 Visual Studio 的话，我就会显示在这里。")
         新工具(" 工具箱设置", 程序设置, "AllSettings", "关于本工具箱的一些设置")
         新工具("图床", B站图床, "bilibiliPic", "把图片快速放到B站等网站的服务器里")
         新工具("日子提醒器", 日子提醒, "DayReminder", "提醒生日或者重要的啥日子", 设置.字符串("days").Length > 4)
