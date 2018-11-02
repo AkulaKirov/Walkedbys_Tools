@@ -23,7 +23,7 @@ Public Class 启动器
         If 程序运行中("VBCSCompiler") AndAlso 程序运行中("devenv") Then 新工具("临时工具", 临时工具, "Whatever", "临时用的工具，一般是拿来测试的，如果你运行了 Visual Studio 的话，我就会显示在这里。")
         新工具(" 工具箱设置", 程序设置, "AllSettings", "关于本工具箱的一些设置")
         新工具("图床", B站图床, "bilibiliPic", "把图片快速放到B站等网站的服务器里")
-        新工具("日子提醒器", 日子提醒, "DayReminder", "提醒生日或者重要的啥日子", True)
+        新工具("日子提醒器", 日子提醒, "DayReminder", "提醒生日或者重要的啥日子", 设置.字符串("days").Length > 4)
         新工具("监视式VMT生成器", VMT生成器, "VMTG", "给一个贴图文件夹监视式地批量生成 VMT 文件")
         新工具("系统代理设置", 系统代理设置, "ProxyManager", "快速设置系统代理")
         新工具("GMod模组发布器", GM模组发布器, "GMAddonPu", "打包GMA文件，发布或更新 Addon 到 Garry's Mod Workshop")
@@ -44,6 +44,7 @@ Public Class 启动器
         新工具("快速闹钟", 快速闹钟, "QuickClock", "设置几分钟后发出声音和气泡提醒我。")
         新工具("起源地图编译器", 起源地图编译, "SourceMapCompile", "方便一些起源地图的编译操作。")
         新工具("微博批量删除", 微博批量删除, "WeiboDelete", "可以批量删除指定范围内的全部发出去的新浪微博。")
+        新工具("批量复制文件", 批量复制文件, "CopyMuch", "把一些文件文件夹批量复制到指定的多个文件夹里。")
         AddHandler SizeChanged, AddressOf 最小化隐藏
         For Each t In 工具列表
             ListTools.Items.Add(t.名字)

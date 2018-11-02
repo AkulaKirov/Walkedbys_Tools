@@ -259,13 +259,14 @@ Module 文件处理
     End Function
 
     ''' <summary>
-    ''' 把 UTF8 文本写入到文件当中
+    ''' 把文本写入到文件当中
     ''' </summary>
-    Public Sub 写文件(文件 As String, 内容 As String)
+    Public Sub 写文件(文件 As String, 内容 As String, Optional 编码 As Encoding = Nothing)
         If Not 文件可读写(文件) Then Exit Sub
+        If IsNothing(编码) Then 编码 = Encoding.UTF8
         内容 = 回车规范(内容)
         Try
-            File.WriteAllText(文件, 内容)
+            File.WriteAllText(文件, 内容, 编码)
         Catch ex As Exception
         End Try
     End Sub

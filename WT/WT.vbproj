@@ -239,6 +239,12 @@
     <Compile Include="Tool\快速闹钟.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Tool\批量复制文件.Designer.vb">
+      <DependentUpon>批量复制文件.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\批量复制文件.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Tool\文件筛选.Designer.vb">
       <DependentUpon>文件筛选.vb</DependentUpon>
     </Compile>
@@ -363,6 +369,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\快速闹钟.resx">
       <DependentUpon>快速闹钟.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\批量复制文件.resx">
+      <DependentUpon>批量复制文件.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\文件筛选.resx">
       <DependentUpon>文件筛选.vb</DependentUpon>

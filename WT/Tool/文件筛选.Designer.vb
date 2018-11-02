@@ -33,6 +33,8 @@ Partial Class 文件筛选
         Me.ButAB2 = New System.Windows.Forms.Button()
         Me.ButAB = New System.Windows.Forms.Button()
         Me.Pn = New System.Windows.Forms.Panel()
+        Me.LabNote = New System.Windows.Forms.Label()
+        Me.LabDone = New System.Windows.Forms.Label()
         Me.Pn.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -139,10 +141,31 @@ Partial Class 文件筛选
         Me.Pn.Size = New System.Drawing.Size(590, 109)
         Me.Pn.TabIndex = 10
         '
+        'LabNote
+        '
+        Me.LabNote.AutoSize = True
+        Me.LabNote.Location = New System.Drawing.Point(12, 235)
+        Me.LabNote.Name = "LabNote"
+        Me.LabNote.Size = New System.Drawing.Size(191, 19)
+        Me.LabNote.TabIndex = 11
+        Me.LabNote.Text = "如果文件很多很大就会卡一会。"
+        '
+        'LabDone
+        '
+        Me.LabDone.AutoSize = True
+        Me.LabDone.Location = New System.Drawing.Point(373, 242)
+        Me.LabDone.Name = "LabDone"
+        Me.LabDone.Size = New System.Drawing.Size(48, 19)
+        Me.LabDone.TabIndex = 12
+        Me.LabDone.Text = "完成！"
+        Me.LabDone.Visible = False
+        '
         '文件筛选
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(598, 241)
+        Me.ClientSize = New System.Drawing.Size(598, 262)
+        Me.Controls.Add(Me.LabDone)
+        Me.Controls.Add(Me.LabNote)
         Me.Controls.Add(Me.TxtFC)
         Me.Controls.Add(Me.LabFc)
         Me.Controls.Add(Me.TxtFB)
@@ -174,4 +197,6 @@ Partial Class 文件筛选
     Friend WithEvents ButAB2 As Button
     Friend WithEvents ButAB As Button
     Friend WithEvents Pn As Panel
+    Friend WithEvents LabNote As Label
+    Friend WithEvents LabDone As Label
 End Class

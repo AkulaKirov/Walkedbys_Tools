@@ -242,7 +242,7 @@ Module 通用
                 .FormBorderStyle = FormBorderStyle.Fixed3D
                 If 预加载 Then
                     .StartPosition = FormStartPosition.Manual
-                    .Top = My.Computer.Screen.Bounds.Height + 100
+                    .Top = -4399
                     .Show()
                     .Hide()
                 End If

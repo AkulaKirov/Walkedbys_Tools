@@ -9,18 +9,18 @@ Public Class B站催更器
         If 设置.布林("CheckBilibiliAtStart") Then
             CheckAuto.Checked = True
             If ButTell.Enabled Then
-                ButTell_Click(sender, e)
+                ButTell.PerformClick()
             End If
         End If
     End Sub
 
     Private Sub TxtID_TextChanged(sender As Object, e As EventArgs) Handles TxtID.TextChanged
         TxtID.Text = 只要数字(TxtID.Text)
+        设置.字符串("bilibiliUID") = TxtID.Text
         ButTell.Enabled = (TxtID.TextLength > 0 AndAlso CoolDown.Enabled = False)
     End Sub
 
     Private Sub B站催更器_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        设置.字符串("bilibiliUID") = TxtID.Text
         中断线程(Th)
     End Sub
 
@@ -30,10 +30,10 @@ Public Class B站催更器
         LabOut.Text = ""
         CoolDown.Enabled = True
         Th = New Thread(Sub()
-                            Dim id As String = TxtID.Text
+                            Dim id As String = 设置.字符串("bilibiliUID")
                             Dim h As New 简易HTTP("https://space.bilibili.com/ajax/member/getSubmitVideos?mid=" + id + "&page=1&pagesize=25&order=pubdate")
                             h.Referer = "https://space.bilibili.com" + 括(id, "//")
-                            h.超时 = 5
+                            h.超时 = 3
                             Dim s As String = h.获得回应, out As String = ""
                             If s.StartsWith("{""status"":true,""data"":") Then
                                 If 包含(s, "tlist"":[],""vlist"":[],""count"":0") Then
