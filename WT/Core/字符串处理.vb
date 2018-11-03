@@ -224,7 +224,7 @@ Module 字符串处理
     ''' 把字符串转成字节
     ''' </summary>
     Public Function 文字转字节(文字 As String, Optional 编码 As Encoding = Nothing) As Byte()
-        If IsNothing(编码) Then 编码 = Encoding.UTF8
+        If IsNothing(编码) Then 编码 = 无BOM的UTF8编码()
         Return 编码.GetBytes(非空字符串(文字))
     End Function
 
@@ -232,7 +232,7 @@ Module 字符串处理
     ''' 把字节转成字符串
     ''' </summary>
     Public Function 字节转文字(字节 As Byte(), Optional 编码 As Encoding = Nothing) As String
-        If IsNothing(编码) Then 编码 = Encoding.UTF8
+        If IsNothing(编码) Then 编码 = 无BOM的UTF8编码()
         Return 非空字符串(编码.GetString(字节))
     End Function
 

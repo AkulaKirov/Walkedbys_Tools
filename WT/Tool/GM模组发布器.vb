@@ -140,7 +140,7 @@ Public Class GM模组发布器
             s += m + vbCrLf
         Next
         s += "pause"
-        写文件(bat, s)
+        写文件(bat, s, Encoding.Default)
         Shell(bat, AppWinStyle.NormalFocus, True)
     End Sub
 
