@@ -48,6 +48,7 @@ Partial Class GM模组发布器
         Me.Pn = New System.Windows.Forms.Panel()
         Me.PicThumb = New System.Windows.Forms.PictureBox()
         Me.CoolD = New System.Windows.Forms.Timer(Me.components)
+        Me.Checker = New System.Windows.Forms.Timer(Me.components)
         Me.GBjson.SuspendLayout()
         Me.GBupdate.SuspendLayout()
         Me.Pn.SuspendLayout()
@@ -269,7 +270,6 @@ Partial Class GM模组发布器
         '
         'ButCheckOnline
         '
-        Me.ButCheckOnline.Enabled = False
         Me.ButCheckOnline.Location = New System.Drawing.Point(225, 323)
         Me.ButCheckOnline.Name = "ButCheckOnline"
         Me.ButCheckOnline.Size = New System.Drawing.Size(334, 37)
@@ -309,6 +309,11 @@ Partial Class GM模组发布器
         'CoolD
         '
         Me.CoolD.Interval = 50
+        '
+        'Checker
+        '
+        Me.Checker.Enabled = True
+        Me.Checker.Interval = 50
         '
         'GM模组发布器
         '
@@ -360,4 +365,5 @@ Partial Class GM模组发布器
     Friend WithEvents ButUpdateGMA As Button
     Friend WithEvents ButCheckOnline As Button
     Friend WithEvents CoolD As Forms.Timer
+    Friend WithEvents Checker As Forms.Timer
 End Class

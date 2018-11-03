@@ -452,8 +452,7 @@ Module 文件处理
         End Function
 
         Public Sub 保存元素(名字 As String, 内容 As Object)
-            Dim s As String = 内容.ToString
-            If s.Length > 0 Then 字符串(名字) = s
+            字符串(名字) = 内容.ToString
         End Sub
 
         Public Property 字符串(名字 As String) As String

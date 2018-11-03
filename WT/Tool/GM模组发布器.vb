@@ -30,18 +30,11 @@ Public Class GM模组发布器
         Dim s As String = TxtPath.Text
         Dim b As Boolean = s.Length > 3
         If b Then Txtname.Text = 文件夹名(TxtPath.Text)
-        GBjson.Visible = b
     End Sub
 
     Private Sub Txtname_TextChanged(sender As Object, e As EventArgs) Handles Txtname.TextChanged, CBtype.SelectedIndexChanged, CBtags.MouseUp, TxtJPGfile.TextChanged, TxtPath.TextChanged, MyBase.Load
-        Dim nam As Boolean = (Trim(Txtname.Text).Length > 0 AndAlso CBtype.Text.Length > 0 AndAlso CBtags.CheckedItems.Count = 2 AndAlso GBjson.Visible)
         Dim s As String = TxtJPGfile.Text
         Dim jp As Boolean = (s.Length > 5 AndAlso 文件可用(s))
-        Dim up As Boolean = (ListAddons.SelectedIndex > -1 AndAlso ListAddons.SelectedItem.ToString.Length > 8)
-        ButNew.Enabled = (nam AndAlso jp)
-        ButUpdateGMA.Enabled = (up AndAlso nam)
-        ButUpdateJPG.Enabled = (up AndAlso jp)
-        ButCheckOnline.Enabled = (nam AndAlso jp AndAlso up)
         With PicThumb
             If jp Then
                 .Image = 读文件为图片(s)
@@ -51,7 +44,7 @@ Public Class GM模组发布器
         End With
     End Sub
 
-    Private Sub GM模组发布器_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+    Private Sub GM模组发布器_FormClosing(sender As Object, e As CancelEventArgs) Handles Me.FormClosing
         设置.保存元素("GMApath", TxtPath.Text)
         设置.保存元素("GMAtype", CBtype.SelectedIndex.ToString)
         设置.保存元素("GMODpath", TxtGMod.Text)
@@ -65,18 +58,6 @@ Public Class GM模组发布器
         设置.字符串("GMAtime") = 上次更新日期.ToString
         设置.字符串("GMAw") = ListAddons.SelectedIndex
         删除(tgma, log, bat)
-    End Sub
-
-    Private Sub TxtGMod_TextChanged(sender As Object, e As EventArgs) Handles TxtGMod.TextChanged
-        Dim i As String = Trim(TxtGMod.Text)
-        If 文件夹存在(i) Then
-            i = 追加斜杠(i) + "bin\"
-            If 文件存在(i + "gmad.exe") AndAlso 文件存在(i + "gmpublish.exe") Then
-                Pn.Visible = True
-            Else
-                Pn.Visible = False
-            End If
-        End If
     End Sub
 
     Private Sub TxtJPGfile_TextChanged(sender As Object, e As EventArgs) Handles TxtJPGfile.TextChanged
@@ -191,6 +172,28 @@ Public Class GM模组发布器
             Process.Start(s)
         Catch ex As Exception
         End Try
+    End Sub
+
+    Private Sub Checker_Tick(sender As Object, e As EventArgs) Handles Checker.Tick
+        Dim i As String = Trim(TxtGMod.Text)
+        If 文件夹存在(i) Then
+            i = 追加斜杠(i) + "bin\"
+            If 文件存在(i + "gmad.exe") AndAlso 文件存在(i + "gmpublish.exe") Then
+                Pn.Visible = True
+            Else
+                Pn.Visible = False
+            End If
+        Else
+            Pn.Visible = False
+        End If
+        GBjson.Visible = TxtPath.TextLength > 3
+        Dim nam As Boolean = (Trim(Txtname.Text).Length > 0 AndAlso CBtype.Text.Length > 0 AndAlso CBtags.CheckedItems.Count = 2 AndAlso GBjson.Visible)
+        Dim s As String = TxtJPGfile.Text
+        Dim jp As Boolean = (s.Length > 5 AndAlso 文件可用(s))
+        Dim up As Boolean = (ListAddons.SelectedIndex > -1 AndAlso ListAddons.SelectedItem.ToString.Length > 8)
+        ButNew.Enabled = (nam AndAlso jp)
+        ButUpdateGMA.Enabled = (up AndAlso nam)
+        ButUpdateJPG.Enabled = (up AndAlso jp)
     End Sub
 
 End Class
