@@ -39,12 +39,12 @@ Partial Class GM模组发布器
         Me.CBtype = New System.Windows.Forms.ComboBox()
         Me.ButNew = New System.Windows.Forms.Button()
         Me.GBupdate = New System.Windows.Forms.GroupBox()
-        Me.ButUpdateALL = New System.Windows.Forms.Button()
         Me.ButUpdateJPG = New System.Windows.Forms.Button()
         Me.ButUpdateGMA = New System.Windows.Forms.Button()
         Me.LabCount = New System.Windows.Forms.Label()
         Me.ButGetList = New System.Windows.Forms.Button()
         Me.ListAddons = New System.Windows.Forms.ComboBox()
+        Me.ButCheckOnline = New System.Windows.Forms.Button()
         Me.Pn = New System.Windows.Forms.Panel()
         Me.PicThumb = New System.Windows.Forms.PictureBox()
         Me.CoolD = New System.Windows.Forms.Timer(Me.components)
@@ -202,7 +202,6 @@ Partial Class GM模组发布器
         '
         'GBupdate
         '
-        Me.GBupdate.Controls.Add(Me.ButUpdateALL)
         Me.GBupdate.Controls.Add(Me.ButUpdateJPG)
         Me.GBupdate.Controls.Add(Me.ButUpdateGMA)
         Me.GBupdate.Controls.Add(Me.LabCount)
@@ -210,21 +209,10 @@ Partial Class GM模组发布器
         Me.GBupdate.Controls.Add(Me.ListAddons)
         Me.GBupdate.Location = New System.Drawing.Point(219, 151)
         Me.GBupdate.Name = "GBupdate"
-        Me.GBupdate.Size = New System.Drawing.Size(346, 219)
+        Me.GBupdate.Size = New System.Drawing.Size(346, 166)
         Me.GBupdate.TabIndex = 14
         Me.GBupdate.TabStop = False
         Me.GBupdate.Text = "更新"
-        '
-        'ButUpdateALL
-        '
-        Me.ButUpdateALL.Enabled = False
-        Me.ButUpdateALL.Location = New System.Drawing.Point(6, 158)
-        Me.ButUpdateALL.Name = "ButUpdateALL"
-        Me.ButUpdateALL.Size = New System.Drawing.Size(334, 37)
-        Me.ButUpdateALL.TabIndex = 18
-        Me.ButUpdateALL.TabStop = False
-        Me.ButUpdateALL.Text = "文件本体和封面图一起更新"
-        Me.ButUpdateALL.UseVisualStyleBackColor = True
         '
         'ButUpdateJPG
         '
@@ -279,8 +267,20 @@ Partial Class GM模组发布器
         Me.ListAddons.TabIndex = 13
         Me.ListAddons.TabStop = False
         '
+        'ButCheckOnline
+        '
+        Me.ButCheckOnline.Enabled = False
+        Me.ButCheckOnline.Location = New System.Drawing.Point(225, 323)
+        Me.ButCheckOnline.Name = "ButCheckOnline"
+        Me.ButCheckOnline.Size = New System.Drawing.Size(334, 37)
+        Me.ButCheckOnline.TabIndex = 18
+        Me.ButCheckOnline.TabStop = False
+        Me.ButCheckOnline.Text = "查看你的 GMod Workshop"
+        Me.ButCheckOnline.UseVisualStyleBackColor = True
+        '
         'Pn
         '
+        Me.Pn.Controls.Add(Me.ButCheckOnline)
         Me.Pn.Controls.Add(Me.PicThumb)
         Me.Pn.Controls.Add(Me.GBupdate)
         Me.Pn.Controls.Add(Me.ButNew)
@@ -358,6 +358,6 @@ Partial Class GM模组发布器
     Friend WithEvents PicThumb As PictureBox
     Friend WithEvents ButUpdateJPG As Button
     Friend WithEvents ButUpdateGMA As Button
-    Friend WithEvents ButUpdateALL As Button
+    Friend WithEvents ButCheckOnline As Button
     Friend WithEvents CoolD As Forms.Timer
 End Class

@@ -32,6 +32,8 @@ Partial Class 微博批量删除
         Me.ButGo = New System.Windows.Forms.Button()
         Me.TxtLog = New System.Windows.Forms.TextBox()
         Me.Pn = New System.Windows.Forms.Panel()
+        Me.TxtCool = New System.Windows.Forms.NumericUpDown()
+        Me.LabCool = New System.Windows.Forms.Label()
         Me.ButOld = New System.Windows.Forms.Button()
         Me.LabBUG = New System.Windows.Forms.Label()
         Me.TxtLink2 = New System.Windows.Forms.TextBox()
@@ -39,8 +41,7 @@ Partial Class 微博批量删除
         Me.ListIDs = New System.Windows.Forms.ListBox()
         Me.LabIDcount = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.LabCool = New System.Windows.Forms.Label()
-        Me.TxtCool = New System.Windows.Forms.NumericUpDown()
+        Me.ButHowToCookie = New System.Windows.Forms.Button()
         Me.Pn.SuspendLayout()
         CType(Me.TxtCool, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -49,7 +50,7 @@ Partial Class 微博批量删除
         '
         Me.TxtCookie.Location = New System.Drawing.Point(72, 13)
         Me.TxtCookie.Name = "TxtCookie"
-        Me.TxtCookie.Size = New System.Drawing.Size(820, 25)
+        Me.TxtCookie.Size = New System.Drawing.Size(637, 25)
         Me.TxtCookie.TabIndex = 0
         Me.TxtCookie.UseSystemPasswordChar = True
         '
@@ -123,6 +124,7 @@ Partial Class 微博批量删除
         '
         'Pn
         '
+        Me.Pn.Controls.Add(Me.ButHowToCookie)
         Me.Pn.Controls.Add(Me.TxtCool)
         Me.Pn.Controls.Add(Me.LabCool)
         Me.Pn.Controls.Add(Me.ButOld)
@@ -139,6 +141,25 @@ Partial Class 微博批量删除
         Me.Pn.Name = "Pn"
         Me.Pn.Size = New System.Drawing.Size(904, 262)
         Me.Pn.TabIndex = 11
+        '
+        'TxtCool
+        '
+        Me.TxtCool.Location = New System.Drawing.Point(545, 222)
+        Me.TxtCool.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.TxtCool.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.TxtCool.Name = "TxtCool"
+        Me.TxtCool.Size = New System.Drawing.Size(68, 25)
+        Me.TxtCool.TabIndex = 14
+        Me.TxtCool.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        '
+        'LabCool
+        '
+        Me.LabCool.AutoSize = True
+        Me.LabCool.Location = New System.Drawing.Point(426, 222)
+        Me.LabCool.Name = "LabCool"
+        Me.LabCool.Size = New System.Drawing.Size(113, 19)
+        Me.LabCool.TabIndex = 13
+        Me.LabCool.Text = "请求间隔（秒）："
         '
         'ButOld
         '
@@ -198,24 +219,14 @@ Partial Class 微博批量删除
         '
         Me.Timer1.Enabled = True
         '
-        'LabCool
+        'ButHowToCookie
         '
-        Me.LabCool.AutoSize = True
-        Me.LabCool.Location = New System.Drawing.Point(426, 222)
-        Me.LabCool.Name = "LabCool"
-        Me.LabCool.Size = New System.Drawing.Size(113, 19)
-        Me.LabCool.TabIndex = 13
-        Me.LabCool.Text = "请求间隔（秒）："
-        '
-        'TxtCool
-        '
-        Me.TxtCool.Location = New System.Drawing.Point(545, 222)
-        Me.TxtCool.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
-        Me.TxtCool.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.TxtCool.Name = "TxtCool"
-        Me.TxtCool.Size = New System.Drawing.Size(68, 25)
-        Me.TxtCool.TabIndex = 14
-        Me.TxtCool.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.ButHowToCookie.Location = New System.Drawing.Point(715, 10)
+        Me.ButHowToCookie.Name = "ButHowToCookie"
+        Me.ButHowToCookie.Size = New System.Drawing.Size(181, 28)
+        Me.ButHowToCookie.TabIndex = 15
+        Me.ButHowToCookie.Text = "如何获得微博 Cookie"
+        Me.ButHowToCookie.UseVisualStyleBackColor = True
         '
         '微博批量删除
         '
@@ -260,4 +271,5 @@ Partial Class 微博批量删除
     Friend WithEvents Timer1 As Forms.Timer
     Friend WithEvents LabCool As Label
     Friend WithEvents TxtCool As NumericUpDown
+    Friend WithEvents ButHowToCookie As Button
 End Class

@@ -76,7 +76,7 @@
                                         Log("UID：" & uid)
                                         Log("昵称：" & NickName)
                                     Else
-                                        Log("登录失败！Cookie可能已经失效！返回数据的长度：" & s.Length)
+                                        Log("登录失败！Cookie可能已经失效！请去浏览器获取新 Cookie 。返回数据的长度：" & s.Length)
                                         结束工作()
                                     End If
                                 End If
@@ -209,6 +209,10 @@
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         LabIDcount.Text = "个数：" & ListIDs.Items.Count
+    End Sub
+
+    Private Sub ButHowToCookie_Click(sender As Object, e As EventArgs) Handles ButHowToCookie.Click
+        Process.Start("https://github.com/gordonwalkedby/Walkedbys_Tools/wiki/%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E5%BE%AE%E5%8D%9A-Cookie")
     End Sub
 
     Function 关键词筛选(s As String, f As List(Of String)) As Boolean

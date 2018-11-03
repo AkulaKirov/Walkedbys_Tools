@@ -41,7 +41,7 @@ Public Class GM模组发布器
         ButNew.Enabled = (nam AndAlso jp)
         ButUpdateGMA.Enabled = (up AndAlso nam)
         ButUpdateJPG.Enabled = (up AndAlso jp)
-        ButUpdateALL.Enabled = (nam AndAlso jp AndAlso up)
+        ButCheckOnline.Enabled = (nam AndAlso jp AndAlso up)
         With PicThumb
             If jp Then
                 .Image = 读文件为图片(s)
@@ -127,10 +127,6 @@ Public Class GM模组发布器
         运行BAT(更新素材JPG)
     End Sub
 
-    Private Sub ButUpdateALL_Click(sender As Object, e As EventArgs) Handles ButUpdateALL.Click
-        运行BAT(生成gma, 更新素材)
-    End Sub
-
     Sub 运行BAT(ParamArray l() As String)
         CoolD_Tick()
         CoolD.Enabled = True
@@ -140,7 +136,7 @@ Public Class GM模组发布器
             s += m + vbCrLf
         Next
         s += "pause"
-        写文件(bat, s, Encoding.Default)
+        写文件(bat, s)
         Shell(bat, AppWinStyle.NormalFocus, True)
     End Sub
 
@@ -174,10 +170,6 @@ Public Class GM模组发布器
         Return "gmpublish.exe update -id " + Regex.Match(Trim(ListAddons.SelectedItem.ToString), "[0-9].*? ").ToString + " -addon " + 引(tgma)
     End Function
 
-    Function 更新素材() As String
-        Return "gmpublish.exe update -id " + Regex.Match(Trim(ListAddons.SelectedItem.ToString), "[0-9].*? ").ToString + " -addon " + 引(tgma) + " -icon " + 引(TxtJPGfile.Text)
-    End Function
-
     Private Sub CoolD_Tick() Handles CoolD.Tick
         TxtGMod.Enabled = False
         Pn.Enabled = False
@@ -188,6 +180,17 @@ Public Class GM模组发布器
             TxtGMod.Enabled = True
             Pn.Enabled = True
         End If
+    End Sub
+
+    Private Sub ButCheckOnline_Click(sender As Object, e As EventArgs) Handles ButCheckOnline.Click
+        Dim s As String = "https://steamcommunity.com/my/myworkshopfiles/?appid=4000&sort=score&browsefilter=myfiles&view=imagewall&p=1&numperpage=30"
+        If 程序运行中("steamwebhelper") Then
+            s = "steam://openurl/" + s
+        End If
+        Try
+            Process.Start(s)
+        Catch ex As Exception
+        End Try
     End Sub
 
 End Class

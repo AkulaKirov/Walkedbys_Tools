@@ -195,7 +195,7 @@ Module 通用
                                End Sub
         Dim b As Button = g.Controls("ButHowToGetCookie")
         AddHandler b.Click, Sub()
-                                Process.Start("https://s1.ax1x.com/2018/10/28/ichxbT.png")
+                                Process.Start("https://github.com/gordonwalkedby/Walkedbys_Tools/wiki/%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97-Steam-Cookie")
                             End Sub
         t2.Text = 设置.字符串("SteamLoginSecure")
         t.Text = 设置.字符串("SteamSession")
