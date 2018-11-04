@@ -28,4 +28,9 @@ Public Class 临时输入框
         Hide()
     End Sub
 
+    Private Sub 临时输入框_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ImeMode = 启动器.ImeMode
+        TxtIN.ImeMode = ImeMode
+    End Sub
+
 End Class

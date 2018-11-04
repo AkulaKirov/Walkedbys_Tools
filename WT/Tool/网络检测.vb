@@ -6,15 +6,15 @@ Public Class 网络检测
     Private Sub 网络检测_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         测试列表 = New List(Of 测试)
         新测试("腾讯", "https://im.qq.com/")
-        新测试("谷歌", "http://clients3.google.com/generate_204", 1, False)
         新测试("bilibili", "https://www.bilibili.com/")
         新测试("百度", "https://www.baidu.com/")
-        新测试("微软", "https://www.microsoft.com")
-        新测试("Steam", "https://steamcommunity.com")
         新测试("网易云音乐", "https://music.163.com/")
+        新测试("微软", "https://www.microsoft.com")
+        新测试("Google", "http://clients3.google.com/generate_204", 1, False)
+        新测试("Steam社区", "https://steamcommunity.com")
         新测试("YouTube", "https://www.youtube.com/")
         新测试("Twitter", "https://twitter.com/")
-        新测试("Wikipedia", "https://en.wikipedia.org/wiki/Main_Page")
+        新测试("维基百科", "https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5")
         新测试("Cloudflare", "https://www.cloudflare.com/")
         ButStart.BringToFront()
     End Sub
@@ -111,6 +111,7 @@ Class 测试
         连续成功次数 = 0
         连续超时次数 = 0
         用时 = -1
+        用时信息 = ""
     End Sub
 
     Private Sub 刷新(成功 As Boolean)

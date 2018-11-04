@@ -229,7 +229,6 @@ Partial Class 启动器
         Me.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.ForeColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(44, Byte), Integer), CType(CType(61, Byte), Integer))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
-        Me.ImeMode = System.Windows.Forms.ImeMode.Off
         Me.KeyPreview = True
         Me.MaximizeBox = False
         Me.Name = "启动器"
