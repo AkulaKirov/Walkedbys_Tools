@@ -179,6 +179,12 @@
     <Compile Include="Tool\Steam好友列表检查.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Tool\Steam批量好友留言.Designer.vb">
+      <DependentUpon>Steam批量好友留言.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\Steam批量好友留言.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Tool\临时工具.Designer.vb">
       <DependentUpon>临时工具.vb</DependentUpon>
     </Compile>
@@ -339,6 +345,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\Steam好友列表检查.resx">
       <DependentUpon>Steam好友列表检查.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\Steam批量好友留言.resx">
+      <DependentUpon>Steam批量好友留言.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\临时工具.resx">
       <DependentUpon>临时工具.vb</DependentUpon>

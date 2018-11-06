@@ -40,17 +40,17 @@ Public Class 文件筛选
         AtoC(追加斜杠(TxtFB.Text), 追加斜杠(TxtFA.Text), 追加斜杠(TxtFC.Text), True)
     End Sub
 
-    Function 获得文件夹(f As String) As String()
+    Function 获取文件夹(f As String) As String()
         Return Directory.GetDirectories(f, "*", SearchOption.AllDirectories)
     End Function
 
-    Function 获得文件(f As String) As String()
+    Function 获取文件(f As String) As String()
         Return Directory.GetFiles(f, "*", SearchOption.AllDirectories)
     End Function
 
     Sub AtoC(a As String, b As String, c As String, Optional ys As Boolean = False)
         Dim i As String, j As String
-        For Each i In 获得文件(a)
+        For Each i In 获取文件(a)
             j = 相对路径(i, a)
             If 文件存在(b + j) = ys Then
                 Try
@@ -60,7 +60,7 @@ Public Class 文件筛选
                 End Try
             End If
         Next
-        For Each i In 获得文件夹(a)
+        For Each i In 获取文件夹(a)
             j = 相对路径(i, a)
             If 文件夹存在(b + j) = ys Then
                 Try

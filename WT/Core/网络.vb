@@ -66,9 +66,9 @@
         End Sub
 
         ''' <summary>
-        ''' 获得指定名字的 HTTP Header 内容
+        ''' 获取指定名字的 HTTP Header 内容
         ''' </summary>
-        Public Function 获得头(名字 As String) As String
+        Public Function 获取头(名字 As String) As String
             Dim i As String = h.Headers.Get(名字)
             If Not IsNothing(i) Then Return i
             Return ""
@@ -79,7 +79,7 @@
                 设置头("cookie", value)
             End Set
             Get
-                Return 获得头("cookie")
+                Return 获取头("cookie")
             End Get
         End Property
 
@@ -88,7 +88,7 @@
                 设置头("Origin", value)
             End Set
             Get
-                Return 获得头("Origin")
+                Return 获取头("Origin")
             End Get
         End Property
 
@@ -161,9 +161,9 @@
         End Sub
 
         ''' <summary>
-        ''' 获得 HTTP 请求的最终回应
+        ''' 获取 HTTP 请求的最终回应
         ''' </summary>
-        Public Function 获得回应(Optional 解码 As Boolean = True) As String
+        Public Function 获取回应(Optional 解码 As Boolean = True) As String
             Try
                 Dim r As WebResponse = h.GetResponse
                 Dim i As String = 读取流(r.GetResponseStream)
@@ -203,6 +203,10 @@
         End Sub
 
         Public Overrides Function ToString() As String
+            Return all
+        End Function
+
+        Public Function 输出() As String
             Return all
         End Function
 
@@ -311,7 +315,7 @@
     Public Function 网络时间() As Date
         Dim h As New 简易HTTP("https://api.m.taobao.com/rest/api3.do?api=mtop.common.getTimestamp")
         h.超时 = 1
-        Dim i As String = 去除(h.获得回应(False), 引号)
+        Dim i As String = 去除(h.获取回应(False), 引号)
         Dim t As Long = Val(去右(提取(i, "data:{t:", "}"), 3))
         If t > 1500000000 Then Return UNIX时间恢复(t)
         Return 北京时间(Now)

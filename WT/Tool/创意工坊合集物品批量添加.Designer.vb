@@ -106,7 +106,6 @@ Partial Class 创意工坊合集物品批量添加
         '
         'Pn
         '
-        Me.Pn.Controls.Add(Me.ButStart)
         Me.Pn.Controls.Add(Me.TxtInput)
         Me.Pn.Controls.Add(Me.LabInput)
         Me.Pn.Controls.Add(Me.TxtID)
@@ -120,7 +119,7 @@ Partial Class 创意工坊合集物品批量添加
         'ButStart
         '
         Me.ButStart.Enabled = False
-        Me.ButStart.Location = New System.Drawing.Point(514, 3)
+        Me.ButStart.Location = New System.Drawing.Point(11, 320)
         Me.ButStart.Name = "ButStart"
         Me.ButStart.Size = New System.Drawing.Size(116, 37)
         Me.ButStart.TabIndex = 4
@@ -167,12 +166,13 @@ Partial Class 创意工坊合集物品批量添加
         '
         'TxtOut
         '
-        Me.TxtOut.Location = New System.Drawing.Point(11, 320)
+        Me.TxtOut.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.TxtOut.Location = New System.Drawing.Point(0, 368)
         Me.TxtOut.Multiline = True
         Me.TxtOut.Name = "TxtOut"
         Me.TxtOut.ReadOnly = True
         Me.TxtOut.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtOut.Size = New System.Drawing.Size(619, 100)
+        Me.TxtOut.Size = New System.Drawing.Size(643, 114)
         Me.TxtOut.TabIndex = 6
         Me.TxtOut.TabStop = False
         Me.TxtOut.Text = "请注意：" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "先记得把合集创建好" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "而不要合集的创建工作都没彻底完成就来这里添加" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "否则会出BUG" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
@@ -180,7 +180,8 @@ Partial Class 创意工坊合集物品批量添加
         '创意工坊合集物品批量添加
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(643, 434)
+        Me.ClientSize = New System.Drawing.Size(643, 482)
+        Me.Controls.Add(Me.ButStart)
         Me.Controls.Add(Me.TxtOut)
         Me.Controls.Add(Me.Pn)
         Me.Controls.Add(Me.GBsteamCookie)

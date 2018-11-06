@@ -58,7 +58,7 @@ Partial Class 字符画图片制作
         Me.ButGetPic.Size = New System.Drawing.Size(231, 25)
         Me.ButGetPic.TabIndex = 2
         Me.ButGetPic.TabStop = False
-        Me.ButGetPic.Text = "从剪贴板获得图片并输出"
+        Me.ButGetPic.Text = "从剪贴板获取图片并输出"
         Me.ButGetPic.UseVisualStyleBackColor = True
         '
         'TxtOut

@@ -45,6 +45,7 @@ Public Class 启动器
         新工具("起源地图编译器", 起源地图编译, "SourceMapCompile", "方便一些起源地图的编译操作。")
         新工具("微博批量删除", 微博批量删除, "WeiboDelete", "可以批量删除指定范围内的全部发出去的新浪微博。")
         新工具("批量复制文件", 批量复制文件, "CopyMuch", "把一些文件文件夹批量复制到指定的多个文件夹里。")
+        新工具("Steam批量好友留言", Steam批量好友留言, "steamSayFriends", "给好朋友们的 steam 个人主页批量发送留言，支持错误发送后的批量撤回。")
         AddHandler SizeChanged, AddressOf 最小化隐藏
         For Each t In 工具列表
             ListTools.Items.Add(t.名字)
@@ -64,7 +65,7 @@ Public Class 启动器
         If Not 设置.布林("NoUpdateAtMain") Then
             新线程(Sub()
                     Dim h As New 简易HTTP("https://raw.githubusercontent.com/gordonwalkedby/Walkedbys_Tools/master/WT/updater.xml")
-                    Dim o As String = h.获得回应
+                    Dim o As String = h.获取回应
                     If o.Length > 50 AndAlso 全部包含(o, "<version>", "<note>这是一个检查更新版本用的 XML 文件。</note>", "</info>", "<v012>") Then
                         Dim nv As New Version(提取(o, "<version>", "</version>"))
                         If nv > My.Application.Info.Version Then
@@ -125,7 +126,7 @@ Public Class 启动器
 "好的评价都是主观的，但不代表我的观点你就必须要认同，你完全可以保留自己的观点。——黑镖客梦回",
 "凡是要考试的，我基本上都做的很糟糕，然后很伤心。因为，有人和我竞争，有人比我好。",
 "最重要的是发现自己的人生价值，不然就开始糟蹋自己甚至世界了。",
-"C 语言诡异离奇，缺陷重重，但却获得了巨大的成功 ——Dennis Ritchie",
+"C 语言诡异离奇，缺陷重重，但却获取了巨大的成功 ——Dennis Ritchie",
 "你知道吗？开发 Steam 的和开发 BitTorrent 的是同一个人。",
 "花钱才是硬道理。",
 "皇上都没了，没人值得你们跪了。",
@@ -133,7 +134,8 @@ Public Class 启动器
 "你刷牙了吗？",
 "本软件藏有一个临时工具，就是做一些奇奇怪怪的测试用的。",
 "我们都是中国人",
-"傻子不是骗子，骗子不是傻子。"
+"傻子不是骗子，骗子不是傻子。",
+"要想BUG少，女装不能少。"
 ).ToString
         Refresh()
         AutoSave.Enabled = True

@@ -56,7 +56,7 @@ Public Class B站图床
                     r.新参数("biz", "draw")
                     r.新参数("category", "daily")
                     r.结束()
-                    s = h.获得回应
+                    s = h.获取回应
                     If 包含(s, "{""code"":0,""message"":""success"",""") Then
                         s = 提取(s, "image_url"":""", """,""image_width")
                         succ = True
@@ -66,7 +66,7 @@ Public Class B站图床
                     Dim r As New 简易MultiPartFormData(h)
                     r.新文件("file", 图片, "image/jpeg")
                     r.结束()
-                    s = 去除(h.获得回应, 引号)
+                    s = 去除(h.获取回应, 引号)
                     If 全部包含(s, "{height:", ",urlKey:", "url://") Then
                         s = "https://" + 提取(s, ",url://", ",size:")
                         succ = True
@@ -76,7 +76,7 @@ Public Class B站图床
                     Dim r As New 简易MultiPartFormData(h)
                     r.新文件("smfile", 图片, "image/jpeg")
                     r.结束()
-                    s = 去除(h.获得回应, 引号)
+                    s = 去除(h.获取回应, 引号)
                     If 全部包含(s, "{code:success,data:", "filename:", ",url:http") Then
                         s = "https://" + 提取(s, "url:https://", ",")
                         succ = True

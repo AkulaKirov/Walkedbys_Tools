@@ -65,7 +65,7 @@
                                 h.Origin = "https://weibo.com/"
                                 h.Cookie = ck
                                 h.超时 = 4
-                                s = h.获得回应
+                                s = h.获取回应
                                 If s.Length < 100 Then
                                     Log("失败：" & s)
                                 Else
@@ -83,9 +83,9 @@
                                 Dim 开始 As ULong = 0, 结束 As ULong = 0, 范围 As Boolean = False
                                 If TxtLink1.TextLength > 15 AndAlso TxtLink2.TextLength > 15 Then
                                     Thread.Sleep(cool)
-                                    开始 = 获得微博范围(TxtLink1.Text)
+                                    开始 = 获取微博范围(TxtLink1.Text)
                                     Thread.Sleep(cool)
-                                    结束 = 获得微博范围(TxtLink2.Text)
+                                    结束 = 获取微博范围(TxtLink2.Text)
                                     If 开始 = 123456 OrElse 结束 = 123456 Then
                                         Log("范围有误，该范围内应该没有微博了，请去检查。")
                                         结束工作()
@@ -122,7 +122,7 @@
                                     h.Cookie = ck
                                     h.超时 = 4
                                     h.UA = 浏览器UA.iPhone7
-                                    s = h.获得回应
+                                    s = h.获取回应
                                     s = 去除(s, vbCr, vbLf, 引号)
                                     If s.StartsWith("{ok:1,data:{") = False OrElse s.Length < 1000 Then
                                         Log("出错：")
@@ -168,7 +168,7 @@
                                     mf = New 简易FormData
                                     mf.添加("mid", s2)
                                     h.写入(mf.ToString)
-                                    s = 去除(h.获得回应, 引号)
+                                    s = 去除(h.获取回应, 引号)
                                     If s.StartsWith("{code:100000,msg:") Then
                                         t -= 1
                                         Log("成功删除：" & s2 & " ，还剩：" & t)
@@ -192,12 +192,12 @@
         TxtLink2.Text = "https://m.weibo.cn/detail/3333333333333333"
     End Sub
 
-    Function 获得微博范围(m As String) As ULong
+    Function 获取微博范围(m As String) As ULong
         Dim n As ULong = 123456
         If m.StartsWith("https://weibo.com/") Then
             Dim h As New 简易HTTP(m), s As String
             h.Cookie = TxtCookie.Text
-            s = 去除(h.获得回应, 引号, vbCr, vbLf)
+            s = 去除(h.获取回应, 引号, vbCr, vbLf)
             n = Val(提取(s, "c?do=mblog&act=", " class="))
             If n < 3333333333333333 Then n = 123456
         ElseIf m.StartsWith("https://m.weibo.cn/detail/") Then

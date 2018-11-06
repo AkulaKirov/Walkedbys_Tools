@@ -225,7 +225,7 @@ Partial Class 微博批量删除
         Me.ButHowToCookie.Name = "ButHowToCookie"
         Me.ButHowToCookie.Size = New System.Drawing.Size(181, 28)
         Me.ButHowToCookie.TabIndex = 15
-        Me.ButHowToCookie.Text = "如何获得微博 Cookie"
+        Me.ButHowToCookie.Text = "如何获取微博 Cookie"
         Me.ButHowToCookie.UseVisualStyleBackColor = True
         '
         '微博批量删除

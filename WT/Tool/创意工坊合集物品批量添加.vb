@@ -4,9 +4,7 @@ Public Class 创意工坊合集物品批量添加
     Dim TH As Thread
 
     Private Sub 创意工坊合集物品批量添加_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        填写steamCookie(GBsteamCookie, Sub()
-                                         Pn.Visible = GBsteamCookie.Tag
-                                     End Sub)
+        填写steamCookie(GBsteamCookie, Pn)
         TxtID.Text = 设置.字符串("WorkshopCollectionID")
         TxtInput.Text = 设置.字符串("WorkshopCollectionInput")
         文本框自动拖到最后(TxtOut)
@@ -35,14 +33,14 @@ Public Class 创意工坊合集物品批量添加
                                     h.Origin = "https://steamcommunity.com"
                                     h.Host = "steamcommunity.com"
                                     h.Referer = "https://steamcommunity.com/sharedfiles/managecollection/?id=" + id + "&activeSection=MyItems"
-                                    h.Cookie = 输出steamCookie()
+                                    h.Cookie = 获取steamCookie()
                                     Dim f As New 简易FormData
                                     f.添加("id", id)
                                     f.添加("sessionid", TxtSession.Text)
                                     f.添加("childid", n)
                                     f.添加("activeSection", "MyItems")
                                     h.写入(f.ToString)
-                                    Dim s As String = h.获得回应(False)
+                                    Dim s As String = h.获取回应(False)
                                     If s.Length < 1000 Then
                                         TxtOut.Text = "网络出错，详情：" + vbCrLf + s
                                         Exit For

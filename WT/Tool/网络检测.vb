@@ -92,7 +92,7 @@ Class 测试
                                 h.Referer = URL
                                 h.Host = (New Uri(URL)).Host
                                 sta = DateAndTime.Timer
-                                Dim s As String = h.获得回应(False)
+                                Dim s As String = h.获取回应(False)
                                 用时信息 = s
                                 Dim i As Integer = s.Length
                                 用时 = (DateAndTime.Timer - sta) * 1000

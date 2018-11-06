@@ -93,7 +93,7 @@ Module 文件处理
     End Function
 
     ''' <summary>
-    ''' 获得本程序的文件的目录
+    ''' 获取本程序的文件的目录
     ''' </summary>
     Public ReadOnly Property 程序文件目录() As String
         Get
@@ -102,7 +102,7 @@ Module 文件处理
     End Property
 
     ''' <summary>
-    ''' 获得本程序的工作目录
+    ''' 获取本程序的工作目录
     ''' </summary>
     Public ReadOnly Property 程序工作目录() As String
         Get
@@ -111,7 +111,7 @@ Module 文件处理
     End Property
 
     ''' <summary>
-    ''' 获得本程序的小写文件名，不带exe
+    ''' 获取本程序的小写文件名，不带exe
     ''' </summary>
     Public ReadOnly Property 程序文件名() As String
         Get

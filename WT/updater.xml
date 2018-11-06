@@ -5,7 +5,7 @@
     <version>0.22</version>
     <info>
       - 修复字符编码的BUG（不修复会导致GM模组发布器等工具失效）
-      - 编写了更好的如何获得 Cookie 的说明
+      - 编写了更好的如何获取 Cookie 的说明
     </info>
   </v012>
 </root>

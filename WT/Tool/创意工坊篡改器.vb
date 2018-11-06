@@ -2,9 +2,7 @@
 Public Class 创意工坊篡改器
 
     Private Sub 创意工坊篡改器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        填写steamCookie(GBsteamCookie, Sub()
-                                         Pn.Visible = GBsteamCookie.Tag
-                                     End Sub)
+        填写steamCookie(GBsteamCookie, Pn)
         Dim i As Integer = 设置.数字("WorkshopLanguage")
         If i >= ListLanguage.Items.Count Then i = 0
         ListLanguage.SelectedIndex = i
@@ -31,7 +29,7 @@ Public Class 创意工坊篡改器
         Dim h As New 简易HTTP("https://steamcommunity.com/sharedfiles/itemedittext/", "POST")
         Dim id As String = TxtID.Text
         h.内容Type = "application/x-www-form-urlencoded"
-        h.Cookie = 输出steamCookie()
+        h.Cookie = 获取steamcookie()
         h.Origin = "https://steamcommunity.com"
         h.Referer = "https://steamcommunity.com/sharedfiles/itemedittext/?id=" + id
         h.超时 = 5
@@ -42,7 +40,7 @@ Public Class 创意工坊篡改器
         n.添加("title", TxtTitle.Text)
         n.添加("description", TxtDes.Text)
         h.写入(n.ToString)
-        Dim s As String = h.获得回应, i As String = ""
+        Dim s As String = h.获取回应, i As String = ""
         写文件("e:\a.html", s)
         If s.Length < 1000 Then
             i = "网络出错：" + vbCrLf + s

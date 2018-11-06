@@ -132,14 +132,14 @@ Module 控件优化
     End Sub
 
     ''' <summary>
-    ''' 获得控件的小写名字
+    ''' 获取控件的小写名字
     ''' </summary>
     Public Function 控件类型(i As Control) As String
         Return 去除(i.GetType.ToString, "System.Windows.Forms.").ToLower
     End Function
 
     ''' <summary>
-    ''' 获得系统屏幕显示的DPI
+    ''' 获取系统屏幕显示的DPI
     ''' </summary>
     Public Function 系统DPI() As Single
         If dpi > 0 Then Return dpi

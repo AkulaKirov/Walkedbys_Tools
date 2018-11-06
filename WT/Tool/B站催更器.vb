@@ -34,7 +34,7 @@ Public Class B站催更器
                             Dim h As New 简易HTTP("https://space.bilibili.com/ajax/member/getSubmitVideos?mid=" + id + "&page=1&pagesize=25&order=pubdate")
                             h.Referer = "https://space.bilibili.com" + 括(id, "//")
                             h.超时 = 3
-                            Dim s As String = h.获得回应, out As String = ""
+                            Dim s As String = h.获取回应, out As String = ""
                             If s.StartsWith("{""status"":true,""data"":") Then
                                 If 包含(s, "tlist"":[],""vlist"":[],""count"":0") Then
                                     out = "同志，你没视频。"
@@ -50,7 +50,7 @@ Public Class B站催更器
                                     End If
                                 End If
                             Else
-                                out = "获得网站信息失败，错误信息：" + vbCrLf + s
+                                out = "获取网站信息失败，错误信息：" + vbCrLf + s
                             End If
                             LabOut.Text = out
                         End Sub)

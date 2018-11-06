@@ -62,7 +62,7 @@ Module 杂项
         End Sub
 
         ''' <summary>
-        ''' 获得A、B之间的一个随机整数，可以等于A,B
+        ''' 获取A、B之间的一个随机整数，可以等于A,B
         ''' </summary>
         Public Shared Function 整数(Optional A As Integer = 100, Optional B As Integer = 0) As Integer
             If B > A Then 互换(A, B)
@@ -70,14 +70,14 @@ Module 杂项
         End Function
 
         ''' <summary>
-        ''' 随机获得 True 或 False
+        ''' 随机获取 True 或 False
         ''' </summary>
         Public Shared Function 真假(Optional 为真概率 As Integer = 50) As Boolean
             Return (Rnd() > 1 - (为真概率 / 100))
         End Function
 
         ''' <summary>
-        ''' 随机获得指定个数的小写字母
+        ''' 随机获取指定个数的小写字母
         ''' </summary>
         Public Shared Function 小写字母(Optional 个数 As Integer = 10) As String
             Dim s As String = ""
@@ -296,7 +296,7 @@ Module 杂项
     End Function
 
     ''' <summary>
-    ''' 获得或者设置剪贴板的信息
+    ''' 获取或者设置剪贴板的信息
     ''' </summary>
     Public Class 剪贴板
 

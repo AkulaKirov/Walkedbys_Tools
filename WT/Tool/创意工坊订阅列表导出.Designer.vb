@@ -114,13 +114,12 @@ Partial Class 创意工坊订阅列表导出
         Me.Pn.Controls.Add(Me.LabMax)
         Me.Pn.Controls.Add(Me.TxtStart)
         Me.Pn.Controls.Add(Me.LabStart)
-        Me.Pn.Controls.Add(Me.TxtOut)
         Me.Pn.Controls.Add(Me.ButStart)
         Me.Pn.Controls.Add(Me.TxtLink)
         Me.Pn.Controls.Add(Me.LabLink)
         Me.Pn.Location = New System.Drawing.Point(3, 83)
         Me.Pn.Name = "Pn"
-        Me.Pn.Size = New System.Drawing.Size(639, 339)
+        Me.Pn.Size = New System.Drawing.Size(639, 116)
         Me.Pn.TabIndex = 67
         Me.Pn.Visible = False
         '
@@ -166,12 +165,13 @@ Partial Class 创意工坊订阅列表导出
         '
         'TxtOut
         '
-        Me.TxtOut.Location = New System.Drawing.Point(13, 103)
+        Me.TxtOut.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.TxtOut.Location = New System.Drawing.Point(0, 205)
         Me.TxtOut.Multiline = True
         Me.TxtOut.Name = "TxtOut"
         Me.TxtOut.ReadOnly = True
         Me.TxtOut.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtOut.Size = New System.Drawing.Size(617, 225)
+        Me.TxtOut.Size = New System.Drawing.Size(645, 218)
         Me.TxtOut.TabIndex = 4
         Me.TxtOut.TabStop = False
         '
@@ -210,6 +210,7 @@ Partial Class 创意工坊订阅列表导出
         Me.ClientSize = New System.Drawing.Size(645, 423)
         Me.Controls.Add(Me.Pn)
         Me.Controls.Add(Me.GBsteamCookie)
+        Me.Controls.Add(Me.TxtOut)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.ImeMode = System.Windows.Forms.ImeMode.Off
@@ -224,6 +225,7 @@ Partial Class 创意工坊订阅列表导出
         CType(Me.TxtMax, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TxtStart, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 

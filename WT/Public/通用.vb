@@ -54,7 +54,7 @@ Module 通用
     End Sub
 
     ''' <summary>
-    ''' 通过名字或者ID来获得对应的工具
+    ''' 通过名字或者ID来获取对应的工具
     ''' </summary>
     Public Function 名字工具(名字 As String) As 工具
         名字 = Trim(名字)
@@ -167,17 +167,14 @@ Module 通用
     End Function
 
     ''' <summary>
-    ''' 需要一个标准的steamcookie填写groupbox，然后在修改cookie的时候会呼唤起方法
+    ''' 需要一个标准的steamcookie填写groupbox，如果填写正确，pn将会显示出来
     ''' </summary>
-    Public Sub 填写steamCookie(g As GroupBox, Optional 方法 As ThreadStart = Nothing)
-        g.Tag = False
+    Public Sub 填写steamCookie(g As GroupBox, pn As Panel)
+        pn.Visible = False
         Dim t As TextBox = g.Controls("TxtSession")
         AddHandler t.TextChanged, Sub()
                                       设置.字符串("SteamSession") = Trim(t.Text)
-                                      g.Tag = 检测steamCookie()
-                                      If Not IsNothing(方法) Then
-                                          方法.Invoke
-                                      End If
+                                      pn.Visible = 检测steamCookie()
                                   End Sub
         AddHandler t.KeyDown, Sub(sender As Object, e As KeyEventArgs)
                                   If e.KeyCode = Keys.Back Then sender.Text = ""
@@ -185,10 +182,7 @@ Module 通用
         Dim t2 As TextBox = g.Controls("TxtLoginSecure")
         AddHandler t2.TextChanged, Sub()
                                        设置.字符串("SteamLoginSecure") = Trim(t2.Text)
-                                       g.Tag = 检测steamCookie()
-                                       If Not IsNothing(方法) Then
-                                           方法.Invoke
-                                       End If
+                                       pn.Visible = 检测steamCookie()
                                    End Sub
         AddHandler t2.KeyDown, Sub(sender As Object, e As KeyEventArgs)
                                    If e.KeyCode = Keys.Back Then sender.Text = ""
@@ -204,7 +198,7 @@ Module 通用
     ''' <summary>
     ''' 输出steamcookie的完整形式
     ''' </summary>
-    Public Function 输出steamCookie() As String
+    Public Function 获取steamCookie() As String
         If 检测steamCookie() Then
             Return "steamLoginSecure=" + 设置.字符串("SteamLoginSecure") + "; sessionid=" + 设置.字符串("SteamSession")
         Else
@@ -348,7 +342,7 @@ Module 通用
             If 列表.SelectedIndex < 0 Then Return Nothing
             Dim i As String = 列表.SelectedItem.ToString
             If i.Length < 1 OrElse g.Count < 1 Then Return Nothing
-            Return 获得模板(i)
+            Return 获取模板(i)
         End Function
 
         Public Sub 移除列表选中项()
@@ -382,7 +376,7 @@ Module 通用
             End Get
         End Property
 
-        Public Function 获得模板(name As String) As 模板
+        Public Function 获取模板(name As String) As 模板
             Dim t As 模板
             For Each t In g
                 If t.名字 = name Then

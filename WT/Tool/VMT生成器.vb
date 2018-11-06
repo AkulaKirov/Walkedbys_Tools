@@ -58,6 +58,7 @@ Public Class VMT生成器
     End Sub
 
     Private Sub ButGen_Click(sender As Object, e As EventArgs) Handles ButGen.Click
+        TxtLOG.Text = ""
         Dim i As Boolean = Watching.Enabled
         Watching.Enabled = Not i
         TxtPath.Enabled = i

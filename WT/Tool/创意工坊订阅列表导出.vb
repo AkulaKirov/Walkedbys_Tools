@@ -4,9 +4,7 @@ Public Class 创意工坊订阅列表导出
     Dim TH As Thread
 
     Private Sub 创意工坊订阅列表导出_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        填写steamCookie(GBsteamCookie, Sub()
-                                         Pn.Visible = GBsteamCookie.Tag
-                                     End Sub)
+        填写steamCookie(GBsteamCookie, Pn)
         TxtLink.Text = 设置.字符串("SteamWorkshopURL")
         TxtStart.Value = 设置.数字("SteamWorkshopGetStart", 1)
         TxtMax.Value = 设置.数字("SteamWorkshopGetMax", 99)
@@ -46,8 +44,8 @@ Public Class 创意工坊订阅列表导出
                             Dim p As Integer, s As String, m As Match, mc As MatchCollection, n As String, c As Integer = 0, name As String
                             For p = TxtStart.Value To TxtStart.Value + TxtMax.Value
                                 Dim h As New 简易HTTP(url + IIf(once, "", "&p=" + p.ToString))
-                                h.Cookie = 输出steamCookie()
-                                s = h.获得回应(False)
+                                h.Cookie = 获取steamcookie()
+                                s = h.获取回应(False)
                                 If s.Length < 1000 Then
                                     TxtOut.Text = "出错：" + vbCrLf + s
                                     Exit For

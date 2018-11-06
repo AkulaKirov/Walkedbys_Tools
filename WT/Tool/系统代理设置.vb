@@ -28,7 +28,7 @@ Public Class 系统代理设置
     Private Sub ButCheckIP_Click(sender As Object, e As EventArgs) Handles ButCheckIP.Click
         Dim h As New 简易HTTP("https://ip.cn/index.php?")
         h.超时 = 5
-        Dim s As String = h.获得回应()
+        Dim s As String = h.获取回应()
         s = 提取(s, "result", "</p></div></div>").Replace("</p><p>", vbCrLf)
         If s.Length > 10 Then
             MsgBox(正则去除(s, "<.*?>", "<", ">", 引号))

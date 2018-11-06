@@ -40,7 +40,7 @@ Public Class Steam好友列表检查
                             Dim h As New 简易HTTP("https://api.steampowered.com/ISteamUser/GetFriendList/v1/?key=C4A54581C4CD472BFFA98CC49885EEEF&steamid=" + uid)
                             h.超时 = 5
                             Dim out As String = Now.ToString + vbCrLf + "用户：" + uid + vbCrLf
-                            Dim s As String = 去除(h.获得回应, 引号), 少人 As Boolean = False
+                            Dim s As String = 去除(h.获取回应, 引号), 少人 As Boolean = False
                             If 包含(s, "friendslist") Then
                                 Dim u As String = 设置.字符串("steamfriendslist" + uid), id As String, n As Integer = 0
                                 Dim mc As MatchCollection
