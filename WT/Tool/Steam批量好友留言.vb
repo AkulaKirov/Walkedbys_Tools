@@ -23,6 +23,7 @@
         TxtLOG.Text = ""
         Dim h As New 简易HTTP("https://steamcommunity.com/my/friends/")
         h.Cookie = 获取steamCookie()
+        h.超时 = 5
         Dim s As String = 去除(h.获取回应, 引号, vbCr, vbLf)
         If s.Length < 3000 Then
             LOG("获得好友列表失败！" + vbCrLf + s)
@@ -103,10 +104,10 @@
                             For Each i In 回收列表
                                 Thread.Sleep(冷却时间 * 1000)
                                 If 删除留言(i) Then
-                                    LOG("成功撤回： " & 括(左(i, 17), QT))
+                                    LOG("已撤回： " & 括(左(i, 17), QT))
                                     n.Add(i)
                                 Else
-                                    LOG("撤回失败： " & 括(左(i, 17), QT) & " 等会可以重试。")
+                                    LOG("撤回失败： " & 括(左(i, 17), QT))
                                     fail += 1
                                 End If
                             Next
@@ -192,9 +193,10 @@
         id64 = 左(只要数字(id64), 17)
         Dim h As New 简易HTTP("https://steamcommunity.com/comment/Profile/post/" + id64 + "/-1/", "POST")
         h.Cookie = 获取steamCookie()
+        h.超时 = 5
         h.Referer = "https://steamcommunity.com/profiles/" + id64 + "/"
         Dim m As New 简易FormData()
-        m.批量添加("comment", say, "count", "0", "feature2", "-1", "sessionid", 设置.字符串("SteamSession"))
+        m.批量添加("comment", say, "count", "1", "feature2", "-1", "sessionid", 设置.字符串("SteamSession"))
         h.写入(m.ToString)
         Dim s As String = 去除(h.获取回应, 引号)
         If s.StartsWith("{success:true,name:Profile_" + id64) Then
@@ -203,6 +205,7 @@
             回收列表.Add(s)
         Else
             s = 左(去除(s, "{success:false,error:"), 100)
+            If 包含(s, "The settings on this account do not allow you to add ") Then s += "（也可能是 cookie 失效）"
             LOG("发送失败：" & 括(id64, QT) & " 原因：" & s)
             失败列表.Add(括(id64, QT))
         End If
@@ -214,9 +217,10 @@
         id = 去左(id, 17)
         Dim h As New 简易HTTP("https://steamcommunity.com/comment/Profile/delete/" + id64 + "/-1/", "POST")
         h.Cookie = 获取steamCookie()
+        h.超时 = 5
         h.Referer = "https://steamcommunity.com/profiles/" + id64 + "/"
         Dim m As New 简易FormData()
-        m.批量添加("gidcomment", id, "count", "0", "feature2", "-1", "sessionid", 设置.字符串("SteamSession"), "start", "0")
+        m.批量添加("gidcomment", id, "count", "1", "feature2", "-1", "sessionid", 设置.字符串("SteamSession"), "start", "0")
         h.写入(m.ToString)
         Dim s As String = 去除(h.获取回应, 引号)
         Return s.StartsWith("{success:true,name:Profile_" + id64)
