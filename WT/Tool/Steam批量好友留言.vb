@@ -1,6 +1,6 @@
 ﻿Public Class Steam批量好友留言
 
-    Dim 开始时间 As Date, th As Thread, 回收列表 As New List(Of String), 失败列表 As New List(Of String), 冷却时间 As Integer = 5, 失败文本 As String
+    Dim 开始时间 As Date, th As Thread, 回收列表 As New List(Of String), 失败列表 As New List(Of String), 失败文本 As String
     Delegate Sub 委托结束工作()
     Dim QT As String = "[]"
 
@@ -64,8 +64,8 @@
         th = New Thread(Sub()
                             Dim fs As New List(Of String), m As Match, s As String
                             For Each m In Regex.Matches(TxtWork.Text, "\[765611[0-9]{11}\]")
-                                s = m.ToString
-                                If Not 在列表(fs, s) Then fs.Add(只要数字(s))
+                                s = 只要数字(m.ToString)
+                                If Not 在列表(fs, s) Then fs.Add(s)
                             Next
                             LOG("你要给 " & fs.Count & " 个人留言。")
                             If fs.Count < 1 Then
@@ -78,15 +78,19 @@
                             End If
                             失败文本 = say
                             For Each i As String In fs
-                                Thread.Sleep(冷却时间 * 1000)
-                                给好友留言(i, say)
+                                s = 给好友留言(i, say)
+                                If s.Length > 10 Then
+                                    回收列表.Add(s)
+                                Else
+                                    失败列表.Add(括(i, QT))
+                                End If
                             Next
                             LOG("成功个数（可撤回）：" & 回收列表.Count)
                             If 失败列表.Count > 0 Then
                                 LOG("失败个数：" & 失败列表.Count)
                                 LOG("失败列表：")
                                 LOG(列表转文字(失败列表))
-                                LOG("失败的可试着重新发送。")
+                                LOG("失败的可点按钮【重试发生失败的留言】。")
                             End If
                             结束工作()
                         End Sub)
@@ -98,11 +102,11 @@
         LOG("有 " & 回收列表.Count & " 条留言要撤回。")
         If 回收列表.Count < 1 Then
             结束工作()
+            Exit Sub
         End If
         th = New Thread(Sub()
                             Dim n As New List(Of String), i As String, fail As Integer = 0
                             For Each i In 回收列表
-                                Thread.Sleep(冷却时间 * 1000)
                                 If 删除留言(i) Then
                                     LOG("已撤回： " & 括(左(i, 17), QT))
                                     n.Add(i)
@@ -117,7 +121,7 @@
                             LOG("成功：" & n.Count)
                             If fail > 0 Then
                                 LOG("失败：" & fail)
-                                LOG("你可以重试撤回。")
+                                LOG("你可以再点一次撤回以重试。")
                             End If
                             结束工作()
                         End Sub)
@@ -129,43 +133,37 @@
         LOG("有 " & 失败列表.Count & " 条留言要重新发送。")
         If 失败列表.Count < 1 Then
             结束工作()
+            Exit Sub
         End If
         th = New Thread(Sub()
-                            Dim i As String, n As New List(Of String)
-                            For Each i In 失败列表
-                                n.Add(i)
-                            Next
+                            Dim i As String, n As New List(Of String), s As String
                             回收列表.Clear()
+                            For Each i In 失败列表
+                                s = 给好友留言(i, 失败文本)
+                                If s.Length > 10 Then
+                                    回收列表.Add(s)
+                                Else
+                                    n.Add(i)
+                                End If
+                            Next
                             失败列表.Clear()
                             For Each i In n
-                                Thread.Sleep(冷却时间 * 1000)
-                                给好友留言(i, 失败文本)
+                                失败列表.Add(i)
                             Next
                             LOG("成功：" & 回收列表.Count)
                             If 失败列表.Count > 0 Then
                                 LOG("失败个数：" & 失败列表.Count)
                                 LOG("失败列表：")
                                 LOG(列表转文字(失败列表))
-                                LOG("失败的可试着重新发送。")
+                                LOG("失败的可点按钮【重试发生失败的留言】。")
                             End If
                             结束工作()
                         End Sub)
         th.Start()
     End Sub
 
-    Private Sub ButSTOP_Click(sender As Object, e As EventArgs) Handles ButSTOP.Click
-        If ButSTOP.Enabled = False Then Exit Sub
-        中断线程(th)
-        LOG("用时：" & 时间差(Now, 开始时间, True))
-        LOG("工作结束：" & Now.ToLongTimeString)
-        Pn.Enabled = True
-        ButSTOP.Enabled = False
-        GBsteamCookie.Enabled = True
-    End Sub
-
     Sub 开始工作()
         中断线程(th)
-        ButSTOP.Enabled = True
         Pn.Enabled = False
         GBsteamCookie.Enabled = False
         开始时间 = Now
@@ -173,9 +171,19 @@
         LOG("工作开始：" & Now.ToLongTimeString)
     End Sub
 
+    Private Sub ShowCount_Tick(sender As Object, e As EventArgs) Handles ShowCount.Tick
+        ButUndo.Text = "撤回本次发出的留言" & 括(回收列表.Count.ToString)
+        ButReSend.Text = "重试发生失败的留言" & 括(失败列表.Count.ToString)
+    End Sub
+
     Sub 结束工作()
+        If Pn.Enabled Then Exit Sub
         Dim n As New 委托结束工作(Sub()
-                                ButSTOP.PerformClick()
+                                中断线程(th)
+                                LOG("用时：" & 时间差(Now, 开始时间, True))
+                                LOG("工作结束：" & Now.ToLongTimeString)
+                                Pn.Enabled = True
+                                GBsteamCookie.Enabled = True
                             End Sub)
         Invoke(n)
     End Sub
@@ -191,6 +199,7 @@
 
     Function 给好友留言(id64 As String, say As String) As String
         id64 = 左(只要数字(id64), 17)
+        Thread.Sleep(5000)
         Dim h As New 简易HTTP("https://steamcommunity.com/comment/Profile/post/" + id64 + "/-1/", "POST")
         h.Cookie = 获取steamCookie()
         h.超时 = 5
@@ -200,19 +209,18 @@
         h.写入(m.ToString)
         Dim s As String = 去除(h.获取回应, 引号)
         If s.StartsWith("{success:true,name:Profile_" + id64) Then
-            s = id64 + 只要数字(提取(s, "id=comment_content_", ">"))
             LOG("成功：" & 括(id64, QT))
-            回收列表.Add(s)
+            Return id64 + 只要数字(提取(s, "id=comment_content_", ">"))
         Else
             s = 左(去除(s, "{success:false,error:"), 100)
             If 包含(s, "The settings on this account do not allow you to add ") Then s += "（也可能是 cookie 失效）"
             LOG("发送失败：" & 括(id64, QT) & " 原因：" & s)
-            失败列表.Add(括(id64, QT))
         End If
-        Return s
+        Return ""
     End Function
 
     Function 删除留言(id As String) As Boolean
+        Thread.Sleep(2500)
         Dim id64 As String = 左(id, 17)
         id = 去左(id, 17)
         Dim h As New 简易HTTP("https://steamcommunity.com/comment/Profile/delete/" + id64 + "/-1/", "POST")

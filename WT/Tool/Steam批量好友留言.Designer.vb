@@ -22,6 +22,7 @@ Partial Class Steam批量好友留言
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.GBsteamCookie = New System.Windows.Forms.GroupBox()
         Me.ButHowToGetCookie = New System.Windows.Forms.Button()
         Me.LabLoginSecure = New System.Windows.Forms.Label()
@@ -29,6 +30,7 @@ Partial Class Steam批量好友留言
         Me.TxtLoginSecure = New System.Windows.Forms.TextBox()
         Me.TxtSession = New System.Windows.Forms.TextBox()
         Me.Pn = New System.Windows.Forms.Panel()
+        Me.ButReSend = New System.Windows.Forms.Button()
         Me.ButUndo = New System.Windows.Forms.Button()
         Me.TxtSay = New System.Windows.Forms.TextBox()
         Me.ButStart = New System.Windows.Forms.Button()
@@ -38,8 +40,7 @@ Partial Class Steam批量好友留言
         Me.ListFriends = New System.Windows.Forms.ListBox()
         Me.ButGetFriends = New System.Windows.Forms.Button()
         Me.TxtLOG = New System.Windows.Forms.TextBox()
-        Me.ButSTOP = New System.Windows.Forms.Button()
-        Me.ButReSend = New System.Windows.Forms.Button()
+        Me.ShowCount = New System.Windows.Forms.Timer(Me.components)
         Me.GBsteamCookie.SuspendLayout()
         Me.Pn.SuspendLayout()
         Me.SuspendLayout()
@@ -125,6 +126,15 @@ Partial Class Steam批量好友留言
         Me.Pn.Size = New System.Drawing.Size(989, 307)
         Me.Pn.TabIndex = 67
         Me.Pn.Visible = False
+        '
+        'ButReSend
+        '
+        Me.ButReSend.Location = New System.Drawing.Point(354, 265)
+        Me.ButReSend.Name = "ButReSend"
+        Me.ButReSend.Size = New System.Drawing.Size(186, 32)
+        Me.ButReSend.TabIndex = 69
+        Me.ButReSend.Text = "重试发生失败的留言"
+        Me.ButReSend.UseVisualStyleBackColor = True
         '
         'ButUndo
         '
@@ -214,30 +224,14 @@ Partial Class Steam批量好友留言
         Me.TxtLOG.TabIndex = 1
         Me.TxtLOG.WordWrap = False
         '
-        'ButSTOP
+        'ShowCount
         '
-        Me.ButSTOP.Enabled = False
-        Me.ButSTOP.Location = New System.Drawing.Point(871, 41)
-        Me.ButSTOP.Name = "ButSTOP"
-        Me.ButSTOP.Size = New System.Drawing.Size(130, 35)
-        Me.ButSTOP.TabIndex = 68
-        Me.ButSTOP.Text = "结束工作"
-        Me.ButSTOP.UseVisualStyleBackColor = True
-        '
-        'ButReSend
-        '
-        Me.ButReSend.Location = New System.Drawing.Point(354, 265)
-        Me.ButReSend.Name = "ButReSend"
-        Me.ButReSend.Size = New System.Drawing.Size(186, 32)
-        Me.ButReSend.TabIndex = 69
-        Me.ButReSend.Text = "重试发生失败的留言"
-        Me.ButReSend.UseVisualStyleBackColor = True
+        Me.ShowCount.Enabled = True
         '
         'Steam批量好友留言
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1013, 579)
-        Me.Controls.Add(Me.ButSTOP)
         Me.Controls.Add(Me.Pn)
         Me.Controls.Add(Me.GBsteamCookie)
         Me.Controls.Add(Me.TxtLOG)
@@ -271,6 +265,6 @@ Partial Class Steam批量好友留言
     Friend WithEvents TxtSay As TextBox
     Friend WithEvents ButStart As Button
     Friend WithEvents ButUndo As Button
-    Friend WithEvents ButSTOP As Button
     Friend WithEvents ButReSend As Button
+    Friend WithEvents ShowCount As Forms.Timer
 End Class
