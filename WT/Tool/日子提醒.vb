@@ -115,7 +115,7 @@ Public Class 日子提醒
         非空字符串(Tag)
         If Tag.ToString.Length > 0 Then Tag += vbCrLf
         Tag += s
-        If 设置.布林("RemindTimePop") = False AndAlso 只做一次(1) Then 消息(s)
+        If 设置.布林("RemindTimePop") = False AndAlso 只做一次(1) Then 消息气泡(s)
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick

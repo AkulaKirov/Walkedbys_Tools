@@ -369,4 +369,19 @@ Module 字符串处理
         Return s
     End Function
 
+    ''' <summary>
+    ''' 把输入的文字里的转义字符替换回原来的字符
+    ''' </summary>
+    Public Function 转义恢复(文字 As String) As String
+        Dim s As String = 文字
+        s = 替换(s, "\d", "\\d", "\D", "\\D", "\s", "\\s", "\S", "\\S", "\w", "\\w", "\W", "\\W", "\un", "\\un", "\x", "\\x")
+        s = 替换(s, "\b", "\\b", "\B", "\\B")
+        s = HttpUtility.HtmlDecode(s)
+        Try
+            Return Regex.Unescape(s)
+        Catch ex As Exception
+            Return s
+        End Try
+    End Function
+
 End Module

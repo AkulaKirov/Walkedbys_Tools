@@ -17,6 +17,8 @@ Public Class 启动器
             新工具(" 内部信息修改器", 信息修改器, "TryFix", "程序设置实际保存信息的修改器")
         End If
         CtrlW关闭(Me)
+        SteamCookie窗体.Show()
+        SteamCookie窗体.Hide()
         i = 10 * 系统DPI()
         GBpush.Height = GBabout.Top - i - GBpush.Top
         GBupdate.Top = -1000

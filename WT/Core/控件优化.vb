@@ -120,18 +120,6 @@ Module 控件优化
     End Function
 
     ''' <summary>
-    ''' 把textbox的文字有改变的时候，自动拖动文本框的滚动条到末尾
-    ''' </summary>
-    Public Sub 文本框自动拖到最后(ParamArray t() As TextBox)
-        For Each i As TextBox In t
-            AddHandler i.TextChanged, Sub()
-                                          i.SelectionStart = i.TextLength
-                                          i.ScrollToCaret()
-                                      End Sub
-        Next
-    End Sub
-
-    ''' <summary>
     ''' 获取控件的小写名字
     ''' </summary>
     Public Function 控件类型(i As Control) As String

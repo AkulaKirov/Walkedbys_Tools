@@ -133,6 +133,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Public\SteamCookie.Designer.vb">
+      <DependentUpon>SteamCookie.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Public\SteamCookie.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Public\工作控制.vb" />
     <Compile Include="Public\通用.vb" />
     <Compile Include="Core\控件优化.vb" />
     <Compile Include="Core\文件处理.vb" />
@@ -330,6 +337,9 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Public\SteamCookie.resx">
+      <DependentUpon>SteamCookie.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\B站催更器.resx">
       <DependentUpon>B站催更器.vb</DependentUpon>

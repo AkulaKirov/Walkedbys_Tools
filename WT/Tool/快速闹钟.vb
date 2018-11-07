@@ -33,7 +33,7 @@
             rings = 0
             Ring.Enabled = True
             If TxtWhat.TextLength > 0 Then
-                消息(TxtWhat.Text)
+                消息气泡(TxtWhat.Text)
             End If
         End If
     End Sub

@@ -22,12 +22,7 @@ Partial Class 创意工坊篡改器
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.LabSession = New System.Windows.Forms.Label()
-        Me.LabLoginSecure = New System.Windows.Forms.Label()
-        Me.TxtSession = New System.Windows.Forms.TextBox()
-        Me.TxtLoginSecure = New System.Windows.Forms.TextBox()
         Me.Pn = New System.Windows.Forms.Panel()
-        Me.Labout = New System.Windows.Forms.Label()
         Me.ButGoBrowser = New System.Windows.Forms.Button()
         Me.ButGo = New System.Windows.Forms.Button()
         Me.TxtDes = New System.Windows.Forms.TextBox()
@@ -39,54 +34,13 @@ Partial Class 创意工坊篡改器
         Me.TxtID = New System.Windows.Forms.TextBox()
         Me.LabID = New System.Windows.Forms.Label()
         Me.LabInfo = New System.Windows.Forms.Label()
-        Me.GBsteamCookie = New System.Windows.Forms.GroupBox()
-        Me.ButHowToGetCookie = New System.Windows.Forms.Button()
+        Me.ButGetSteamCookie = New System.Windows.Forms.Button()
+        Me.TxtLog = New System.Windows.Forms.TextBox()
         Me.Pn.SuspendLayout()
-        Me.GBsteamCookie.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'LabSession
-        '
-        Me.LabSession.AutoSize = True
-        Me.LabSession.Location = New System.Drawing.Point(64, 18)
-        Me.LabSession.Name = "LabSession"
-        Me.LabSession.Size = New System.Drawing.Size(74, 19)
-        Me.LabSession.TabIndex = 0
-        Me.LabSession.Text = "sessionid="
-        '
-        'LabLoginSecure
-        '
-        Me.LabLoginSecure.AutoSize = True
-        Me.LabLoginSecure.Location = New System.Drawing.Point(6, 46)
-        Me.LabLoginSecure.Name = "LabLoginSecure"
-        Me.LabLoginSecure.Size = New System.Drawing.Size(132, 19)
-        Me.LabLoginSecure.TabIndex = 1
-        Me.LabLoginSecure.Text = "steamLoginSecure="
-        '
-        'TxtSession
-        '
-        Me.TxtSession.Font = New System.Drawing.Font("微软雅黑", 8.0!)
-        Me.TxtSession.Location = New System.Drawing.Point(155, 15)
-        Me.TxtSession.MaxLength = 24
-        Me.TxtSession.Name = "TxtSession"
-        Me.TxtSession.Size = New System.Drawing.Size(478, 22)
-        Me.TxtSession.TabIndex = 2
-        Me.TxtSession.TabStop = False
-        '
-        'TxtLoginSecure
-        '
-        Me.TxtLoginSecure.Font = New System.Drawing.Font("微软雅黑", 8.0!)
-        Me.TxtLoginSecure.Location = New System.Drawing.Point(155, 43)
-        Me.TxtLoginSecure.MaxLength = 63
-        Me.TxtLoginSecure.Name = "TxtLoginSecure"
-        Me.TxtLoginSecure.Size = New System.Drawing.Size(478, 22)
-        Me.TxtLoginSecure.TabIndex = 63
-        Me.TxtLoginSecure.TabStop = False
-        Me.TxtLoginSecure.UseSystemPasswordChar = True
         '
         'Pn
         '
-        Me.Pn.Controls.Add(Me.Labout)
         Me.Pn.Controls.Add(Me.ButGoBrowser)
         Me.Pn.Controls.Add(Me.ButGo)
         Me.Pn.Controls.Add(Me.TxtDes)
@@ -97,29 +51,20 @@ Partial Class 创意工坊篡改器
         Me.Pn.Controls.Add(Me.LabLanguage)
         Me.Pn.Controls.Add(Me.TxtID)
         Me.Pn.Controls.Add(Me.LabID)
-        Me.Pn.Location = New System.Drawing.Point(12, 141)
+        Me.Pn.Location = New System.Drawing.Point(11, 99)
         Me.Pn.Name = "Pn"
         Me.Pn.Size = New System.Drawing.Size(639, 306)
         Me.Pn.TabIndex = 64
-        Me.Pn.Visible = False
-        '
-        'Labout
-        '
-        Me.Labout.AutoSize = True
-        Me.Labout.Location = New System.Drawing.Point(171, 115)
-        Me.Labout.Name = "Labout"
-        Me.Labout.Size = New System.Drawing.Size(33, 19)
-        Me.Labout.TabIndex = 74
-        Me.Labout.Text = "Out"
         '
         'ButGoBrowser
         '
+        Me.ButGoBrowser.Enabled = False
         Me.ButGoBrowser.Location = New System.Drawing.Point(458, 261)
         Me.ButGoBrowser.Name = "ButGoBrowser"
         Me.ButGoBrowser.Size = New System.Drawing.Size(163, 33)
         Me.ButGoBrowser.TabIndex = 73
         Me.ButGoBrowser.TabStop = False
-        Me.ButGoBrowser.Text = "去浏览器检查"
+        Me.ButGoBrowser.Text = "去浏览器检查看看"
         Me.ButGoBrowser.UseVisualStyleBackColor = True
         '
         'ButGo
@@ -212,46 +157,42 @@ Partial Class 创意工坊篡改器
         'LabInfo
         '
         Me.LabInfo.AutoSize = True
-        Me.LabInfo.Location = New System.Drawing.Point(12, 81)
+        Me.LabInfo.Location = New System.Drawing.Point(12, 39)
         Me.LabInfo.Name = "LabInfo"
         Me.LabInfo.Size = New System.Drawing.Size(490, 57)
         Me.LabInfo.TabIndex = 0
         Me.LabInfo.Text = "本工具是用来强行修改 Steam Workshop 物品简介的，" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "包括因为 Steam 方面的 BUG，物品的贡献者也可以修改物品信息。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "请谨慎使用本工具，不" &
     "提供备份保存等功能。完成修改后请自行去浏览器检查情况。"
         '
-        'GBsteamCookie
+        'ButGetSteamCookie
         '
-        Me.GBsteamCookie.Controls.Add(Me.ButHowToGetCookie)
-        Me.GBsteamCookie.Controls.Add(Me.LabLoginSecure)
-        Me.GBsteamCookie.Controls.Add(Me.LabSession)
-        Me.GBsteamCookie.Controls.Add(Me.TxtLoginSecure)
-        Me.GBsteamCookie.Controls.Add(Me.TxtSession)
-        Me.GBsteamCookie.Location = New System.Drawing.Point(12, 1)
-        Me.GBsteamCookie.Name = "GBsteamCookie"
-        Me.GBsteamCookie.Size = New System.Drawing.Size(639, 77)
-        Me.GBsteamCookie.TabIndex = 65
-        Me.GBsteamCookie.TabStop = False
-        Me.GBsteamCookie.Text = "Steam Cookie"
+        Me.ButGetSteamCookie.Dock = System.Windows.Forms.DockStyle.Top
+        Me.ButGetSteamCookie.Location = New System.Drawing.Point(0, 0)
+        Me.ButGetSteamCookie.Name = "ButGetSteamCookie"
+        Me.ButGetSteamCookie.Size = New System.Drawing.Size(662, 36)
+        Me.ButGetSteamCookie.TabIndex = 69
+        Me.ButGetSteamCookie.Text = "填写 Steam Cookie"
+        Me.ButGetSteamCookie.UseVisualStyleBackColor = True
         '
-        'ButHowToGetCookie
+        'TxtLog
         '
-        Me.ButHowToGetCookie.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.ButHowToGetCookie.Location = New System.Drawing.Point(17, 18)
-        Me.ButHowToGetCookie.Name = "ButHowToGetCookie"
-        Me.ButHowToGetCookie.Size = New System.Drawing.Size(28, 25)
-        Me.ButHowToGetCookie.TabIndex = 66
-        Me.ButHowToGetCookie.TabStop = False
-        Me.ButHowToGetCookie.Text = "？"
-        Me.ButHowToGetCookie.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.ButHowToGetCookie.UseVisualStyleBackColor = True
+        Me.TxtLog.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.TxtLog.Location = New System.Drawing.Point(0, 418)
+        Me.TxtLog.Multiline = True
+        Me.TxtLog.Name = "TxtLog"
+        Me.TxtLog.ReadOnly = True
+        Me.TxtLog.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TxtLog.Size = New System.Drawing.Size(662, 148)
+        Me.TxtLog.TabIndex = 70
         '
         '创意工坊篡改器
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(662, 460)
+        Me.ClientSize = New System.Drawing.Size(662, 566)
+        Me.Controls.Add(Me.TxtLog)
+        Me.Controls.Add(Me.ButGetSteamCookie)
         Me.Controls.Add(Me.LabInfo)
         Me.Controls.Add(Me.Pn)
-        Me.Controls.Add(Me.GBsteamCookie)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.ImeMode = System.Windows.Forms.ImeMode.Off
@@ -262,17 +203,10 @@ Partial Class 创意工坊篡改器
         Me.Text = "Steam Workshop 物品信息篡改器"
         Me.Pn.ResumeLayout(False)
         Me.Pn.PerformLayout()
-        Me.GBsteamCookie.ResumeLayout(False)
-        Me.GBsteamCookie.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents LabSession As Label
-    Friend WithEvents LabLoginSecure As Label
-    Friend WithEvents TxtSession As TextBox
-    Friend WithEvents TxtLoginSecure As TextBox
     Friend WithEvents Pn As Panel
     Friend WithEvents LabInfo As Label
     Friend WithEvents LabID As Label
@@ -285,7 +219,6 @@ Partial Class 创意工坊篡改器
     Friend WithEvents LabDes As Label
     Friend WithEvents ButGo As Button
     Friend WithEvents ButGoBrowser As Button
-    Friend WithEvents GBsteamCookie As GroupBox
-    Friend WithEvents Labout As Label
-    Friend WithEvents ButHowToGetCookie As Button
+    Friend WithEvents ButGetSteamCookie As Button
+    Friend WithEvents TxtLog As TextBox
 End Class

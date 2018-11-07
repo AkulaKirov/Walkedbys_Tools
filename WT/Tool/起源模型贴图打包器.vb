@@ -9,7 +9,6 @@ Public Class 起源模型贴图打包器
         TxtMaterials.Text = 设置.字符串("PackMaterial")
         TxtModels.Text = 设置.字符串("PackModel")
         TxtCopy.Text = 设置.字符串("PackCopy")
-        文本框自动拖到最后(TxtList)
     End Sub
 
     Private Sub TxtMaterials_TextChanged(sender As Object, e As EventArgs) Handles TxtMaterials.TextChanged, TxtCopy.TextChanged, TxtModels.TextChanged
@@ -25,7 +24,7 @@ Public Class 起源模型贴图打包器
     End Sub
 
     Private Sub ButList_Click(sender As Object, e As EventArgs) Handles ButList.Click
-        TxtList.Text = "输出："
+        TxtLog.Text = ""
         贴图列表.Clear()
         文件夹列表.Clear()
         Dim i As String, models As String = TxtModels.Text
@@ -64,14 +63,13 @@ Public Class 起源模型贴图打包器
                 Loop
                 r.Close()
             Else
-                TxtList.Text += vbCrLf + 去除(i, models) + " 不存在或者无法读取。"
+                日志(去除(i, models) + " 不存在或者无法读取。")
             End If
         Next
-        TxtList.Text += vbCrLf
         列表去重(文件夹列表)
         列表去重(贴图列表)
-        TxtList.Text += "贴图文件夹列表：" + 括(文件夹列表.Count.ToString) + vbCrLf + 列表转文字(文件夹列表) + vbCrLf + vbCrLf
-        TxtList.Text += "贴图 vmt 列表：" + 括(贴图列表.Count.ToString) + vbCrLf + 列表转文字(贴图列表)
+        日志("贴图文件夹列表：" + 括(文件夹列表.Count.ToString) + vbCrLf + 列表转文字(文件夹列表) + vbCrLf + vbCrLf)
+        日志("贴图 vmt 列表：" + 括(贴图列表.Count.ToString) + vbCrLf + 列表转文字(贴图列表))
     End Sub
 
     Private Sub ButGo_Click(sender As Object, e As EventArgs) Handles ButGo.Click
@@ -104,7 +102,7 @@ Public Class 起源模型贴图打包器
             Next
         Next
         列表去重(out)
-        TxtList.Text += vbCrLf + vbCrLf + "实际输出：" + 括(out.Count.ToString) + vbCrLf + 列表转文字(out) + vbCrLf + "完成"
+        日志(vbCrLf + vbCrLf + "实际输出：" + 括(out.Count.ToString) + vbCrLf + 列表转文字(out) + vbCrLf + "完成")
     End Sub
 
     Private Function 读取VMT(vmt As String, n As String) As String

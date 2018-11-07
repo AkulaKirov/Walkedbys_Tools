@@ -68,7 +68,7 @@ Module 通用
     ''' <summary>
     ''' 在任务栏的图标弹出一个框框
     ''' </summary>
-    Public Sub 消息(s As String, Optional 警告 As Boolean = False)
+    Public Sub 消息气泡(s As String, Optional 警告 As Boolean = False)
         With 启动器.Nico
             .BalloonTipIcon = IIf(警告, ToolTipIcon.Warning, ToolTipIcon.Info)
             .BalloonTipText = 左(s, 30)
@@ -113,24 +113,6 @@ Module 通用
     End Sub
 
     ''' <summary>
-    ''' 根据ComboBox的选项进行timer的启用调整，
-    ''' 0 只在本工具运行的时候，
-    ''' 1 本软件运行的时候，
-    ''' 2 现在不记录
-    ''' </summary>
-    Public Function 后台定时器启用(c As ComboBox) As Boolean
-        Dim i As Integer = c.SelectedIndex
-        If i < 0 OrElse i > 2 Then i = 0
-        Select Case i
-            Case 0
-                Return (最后窗体.Text = c.FindForm.Text)
-            Case 1
-                Return True
-        End Select
-        Return False
-    End Function
-
-    ''' <summary>
     ''' 把窗体和控件的配色调整到和启动器一样的配色
     ''' </summary>
     Public Sub 配色(c As Control)
@@ -149,62 +131,6 @@ Module 通用
             Next
         End If
     End Sub
-
-    ''' <summary>
-    ''' 确认这个groupbox里的steamcookie是否填写正确
-    ''' </summary>
-    Private Function 检测steamCookie() As Boolean
-        Dim s As String = Trim(设置.字符串("SteamSession"))
-        If s.Length = 24 Then
-            s = Trim(设置.字符串("SteamLoginSecure"))
-            If s.Length = 63 Then
-                If Regex.IsMatch(s, "765611[0-9]{11}%.{2}%.+") Then
-                    Return True
-                End If
-            End If
-        End If
-        Return False
-    End Function
-
-    ''' <summary>
-    ''' 需要一个标准的steamcookie填写groupbox，如果填写正确，pn将会显示出来
-    ''' </summary>
-    Public Sub 填写steamCookie(g As GroupBox, pn As Panel)
-        pn.Visible = False
-        Dim t As TextBox = g.Controls("TxtSession")
-        AddHandler t.TextChanged, Sub()
-                                      设置.字符串("SteamSession") = Trim(t.Text)
-                                      pn.Visible = 检测steamCookie()
-                                  End Sub
-        AddHandler t.KeyDown, Sub(sender As Object, e As KeyEventArgs)
-                                  If e.KeyCode = Keys.Back Then sender.Text = ""
-                              End Sub
-        Dim t2 As TextBox = g.Controls("TxtLoginSecure")
-        AddHandler t2.TextChanged, Sub()
-                                       设置.字符串("SteamLoginSecure") = Trim(t2.Text)
-                                       pn.Visible = 检测steamCookie()
-                                   End Sub
-        AddHandler t2.KeyDown, Sub(sender As Object, e As KeyEventArgs)
-                                   If e.KeyCode = Keys.Back Then sender.Text = ""
-                               End Sub
-        Dim b As Button = g.Controls("ButHowToGetCookie")
-        AddHandler b.Click, Sub()
-                                Process.Start("https://github.com/gordonwalkedby/Walkedbys_Tools/wiki/%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97-Steam-Cookie")
-                            End Sub
-        t2.Text = 设置.字符串("SteamLoginSecure")
-        t.Text = 设置.字符串("SteamSession")
-    End Sub
-
-    ''' <summary>
-    ''' 输出steamcookie的完整形式
-    ''' </summary>
-    Public Function 获取steamCookie() As String
-        If 检测steamCookie() Then
-            Return "steamLoginSecure=" + 设置.字符串("SteamLoginSecure") + "; sessionid=" + 设置.字符串("SteamSession")
-        Else
-            Return ""
-        End If
-    End Function
 
     Public Class 工具
 

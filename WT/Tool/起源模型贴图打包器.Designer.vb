@@ -30,7 +30,7 @@ Partial Class 起源模型贴图打包器
         Me.TxtCopy = New System.Windows.Forms.TextBox()
         Me.ButGo = New System.Windows.Forms.Button()
         Me.ButList = New System.Windows.Forms.Button()
-        Me.TxtList = New System.Windows.Forms.TextBox()
+        Me.TxtLog = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'LabModels
@@ -109,22 +109,23 @@ Partial Class 起源模型贴图打包器
         Me.ButList.Text = "仅输出模型用的贴图列表"
         Me.ButList.UseVisualStyleBackColor = True
         '
-        'TxtList
+        'TxtLog
         '
-        Me.TxtList.Location = New System.Drawing.Point(12, 176)
-        Me.TxtList.Multiline = True
-        Me.TxtList.Name = "TxtList"
-        Me.TxtList.ReadOnly = True
-        Me.TxtList.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtList.Size = New System.Drawing.Size(684, 190)
-        Me.TxtList.TabIndex = 8
-        Me.TxtList.TabStop = False
+        Me.TxtLog.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.TxtLog.Location = New System.Drawing.Point(0, 185)
+        Me.TxtLog.Multiline = True
+        Me.TxtLog.Name = "TxtLog"
+        Me.TxtLog.ReadOnly = True
+        Me.TxtLog.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TxtLog.Size = New System.Drawing.Size(708, 190)
+        Me.TxtLog.TabIndex = 8
+        Me.TxtLog.TabStop = False
         '
         '起源模型贴图打包器
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(708, 375)
-        Me.Controls.Add(Me.TxtList)
+        Me.Controls.Add(Me.TxtLog)
         Me.Controls.Add(Me.ButList)
         Me.Controls.Add(Me.ButGo)
         Me.Controls.Add(Me.TxtCopy)
@@ -153,5 +154,5 @@ Partial Class 起源模型贴图打包器
     Friend WithEvents TxtCopy As TextBox
     Friend WithEvents ButGo As Button
     Friend WithEvents ButList As Button
-    Friend WithEvents TxtList As TextBox
+    Friend WithEvents TxtLog As TextBox
 End Class

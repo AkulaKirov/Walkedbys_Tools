@@ -22,109 +22,28 @@ Partial Class 创意工坊合集物品批量添加
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.GBsteamCookie = New System.Windows.Forms.GroupBox()
-        Me.ButHowToGetCookie = New System.Windows.Forms.Button()
-        Me.LabLoginSecure = New System.Windows.Forms.Label()
-        Me.LabSession = New System.Windows.Forms.Label()
-        Me.TxtLoginSecure = New System.Windows.Forms.TextBox()
-        Me.TxtSession = New System.Windows.Forms.TextBox()
         Me.Pn = New System.Windows.Forms.Panel()
-        Me.ButStart = New System.Windows.Forms.Button()
         Me.TxtInput = New System.Windows.Forms.TextBox()
+        Me.ButStart = New System.Windows.Forms.Button()
         Me.LabInput = New System.Windows.Forms.Label()
         Me.TxtID = New System.Windows.Forms.TextBox()
         Me.LabID = New System.Windows.Forms.Label()
-        Me.TxtOut = New System.Windows.Forms.TextBox()
-        Me.GBsteamCookie.SuspendLayout()
+        Me.TxtLog = New System.Windows.Forms.TextBox()
+        Me.ButGetSteamCookie = New System.Windows.Forms.Button()
         Me.Pn.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'GBsteamCookie
-        '
-        Me.GBsteamCookie.Controls.Add(Me.ButHowToGetCookie)
-        Me.GBsteamCookie.Controls.Add(Me.LabLoginSecure)
-        Me.GBsteamCookie.Controls.Add(Me.LabSession)
-        Me.GBsteamCookie.Controls.Add(Me.TxtLoginSecure)
-        Me.GBsteamCookie.Controls.Add(Me.TxtSession)
-        Me.GBsteamCookie.Location = New System.Drawing.Point(1, 0)
-        Me.GBsteamCookie.Name = "GBsteamCookie"
-        Me.GBsteamCookie.Size = New System.Drawing.Size(639, 77)
-        Me.GBsteamCookie.TabIndex = 66
-        Me.GBsteamCookie.TabStop = False
-        Me.GBsteamCookie.Text = "Steam Cookie"
-        '
-        'ButHowToGetCookie
-        '
-        Me.ButHowToGetCookie.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.ButHowToGetCookie.Location = New System.Drawing.Point(11, 18)
-        Me.ButHowToGetCookie.Name = "ButHowToGetCookie"
-        Me.ButHowToGetCookie.Size = New System.Drawing.Size(28, 25)
-        Me.ButHowToGetCookie.TabIndex = 65
-        Me.ButHowToGetCookie.TabStop = False
-        Me.ButHowToGetCookie.Text = "？"
-        Me.ButHowToGetCookie.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.ButHowToGetCookie.UseVisualStyleBackColor = True
-        '
-        'LabLoginSecure
-        '
-        Me.LabLoginSecure.AutoSize = True
-        Me.LabLoginSecure.Location = New System.Drawing.Point(6, 46)
-        Me.LabLoginSecure.Name = "LabLoginSecure"
-        Me.LabLoginSecure.Size = New System.Drawing.Size(132, 19)
-        Me.LabLoginSecure.TabIndex = 1
-        Me.LabLoginSecure.Text = "steamLoginSecure="
-        '
-        'LabSession
-        '
-        Me.LabSession.AutoSize = True
-        Me.LabSession.Location = New System.Drawing.Point(64, 18)
-        Me.LabSession.Name = "LabSession"
-        Me.LabSession.Size = New System.Drawing.Size(74, 19)
-        Me.LabSession.TabIndex = 0
-        Me.LabSession.Text = "sessionid="
-        '
-        'TxtLoginSecure
-        '
-        Me.TxtLoginSecure.Font = New System.Drawing.Font("微软雅黑", 8.0!)
-        Me.TxtLoginSecure.Location = New System.Drawing.Point(151, 43)
-        Me.TxtLoginSecure.MaxLength = 63
-        Me.TxtLoginSecure.Name = "TxtLoginSecure"
-        Me.TxtLoginSecure.Size = New System.Drawing.Size(478, 22)
-        Me.TxtLoginSecure.TabIndex = 63
-        Me.TxtLoginSecure.TabStop = False
-        Me.TxtLoginSecure.UseSystemPasswordChar = True
-        '
-        'TxtSession
-        '
-        Me.TxtSession.Font = New System.Drawing.Font("微软雅黑", 8.0!)
-        Me.TxtSession.Location = New System.Drawing.Point(151, 15)
-        Me.TxtSession.MaxLength = 24
-        Me.TxtSession.Name = "TxtSession"
-        Me.TxtSession.Size = New System.Drawing.Size(478, 22)
-        Me.TxtSession.TabIndex = 2
-        Me.TxtSession.TabStop = False
         '
         'Pn
         '
         Me.Pn.Controls.Add(Me.TxtInput)
+        Me.Pn.Controls.Add(Me.ButStart)
         Me.Pn.Controls.Add(Me.LabInput)
         Me.Pn.Controls.Add(Me.TxtID)
         Me.Pn.Controls.Add(Me.LabID)
-        Me.Pn.Location = New System.Drawing.Point(1, 83)
+        Me.Pn.Location = New System.Drawing.Point(4, 42)
         Me.Pn.Name = "Pn"
         Me.Pn.Size = New System.Drawing.Size(639, 231)
         Me.Pn.TabIndex = 67
-        Me.Pn.Visible = False
-        '
-        'ButStart
-        '
-        Me.ButStart.Enabled = False
-        Me.ButStart.Location = New System.Drawing.Point(11, 320)
-        Me.ButStart.Name = "ButStart"
-        Me.ButStart.Size = New System.Drawing.Size(116, 37)
-        Me.ButStart.TabIndex = 4
-        Me.ButStart.Text = "导入"
-        Me.ButStart.UseVisualStyleBackColor = True
         '
         'TxtInput
         '
@@ -137,6 +56,15 @@ Partial Class 创意工坊合集物品批量添加
         Me.TxtInput.TabIndex = 3
         Me.TxtInput.TabStop = False
         '
+        'ButStart
+        '
+        Me.ButStart.Location = New System.Drawing.Point(408, 10)
+        Me.ButStart.Name = "ButStart"
+        Me.ButStart.Size = New System.Drawing.Size(150, 37)
+        Me.ButStart.TabIndex = 4
+        Me.ButStart.Text = "点我导入"
+        Me.ButStart.UseVisualStyleBackColor = True
+        '
         'LabInput
         '
         Me.LabInput.AutoSize = True
@@ -148,7 +76,7 @@ Partial Class 创意工坊合集物品批量添加
         '
         'TxtID
         '
-        Me.TxtID.Location = New System.Drawing.Point(113, 10)
+        Me.TxtID.Location = New System.Drawing.Point(113, 7)
         Me.TxtID.MaxLength = 100
         Me.TxtID.Name = "TxtID"
         Me.TxtID.Size = New System.Drawing.Size(156, 25)
@@ -164,27 +92,35 @@ Partial Class 创意工坊合集物品批量添加
         Me.LabID.TabIndex = 0
         Me.LabID.Text = "你的合集的ID："
         '
-        'TxtOut
+        'TxtLog
         '
-        Me.TxtOut.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.TxtOut.Location = New System.Drawing.Point(0, 368)
-        Me.TxtOut.Multiline = True
-        Me.TxtOut.Name = "TxtOut"
-        Me.TxtOut.ReadOnly = True
-        Me.TxtOut.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtOut.Size = New System.Drawing.Size(643, 114)
-        Me.TxtOut.TabIndex = 6
-        Me.TxtOut.TabStop = False
-        Me.TxtOut.Text = "请注意：" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "先记得把合集创建好" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "而不要合集的创建工作都没彻底完成就来这里添加" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "否则会出BUG" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.TxtLog.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.TxtLog.Location = New System.Drawing.Point(0, 279)
+        Me.TxtLog.Multiline = True
+        Me.TxtLog.Name = "TxtLog"
+        Me.TxtLog.ReadOnly = True
+        Me.TxtLog.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TxtLog.Size = New System.Drawing.Size(643, 187)
+        Me.TxtLog.TabIndex = 6
+        Me.TxtLog.TabStop = False
+        '
+        'ButGetSteamCookie
+        '
+        Me.ButGetSteamCookie.Dock = System.Windows.Forms.DockStyle.Top
+        Me.ButGetSteamCookie.Location = New System.Drawing.Point(0, 0)
+        Me.ButGetSteamCookie.Name = "ButGetSteamCookie"
+        Me.ButGetSteamCookie.Size = New System.Drawing.Size(643, 36)
+        Me.ButGetSteamCookie.TabIndex = 68
+        Me.ButGetSteamCookie.Text = "填写 Steam Cookie"
+        Me.ButGetSteamCookie.UseVisualStyleBackColor = True
         '
         '创意工坊合集物品批量添加
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(643, 482)
-        Me.Controls.Add(Me.ButStart)
-        Me.Controls.Add(Me.TxtOut)
+        Me.ClientSize = New System.Drawing.Size(643, 466)
+        Me.Controls.Add(Me.ButGetSteamCookie)
+        Me.Controls.Add(Me.TxtLog)
         Me.Controls.Add(Me.Pn)
-        Me.Controls.Add(Me.GBsteamCookie)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.ImeMode = System.Windows.Forms.ImeMode.Off
@@ -194,26 +130,18 @@ Partial Class 创意工坊合集物品批量添加
         Me.Name = "创意工坊合集物品批量添加"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "创意工坊合集物品批量添加"
-        Me.GBsteamCookie.ResumeLayout(False)
-        Me.GBsteamCookie.PerformLayout()
         Me.Pn.ResumeLayout(False)
         Me.Pn.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents GBsteamCookie As GroupBox
-    Friend WithEvents LabLoginSecure As Label
-    Friend WithEvents LabSession As Label
-    Friend WithEvents TxtLoginSecure As TextBox
-    Friend WithEvents TxtSession As TextBox
     Friend WithEvents Pn As Panel
     Friend WithEvents LabID As Label
     Friend WithEvents TxtID As TextBox
     Friend WithEvents LabInput As Label
     Friend WithEvents TxtInput As TextBox
     Friend WithEvents ButStart As Button
-    Friend WithEvents TxtOut As TextBox
-    Friend WithEvents ButHowToGetCookie As Button
+    Friend WithEvents TxtLog As TextBox
+    Friend WithEvents ButGetSteamCookie As Button
 End Class
