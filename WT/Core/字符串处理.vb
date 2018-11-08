@@ -374,14 +374,11 @@ Module 字符串处理
     ''' </summary>
     Public Function 转义恢复(文字 As String) As String
         Dim s As String = 文字
-        s = 替换(s, "\d", "\\d", "\D", "\\D", "\s", "\\s", "\S", "\\S", "\w", "\\w", "\W", "\\W", "\un", "\\un", "\x", "\\x")
-        s = 替换(s, "\b", "\\b", "\B", "\\B")
         s = HttpUtility.HtmlDecode(s)
-        Try
-            Return Regex.Unescape(s)
-        Catch ex As Exception
-            Return s
-        End Try
+        s = 替换(s, "\\d", "\d", "\\D", "\D", "\\s", "\s", "\\S", "\S", "\\w", "\w", "\\W", "\W", "\\un", "\un", "\\x", "\x", "\\b", "\b", "\\B", "\B")
+        s = 替换(s, "\d", "\\d", "\D", "\\D", "\s", "\\s", "\S", "\\S", "\w", "\\w", "\W", "\\W", "\un", "\\un", "\x", "\\x", "\b", "\\b", "\B", "\\B")
+        s = Regex.Unescape(s)
+        Return s
     End Function
 
 End Module

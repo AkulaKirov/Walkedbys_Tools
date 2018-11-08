@@ -173,6 +173,7 @@ Module 通用
                                              启动器.Show()
                                              启动器.Location = .Location
                                              最后窗体 = 启动器
+                                             启动器.切换蜜汁语句()
                                          End Sub
                 AddHandler .SizeChanged, AddressOf 最小化隐藏
                 CtrlW关闭(窗体)

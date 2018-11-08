@@ -40,12 +40,13 @@ Partial Class 日子提醒
         '
         'ListDates
         '
+        Me.ListDates.Dock = System.Windows.Forms.DockStyle.Top
         Me.ListDates.FormattingEnabled = True
         Me.ListDates.ItemHeight = 19
-        Me.ListDates.Location = New System.Drawing.Point(12, 12)
+        Me.ListDates.Location = New System.Drawing.Point(0, 0)
         Me.ListDates.Name = "ListDates"
         Me.ListDates.ScrollAlwaysVisible = True
-        Me.ListDates.Size = New System.Drawing.Size(489, 213)
+        Me.ListDates.Size = New System.Drawing.Size(505, 213)
         Me.ListDates.Sorted = True
         Me.ListDates.TabIndex = 0
         Me.ListDates.TabStop = False
@@ -53,7 +54,7 @@ Partial Class 日子提醒
         'LabMD
         '
         Me.LabMD.AutoSize = True
-        Me.LabMD.Location = New System.Drawing.Point(12, 239)
+        Me.LabMD.Location = New System.Drawing.Point(11, 222)
         Me.LabMD.Name = "LabMD"
         Me.LabMD.Size = New System.Drawing.Size(48, 19)
         Me.LabMD.TabIndex = 1
@@ -64,7 +65,7 @@ Partial Class 日子提醒
         Me.CBmonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CBmonth.Font = New System.Drawing.Font("微软雅黑", 8.0!)
         Me.CBmonth.FormattingEnabled = True
-        Me.CBmonth.Location = New System.Drawing.Point(66, 236)
+        Me.CBmonth.Location = New System.Drawing.Point(65, 219)
         Me.CBmonth.Name = "CBmonth"
         Me.CBmonth.Size = New System.Drawing.Size(42, 24)
         Me.CBmonth.TabIndex = 2
@@ -75,7 +76,7 @@ Partial Class 日子提醒
         Me.CBday.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CBday.Font = New System.Drawing.Font("微软雅黑", 8.0!)
         Me.CBday.FormattingEnabled = True
-        Me.CBday.Location = New System.Drawing.Point(114, 236)
+        Me.CBday.Location = New System.Drawing.Point(113, 219)
         Me.CBday.Name = "CBday"
         Me.CBday.Size = New System.Drawing.Size(52, 24)
         Me.CBday.TabIndex = 3
@@ -84,7 +85,7 @@ Partial Class 日子提醒
         'ButRM
         '
         Me.ButRM.Enabled = False
-        Me.ButRM.Location = New System.Drawing.Point(404, 236)
+        Me.ButRM.Location = New System.Drawing.Point(403, 219)
         Me.ButRM.Name = "ButRM"
         Me.ButRM.Size = New System.Drawing.Size(97, 27)
         Me.ButRM.TabIndex = 4
@@ -95,7 +96,7 @@ Partial Class 日子提醒
         'LabJOB
         '
         Me.LabJOB.AutoSize = True
-        Me.LabJOB.Location = New System.Drawing.Point(12, 279)
+        Me.LabJOB.Location = New System.Drawing.Point(11, 262)
         Me.LabJOB.Name = "LabJOB"
         Me.LabJOB.Size = New System.Drawing.Size(48, 19)
         Me.LabJOB.TabIndex = 5
@@ -103,7 +104,7 @@ Partial Class 日子提醒
         '
         'TxtJOB
         '
-        Me.TxtJOB.Location = New System.Drawing.Point(66, 276)
+        Me.TxtJOB.Location = New System.Drawing.Point(65, 259)
         Me.TxtJOB.MaxLength = 50
         Me.TxtJOB.Name = "TxtJOB"
         Me.TxtJOB.Size = New System.Drawing.Size(435, 25)
@@ -113,7 +114,7 @@ Partial Class 日子提醒
         'ButADD
         '
         Me.ButADD.Enabled = False
-        Me.ButADD.Location = New System.Drawing.Point(404, 307)
+        Me.ButADD.Location = New System.Drawing.Point(403, 290)
         Me.ButADD.Name = "ButADD"
         Me.ButADD.Size = New System.Drawing.Size(97, 27)
         Me.ButADD.TabIndex = 7
@@ -124,7 +125,7 @@ Partial Class 日子提醒
         'LabRange
         '
         Me.LabRange.AutoSize = True
-        Me.LabRange.Location = New System.Drawing.Point(12, 311)
+        Me.LabRange.Location = New System.Drawing.Point(11, 294)
         Me.LabRange.Name = "LabRange"
         Me.LabRange.Size = New System.Drawing.Size(152, 19)
         Me.LabRange.TabIndex = 8
@@ -135,7 +136,7 @@ Partial Class 日子提醒
         Me.CBremind.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CBremind.Font = New System.Drawing.Font("微软雅黑", 8.0!)
         Me.CBremind.FormattingEnabled = True
-        Me.CBremind.Location = New System.Drawing.Point(164, 306)
+        Me.CBremind.Location = New System.Drawing.Point(163, 289)
         Me.CBremind.Name = "CBremind"
         Me.CBremind.Size = New System.Drawing.Size(62, 24)
         Me.CBremind.TabIndex = 9
@@ -144,7 +145,7 @@ Partial Class 日子提醒
         'CheckCN
         '
         Me.CheckCN.AutoSize = True
-        Me.CheckCN.Location = New System.Drawing.Point(172, 236)
+        Me.CheckCN.Location = New System.Drawing.Point(171, 219)
         Me.CheckCN.Name = "CheckCN"
         Me.CheckCN.Size = New System.Drawing.Size(54, 23)
         Me.CheckCN.TabIndex = 10
@@ -160,7 +161,7 @@ Partial Class 日子提醒
         'CheckPop
         '
         Me.CheckPop.AutoSize = True
-        Me.CheckPop.Location = New System.Drawing.Point(12, 345)
+        Me.CheckPop.Location = New System.Drawing.Point(11, 328)
         Me.CheckPop.Name = "CheckPop"
         Me.CheckPop.Size = New System.Drawing.Size(184, 23)
         Me.CheckPop.TabIndex = 11
@@ -171,7 +172,7 @@ Partial Class 日子提醒
         '日子提醒
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(509, 378)
+        Me.ClientSize = New System.Drawing.Size(505, 365)
         Me.Controls.Add(Me.CheckPop)
         Me.Controls.Add(Me.CheckCN)
         Me.Controls.Add(Me.CBremind)

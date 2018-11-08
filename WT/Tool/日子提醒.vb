@@ -82,7 +82,7 @@ Public Class 日子提醒
             g = Val(左(i, 2))
             f = 去左(i, 3)
             If g = 0 Then
-                推送("今天是：" + f)
+                推送("今天是：" + f + "！")
             ElseIf g = 1 Then
                 推送("明天就是：" + f)
             Else

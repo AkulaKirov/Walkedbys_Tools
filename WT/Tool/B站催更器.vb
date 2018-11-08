@@ -1,35 +1,28 @@
 ﻿
 Public Class B站催更器
 
-    Dim Th As Thread
-
     Private Sub B站催更器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TxtID.Text = 设置.字符串("bilibiliUID")
-        LabOut.Text = ""
-        If 设置.布林("CheckBilibiliAtStart") Then
-            CheckAuto.Checked = True
-            If ButTell.Enabled Then
-                ButTell.PerformClick()
-            End If
+        CheckAuto.Checked = 设置.布林("CheckBilibiliAtStart")
+        If CheckAuto.Checked Then
+            ButTell.PerformClick()
         End If
+        LabOut.Text = ""
+    End Sub
+
+    Private Sub B站催更器_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        设置.布林("CheckBilibiliAtStart") = CheckAuto.Checked
+        设置.字符串("bilibiliUID") = TxtID.Text
     End Sub
 
     Private Sub TxtID_TextChanged(sender As Object, e As EventArgs) Handles TxtID.TextChanged
         TxtID.Text = 只要数字(TxtID.Text)
-        设置.字符串("bilibiliUID") = TxtID.Text
-        ButTell.Enabled = (TxtID.TextLength > 0 AndAlso CoolDown.Enabled = False)
-    End Sub
-
-    Private Sub B站催更器_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        中断线程(Th)
+        ButTell.Enabled = TxtID.TextLength > 0
     End Sub
 
     Private Sub ButTell_Click(sender As Object, e As EventArgs) Handles ButTell.Click
-        ButTell.Enabled = False
-        ButTell.Text = "冷却中"
         LabOut.Text = ""
-        CoolDown.Enabled = True
-        Th = New Thread(Sub()
+        开始工作(Pn, False, Sub()
                             Dim id As String = 设置.字符串("bilibiliUID")
                             Dim h As New 简易HTTP("https://space.bilibili.com/ajax/member/getSubmitVideos?mid=" + id + "&page=1&pagesize=25&order=pubdate")
                             h.Referer = "https://space.bilibili.com" + 括(id, "//")
@@ -53,18 +46,9 @@ Public Class B站催更器
                                 out = "获取网站信息失败，错误信息：" + vbCrLf + s
                             End If
                             LabOut.Text = out
+                            Thread.Sleep(4000)
+                            结束工作()
                         End Sub)
-        Th.Start()
-    End Sub
-
-    Private Sub CoolDown_Tick(sender As Object, e As EventArgs) Handles CoolDown.Tick
-        ButTell.Enabled = True
-        ButTell.Text = "告诉我残酷的现实"
-        CoolDown.Enabled = False
-    End Sub
-
-    Private Sub CheckAuto_CheckedChanged(sender As Object, e As EventArgs) Handles CheckAuto.CheckedChanged
-        设置.字符串("CheckBilibiliAtStart") = CheckAuto.Checked.ToString
     End Sub
 
 End Class

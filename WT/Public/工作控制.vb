@@ -31,7 +31,9 @@
         工作线程 = New Thread(线程内容)
         工作线程.Start()
         AddHandler p.FindForm.FormClosing, Sub()
-                                               If p.Enabled = False Then 结束工作()
+                                               If p.Enabled = False Then
+                                                   结束工作()
+                                               End If
                                            End Sub
     End Sub
 

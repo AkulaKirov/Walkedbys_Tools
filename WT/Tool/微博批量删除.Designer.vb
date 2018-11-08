@@ -32,6 +32,7 @@ Partial Class 微博批量删除
         Me.ButGo = New System.Windows.Forms.Button()
         Me.TxtLog = New System.Windows.Forms.TextBox()
         Me.Pn = New System.Windows.Forms.Panel()
+        Me.ButHowToCookie = New System.Windows.Forms.Button()
         Me.TxtCool = New System.Windows.Forms.NumericUpDown()
         Me.LabCool = New System.Windows.Forms.Label()
         Me.ButOld = New System.Windows.Forms.Button()
@@ -41,7 +42,6 @@ Partial Class 微博批量删除
         Me.ListIDs = New System.Windows.Forms.ListBox()
         Me.LabIDcount = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.ButHowToCookie = New System.Windows.Forms.Button()
         Me.Pn.SuspendLayout()
         CType(Me.TxtCool, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -95,7 +95,7 @@ Partial Class 微博批量删除
         '
         Me.ListWhite.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ListWhite.FormattingEnabled = True
-        Me.ListWhite.Items.AddRange(New Object() {"只删除包含特殊用词的微博", "跳过包含特殊用词的微博", "不处理"})
+        Me.ListWhite.Items.AddRange(New Object() {"只删除包含特殊用词的微博", "跳过包含特殊用词的微博", "不处理特殊用词"})
         Me.ListWhite.Location = New System.Drawing.Point(619, 222)
         Me.ListWhite.Name = "ListWhite"
         Me.ListWhite.Size = New System.Drawing.Size(277, 27)
@@ -104,22 +104,22 @@ Partial Class 微博批量删除
         'ButGo
         '
         Me.ButGo.Enabled = False
-        Me.ButGo.Location = New System.Drawing.Point(10, 282)
+        Me.ButGo.Location = New System.Drawing.Point(450, 185)
         Me.ButGo.Name = "ButGo"
-        Me.ButGo.Size = New System.Drawing.Size(241, 30)
+        Me.ButGo.Size = New System.Drawing.Size(150, 30)
         Me.ButGo.TabIndex = 9
-        Me.ButGo.Text = "开始"
+        Me.ButGo.Text = "开始删除微博"
         Me.ButGo.UseVisualStyleBackColor = True
         '
         'TxtLog
         '
-        Me.TxtLog.Location = New System.Drawing.Point(10, 318)
+        Me.TxtLog.Location = New System.Drawing.Point(10, 288)
         Me.TxtLog.MaxLength = 0
         Me.TxtLog.Multiline = True
         Me.TxtLog.Name = "TxtLog"
         Me.TxtLog.ReadOnly = True
         Me.TxtLog.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtLog.Size = New System.Drawing.Size(613, 196)
+        Me.TxtLog.Size = New System.Drawing.Size(613, 243)
         Me.TxtLog.TabIndex = 10
         '
         'Pn
@@ -128,6 +128,7 @@ Partial Class 微博批量删除
         Me.Pn.Controls.Add(Me.TxtCool)
         Me.Pn.Controls.Add(Me.LabCool)
         Me.Pn.Controls.Add(Me.ButOld)
+        Me.Pn.Controls.Add(Me.ButGo)
         Me.Pn.Controls.Add(Me.LabBUG)
         Me.Pn.Controls.Add(Me.TxtLink2)
         Me.Pn.Controls.Add(Me.TxtLink1)
@@ -139,8 +140,17 @@ Partial Class 微博批量删除
         Me.Pn.Controls.Add(Me.LabWhitelist)
         Me.Pn.Location = New System.Drawing.Point(10, 12)
         Me.Pn.Name = "Pn"
-        Me.Pn.Size = New System.Drawing.Size(904, 262)
+        Me.Pn.Size = New System.Drawing.Size(904, 273)
         Me.Pn.TabIndex = 11
+        '
+        'ButHowToCookie
+        '
+        Me.ButHowToCookie.Location = New System.Drawing.Point(715, 10)
+        Me.ButHowToCookie.Name = "ButHowToCookie"
+        Me.ButHowToCookie.Size = New System.Drawing.Size(181, 28)
+        Me.ButHowToCookie.TabIndex = 15
+        Me.ButHowToCookie.Text = "如何获取微博 Cookie"
+        Me.ButHowToCookie.UseVisualStyleBackColor = True
         '
         'TxtCool
         '
@@ -219,15 +229,6 @@ Partial Class 微博批量删除
         '
         Me.Timer1.Enabled = True
         '
-        'ButHowToCookie
-        '
-        Me.ButHowToCookie.Location = New System.Drawing.Point(715, 10)
-        Me.ButHowToCookie.Name = "ButHowToCookie"
-        Me.ButHowToCookie.Size = New System.Drawing.Size(181, 28)
-        Me.ButHowToCookie.TabIndex = 15
-        Me.ButHowToCookie.Text = "如何获取微博 Cookie"
-        Me.ButHowToCookie.UseVisualStyleBackColor = True
-        '
         '微博批量删除
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -236,7 +237,6 @@ Partial Class 微博批量删除
         Me.Controls.Add(Me.ListIDs)
         Me.Controls.Add(Me.Pn)
         Me.Controls.Add(Me.TxtLog)
-        Me.Controls.Add(Me.ButGo)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.ImeMode = System.Windows.Forms.ImeMode.Off
