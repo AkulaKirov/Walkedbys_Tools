@@ -2,7 +2,8 @@
 Public Class SteamCookie窗体
 
     Private Sub SteamCookie_Load(sender As Object, e As EventArgs) Handles Me.Load
-        控件DPI修正(Me)
+        If 只做一次(74565) Then 控件DPI修正(Me)
+        CtrlW关闭(Me)
         TxtSession.Text = SteamCookie.SessionID
         TxtLoginSecure.Text = SteamCookie.LoginSecure
         Icon = 图标
@@ -42,6 +43,12 @@ Public Class SteamCookie窗体
             Process.Start("https://github.com/gordonwalkedby/Walkedbys_Tools/wiki/%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97-Steam-Cookie")
         Catch ex As Exception
         End Try
+    End Sub
+
+    Private Sub SteamCookie窗体_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
+        If e.KeyCode = Keys.Escape Then
+            Close()
+        End If
     End Sub
 
 End Class

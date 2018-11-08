@@ -156,6 +156,21 @@
         ButReSend.Text = "重试发生失败的留言" & 括(失败列表.Count.ToString)
     End Sub
 
+    Private Sub TxtLog_MouseUp(sender As Object, e As MouseEventArgs) Handles TxtLog.MouseUp
+        With ButCheckComments
+            .Visible = False
+            Dim s As String = 右(只要数字(TxtLog.SelectedText), 17)
+            If Regex.IsMatch(s, "765611[0-9]{11}") Then
+                .Text = "去浏览器查看情况 " + 括(s)
+                .Visible = True
+            End If
+        End With
+    End Sub
+
+    Private Sub ButCheckComments_Click(sender As Object, e As EventArgs) Handles ButCheckComments.Click
+        Process.Start("https://steamcommunity.com/profiles/" + 只要数字(ButCheckComments.Text) + "/allcomments")
+    End Sub
+
     Function 给好友留言(id64 As String, say As String) As String
         id64 = 左(只要数字(id64), 17)
         Thread.Sleep(5000)

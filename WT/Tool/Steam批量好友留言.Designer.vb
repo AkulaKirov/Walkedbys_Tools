@@ -36,6 +36,7 @@ Partial Class Steam批量好友留言
         Me.TxtLog = New System.Windows.Forms.TextBox()
         Me.ShowCount = New System.Windows.Forms.Timer(Me.components)
         Me.ButGetSteamCookie = New System.Windows.Forms.Button()
+        Me.ButCheckComments = New System.Windows.Forms.Button()
         Me.Pn.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -166,10 +167,21 @@ Partial Class Steam批量好友留言
         Me.ButGetSteamCookie.Text = "填写 Steam Cookie"
         Me.ButGetSteamCookie.UseVisualStyleBackColor = True
         '
+        'ButCheckComments
+        '
+        Me.ButCheckComments.Location = New System.Drawing.Point(597, 394)
+        Me.ButCheckComments.Name = "ButCheckComments"
+        Me.ButCheckComments.Size = New System.Drawing.Size(312, 31)
+        Me.ButCheckComments.TabIndex = 70
+        Me.ButCheckComments.Text = "去浏览器"
+        Me.ButCheckComments.UseVisualStyleBackColor = True
+        Me.ButCheckComments.Visible = False
+        '
         'Steam批量好友留言
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1013, 546)
+        Me.Controls.Add(Me.ButCheckComments)
         Me.Controls.Add(Me.ButGetSteamCookie)
         Me.Controls.Add(Me.Pn)
         Me.Controls.Add(Me.TxtLog)
@@ -197,4 +209,5 @@ Partial Class Steam批量好友留言
     Friend WithEvents ButReSend As Button
     Friend WithEvents ShowCount As Forms.Timer
     Friend WithEvents ButGetSteamCookie As Button
+    Friend WithEvents ButCheckComments As Button
 End Class

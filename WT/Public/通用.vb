@@ -10,7 +10,7 @@ Module 通用
     Friend 最后窗体 As Form = 启动器
     Friend 启动参数 As New List(Of String)
     Friend 多线程 As New List(Of Thread)
-    Private 只做一次列表 As New List(Of Integer)
+    Private 只做一次列表 As New List(Of UInteger)
 
     ''' <summary>
     ''' 开启一个新的线程并自动运行，并且会在程序结束的时候自动结束进程
@@ -24,7 +24,7 @@ Module 通用
     ''' <summary>
     ''' 只在第一次访问的时候返回true，然后一直是false
     ''' </summary>
-    Public Function 只做一次(i As Integer) As Boolean
+    Public Function 只做一次(i As UInteger) As Boolean
         If 在列表(只做一次列表, i) Then
             Return False
         Else

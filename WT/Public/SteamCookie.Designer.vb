@@ -90,6 +90,7 @@ Partial Class SteamCookie窗体
         Me.Controls.Add(Me.TxtLoginSecure)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.KeyPreview = True
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "SteamCookie窗体"
         Me.ShowInTaskbar = False

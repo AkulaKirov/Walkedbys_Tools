@@ -18,6 +18,7 @@ Public Class 创意工坊订阅列表导出
         ButStart.Enabled = False
         Dim s As String = Trim(TxtLink.Text)
         If s.Length < 45 Then Exit Sub
+        s = s.Replace("http://", "https://")
         ButStart.Enabled = s.StartsWith("https://steamcommunity.com/") AndAlso 包含(s, "sharedfiles/filedetails/?id=", "/myworkshopfiles")
     End Sub
 
