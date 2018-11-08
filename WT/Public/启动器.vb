@@ -56,10 +56,6 @@ Public Class 启动器
         新增关于链接("下载最新版", "https://github.com/gordonwalkedby/Walkedbys_Tools/releases")
         新增关于链接("请我喝好的", "https://walkedby.com/donateme/")
         新增关于链接("反馈", "https://github.com/gordonwalkedby/Walkedbys_Tools/issues")
-        For Each g In 分割(设置.字符串("HistoryTool"), vbCrLf)
-            t = 名字工具(g)
-            If Not IsNothing(t) Then 最后使用的工具.Add(t)
-        Next
         GBallTools.Text += 括((ListTools.Items.Count - 1).ToString)
         时长 = 设置.数字("OpenTime")
         TimerC_Tick()
@@ -235,53 +231,6 @@ Public Class 启动器
         End If
     End Sub
 
-    Private Sub NicoMenu_Opening() Handles NicoMenu.Opening
-        Dim i As ToolStripMenuItem
-        NicoMenu.Items.Clear()
-        Dim f As Integer = 0, n As Integer, t As 工具
-        For n = 最后使用的工具.Count - 1 To 0 Step -1
-            f += 1
-            t = 最后使用的工具.Item(n)
-            i = New ToolStripMenuItem
-            With i
-                .Text = t.名字
-                AddHandler i.Click, Sub(sender As Object, e As EventArgs)
-                                        显示到前台(最后窗体)
-                                        名字工具(sender.text).启动()
-                                    End Sub
-            End With
-            NicoMenu.Items.Add(i)
-            If f >= 5 Then Exit For
-        Next
-        If NicoMenu.Items.Count > 0 Then NicoMenu.Items.Add(New ToolStripSeparator)
-        i = New ToolStripMenuItem
-        With i
-            .Text = "显示窗口"
-            AddHandler i.Click, Sub()
-                                    显示到前台(最后窗体)
-                                End Sub
-        End With
-        NicoMenu.Items.Add(i)
-        i = New ToolStripMenuItem
-        With i
-            .Text = "返回主页"
-            AddHandler i.Click, Sub()
-                                    If Not 最后窗体.Equals(Me) Then 最后窗体.Close()
-                                    显示到前台(最后窗体)
-                                End Sub
-        End With
-        NicoMenu.Items.Add(i)
-        NicoMenu.Items.Add(New ToolStripSeparator)
-        i = New ToolStripMenuItem
-        With i
-            .Text = "退出"
-            AddHandler i.Click, Sub()
-                                    退出()
-                                End Sub
-        End With
-        NicoMenu.Items.Add(i)
-    End Sub
-
     Private Sub 启动器_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp
         彩蛋码 += 右(e.KeyCode.ToString, 1).ToLower
         彩蛋码 = 右(彩蛋码, 30)
@@ -328,7 +277,6 @@ Public Class 启动器
 
     Private Sub AutoSave_Tick(sender As Object, e As EventArgs) Handles AutoSave.Tick
         设置.字符串("OpenTime") = 时长
-        设置.字符串("HistoryTool") = 列表转文字(最后使用的工具)
         设置.保存到本地()
     End Sub
 
@@ -344,6 +292,23 @@ Public Class 启动器
         If s <> TxtPush.Text Then TxtPush.Text = s
         If s.Length > 50 Then s = 左(s, 50) + "..."
         Nico.Text = "走過去的工具箱" + vbCrLf + s
+    End Sub
+
+    Private Sub 显示窗口ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 显示窗口ToolStripMenuItem.Click
+        显示到前台(最后窗体)
+    End Sub
+
+    Private Sub 返回主页ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 返回主页ToolStripMenuItem.Click
+        If Not 最后窗体.Equals(Me) Then 最后窗体.Close()
+        显示到前台(最后窗体)
+    End Sub
+
+    Private Sub 退出ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 退出ToolStripMenuItem.Click
+        退出()
+    End Sub
+
+    Private Sub 走過去的工具箱ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 走過去的工具箱ToolStripMenuItem.Click
+        显示到前台(最后窗体)
     End Sub
 
 End Class

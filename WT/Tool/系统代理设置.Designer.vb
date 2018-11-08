@@ -26,17 +26,11 @@ Partial Class 系统代理设置
         Me.ButGetSystem = New System.Windows.Forms.Button()
         Me.ButApply = New System.Windows.Forms.Button()
         Me.TxtProxy = New System.Windows.Forms.TextBox()
-        Me.ListTemps = New System.Windows.Forms.ComboBox()
-        Me.ButAdd = New System.Windows.Forms.Button()
-        Me.TxtTempName = New System.Windows.Forms.TextBox()
-        Me.ButRM = New System.Windows.Forms.Button()
         Me.LabPAC = New System.Windows.Forms.Label()
         Me.LabProxy = New System.Windows.Forms.Label()
         Me.ButCheckIP = New System.Windows.Forms.Button()
         Me.TxtIP = New System.Windows.Forms.TextBox()
-        Me.GBtemps = New System.Windows.Forms.GroupBox()
         Me.ButCheckSystem = New System.Windows.Forms.Button()
-        Me.GBtemps.SuspendLayout()
         Me.SuspendLayout()
         '
         'TxtPAC
@@ -65,7 +59,7 @@ Partial Class 系统代理设置
         Me.ButApply.Size = New System.Drawing.Size(180, 25)
         Me.ButApply.TabIndex = 4
         Me.ButApply.TabStop = False
-        Me.ButApply.Text = "使用该代理设置"
+        Me.ButApply.Text = "应用该代理设置"
         Me.ButApply.UseVisualStyleBackColor = True
         '
         'TxtProxy
@@ -76,47 +70,6 @@ Partial Class 系统代理设置
         Me.TxtProxy.Size = New System.Drawing.Size(378, 25)
         Me.TxtProxy.TabIndex = 5
         Me.TxtProxy.TabStop = False
-        '
-        'ListTemps
-        '
-        Me.ListTemps.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ListTemps.FormattingEnabled = True
-        Me.ListTemps.Location = New System.Drawing.Point(6, 24)
-        Me.ListTemps.Name = "ListTemps"
-        Me.ListTemps.Size = New System.Drawing.Size(283, 27)
-        Me.ListTemps.TabIndex = 6
-        Me.ListTemps.TabStop = False
-        '
-        'ButAdd
-        '
-        Me.ButAdd.Enabled = False
-        Me.ButAdd.Location = New System.Drawing.Point(6, 88)
-        Me.ButAdd.Name = "ButAdd"
-        Me.ButAdd.Size = New System.Drawing.Size(144, 27)
-        Me.ButAdd.TabIndex = 7
-        Me.ButAdd.TabStop = False
-        Me.ButAdd.Text = "新存为模板"
-        Me.ButAdd.UseVisualStyleBackColor = True
-        '
-        'TxtTempName
-        '
-        Me.TxtTempName.Location = New System.Drawing.Point(6, 57)
-        Me.TxtTempName.MaxLength = 20
-        Me.TxtTempName.Name = "TxtTempName"
-        Me.TxtTempName.Size = New System.Drawing.Size(279, 25)
-        Me.TxtTempName.TabIndex = 8
-        Me.TxtTempName.TabStop = False
-        '
-        'ButRM
-        '
-        Me.ButRM.Enabled = False
-        Me.ButRM.Location = New System.Drawing.Point(156, 88)
-        Me.ButRM.Name = "ButRM"
-        Me.ButRM.Size = New System.Drawing.Size(133, 27)
-        Me.ButRM.TabIndex = 10
-        Me.ButRM.TabStop = False
-        Me.ButRM.Text = "删除该模板"
-        Me.ButRM.UseVisualStyleBackColor = True
         '
         'LabPAC
         '
@@ -138,7 +91,7 @@ Partial Class 系统代理设置
         '
         'ButCheckIP
         '
-        Me.ButCheckIP.Location = New System.Drawing.Point(384, 246)
+        Me.ButCheckIP.Location = New System.Drawing.Point(384, 116)
         Me.ButCheckIP.Name = "ButCheckIP"
         Me.ButCheckIP.Size = New System.Drawing.Size(289, 36)
         Me.ButCheckIP.TabIndex = 14
@@ -158,24 +111,11 @@ Partial Class 系统代理设置
         Me.TxtIP.TabStop = False
         Me.TxtIP.Text = "本地IP："
         '
-        'GBtemps
-        '
-        Me.GBtemps.Controls.Add(Me.ListTemps)
-        Me.GBtemps.Controls.Add(Me.TxtTempName)
-        Me.GBtemps.Controls.Add(Me.ButAdd)
-        Me.GBtemps.Controls.Add(Me.ButRM)
-        Me.GBtemps.Location = New System.Drawing.Point(384, 106)
-        Me.GBtemps.Name = "GBtemps"
-        Me.GBtemps.Size = New System.Drawing.Size(295, 134)
-        Me.GBtemps.TabIndex = 17
-        Me.GBtemps.TabStop = False
-        Me.GBtemps.Text = "模板"
-        '
         'ButCheckSystem
         '
         Me.ButCheckSystem.Location = New System.Drawing.Point(384, 72)
         Me.ButCheckSystem.Name = "ButCheckSystem"
-        Me.ButCheckSystem.Size = New System.Drawing.Size(289, 28)
+        Me.ButCheckSystem.Size = New System.Drawing.Size(289, 38)
         Me.ButCheckSystem.TabIndex = 18
         Me.ButCheckSystem.TabStop = False
         Me.ButCheckSystem.Text = "打开系统的 Internet 设置"
@@ -186,7 +126,6 @@ Partial Class 系统代理设置
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(682, 334)
         Me.Controls.Add(Me.ButCheckSystem)
-        Me.Controls.Add(Me.GBtemps)
         Me.Controls.Add(Me.TxtIP)
         Me.Controls.Add(Me.ButCheckIP)
         Me.Controls.Add(Me.LabProxy)
@@ -202,8 +141,6 @@ Partial Class 系统代理设置
         Me.Name = "系统代理设置"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "系统代理设置"
-        Me.GBtemps.ResumeLayout(False)
-        Me.GBtemps.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -212,14 +149,9 @@ Partial Class 系统代理设置
     Friend WithEvents ButGetSystem As Button
     Friend WithEvents ButApply As Button
     Friend WithEvents TxtProxy As TextBox
-    Friend WithEvents ListTemps As ComboBox
-    Friend WithEvents ButAdd As Button
-    Friend WithEvents TxtTempName As TextBox
-    Friend WithEvents ButRM As Button
     Friend WithEvents LabPAC As Label
     Friend WithEvents LabProxy As Label
     Friend WithEvents ButCheckIP As Button
     Friend WithEvents TxtIP As TextBox
-    Friend WithEvents GBtemps As GroupBox
     Friend WithEvents ButCheckSystem As Button
 End Class

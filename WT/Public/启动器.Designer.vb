@@ -35,14 +35,20 @@ Partial Class 启动器
         Me.LabTime = New System.Windows.Forms.Label()
         Me.Nico = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.NicoMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.显示窗口ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.返回主页ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.退出ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LabFun = New System.Windows.Forms.Label()
         Me.TimerC = New System.Windows.Forms.Timer(Me.components)
         Me.AutoSave = New System.Windows.Forms.Timer(Me.components)
         Me.GBupdate = New System.Windows.Forms.GroupBox()
         Me.TxtUpdate = New System.Windows.Forms.TextBox()
+        Me.走過去的工具箱ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.GBallTools.SuspendLayout()
         Me.GBpush.SuspendLayout()
         Me.GBabout.SuspendLayout()
+        Me.NicoMenu.SuspendLayout()
         Me.GBupdate.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -170,9 +176,28 @@ Partial Class 启动器
         '
         Me.NicoMenu.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NicoMenu.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.NicoMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.走過去的工具箱ToolStripMenuItem, Me.ToolStripSeparator1, Me.显示窗口ToolStripMenuItem, Me.返回主页ToolStripMenuItem, Me.退出ToolStripMenuItem})
         Me.NicoMenu.Name = "NicoMenu"
         Me.NicoMenu.ShowItemToolTips = False
-        Me.NicoMenu.Size = New System.Drawing.Size(61, 4)
+        Me.NicoMenu.Size = New System.Drawing.Size(181, 128)
+        '
+        '显示窗口ToolStripMenuItem
+        '
+        Me.显示窗口ToolStripMenuItem.Name = "显示窗口ToolStripMenuItem"
+        Me.显示窗口ToolStripMenuItem.Size = New System.Drawing.Size(169, 24)
+        Me.显示窗口ToolStripMenuItem.Text = "显示窗口"
+        '
+        '返回主页ToolStripMenuItem
+        '
+        Me.返回主页ToolStripMenuItem.Name = "返回主页ToolStripMenuItem"
+        Me.返回主页ToolStripMenuItem.Size = New System.Drawing.Size(169, 24)
+        Me.返回主页ToolStripMenuItem.Text = "返回主页"
+        '
+        '退出ToolStripMenuItem
+        '
+        Me.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem"
+        Me.退出ToolStripMenuItem.Size = New System.Drawing.Size(169, 24)
+        Me.退出ToolStripMenuItem.Text = "退出"
         '
         'LabFun
         '
@@ -215,6 +240,17 @@ Partial Class 启动器
         Me.TxtUpdate.TabStop = False
         Me.TxtUpdate.WordWrap = False
         '
+        '走過去的工具箱ToolStripMenuItem
+        '
+        Me.走過去的工具箱ToolStripMenuItem.Name = "走過去的工具箱ToolStripMenuItem"
+        Me.走過去的工具箱ToolStripMenuItem.Size = New System.Drawing.Size(180, 24)
+        Me.走過去的工具箱ToolStripMenuItem.Text = "走過去的工具箱"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(177, 6)
+        '
         '启动器
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -240,6 +276,7 @@ Partial Class 启动器
         Me.GBpush.PerformLayout()
         Me.GBabout.ResumeLayout(False)
         Me.GBabout.PerformLayout()
+        Me.NicoMenu.ResumeLayout(False)
         Me.GBupdate.ResumeLayout(False)
         Me.GBupdate.PerformLayout()
         Me.ResumeLayout(False)
@@ -263,4 +300,9 @@ Partial Class 启动器
     Friend WithEvents AutoSave As Forms.Timer
     Friend WithEvents GBupdate As GroupBox
     Friend WithEvents TxtUpdate As TextBox
+    Friend WithEvents 显示窗口ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents 返回主页ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents 退出ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents 走過去的工具箱ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
 End Class

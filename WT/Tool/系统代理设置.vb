@@ -2,10 +2,8 @@
 Public Class 系统代理设置
 
     Dim 注册表 As RegistryKey = Registry.CurrentUser.OpenSubKey("Software\Microsoft\Windows\CurrentVersion\Internet Settings", True)
-    Dim mz As 模板组
 
     Private Sub 系统代理设置_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        mz = New 模板组("Proxy", ListTemps, TxtTempName, ButAdd, ButRM)
         ButGetSystem.PerformClick()
     End Sub
 
@@ -46,24 +44,8 @@ Public Class 系统代理设置
         End If
     End Sub
 
-    Private Sub ButAdd_Click(sender As Object, e As EventArgs) Handles ButAdd.Click
-        Dim s As String = TxtTempName.Text
-        Dim t As New 模板(s)
-        t.元素("pac") = TxtPAC.Text
-        t.元素("server") = TxtProxy.Text
-        mz.新增(t)
-    End Sub
-
     Private Sub ButCheckSystem_Click(sender As Object, e As EventArgs) Handles ButCheckSystem.Click
         Process.Start("C:\Windows\System32\inetcpl.cpl")
-    End Sub
-
-    Private Sub ListTemps_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListTemps.SelectedIndexChanged
-        Dim i As Integer = ListTemps.SelectedIndex
-        If i < 0 Then Exit Sub
-        Dim t As 模板 = mz.读取当前项
-        TxtProxy.Text = t.元素("server")
-        TxtPAC.Text = t.元素("pac")
     End Sub
 
 End Class
