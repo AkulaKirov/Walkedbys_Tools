@@ -35,6 +35,8 @@ Partial Class 启动器
         Me.LabTime = New System.Windows.Forms.Label()
         Me.Nico = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.NicoMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.走過去的工具箱ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.显示窗口ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.返回主页ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.退出ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -43,8 +45,6 @@ Partial Class 启动器
         Me.AutoSave = New System.Windows.Forms.Timer(Me.components)
         Me.GBupdate = New System.Windows.Forms.GroupBox()
         Me.TxtUpdate = New System.Windows.Forms.TextBox()
-        Me.走過去的工具箱ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.GBallTools.SuspendLayout()
         Me.GBpush.SuspendLayout()
         Me.GBabout.SuspendLayout()
@@ -68,21 +68,21 @@ Partial Class 启动器
         'TxtToolInfo
         '
         Me.TxtToolInfo.BackColor = System.Drawing.Color.White
-        Me.TxtToolInfo.Location = New System.Drawing.Point(207, 51)
+        Me.TxtToolInfo.Location = New System.Drawing.Point(199, 51)
         Me.TxtToolInfo.Multiline = True
         Me.TxtToolInfo.Name = "TxtToolInfo"
         Me.TxtToolInfo.ReadOnly = True
-        Me.TxtToolInfo.Size = New System.Drawing.Size(168, 254)
+        Me.TxtToolInfo.Size = New System.Drawing.Size(176, 254)
         Me.TxtToolInfo.TabIndex = 5
         Me.TxtToolInfo.TabStop = False
         '
         'TxtToolName
         '
         Me.TxtToolName.BackColor = System.Drawing.Color.White
-        Me.TxtToolName.Location = New System.Drawing.Point(207, 20)
+        Me.TxtToolName.Location = New System.Drawing.Point(199, 20)
         Me.TxtToolName.Name = "TxtToolName"
         Me.TxtToolName.ReadOnly = True
-        Me.TxtToolName.Size = New System.Drawing.Size(168, 25)
+        Me.TxtToolName.Size = New System.Drawing.Size(176, 25)
         Me.TxtToolName.TabIndex = 4
         Me.TxtToolName.TabStop = False
         '
@@ -90,9 +90,9 @@ Partial Class 启动器
         '
         Me.ButOpenTool.Enabled = False
         Me.ButOpenTool.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.ButOpenTool.Location = New System.Drawing.Point(207, 311)
+        Me.ButOpenTool.Location = New System.Drawing.Point(199, 311)
         Me.ButOpenTool.Name = "ButOpenTool"
-        Me.ButOpenTool.Size = New System.Drawing.Size(168, 39)
+        Me.ButOpenTool.Size = New System.Drawing.Size(176, 39)
         Me.ButOpenTool.TabIndex = 2
         Me.ButOpenTool.TabStop = False
         Me.ButOpenTool.Text = "运行"
@@ -100,12 +100,13 @@ Partial Class 启动器
         '
         'ListTools
         '
+        Me.ListTools.Dock = System.Windows.Forms.DockStyle.Left
         Me.ListTools.FormattingEnabled = True
         Me.ListTools.ItemHeight = 19
-        Me.ListTools.Location = New System.Drawing.Point(11, 23)
+        Me.ListTools.Location = New System.Drawing.Point(3, 21)
         Me.ListTools.Name = "ListTools"
         Me.ListTools.ScrollAlwaysVisible = True
-        Me.ListTools.Size = New System.Drawing.Size(190, 327)
+        Me.ListTools.Size = New System.Drawing.Size(190, 334)
         Me.ListTools.Sorted = True
         Me.ListTools.TabIndex = 0
         Me.ListTools.TabStop = False
@@ -179,7 +180,18 @@ Partial Class 启动器
         Me.NicoMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.走過去的工具箱ToolStripMenuItem, Me.ToolStripSeparator1, Me.显示窗口ToolStripMenuItem, Me.返回主页ToolStripMenuItem, Me.退出ToolStripMenuItem})
         Me.NicoMenu.Name = "NicoMenu"
         Me.NicoMenu.ShowItemToolTips = False
-        Me.NicoMenu.Size = New System.Drawing.Size(181, 128)
+        Me.NicoMenu.Size = New System.Drawing.Size(170, 106)
+        '
+        '走過去的工具箱ToolStripMenuItem
+        '
+        Me.走過去的工具箱ToolStripMenuItem.Name = "走過去的工具箱ToolStripMenuItem"
+        Me.走過去的工具箱ToolStripMenuItem.Size = New System.Drawing.Size(169, 24)
+        Me.走過去的工具箱ToolStripMenuItem.Text = "走過去的工具箱"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(166, 6)
         '
         '显示窗口ToolStripMenuItem
         '
@@ -239,17 +251,6 @@ Partial Class 启动器
         Me.TxtUpdate.TabIndex = 0
         Me.TxtUpdate.TabStop = False
         Me.TxtUpdate.WordWrap = False
-        '
-        '走過去的工具箱ToolStripMenuItem
-        '
-        Me.走過去的工具箱ToolStripMenuItem.Name = "走過去的工具箱ToolStripMenuItem"
-        Me.走過去的工具箱ToolStripMenuItem.Size = New System.Drawing.Size(180, 24)
-        Me.走過去的工具箱ToolStripMenuItem.Text = "走過去的工具箱"
-        '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(177, 6)
         '
         '启动器
         '

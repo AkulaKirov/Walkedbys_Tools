@@ -42,6 +42,7 @@ Module 字符串处理
             Dim b As Boolean = Regex.IsMatch("a15", 表达式)
             Return True
         Catch ex As Exception
+            Dp("正则表达式正确性测试失败：", 表达式, ex.Message)
             Return False
         End Try
     End Function
@@ -274,42 +275,6 @@ Module 字符串处理
             Return 去右(s, 提取(s, 尾).Length + 尾.Length)
         End If
         Return ""
-    End Function
-
-    ''' <summary>
-    ''' 简易提取XML的内容
-    ''' </summary>
-    Public Function 提取XML(xml As String, ParamArray 节点() As String) As String
-        Dim c As Integer = 节点.Count
-        If xml.Length > 0 AndAlso c > 0 Then
-            Dim s As String = xml, id As Integer = 1
-            If c > 1 Then
-                For Each i As String In 节点
-                    Dim a As String = 括(i, "<>"), b As String = 括(i, "</>")
-                    If 全部包含(s, a, b) Then
-                        s = 提取(s, a, b)
-                        If id = 节点.Count Then Return s
-                        id += 1
-                    Else
-                        Return ""
-                    End If
-                Next
-            Else
-                Dim i As String = 节点.First
-                Dim a As String = 括(i, "<>"), b As String = 括(i, "</>")
-                Return 提取(s, a, b)
-            End If
-        End If
-        Return ""
-    End Function
-
-    ''' <summary>
-    ''' 简易提取json的内容
-    ''' </summary>
-    Public Function 提取JSON(json As String, 名字 As String) As String
-        If json.Length < 4 Then Return ""
-        json = Regex.Match(json, 引(名字) + ":.*?""([\s\S]*?)""").ToString
-        Return 去右(提取(提取(json, 名字 + 引号), 引号), 1)
     End Function
 
     ''' <summary>

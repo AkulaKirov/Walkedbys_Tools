@@ -48,6 +48,7 @@ Module 通用
             启动器.Nico.Visible = False
             If Process.GetProcessesByName("wt").Count = 1 Then 删除(缓存目录)
         Catch ex As Exception
+            Dp("报错退出失败：", ex.Message)
         End Try
         End
     End Sub

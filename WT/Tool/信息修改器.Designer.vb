@@ -24,10 +24,8 @@ Partial Class 信息修改器
     Private Sub InitializeComponent()
         Me.ListT = New System.Windows.Forms.ListBox()
         Me.TxtInfo = New System.Windows.Forms.TextBox()
-        Me.ButBack = New System.Windows.Forms.Button()
         Me.ButSave = New System.Windows.Forms.Button()
         Me.ButRefresh = New System.Windows.Forms.Button()
-        Me.ButExit = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'ListT
@@ -36,7 +34,7 @@ Partial Class 信息修改器
         Me.ListT.ItemHeight = 19
         Me.ListT.Location = New System.Drawing.Point(12, 12)
         Me.ListT.Name = "ListT"
-        Me.ListT.Size = New System.Drawing.Size(214, 308)
+        Me.ListT.Size = New System.Drawing.Size(214, 346)
         Me.ListT.Sorted = True
         Me.ListT.TabIndex = 0
         '
@@ -47,59 +45,37 @@ Partial Class 信息修改器
         Me.TxtInfo.Multiline = True
         Me.TxtInfo.Name = "TxtInfo"
         Me.TxtInfo.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtInfo.Size = New System.Drawing.Size(595, 308)
+        Me.TxtInfo.Size = New System.Drawing.Size(571, 346)
         Me.TxtInfo.TabIndex = 1
         Me.TxtInfo.TabStop = False
         Me.TxtInfo.WordWrap = False
         '
-        'ButBack
-        '
-        Me.ButBack.Location = New System.Drawing.Point(12, 332)
-        Me.ButBack.Name = "ButBack"
-        Me.ButBack.Size = New System.Drawing.Size(151, 33)
-        Me.ButBack.TabIndex = 2
-        Me.ButBack.TabStop = False
-        Me.ButBack.Text = "撤销一切修改"
-        Me.ButBack.UseVisualStyleBackColor = True
-        '
         'ButSave
         '
-        Me.ButSave.Location = New System.Drawing.Point(169, 332)
+        Me.ButSave.Location = New System.Drawing.Point(10, 364)
         Me.ButSave.Name = "ButSave"
-        Me.ButSave.Size = New System.Drawing.Size(99, 33)
+        Me.ButSave.Size = New System.Drawing.Size(132, 33)
         Me.ButSave.TabIndex = 3
         Me.ButSave.TabStop = False
-        Me.ButSave.Text = "保存该项"
+        Me.ButSave.Text = "保存该项修改"
         Me.ButSave.UseVisualStyleBackColor = True
         '
         'ButRefresh
         '
-        Me.ButRefresh.Location = New System.Drawing.Point(274, 332)
+        Me.ButRefresh.Location = New System.Drawing.Point(148, 364)
         Me.ButRefresh.Name = "ButRefresh"
-        Me.ButRefresh.Size = New System.Drawing.Size(99, 33)
+        Me.ButRefresh.Size = New System.Drawing.Size(125, 33)
         Me.ButRefresh.TabIndex = 4
         Me.ButRefresh.TabStop = False
         Me.ButRefresh.Text = "刷新"
         Me.ButRefresh.UseVisualStyleBackColor = True
         '
-        'ButExit
-        '
-        Me.ButExit.Location = New System.Drawing.Point(707, 332)
-        Me.ButExit.Name = "ButExit"
-        Me.ButExit.Size = New System.Drawing.Size(120, 33)
-        Me.ButExit.TabIndex = 5
-        Me.ButExit.TabStop = False
-        Me.ButExit.Text = "强退程序"
-        Me.ButExit.UseVisualStyleBackColor = True
-        '
         '信息修改器
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(839, 377)
-        Me.Controls.Add(Me.ButExit)
+        Me.ClientSize = New System.Drawing.Size(814, 406)
         Me.Controls.Add(Me.ButRefresh)
         Me.Controls.Add(Me.ButSave)
-        Me.Controls.Add(Me.ButBack)
         Me.Controls.Add(Me.TxtInfo)
         Me.Controls.Add(Me.ListT)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -116,8 +92,6 @@ Partial Class 信息修改器
 
     Friend WithEvents ListT As ListBox
     Friend WithEvents TxtInfo As TextBox
-    Friend WithEvents ButBack As Button
     Friend WithEvents ButSave As Button
     Friend WithEvents ButRefresh As Button
-    Friend WithEvents ButExit As Button
 End Class

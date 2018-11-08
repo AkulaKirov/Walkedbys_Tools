@@ -157,6 +157,7 @@
             Try
                 写入流(h.GetRequestStream, 内容)
             Catch ex As Exception
+                Dp("写入流失败：" & ex.Message)
             End Try
         End Sub
 
@@ -233,6 +234,7 @@
                 h.ContentType = "multipart/form-data; boundary=" + bd
                 s = h.GetRequestStream
             Catch ex As Exception
+                Dp("新建简易MultiPartFormData失败：" & ex.Message)
                 lose = True
             End Try
         End Sub

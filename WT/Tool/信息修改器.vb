@@ -1,13 +1,10 @@
 ﻿
 Public Class 信息修改器
 
-    Dim 备份 As String
+    Dim Ts As WBC文件
 
     Private Sub 信息修改器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If Not 在列表(启动参数, "-tryfix") Then
-            报错退出("非法的操作！必须退出！")
-        End If
-        备份 = 设置.全文本
+        Ts = New WBC文件(程序文件目录 + "wt_save - 副本.wbxml")
         刷新列表()
     End Sub
 
@@ -15,25 +12,19 @@ Public Class 信息修改器
         TxtInfo.Text = ""
         Dim i As Integer = ListT.SelectedIndex
         If i < 0 Then Exit Sub
-        TxtInfo.Text = 设置.字符串(ListT.Items.Item(i))
+        TxtInfo.Text = Ts.字符串(ListT.Items(i))
     End Sub
 
     Private Sub ButSave_Click(sender As Object, e As EventArgs) Handles ButSave.Click
         Dim i As Integer = ListT.SelectedIndex
         If i < 0 Then Exit Sub
-        设置.字符串(ListT.Items.Item(i)) = TxtInfo.Text
-    End Sub
-
-    Private Sub ButBack_Click(sender As Object, e As EventArgs) Handles ButBack.Click
-        设置.全文本 = 备份
-        TxtInfo.Text = ""
-        刷新列表()
+        Ts.字符串(ListT.Items(i)) = TxtInfo.Text
     End Sub
 
     Sub 刷新列表()
         ListT.Items.Clear()
-        For Each i As String In 设置.元素列表
-            ListT.Items.Add(i)
+        For Each i As WBC元素 In Ts.元素列表
+            ListT.Items.Add(i.名字)
         Next
     End Sub
 
@@ -44,10 +35,6 @@ Public Class 信息修改器
 
     Private Sub 信息修改器_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         ButRefresh.PerformClick()
-    End Sub
-
-    Private Sub ButExit_Click(sender As Object, e As EventArgs) Handles ButExit.Click
-        End
     End Sub
 
 End Class

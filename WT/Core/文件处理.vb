@@ -208,6 +208,7 @@ Module 文件处理
         Try
             Rename(文件, s)
         Catch ex As Exception
+            Dp("重命名失败：", ex.Message, 文件, 新文件名)
         End Try
     End Sub
 
@@ -239,6 +240,7 @@ Module 文件处理
             File.OpenWrite(文件).Close()
             Return True
         Catch ex As Exception
+            Dp("文件读写测试失败：", ex.Message, 文件)
             Return False
         End Try
     End Function
@@ -247,7 +249,7 @@ Module 文件处理
     ''' 文件是否存在并且可读写
     ''' </summary>
     Public Function 文件可用(文件 As String) As Boolean
-        Return (文件存在(文件) AndAlso 文件可读写(文件))
+        Return 文件存在(文件) AndAlso 文件可读写(文件)
     End Function
 
     ''' <summary>
@@ -276,6 +278,7 @@ Module 文件处理
         Try
             File.WriteAllText(文件, 内容, 编码)
         Catch ex As Exception
+            Dp("写入文件字符串失败：", ex.Message)
         End Try
     End Sub
 
@@ -290,6 +293,7 @@ Module 文件处理
             r.Write(字节)
             r.Close()
         Catch ex As Exception
+            Dp("写入文件字节失败：", ex.Message)
         End Try
     End Sub
 
@@ -303,6 +307,7 @@ Module 文件处理
                     If 文件存在(i) Then File.Delete(i)
                     If 文件夹存在(i) Then Directory.Delete(i, True)
                 Catch ex As Exception
+                    Dp("删除文件失败：", ex.Message)
                 End Try
             End If
         Next
@@ -353,18 +358,17 @@ Module 文件处理
     ''' </summary>
     Public Function 读加密文件(文件 As String, Optional 不检测 As Boolean = False) As String
         If Not 文件可用(文件) Then Return ""
-        Dim r As New BinaryReader(File.OpenRead(文件))
-        Dim hash As Integer = r.ReadInt32()
-        Dim n As Integer = r.ReadByte, n2 As Integer = r.ReadByte
-        Dim s As New List(Of Byte)
-        For i = 6 To r.BaseStream.Length - 1
-            Dim b As Byte = r.ReadByte
-            If b > n2 Then s.Add(b - n2)
+        Dim Read_r As New BinaryReader(File.OpenRead(文件))
+        Dim Read_hash As Integer = Read_r.ReadInt32()
+        Dim Read_n As Integer = Read_r.ReadByte, Read_n2 As Integer = Read_r.ReadByte
+        Dim Read_s As New List(Of Byte)
+        For Read_i = 6 To Read_r.BaseStream.Length - 1
+            Dim Read_b As Byte = Read_r.ReadByte
+            If Read_b > Read_n2 Then Read_s.Add(Read_b - Read_n2)
         Next
-        Dim f As String = 字节转文字(s.ToArray)
-        Return HttpUtility.UrlDecode(f)
-        If 不检测 OrElse f.GetHashCode = hash Then
-            Return HttpUtility.UrlDecode(f)
+        Dim Read_f As String = 字节转文字(Read_s.ToArray)
+        If 不检测 OrElse Read_f.GetHashCode = Read_hash Then
+            Return HttpUtility.UrlDecode(Read_f)
         Else
             Return ""
         End If
@@ -392,6 +396,18 @@ Module 文件处理
         Next
         r.Close()
     End Sub
+
+    ''' <summary>
+    ''' 把字节数组里的每个字节进行+或者-操作
+    ''' </summary>
+    Public Function 字节移位(字节() As Byte, 移位 As Integer) As Byte()
+        Dim t As Integer
+        For Each i As Byte In 字节
+            t = i + 移位
+            If t > -1 AndAlso t < 256 Then i = t
+        Next
+        Return 字节
+    End Function
 
     Public Class 简易XML
 
@@ -457,7 +473,7 @@ Module 文件处理
 
         Public Property 字符串(名字 As String) As String
             Get
-                Return HttpUtility.UrlDecode(提取XML(全文本, 名字))
+                Return ""
             End Get
             Set(内容 As String)
                 Dim a As String = 括(名字, "<>")
@@ -535,14 +551,16 @@ Module 文件处理
     End Sub
 
     ''' <summary>
-    ''' 针对 BinaryReader 进行操作，一直读取字符串直到特定的byte
+    ''' 针对 BinaryReader 进行操作，一直读取字符串直到值为0的字节
     ''' </summary>
-    Public Function 读取字符串到零(r As BinaryReader, Optional b As Byte = 0)
+    Public Function 读取字符串到零(r As BinaryReader, Optional 移位 As Integer = 0) As String
         Dim s As String = ""
         Do While True
             Dim ba As Byte = r.ReadByte
-            If ba = b Then Exit Do
-            s += Chr(b)
+            If ba = 0 Then Exit Do
+            ba += 移位
+            s += ChrW(ba)
+            If r.BaseStream.Position = r.BaseStream.Length Then Exit Do
         Loop
         Return s
     End Function

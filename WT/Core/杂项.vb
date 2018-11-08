@@ -283,6 +283,7 @@ Module 杂项
             Try
                 p.Kill()
             Catch ex As Exception
+                Dp("关闭程序失败：", 程序名, p.Id, ex.Message)
             End Try
         Next
     End Sub
@@ -317,6 +318,7 @@ Module 杂项
                 Try
                     Forms.Clipboard.SetText(v)
                 Catch ex As Exception
+                    Dp("剪贴板设置文本失败：", ex.Message)
                 End Try
             End Set
             Get
@@ -329,6 +331,7 @@ Module 杂项
                 Try
                     Forms.Clipboard.SetImage(v)
                 Catch ex As Exception
+                    Dp("剪贴板设置图片失败：", ex.Message)
                 End Try
             End Set
             Get
