@@ -31,6 +31,7 @@ Partial Class VMT生成器
         Me.ButGen = New System.Windows.Forms.Button()
         Me.Watching = New System.Windows.Forms.Timer(Me.components)
         Me.TxtLog = New System.Windows.Forms.TextBox()
+        Me.LabNote = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'TxtPath
@@ -39,7 +40,7 @@ Partial Class VMT生成器
         Me.TxtPath.Font = New System.Drawing.Font("微软雅黑", 8.0!)
         Me.TxtPath.Location = New System.Drawing.Point(12, 31)
         Me.TxtPath.Name = "TxtPath"
-        Me.TxtPath.Size = New System.Drawing.Size(821, 22)
+        Me.TxtPath.Size = New System.Drawing.Size(616, 22)
         Me.TxtPath.TabIndex = 0
         Me.TxtPath.TabStop = False
         '
@@ -59,7 +60,7 @@ Partial Class VMT生成器
         Me.TxtVMT.Multiline = True
         Me.TxtVMT.Name = "TxtVMT"
         Me.TxtVMT.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtVMT.Size = New System.Drawing.Size(276, 300)
+        Me.TxtVMT.Size = New System.Drawing.Size(303, 300)
         Me.TxtVMT.TabIndex = 2
         Me.TxtVMT.TabStop = False
         '
@@ -82,21 +83,21 @@ Partial Class VMT生成器
         Me.ListParms.Items.AddRange(New Object() {"VertexlitGeneric \n{\n\n}", "UnlitGeneric \n{\n\n}", "LightmappedGeneric \n{\n\n}", "$basetexture ""%文件名%""", "$bumpmap ""%文件名%_normal""", "$bumpmap ""%文件名%_n""", "$decal  1 \n$decalscale  0.25", "$halflambert 1", "$alphatest 1", "$nocull 1", "$translucent 1", "$model 1", "$envmap env_cubemap", "$nodecal 1", "$nofog 1", "$surfaceprop brick", "$surfaceprop metal", "$surfaceprop wood", "$surfaceprop grass", "$surfaceprop flesh", "$surfaceprop rubber", "Proxies\n {\n AnimatedTexture\n {\n animatedtexturevar $basetexture\n animatedtex" &
                 "tureframenumvar $frame\n animatedtextureframerate 25\n }\n }", "$phong 1\n$phongboost 1\n$PhongFresnelRanges ""[0 0.5 1]""\n$PhongExponent 5\n$ligh" &
                 "twarptexture ""%路径%\shader""", "$rimlight 1\n$rimlightexponent 2\n$rimlightboost .2"})
-        Me.ListParms.Location = New System.Drawing.Point(294, 59)
+        Me.ListParms.Location = New System.Drawing.Point(321, 59)
         Me.ListParms.Name = "ListParms"
-        Me.ListParms.Size = New System.Drawing.Size(307, 292)
+        Me.ListParms.Size = New System.Drawing.Size(307, 244)
         Me.ListParms.TabIndex = 3
         Me.ListParms.TabStop = False
         '
         'ButGen
         '
         Me.ButGen.Font = New System.Drawing.Font("微软雅黑", 10.0!)
-        Me.ButGen.Location = New System.Drawing.Point(607, 59)
+        Me.ButGen.Location = New System.Drawing.Point(321, 317)
         Me.ButGen.Name = "ButGen"
-        Me.ButGen.Size = New System.Drawing.Size(226, 73)
+        Me.ButGen.Size = New System.Drawing.Size(307, 42)
         Me.ButGen.TabIndex = 11
         Me.ButGen.TabStop = False
-        Me.ButGen.Text = "开始监视与生成VMT" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(只在本工具运行的时候监视)"
+        Me.ButGen.Text = "开始监视与生成VMT"
         Me.ButGen.UseVisualStyleBackColor = True
         '
         'Watching
@@ -107,19 +108,30 @@ Partial Class VMT生成器
         '
         Me.TxtLog.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.TxtLog.Font = New System.Drawing.Font("微软雅黑", 8.0!)
-        Me.TxtLog.Location = New System.Drawing.Point(0, 369)
+        Me.TxtLog.Location = New System.Drawing.Point(0, 434)
         Me.TxtLog.Multiline = True
         Me.TxtLog.Name = "TxtLog"
         Me.TxtLog.ReadOnly = True
         Me.TxtLog.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtLog.Size = New System.Drawing.Size(845, 157)
+        Me.TxtLog.Size = New System.Drawing.Size(640, 157)
         Me.TxtLog.TabIndex = 12
         Me.TxtLog.TabStop = False
+        '
+        'LabNote
+        '
+        Me.LabNote.AutoSize = True
+        Me.LabNote.Location = New System.Drawing.Point(8, 370)
+        Me.LabNote.Name = "LabNote"
+        Me.LabNote.Size = New System.Drawing.Size(465, 57)
+        Me.LabNote.TabIndex = 13
+        Me.LabNote.Text = "如果你用了 ""%文件名%_normal"" 这类标识，那么如果这个 _normal.vtf 存在，" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "就会在对应的VMT里保留这一行语句。不然就会被自动筛选掉。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) &
+    "同时， _normal.vtf 本身将不会被生成 vmt 文件。"
         '
         'VMT生成器
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(845, 526)
+        Me.ClientSize = New System.Drawing.Size(640, 591)
+        Me.Controls.Add(Me.LabNote)
         Me.Controls.Add(Me.CheckSon)
         Me.Controls.Add(Me.TxtLog)
         Me.Controls.Add(Me.ListParms)
@@ -146,4 +158,5 @@ Partial Class VMT生成器
     Friend WithEvents Watching As System.Windows.Forms.Timer
     Friend WithEvents TxtLog As TextBox
     Friend WithEvents CheckSon As CheckBox
+    Friend WithEvents LabNote As Label
 End Class

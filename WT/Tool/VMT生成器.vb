@@ -1,6 +1,8 @@
 ﻿
 Public Class VMT生成器
 
+    Dim 特殊列表 As New List(Of String), 特殊列表2 As New List(Of String), VMT文本 As String
+
     Private Sub VMT生成器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TxtPath.Text = 设置.字符串("vmtPATH")
         TxtVMT.Text = 设置.字符串("vmtLAST")
@@ -39,39 +41,80 @@ Public Class VMT生成器
         设置.保存元素("vmtLAST", TxtVMT.Text)
         设置.保存元素("vmtSON", CheckSon.Checked)
         设置.保存元素("vmtPATH", TxtPath.Text)
+        If Watching.Enabled Then ButGen.PerformClick()
     End Sub
 
     Private Sub ButGen_Click(sender As Object, e As EventArgs) Handles ButGen.Click
-        TxtLog.Text = ""
+        重定日志控件()
         Dim i As Boolean = Watching.Enabled
         TxtVMT.Enabled = i
         ListParms.Enabled = i
         TxtPath.Enabled = i
         Watching.Enabled = Not i
+        特殊列表.Clear()
+        特殊列表2.Clear()
+        If Not i Then
+            TxtLog.Text = ""
+            VMT文本 = TxtVMT.Text
+            For Each m As Match In Regex.Matches(VMT文本, 引("%文件名%.{1,}"))
+                特殊列表.Add(去除(m.ToString, 引号, "%文件名%"))
+            Next
+            For Each m As Match In Regex.Matches(VMT文本, 引("%路径%.{1,}"))
+                特殊列表2.Add(去除(m.ToString, 引号, "%路径%\"))
+            Next
+        End If
         ButGen.Text = IIf(Not i, "停止监视与生成", "开始监视与生成")
-        TxtLog.Text += vbCrLf + IIf(Not i, "开始：", "结束：") + Now.ToString
+        日志(IIf(Not i, "开始：", "结束：") + Now.ToString)
     End Sub
 
     Private Sub Watching_Tick(sender As Object, e As EventArgs) Handles Watching.Tick
         If Not Visible Then Exit Sub
         If Not 文件夹存在(TxtPath.Text) Then
-            TxtLog.Text += vbCrLf + "出错：文件夹已经被删除。"
+            日志("出错：文件夹已经被删除。 " & TxtPath.Text)
             ButGen.PerformClick()
             Exit Sub
         End If
-        Dim f() As String = Directory.GetFiles(TxtPath.Text, "*.vtf", IIf(CheckSon.Checked, SearchOption.AllDirectories, SearchOption.TopDirectoryOnly))
+        Dim path As String = TxtPath.Text
+        Dim f() As String = Directory.GetFiles(path, "*?.vtf", IIf(CheckSon.Checked, SearchOption.AllDirectories, SearchOption.TopDirectoryOnly))
         If f.Count < 1 Then Exit Sub
-        Dim i As String
+        Dim i As String, s As String, m As String, t As String, t2 As String, ok As Boolean = True, tn As String
         For Each i In f
-            Dim m As String = i.ToLower.Replace(".vtf", ".vmt")
-            If Not 文件存在(m) Then
-                Dim s As String = TxtVMT.Text, t As String = 正则去除(m, ".*materials\\", "\.vmt"), t2 As String = 去右(去除(t, 文件名(t)), 1)
-                Dp(t2)
-                If t.Length > 0 Then
-                    s = s.Replace("%文件名%", t)
-                    s = s.Replace("%路径%", t2)
-                    写文件(m, s)
-                    TxtLog.Text += vbCrLf + "已生成：" + t
+            m = 去右(i, 4)
+            For Each s In 特殊列表
+                If m.EndsWith(s) Then
+                    ok = False
+                    Exit For
+                End If
+            Next
+            For Each s In 特殊列表2
+                If m.EndsWith(s) Then
+                    ok = False
+                    Exit For
+                End If
+            Next
+            If ok Then
+                m += ".vmt"
+                s = VMT文本
+                If Not 文件存在(m) Then
+                    tn = 正则去除(m, ".*materials\\", "\.vmt")
+                    t2 = 去右(去除(tn, 文件名(tn)), 1)
+                    If tn.Length > 0 Then
+                        s = s.Replace("%文件名%", tn)
+                        s = s.Replace("%路径%", t2)
+                        For Each t In 特殊列表2
+                            If 文件存在(path + t + ".vtf") = False Then
+                                s = 正则去除(s, "\$.*" + Regex.Escape(t) + 引号)
+                            End If
+                        Next
+                        For Each t In 特殊列表
+                            t2 = 去右(path, tn.Length - 1) + tn + t + ".vtf"
+                            If 文件存在(t2) = False Then
+                                s = 正则去除(s, "\$.*" + Regex.Escape(t) + 引号)
+                            End If
+                        Next
+                        写文件(m, 去多余回车(s))
+                        日志("已生成：" + tn)
+                    End If
                 End If
             End If
         Next
