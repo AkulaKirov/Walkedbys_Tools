@@ -9,8 +9,6 @@
 
         Public Property 本地文件 As String
 
-        Private 移位 As Integer = 13
-
         Public Sub New(本地文件 As String)
             Me.本地文件 = 本地文件
             元素列表 = New List(Of WBC元素)
@@ -20,14 +18,16 @@
                     Dim r As New BinaryReader(File.OpenRead(本地文件)), s1 As String, s2 As String
                     读取字符串到零(r)
                     Do While True
-                        s1 = 读取字符串到零(r, -移位)
-                        s2 = 读取字符串到零(r, -移位)
+                        s1 = 读取字符串到零(r)
+                        s2 = 读取字符串到零(r)
                         字符串(s1) = s2
+                        If r.BaseStream.Position >= r.BaseStream.Length - 1 Then Exit Do
                     Loop
+                    r.Close()
                 Else
                     兼容读取老版本()
                     删除(本地文件)
-                    Me.本地文件 = 去右(本地文件, 1 + f.Length) + ".wbc"
+                    Me.本地文件 = 程序文件目录 + "wt.wbc"
                     保存到本地()
                 End If
             End If
@@ -41,11 +41,12 @@
                 Dim b0 As Byte = 0, i As WBC元素
                 .Write(b0)
                 For Each i In 元素列表
-                    .Write(字节移位(文字转字节(i.名字), 移位))
+                    .Write(文字转字节(i.名字))
                     .Write(b0)
-                    .Write(字节移位(文字转字节(i.值), 移位))
+                    .Write(文字转字节(i.值))
                     .Write(b0)
                 Next
+                .Close()
             End With
         End Sub
 
@@ -59,10 +60,37 @@
             Return Nothing
         End Function
 
-        Public Property 字符串(名字 As String) As String
+        Public Property 布林(名字 As String, Optional 默认 As Boolean = False) As Boolean
+            Get
+                Return 字符串(名字, 默认.ToString).ToLower = "true"
+            End Get
+            Set(值 As Boolean)
+                字符串(名字) = 值.ToString.ToLower
+            End Set
+        End Property
+
+        Public Property 日期(名字 As String, Optional 默认 As Date = #2000-01-01 00:00:00#) As Date
+            Get
+                Return 字符串(名字, 默认.ToString)
+            End Get
+            Set(值 As Date)
+                字符串(名字) = 值.ToString
+            End Set
+        End Property
+
+        Public Property 数字(名字 As String, Optional 默认 As Double = 0) As Double
+            Get
+                Return Val(字符串(名字, 默认.ToString))
+            End Get
+            Set(值 As Double)
+                字符串(名字) = 值.ToString
+            End Set
+        End Property
+
+        Public Property 字符串(名字 As String, Optional 默认 As String = "") As String
             Get
                 Dim n As WBC元素 = 获得元素(名字)
-                If IsNothing(n) Then Return ""
+                If IsNothing(n) Then Return 默认
                 Return n.值
             End Get
             Set(值 As String)
@@ -108,7 +136,6 @@
             s = 提取(xml, "<WT>", "</WT>")
             For Each m As Match In Regex.Matches(s, "\<.*?\>")
                 t = m.ToString
-                Dp(t)
                 If Not t.StartsWith("</") Then
                     n = 提取(t, "<", ">")
                     字符串(n) = HttpUtility.UrlDecode(提取(s, 括(n, "<>"), 括(n, "</>")))

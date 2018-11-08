@@ -58,7 +58,7 @@ Public Class Steam好友列表检查
                                             End If
                                         End If
                                     Next
-                                    If n = 0 AndAlso 自动检查 AndAlso IsDisposed = False Then
+                                    If n = 0 AndAlso 自动检查 Then
                                         LabAutoCheck.Text = LabAutoCheck.Tag
                                     End If
                                     mc = Regex.Matches(s, "steamid:[0-9]{17},")

@@ -38,9 +38,9 @@ Public Class VMT生成器
     End Sub
 
     Private Sub VMT生成器_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        设置.保存元素("vmtLAST", TxtVMT.Text)
-        设置.保存元素("vmtSON", CheckSon.Checked)
-        设置.保存元素("vmtPATH", TxtPath.Text)
+        设置.字符串("vmtLAST") = TxtVMT.Text
+        设置.布林("vmtSON") = CheckSon.Checked
+        设置.字符串("vmtPATH") = TxtPath.Text
         If Watching.Enabled Then ButGen.PerformClick()
     End Sub
 

@@ -110,16 +110,8 @@ Public Class 启动器
         For Each t As Thread In 多线程
             中断线程(t)
         Next
-        Try
-            For Each n As 工具 In 工具列表
-                If n.启动过了 Then n.窗体.Dispose()
-            Next
-        Catch ex As Exception
-            Dp("工具箱退出失败：" & ex.Message)
-        End Try
-        设置.保存到本地()
         删除(缓存目录)
-        End
+        关闭程序("wt")
     End Sub
 
     Private Sub ListTools_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListTools.SelectedIndexChanged

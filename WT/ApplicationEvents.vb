@@ -30,13 +30,19 @@ Namespace My
             For Each i In e.CommandLine
                 启动参数.Add(i.ToLower)
             Next
-            i = 程序文件目录() + "wt_save."
-            Dim b As Boolean = 文件存在(i + "xml")
-            设置.本地文件 = i + IIf(b, "xml", "wbxml")
-            设置.从本地读取()
+            i = 程序文件目录() + "wt.wbc"
+            If Not 文件存在(i) Then
+                i = 程序文件目录() + "wt_save.wbxml"
+                If Not 文件存在(i) Then
+                    i = 程序文件目录() + "wt_save.xml"
+                    If Not 文件存在(i) Then
+                        启动参数.Add("-firsttime")
+                        i = 程序文件目录() + "wt.wbc"
+                    End If
+                End If
+            End If
+            设置 = New WBC文件(i)
             If Not 文件存在(设置.本地文件) Then 启动参数.Add("-firsttime")
-            设置.本地文件 = i + "wbxml"
-            删除(i + "xml")
             If 在列表(启动参数, "-firsttime") Then
                 Dim n As MsgBoxResult
                 n = MsgBox("你想在桌面上建立本程序的快捷方式吗？", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "欢迎使用走過去的工具箱~")

@@ -45,18 +45,18 @@ Public Class GM模组发布器
     End Sub
 
     Private Sub GM模组发布器_FormClosing(sender As Object, e As CancelEventArgs) Handles Me.FormClosing
-        设置.保存元素("GMApath", TxtPath.Text)
-        设置.保存元素("GMAtype", CBtype.SelectedIndex.ToString)
-        设置.保存元素("GMODpath", TxtGMod.Text)
+        设置.字符串("GMApath") = TxtPath.Text
+        设置.字符串("GMAtype") = CBtype.SelectedIndex.ToString
+        设置.字符串("GMODpath") = TxtGMod.Text
         If CBtags.CheckedItems.Count = 2 Then
-            设置.保存元素("GMAtag1", CBtags.CheckedIndices.Item(0))
-            设置.保存元素("GMAtag2", CBtags.CheckedIndices.Item(1))
+            设置.数字("GMAtag1") = CBtags.CheckedIndices.Item(0)
+            设置.数字("GMAtag2") = CBtags.CheckedIndices.Item(1)
         End If
-        设置.保存元素("GMAname", Txtname.Text)
-        设置.保存元素("GMAjpg", TxtJPGfile.Text)
-        设置.保存元素("GMODaddons", 列表转文字(ListAddons.Items))
-        设置.字符串("GMAtime") = 上次更新日期.ToString
-        设置.字符串("GMAw") = ListAddons.SelectedIndex
+        设置.字符串("GMAname") = Txtname.Text
+        设置.字符串("GMAjpg") = TxtJPGfile.Text
+        设置.字符串("GMODaddons") = 列表转文字(ListAddons.Items)
+        设置.日期("GMAtime") = 上次更新日期
+        设置.数字("GMAw") = ListAddons.SelectedIndex
         删除(tgma, log, bat)
     End Sub
 

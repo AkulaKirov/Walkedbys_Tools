@@ -28,7 +28,7 @@ Public Class 日子提醒
 
     Private Sub ButRM_Click(sender As Object, e As EventArgs) Handles ButRM.Click
         移除选中项(ListDates)
-        设置.保存元素("days", 列表转文字(ListDates.Items))
+        设置.字符串("days") = 列表转文字(ListDates.Items)
         提醒好日子()
     End Sub
 
@@ -45,7 +45,7 @@ Public Class 日子提醒
                 Exit For
             End If
         Next
-        设置.保存元素("days", 列表转文字(ListDates.Items))
+        设置.字符串("days") = 列表转文字(ListDates.Items)
         TxtJOB.Text = ""
         提醒好日子()
     End Sub
@@ -107,7 +107,7 @@ Public Class 日子提醒
     End Sub
 
     Private Sub CBremind_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBremind.SelectedIndexChanged
-        设置.保存元素("Remindtime", CBremind.SelectedIndex.ToString)
+        设置.数字("Remindtime") = CBremind.SelectedIndex.ToString
         提醒好日子()
     End Sub
 

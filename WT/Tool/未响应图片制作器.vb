@@ -10,7 +10,7 @@ Public Class 未响应图片制作器
     End Sub
 
     Private Sub 未响应图片制作器_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        设置.保存元素("NoRESname", TxtName.Text)
+        设置.字符串("NoRESname") = TxtName.Text
         设置.字符串("NoRESstyle") = ListStyle.SelectedIndex
     End Sub
 

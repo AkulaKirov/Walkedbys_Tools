@@ -3,7 +3,7 @@ Module 通用
 
     Friend 工具列表 As New List(Of 工具)
     Friend 版本 As String = 版本号(My.Application.Info.Version)
-    Friend 设置 As New 简易XML("WT", "")
+    Friend 设置 As WBC文件
     Friend 缓存目录 As String = 程序文件目录() + "WalkedbysTemps\"
     Friend 图标 As Icon = My.Resources.ico
     Friend 最后窗体 As Form = 启动器

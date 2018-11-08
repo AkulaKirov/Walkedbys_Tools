@@ -354,189 +354,6 @@ Module 文件处理
     End Function
 
     ''' <summary>
-    ''' 读取我自己的加密文本，如果检测到hash不对就会返回空字符串
-    ''' </summary>
-    Public Function 读加密文件(文件 As String, Optional 不检测 As Boolean = False) As String
-        If Not 文件可用(文件) Then Return ""
-        Dim Read_r As New BinaryReader(File.OpenRead(文件))
-        Dim Read_hash As Integer = Read_r.ReadInt32()
-        Dim Read_n As Integer = Read_r.ReadByte, Read_n2 As Integer = Read_r.ReadByte
-        Dim Read_s As New List(Of Byte)
-        For Read_i = 6 To Read_r.BaseStream.Length - 1
-            Dim Read_b As Byte = Read_r.ReadByte
-            If Read_b > Read_n2 Then Read_s.Add(Read_b - Read_n2)
-        Next
-        Dim Read_f As String = 字节转文字(Read_s.ToArray)
-        If 不检测 OrElse Read_f.GetHashCode = Read_hash Then
-            Return HttpUtility.UrlDecode(Read_f)
-        Else
-            Return ""
-        End If
-    End Function
-
-    ''' <summary>
-    ''' 保存我自己加密过的文本
-    ''' </summary>
-    Public Sub 写加密文件(文件 As String, 内容 As String)
-        If Not 文件可读写(文件) Then Exit Sub
-        删除(文件)
-        Dim r As New BinaryWriter(File.OpenWrite(文件))
-        内容 = HttpUtility.UrlEncode(内容)
-        Dim n As Byte = 随机.整数(1, 99), n2 As Byte = 随机.整数(10, 99), i As Integer
-        r.Write(内容.GetHashCode)
-        r.Write(n)
-        r.Write(n2)
-        Dim b As Byte() = 文字转字节(内容)
-        For i = 0 To b.Count - 1
-            b(i) += n2
-            r.Write(b(i))
-            If 随机.真假(20) Then
-                r.Write(CType(随机.整数(0, n2 - 1), Byte))
-            End If
-        Next
-        r.Close()
-    End Sub
-
-    ''' <summary>
-    ''' 把字节数组里的每个字节进行+或者-操作
-    ''' </summary>
-    Public Function 字节移位(字节() As Byte, 移位 As Integer) As Byte()
-        Dim t As Integer
-        For Each i As Byte In 字节
-            t = i + 移位
-            If t > -1 AndAlso t < 256 Then i = t
-        Next
-        Return 字节
-    End Function
-
-    Public Class 简易XML
-
-        Public Property 全文本 As String
-        Public Property 本地文件 As String
-        Public Property 根元素 As String
-
-        Public Sub New(根 As String, Optional 原始文本 As String = "", Optional 文件 As String = "")
-            根元素 = 根
-            全文本 = Trim(原始文本)
-            提纯()
-            本地文件 = 文件.ToLower
-        End Sub
-
-        Private Sub 提出根元素()
-            非空字符串(全文本)
-            If 全文本.StartsWith(括(根元素, "<>")) AndAlso 全文本.EndsWith(括(根元素, "</>")) Then
-                全文本 = 提取(全文本, 括(根元素, "<>"), 括(根元素, "</>"))
-            End If
-        End Sub
-
-        Private Sub 加上根元素()
-            非空字符串(全文本)
-            If Not (全文本.StartsWith(括(根元素, "<>")) AndAlso 全文本.EndsWith(括(根元素, "</>"))) Then
-                全文本 = 括(根元素, "<>") + 全文本 + 括(根元素, "</>")
-            End If
-        End Sub
-
-        Private Sub 提纯()
-            提出根元素()
-            加上根元素()
-        End Sub
-
-        Public Sub 保存到本地()
-            本地文件 = 本地文件.ToLower
-            If 本地文件.Length < 5 Then Exit Sub
-            If 文件后缀(本地文件) = "wbxml" Then
-                写加密文件(本地文件, ToString)
-            Else
-                写文件(本地文件, ToString)
-            End If
-        End Sub
-
-        Public Sub 从本地读取()
-            本地文件 = 本地文件.ToLower
-            If 本地文件.Length < 5 Then Exit Sub
-            If 文件后缀(本地文件) = "wbxml" Then
-                全文本 = 读加密文件(本地文件)
-            Else
-                全文本 = 读文件(本地文件)
-            End If
-            提纯()
-        End Sub
-
-        Public Overrides Function ToString() As String
-            提纯()
-            Return 全文本
-        End Function
-
-        Public Sub 保存元素(名字 As String, 内容 As Object)
-            字符串(名字) = 内容.ToString
-        End Sub
-
-        Public Property 字符串(名字 As String) As String
-            Get
-                Return ""
-            End Get
-            Set(内容 As String)
-                Dim a As String = 括(名字, "<>")
-                Dim b As String = 括(名字, "</>")
-                全文本 = Regex.Replace(全文本, a + "([\s\S]*?)" + b, "")
-                If 内容.Length > 0 Then
-                    提出根元素()
-                    全文本 += a + HttpUtility.UrlEncode(内容) + b
-                    加上根元素()
-                End If
-            End Set
-        End Property
-
-        Public Function 元素列表() As List(Of String)
-            Dim n As New List(Of String)
-            提出根元素()
-            Dim s As String = 全文本
-            加上根元素()
-            If s.Length > 5 Then
-                For Each m As Match In Regex.Matches(s, "<[^/]+?>")
-                    Dim t As String = 去除(m.ToString, "<", ">")
-                    If 字符串(t).Length > 0 Then n.Add(t)
-                Next
-            End If
-            Return n
-        End Function
-
-        Public Property 数字(名字 As String, Optional 默认 As Double = 0) As Double
-            Get
-                Dim s As String = 字符串(名字)
-                If s.Length < 1 Then Return 默认
-                Return Val(s)
-            End Get
-            Set(value As Double)
-                字符串(名字) = value.ToString
-            End Set
-        End Property
-
-        Public Property 布林(名字 As String, Optional 默认 As Boolean = False) As Boolean
-            Get
-                Dim s As String = 字符串(名字)
-                If s.Length < 1 Then Return 默认
-                Return s.ToLower = "true"
-            End Get
-            Set(value As Boolean)
-                字符串(名字) = value.ToString
-            End Set
-        End Property
-
-        Public Property 日期(名字 As String, Optional 默认 As Date = #2000/01/01 00:00:00#) As Date
-            Get
-                Dim s As String = 字符串(名字)
-                If s.Length < 3 Then Return 默认
-                Return Date.Parse(s)
-            End Get
-            Set(value As Date)
-                字符串(名字) = value.ToString
-            End Set
-        End Property
-
-    End Class
-
-    ''' <summary>
     ''' 简单地创建一个快捷方式
     ''' </summary>
     Public Sub 创建快捷方式(lnk文件 As String, 目标文件 As String, Optional 起始文件夹 As String = "")
@@ -553,15 +370,17 @@ Module 文件处理
     ''' <summary>
     ''' 针对 BinaryReader 进行操作，一直读取字符串直到值为0的字节
     ''' </summary>
-    Public Function 读取字符串到零(r As BinaryReader, Optional 移位 As Integer = 0) As String
-        Dim s As String = ""
+    Public Function 读取字符串到零(r As BinaryReader, Optional 编码 As Encoding = Nothing) As String
+        If r.BaseStream.Position >= r.BaseStream.Length - 1 Then Return ""
+        Dim bs As New List(Of Byte)
         Do While True
             Dim ba As Byte = r.ReadByte
             If ba = 0 Then Exit Do
-            ba += 移位
-            s += ChrW(ba)
-            If r.BaseStream.Position = r.BaseStream.Length Then Exit Do
+            bs.Add(ba)
+            If r.BaseStream.Position >= r.BaseStream.Length - 1 Then Exit Do
         Loop
+        If IsNothing(编码) Then 编码 = 无BOM的UTF8编码()
+        Dim s As String = 字节转文字(bs.ToArray, 编码)
         Return s
     End Function
 
