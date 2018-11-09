@@ -30,6 +30,7 @@ Partial Class 有没有少Steam好友
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.TxtLog = New System.Windows.Forms.TextBox()
         Me.ButCheckSteam = New System.Windows.Forms.Button()
+        Me.ButHistory = New System.Windows.Forms.Button()
         Me.Pn.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -45,6 +46,7 @@ Partial Class 有没有少Steam好友
         '
         'Pn
         '
+        Me.Pn.Controls.Add(Me.ButHistory)
         Me.Pn.Controls.Add(Me.CheckAuto)
         Me.Pn.Controls.Add(Me.ButGetFriends)
         Me.Pn.Dock = System.Windows.Forms.DockStyle.Top
@@ -99,6 +101,15 @@ Partial Class 有没有少Steam好友
         Me.ButCheckSteam.UseVisualStyleBackColor = True
         Me.ButCheckSteam.Visible = False
         '
+        'ButHistory
+        '
+        Me.ButHistory.Location = New System.Drawing.Point(406, 4)
+        Me.ButHistory.Name = "ButHistory"
+        Me.ButHistory.Size = New System.Drawing.Size(171, 36)
+        Me.ButHistory.TabIndex = 2
+        Me.ButHistory.Text = "查看历史记录"
+        Me.ButHistory.UseVisualStyleBackColor = True
+        '
         '有没有少Steam好友
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -127,4 +138,5 @@ Partial Class 有没有少Steam好友
     Friend WithEvents Timer1 As Forms.Timer
     Friend WithEvents TxtLog As TextBox
     Friend WithEvents ButCheckSteam As Button
+    Friend WithEvents ButHistory As Button
 End Class

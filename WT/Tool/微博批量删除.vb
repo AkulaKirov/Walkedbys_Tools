@@ -50,7 +50,6 @@
                          w.日志("UID：" & uid)
                          w.日志("昵称：" & NickName)
                      Else
-                         Dp(s)
                          w.日志("登录失败！Cookie可能已经失效！请去浏览器获取新 Cookie 。返回数据的长度：" & s.Length)
                          w.结束()
                      End If

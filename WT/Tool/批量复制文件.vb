@@ -43,6 +43,7 @@
                     Try
                         My.Computer.FileSystem.CopyFile(i, i2 + 文件名(i, True), True)
                     Catch ex As Exception
+                        Dp("复制文件出错：", ex.Message)
                     End Try
                 Next
             End If
@@ -51,6 +52,7 @@
                     Try
                         My.Computer.FileSystem.CopyDirectory(i, i2 + 文件名(i, True), True)
                     Catch ex As Exception
+                        Dp("复制文件夹出错：", ex.Message)
                     End Try
                 Next
             End If

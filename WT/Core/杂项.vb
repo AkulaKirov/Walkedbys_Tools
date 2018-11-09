@@ -14,6 +14,7 @@ Module 杂项
     ''' 把输入的东西进行 debug.print
     ''' </summary>
     Public Sub Dp(ParamArray 输入() As Object)
+        If 开发中 = False Then Exit Sub
         Dim s As String = ""
         For Each i As Object In 输入
             If IsNothing(i) Then
@@ -55,16 +56,10 @@ Module 杂项
     Public Class 随机
 
         ''' <summary>
-        ''' 运行 Randomize
-        ''' </summary>
-        Public Shared Sub 刷新()
-            Randomize()
-        End Sub
-
-        ''' <summary>
         ''' 获取A、B之间的一个随机整数，可以等于A,B
         ''' </summary>
         Public Shared Function 整数(Optional A As Integer = 100, Optional B As Integer = 0) As Integer
+            Randomize()
             If B > A Then 互换(A, B)
             Return Int(Rnd() * (A - B + 1) + B)
         End Function
@@ -73,13 +68,15 @@ Module 杂项
         ''' 随机获取 True 或 False
         ''' </summary>
         Public Shared Function 真假(Optional 为真概率 As Integer = 50) As Boolean
-            Return (Rnd() > 1 - (为真概率 / 100))
+            Randomize()
+            Return Rnd() > 1 - (为真概率 / 100)
         End Function
 
         ''' <summary>
         ''' 随机获取指定个数的小写字母
         ''' </summary>
         Public Shared Function 小写字母(Optional 个数 As Integer = 10) As String
+            Randomize()
             Dim s As String = ""
             For i As Integer = 1 To 个数
                 s += Chr(整数(122, 97))
@@ -91,6 +88,7 @@ Module 杂项
         ''' 返回指定长度的用数字组成的字符串
         ''' </summary>
         Public Shared Function 数字(Optional 长度 As Integer = 10) As String
+            Randomize()
             Dim s As String = ""
             For i As Integer = 1 To 长度
                 s += 整数(9, 0).ToString
@@ -102,6 +100,7 @@ Module 杂项
         ''' 返回指定长度的用汉字组成的字符串
         ''' </summary>
         Public Shared Function 汉字(Optional 长度 As Integer = 10) As String
+            Randomize()
             Dim s As String = ""
             For i As Integer = 1 To 长度
                 s += 常用简体字(整数(0, 常用简体字.Length - 1))
@@ -113,10 +112,12 @@ Module 杂项
         ''' 从所给的物品里随机挑一个物品返回
         ''' </summary>
         Public Shared Function 多选一(ParamArray 物品() As Object) As Object
+            Randomize()
             Return 物品(整数(0, 物品.Length - 1))
         End Function
 
         Public Shared Function 比特() As Byte
+            Randomize()
             Dim b As Byte = 整数(0, 255)
             Return b
         End Function
@@ -125,6 +126,7 @@ Module 杂项
         ''' 组成随机大小写字母和数字的指定长度的字符串
         ''' </summary>
         Public Shared Function 文字(Optional 长度 As Integer = 10) As String
+            Randomize()
             Dim s As String = ""
             For i As Integer = 1 To 长度
                 s += 多选一(小写字母(1), LCase(小写字母(1)), 整数(0, 9)).ToString

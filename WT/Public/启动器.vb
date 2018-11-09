@@ -6,7 +6,6 @@ Public Class 启动器
     Dim 时长 As Long
 
     Private Sub 启动器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        随机.刷新()
         Icon = 图标
         Text = "走過去的工具箱 测试版 v" + 版本.ToString
         Nico.Icon = 图标
@@ -22,7 +21,9 @@ Public Class 启动器
         i = 10 * 系统DPI()
         GBpush.Height = GBabout.Top - i - GBpush.Top
         GBupdate.Top = -1000
-        If 程序运行中("devenv") Then 新工具(" 临时工具", 临时工具, "Whatever", "临时用的工具，一般是拿来测试的，如果你运行了 Visual Studio 的话，我就会显示在这里。")
+        If 开发中 Then
+            新工具(" 临时工具", 临时工具, "Whatever", "临时用的工具，一般是拿来测试的，如果你运行了 Visual Studio 的话，我就会显示在这里。")
+        End If
         新工具(" 工具箱设置", 程序设置, "AllSettings", "关于本工具箱的一些设置")
         新工具("图床", B站图床, "bilibiliPic", "把图片快速放到B站等网站的服务器里")
         新工具("日子提醒器", 日子提醒, "DayReminder", "提醒生日或者重要的啥日子", 设置.字符串("days").Length > 4)
@@ -105,12 +106,13 @@ Public Class 启动器
     End Sub
 
     Public Sub 退出()
+        删除(缓存目录)
+        If Not 最后窗体.Equals(Me) Then 最后窗体.Close()
         AutoSave_Tick(Nothing, Nothing)
         Nico.Visible = False
         For Each t As Thread In 多线程
             中断线程(t)
         Next
-        删除(缓存目录)
         关闭程序("wt")
     End Sub
 

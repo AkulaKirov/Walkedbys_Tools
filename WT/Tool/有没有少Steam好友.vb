@@ -1,10 +1,13 @@
 ﻿Public Class 有没有少Steam好友
 
     Dim 自动检查 As Boolean, w As 工作
+    Dim 历史 As List(Of String)
 
     Private Sub 有没有少Steam好友_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SteamCookie.呼起按钮(ButGetSteamCookie)
         w = New 工作(Pn, True)
+        历史 = New List(Of String)
+        文字转列表(历史, 设置.字符串("SteamFriendsHistory"))
         自动检查 = 设置.布林("AutoCheckSteamFriendsList")
         CheckAuto.Checked = 自动检查
         If 自动检查 Then
@@ -18,6 +21,7 @@
 
     Private Sub 有没有少Steam好友_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         设置.布林("AutoCheckSteamFriendsList") = CheckAuto.Checked
+        设置.字符串("SteamFriendsHistory") = 列表转文字(历史)
     End Sub
 
     Private Sub ButGetFriends_Click(sender As Object, e As EventArgs) Handles ButGetFriends.Click
@@ -37,6 +41,7 @@
                          w.日志("获得好友列表失败！请检查网络。")
                      Else
                          w.日志("你现在有： " & n2.Count & " 名好友。")
+                         less = 0
                          For Each i In n1
                              n = i
                              i = 右(i, 19)
@@ -50,6 +55,10 @@
                              If Not ok Then
                                  less += 1
                                  w.日志("已经不再是好友：" + n)
+                                 If Not 在列表(历史, n) Then
+                                     历史.Add(n)
+                                     If 历史.Count > 30 Then 历史.RemoveAt(0)
+                                 End If
                              End If
                          Next
                          If less < 1 Then
@@ -76,7 +85,11 @@
         End With
     End Sub
 
-    Private Sub ButCheckSteam_Click(sender As Object, e As EventArgs)
+    Private Sub ButHistory_Click(sender As Object, e As EventArgs) Handles ButHistory.Click
+        TxtLog.Text = 列表转文字(历史)
+    End Sub
+
+    Private Sub ButCheckSteam_Click(sender As Object, e As EventArgs) Handles ButCheckSteam.Click
         打开Steam用户主页(只要数字(ButCheckSteam.Text))
     End Sub
 

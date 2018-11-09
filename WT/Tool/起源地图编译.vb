@@ -133,7 +133,10 @@ Public Class 起源地图编译
 
     Private Sub ButStart_Click(sender As Object, e As EventArgs) Handles ButStart.Click
         Enabled = False
-        Dim p As String = TxtBin.Text, i As String
+        Cooldown.Enabled = True
+        Dim p As String = TxtBin.Text, i As String, file As String
+        file = 缓存目录 + "compile.bat"
+        删除(file)
         Dim m As String = 左(p, 2) + vbCrLf
         m += "cd " + 引(p + "bin\") + vbCrLf
         For Each i In 编译器列表
@@ -149,11 +152,8 @@ Public Class 起源地图编译
             m += ListGame.Text + " " + Trim(TxtGame.Text) + " +map " + 引(文件名(TxtMap.Text)) + vbCrLf
         End If
         m += "pause"
-        i = 缓存目录 + "compile.bat"
-        写文件(i, m)
-        Shell(i, AppWinStyle.NormalFocus, True)
-        删除(i)
-        Cooldown.Enabled = True
+        写文件(file, m)
+        Shell(file, AppWinStyle.NormalFocus)
     End Sub
 
     Private Sub Cooldown_Tick(sender As Object, e As EventArgs) Handles Cooldown.Tick

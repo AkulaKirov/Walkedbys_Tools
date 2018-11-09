@@ -157,10 +157,4 @@ Public Class SteamCookie
         Return f
     End Function
 
-    Public Shared Sub 清空Cookie()
-        SessionID = ""
-        LoginSecure = ""
-        更新按钮文字()
-    End Sub
-
 End Class

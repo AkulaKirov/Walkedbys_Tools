@@ -6,7 +6,6 @@ Public Class GM模组发布器
     Dim bat As String = 缓存目录 + "xg.bat"
     Dim tgma As String = 缓存目录 + "t.gma"
     Dim 上次更新日期 As Date
-    Dim 冷却 As Integer = 0
 
     Private Sub GM模组发布器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         文本框拖入文件夹(TxtPath, TxtGMod)
@@ -109,7 +108,8 @@ Public Class GM模组发布器
     End Sub
 
     Sub 运行BAT(ParamArray l() As String)
-        CoolD_Tick()
+        TxtGMod.Enabled = False
+        Pn.Enabled = False
         CoolD.Enabled = True
         Dim sy As String = TxtGMod.Text + "bin\"
         Dim s As String = 左(sy, 2) + vbCrLf + "cd " + 引(sy) + vbCrLf
@@ -118,7 +118,7 @@ Public Class GM模组发布器
         Next
         s += "pause"
         写文件(bat, s)
-        Shell(bat, AppWinStyle.NormalFocus, True)
+        Shell(bat, AppWinStyle.NormalFocus, False)
     End Sub
 
     Function 生成gma() As String
@@ -152,15 +152,9 @@ Public Class GM模组发布器
     End Function
 
     Private Sub CoolD_Tick() Handles CoolD.Tick
-        TxtGMod.Enabled = False
-        Pn.Enabled = False
-        冷却 += CoolD.Interval
-        If 冷却 > 2 * 1000 Then
-            CoolD.Enabled = False
-            冷却 = 0
-            TxtGMod.Enabled = True
-            Pn.Enabled = True
-        End If
+        CoolD.Enabled = False
+        TxtGMod.Enabled = True
+        Pn.Enabled = True
     End Sub
 
     Private Sub ButCheckOnline_Click(sender As Object, e As EventArgs) Handles ButCheckOnline.Click

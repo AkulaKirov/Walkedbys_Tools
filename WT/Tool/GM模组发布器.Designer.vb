@@ -308,7 +308,7 @@ Partial Class GM模组发布器
         '
         'CoolD
         '
-        Me.CoolD.Interval = 50
+        Me.CoolD.Interval = 1000
         '
         'Checker
         '

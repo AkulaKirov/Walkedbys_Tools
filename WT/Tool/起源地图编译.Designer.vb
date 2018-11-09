@@ -162,7 +162,7 @@ Partial Class 起源地图编译
         '
         'Cooldown
         '
-        Me.Cooldown.Interval = 800
+        Me.Cooldown.Interval = 1000
         '
         '起源地图编译
         '

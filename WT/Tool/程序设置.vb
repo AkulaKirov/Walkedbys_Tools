@@ -48,11 +48,6 @@ Public Class 程序设置
         End If
     End Function
 
-    Private Sub ButClearCookie_Click(sender As Object, e As EventArgs) Handles ButClearCookie.Click
-        SteamCookie.清空Cookie()
-        设置.字符串("WeiboCookie") = ""
-    End Sub
-
     Private Sub ButCheckBackup_Click(sender As Object, e As EventArgs) Handles ButCheckBackup.Click
         Process.Start(备份目录)
     End Sub

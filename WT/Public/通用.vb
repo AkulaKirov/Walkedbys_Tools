@@ -10,6 +10,7 @@ Module 通用
     Friend 最后窗体 As Form = 启动器
     Friend 启动参数 As New List(Of String)
     Friend 多线程 As New List(Of Thread)
+    Friend 开发中 As Boolean = 程序运行中("devenv")
     Private 只做一次列表 As New List(Of UInteger)
 
     ''' <summary>
