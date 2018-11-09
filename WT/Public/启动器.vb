@@ -87,7 +87,7 @@ Public Class 启动器
         If 设置.布林("SaveBACKUP") Then
             g = 追加斜杠(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)) + "wt_save_backup\"
             Directory.CreateDirectory(g)
-            g += 下划线日期(Today) + " wt_save.wbxml"
+            g += 下划线日期(Today) + " " + 文件名(设置.本地文件(), True)
             If Not 文件存在(g) Then
                 If 文件可读写(g) Then File.Copy(设置.本地文件, g, True)
             End If

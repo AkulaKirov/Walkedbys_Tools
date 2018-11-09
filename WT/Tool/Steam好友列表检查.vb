@@ -1,7 +1,7 @@
 ﻿
 Public Class Steam好友列表检查
 
-    Dim TH As Thread, 自动检查 As Boolean = False, 肯定少人 As Boolean = False
+    Dim 自动检查 As Boolean = False
 
     Private Sub Steam好友列表检查_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         With LabAutoCheck
@@ -22,20 +22,16 @@ Public Class Steam好友列表检查
     Private Sub Steam好友列表检查_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         设置.字符串("steam64id") = TxtID64.Text
         设置.字符串("steamFriendLOG") = TxtLog.Text
-        中断线程(TH)
     End Sub
 
     Private Sub TxtID64_TextChanged(sender As Object, e As EventArgs) Handles TxtID64.TextChanged
         Dim s As String = 左(只要数字(TxtID64.Text), 17)
         TxtID64.Text = s
-        ButCheck.Enabled = (是steam64ID(s) AndAlso TimerC.Enabled = False)
+        ButCheck.Enabled = 是steam64ID(s)
     End Sub
 
     Private Sub ButCheck_Click(sender As Object, e As EventArgs) Handles ButCheck.Click
-        TimerC.Enabled = True
-        ButCheck.Enabled = False
-        ButCheck.Text = "冷却中"
-        TH = New Thread(Sub()
+        开始工作(Pn, False, Sub()
                             Dim uid As String = TxtID64.Text
                             Dim h As New 简易HTTP("https://api.steampowered.com/ISteamUser/GetFriendList/v1/?key=C4A54581C4CD472BFFA98CC49885EEEF&steamid=" + uid)
                             h.超时 = 5
@@ -45,7 +41,6 @@ Public Class Steam好友列表检查
                                 Dim u As String = 设置.字符串("steamfriendslist" + uid), id As String, n As Integer = 0
                                 Dim mc As MatchCollection
                                 If 包含(u, "friendslist") Then
-                                    If 肯定少人 Then u += "steamid:" + 随机.数字(17) + ","
                                     mc = Regex.Matches(u, "steamid:[0-9]{17},")
                                     For Each i As Match In mc
                                         id = i.ToString
@@ -77,18 +72,12 @@ Public Class Steam好友列表检查
                                 TxtLog.Text = out + vbCrLf + "===============================" + vbCrLf + TxtLog.Text
                             End If
                             自动检查 = False
+                            结束工作()
                         End Sub)
-        TH.Start()
     End Sub
 
     Private Sub ButClear_Click(sender As Object, e As EventArgs) Handles ButClear.Click
         TxtLog.Text = ""
-    End Sub
-
-    Private Sub TimerC_Tick(sender As Object, e As EventArgs) Handles TimerC.Tick
-        TimerC.Enabled = False
-        ButCheck.Enabled = (TxtID64.TextLength = 17)
-        ButCheck.Text = "点我检查"
     End Sub
 
     Private Sub LabID_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LabID.LinkClicked

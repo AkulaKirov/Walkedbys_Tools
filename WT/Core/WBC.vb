@@ -18,8 +18,8 @@
                     Dim r As New BinaryReader(File.OpenRead(本地文件)), s1 As String, s2 As String
                     读取字符串到零(r)
                     Do While True
-                        s1 = 读取字符串到零(r)
-                        s2 = 读取字符串到零(r)
+                        s1 = 转出Base64(读取字符串到零(r))
+                        s2 = 转出Base64(读取字符串到零(r))
                         字符串(s1) = s2
                         If r.BaseStream.Position >= r.BaseStream.Length - 1 Then Exit Do
                     Loop
@@ -27,8 +27,6 @@
                 Else
                     兼容读取老版本()
                     删除(本地文件)
-                    Me.本地文件 = 程序文件目录 + "wt.wbc"
-                    保存到本地()
                 End If
             End If
         End Sub
@@ -41,9 +39,9 @@
                 Dim b0 As Byte = 0, i As WBC元素
                 .Write(b0)
                 For Each i In 元素列表
-                    .Write(文字转字节(i.名字))
+                    .Write(文字转字节(转为Base64(i.名字)))
                     .Write(b0)
-                    .Write(文字转字节(i.值))
+                    .Write(文字转字节(转为Base64(i.值)))
                     .Write(b0)
                 Next
                 .Close()

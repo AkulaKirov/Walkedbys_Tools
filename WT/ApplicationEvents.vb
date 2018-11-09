@@ -42,6 +42,7 @@ Namespace My
                 End If
             End If
             设置 = New WBC文件(i)
+            设置.本地文件 = 程序文件目录() + "wt.wbc"
             If Not 文件存在(设置.本地文件) Then 启动参数.Add("-firsttime")
             If 在列表(启动参数, "-firsttime") Then
                 Dim n As MsgBoxResult

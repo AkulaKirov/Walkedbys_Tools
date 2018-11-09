@@ -291,7 +291,7 @@ Module 杂项
     ''' <summary>
     ''' 确定这个字符串是不是标准的steam64位ID
     ''' </summary>
-    Public Function 是steam64ID(s As String) As Boolean
+    Public Function 是Steam64ID(s As String) As Boolean
         s = 只要数字(s)
         Return s.Length = 17 AndAlso s.StartsWith("765611")
     End Function

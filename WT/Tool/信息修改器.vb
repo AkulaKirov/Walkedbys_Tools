@@ -4,7 +4,7 @@ Public Class 信息修改器
     Dim Ts As WBC文件
 
     Private Sub 信息修改器_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Ts = New WBC文件(程序文件目录 + "wt_save - 副本.wbxml")
+        Ts = 设置
         刷新列表()
     End Sub
 
