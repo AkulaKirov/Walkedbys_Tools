@@ -39,7 +39,7 @@ Public Class 启动器
         新工具("随机生成器", 随机生成器, "RandomG", "随机生成中英文句子或者数字等")
         新工具("网络检测", 网络检测, "NetTest", "如果你觉得你的网络不正常可以一直看着这个")
         新工具("字符画图片制作", 字符画图片制作, "CharPic", "用字符画表示图片")
-        新工具("有没有少Steam好友", Steam好友列表检查, "SteamFriends", "检查你的Steam好友里是不是有人把你删了", 设置.布林("CheckSteamFriendsAtStart"))
+        新工具("有没有少Steam好友", 有没有少Steam好友, "SteamFriends", "检查你的Steam好友里是不是有人把你删了", 设置.布林("AutoCheckSteamFriendsList"))
         新工具("创意工坊物品列表导出", 创意工坊订阅列表导出, "WorkshopListOut", "把你的workshop订阅的或者是收藏夹里的或者是你发布的或者合集里的物品都导出成一个列表")
         新工具("创意工坊合集物品批量添加", 创意工坊合集物品批量添加, "WorkshopCollectionAdd", "可以先用Workshop物品列表导出工具导出物品列表，然后在这里导入到指定的合集。")
         新工具("快速闹钟", 快速闹钟, "QuickClock", "设置几分钟后发出声音和气泡提醒我。")
@@ -85,7 +85,7 @@ Public Class 启动器
         AutoSave.Enabled = True
         配色(Me)
         If 设置.布林("SaveBACKUP") Then
-            g = 追加斜杠(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)) + "wt_save_backup\"
+            g = 备份目录
             Directory.CreateDirectory(g)
             g += 下划线日期(Today) + " " + 文件名(设置.本地文件(), True)
             If Not 文件存在(g) Then

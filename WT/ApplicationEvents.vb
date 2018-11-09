@@ -42,12 +42,13 @@ Namespace My
                 End If
             End If
             设置 = New WBC文件(i)
+            If i.EndsWith("wbc") = False Then 删除(i)
             设置.本地文件 = 程序文件目录() + "wt.wbc"
             If Not 文件存在(设置.本地文件) Then 启动参数.Add("-firsttime")
             If 在列表(启动参数, "-firsttime") Then
                 Dim n As MsgBoxResult
                 n = MsgBox("你想在桌面上建立本程序的快捷方式吗？", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "欢迎使用走過去的工具箱~")
-                If n = MsgBoxResult.Yes Then 程序设置.ButCreateSC_Click()
+                If n = MsgBoxResult.Yes Then 程序设置.创建桌面快捷方式()
             End If
             线程越界()
         End Sub

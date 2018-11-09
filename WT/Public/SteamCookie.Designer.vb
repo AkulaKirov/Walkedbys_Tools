@@ -27,14 +27,15 @@ Partial Class SteamCookie窗体
         Me.LabSession = New System.Windows.Forms.Label()
         Me.TxtLoginSecure = New System.Windows.Forms.TextBox()
         Me.TxtSession = New System.Windows.Forms.TextBox()
+        Me.ButCheckMy = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'ButHowToGetCookie
         '
         Me.ButHowToGetCookie.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.ButHowToGetCookie.Location = New System.Drawing.Point(481, 9)
+        Me.ButHowToGetCookie.Location = New System.Drawing.Point(8, 68)
         Me.ButHowToGetCookie.Name = "ButHowToGetCookie"
-        Me.ButHowToGetCookie.Size = New System.Drawing.Size(151, 49)
+        Me.ButHowToGetCookie.Size = New System.Drawing.Size(216, 30)
         Me.ButHowToGetCookie.TabIndex = 66
         Me.ButHowToGetCookie.TabStop = False
         Me.ButHowToGetCookie.Text = "如何获得 Steam Cookie"
@@ -64,7 +65,7 @@ Partial Class SteamCookie窗体
         Me.TxtLoginSecure.Location = New System.Drawing.Point(142, 34)
         Me.TxtLoginSecure.MaxLength = 63
         Me.TxtLoginSecure.Name = "TxtLoginSecure"
-        Me.TxtLoginSecure.Size = New System.Drawing.Size(333, 22)
+        Me.TxtLoginSecure.Size = New System.Drawing.Size(494, 22)
         Me.TxtLoginSecure.TabIndex = 63
         Me.TxtLoginSecure.TabStop = False
         Me.TxtLoginSecure.UseSystemPasswordChar = True
@@ -75,14 +76,26 @@ Partial Class SteamCookie窗体
         Me.TxtSession.Location = New System.Drawing.Point(142, 6)
         Me.TxtSession.MaxLength = 24
         Me.TxtSession.Name = "TxtSession"
-        Me.TxtSession.Size = New System.Drawing.Size(333, 22)
+        Me.TxtSession.Size = New System.Drawing.Size(494, 22)
         Me.TxtSession.TabIndex = 2
         Me.TxtSession.TabStop = False
+        '
+        'ButCheckMy
+        '
+        Me.ButCheckMy.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.ButCheckMy.Location = New System.Drawing.Point(230, 68)
+        Me.ButCheckMy.Name = "ButCheckMy"
+        Me.ButCheckMy.Size = New System.Drawing.Size(355, 30)
+        Me.ButCheckMy.TabIndex = 67
+        Me.ButCheckMy.TabStop = False
+        Me.ButCheckMy.Text = "查看我的 Steam 个人主页"
+        Me.ButCheckMy.UseVisualStyleBackColor = True
         '
         'SteamCookie窗体
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(648, 68)
+        Me.ClientSize = New System.Drawing.Size(648, 111)
+        Me.Controls.Add(Me.ButCheckMy)
         Me.Controls.Add(Me.ButHowToGetCookie)
         Me.Controls.Add(Me.LabLoginSecure)
         Me.Controls.Add(Me.LabSession)
@@ -105,4 +118,5 @@ Partial Class SteamCookie窗体
     Friend WithEvents LabSession As Label
     Friend WithEvents TxtLoginSecure As TextBox
     Friend WithEvents TxtSession As TextBox
+    Friend WithEvents ButCheckMy As Button
 End Class

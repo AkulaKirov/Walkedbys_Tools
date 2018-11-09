@@ -5,7 +5,7 @@
 
     Private Sub Steam批量好友留言_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SteamCookie.呼起按钮(ButGetSteamCookie)
-        文字转列表(ListFriends.Items, 设置.字符串("SteamFriendsList"))
+        文字转列表(ListFriends.Items, 设置.字符串("SteamFriends_" + SteamCookie.ID64))
         TxtSay.Text = 设置.字符串("SteamFriendSayWhat")
         TxtSay_TextChanged(Nothing, Nothing)
         TxtWork.Text = 设置.字符串("SteamFriendSayWho")
@@ -19,25 +19,13 @@
     Private Sub ButGetFriends_Click(sender As Object, e As EventArgs) Handles ButGetFriends.Click
         TxtLog.Text = ""
         ListFriends.Items.Clear()
-        Dim h As New 简易HTTP("https://steamcommunity.com/my/friends/")
-        h.Cookie = SteamCookie.完整Cookie
-        h.超时 = 5
-        Dim s As String = 去除(h.获取回应, 引号, vbCr, vbLf)
-        If s.Length < 3000 Then
-            日志("获得好友列表失败！" + vbCrLf + s)
-        ElseIf 包含(s, "g_steamID = false;") Then
-            日志("获得好友列表失败！" + vbCrLf + "cookie 看起来已经过期了，登录失败。")
-        Else
-            Dim m As Match, n As String
-            For Each m In Regex.Matches(s, "data-search=.*?data-steamid=765611[0-9]{11}")
-                s = m.ToString
-                n = Trim(提取(s, "data-search=", ";")) + " " + 括("765611" + 提取(s, "data-steamid=765611"), QT)
-                If n.Length > 15 Then
-                    ListFriends.Items.Add(n)
-                End If
+        If SteamCookie.填写正确 Then
+            For Each i As String In SteamCookie.获得好友列表()
+                ListFriends.Items.Add(i)
             Next
+        Else
+            日志("请先填写 Steam Cookie")
         End If
-        设置.字符串("SteamFriendsList") = 列表转文字(ListFriends.Items)
     End Sub
 
     Private Sub ListFriends_DoubleClick(sender As Object, e As EventArgs) Handles ListFriends.DoubleClick

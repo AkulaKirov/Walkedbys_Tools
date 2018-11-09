@@ -8,6 +8,7 @@ Public Class 程序设置
         新选项("NoUpdateAtMain", "启动程序的时候不检查更新（关闭后请自行去我博客查询更新）")
         新选项("ExitAtMain", "关闭主页的时候隐藏到后台，而不是直接退出程序")
         新选项("SaveBACKUP", "软件开启时保存一个备份的软件配置文件到我的文档下的wt_save_backup文件夹")
+        If 设置.布林("SaveBACKUP") Then ButCheckBackup.Enabled = True
     End Sub
 
     Sub 新选项(名字 As String, 文字 As String)
@@ -22,7 +23,7 @@ Public Class 程序设置
             .Checked = 设置.布林(名字)
             Tab1.Controls.Add(c)
             AddHandler .CheckedChanged, Sub()
-                                            设置.字符串(名字) = c.Checked.ToString
+                                            设置.布林(名字) = c.Checked
                                         End Sub
             AddHandler Activated, Sub()
                                       c.Checked = 设置.布林(名字)
@@ -31,11 +32,11 @@ Public Class 程序设置
         选项数量 += 1
     End Sub
 
-    Public Sub ButCreateSC_Click() Handles ButCreateSC.Click
+    Public Sub 创建桌面快捷方式() Handles ButCreateSC.Click
         Try
             创建快捷方式(追加斜杠(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)) + 中英文快捷方式名(), 程序文件目录 + "wt.exe")
         Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Critical, "创建桌面快捷方式出错啦")
+            Dp("创建桌面快捷方式出错：", ex.Message)
         End Try
     End Sub
 
@@ -46,5 +47,14 @@ Public Class 程序设置
             Return "Walkedby's Tools.lnk"
         End If
     End Function
+
+    Private Sub ButClearCookie_Click(sender As Object, e As EventArgs) Handles ButClearCookie.Click
+        SteamCookie.清空Cookie()
+        设置.字符串("WeiboCookie") = ""
+    End Sub
+
+    Private Sub ButCheckBackup_Click(sender As Object, e As EventArgs) Handles ButCheckBackup.Click
+        Process.Start(备份目录)
+    End Sub
 
 End Class

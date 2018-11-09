@@ -24,7 +24,9 @@ Partial Class 程序设置
     Private Sub InitializeComponent()
         Me.Tabs = New System.Windows.Forms.TabControl()
         Me.Tab1 = New System.Windows.Forms.TabPage()
+        Me.ButClearCookie = New System.Windows.Forms.Button()
         Me.ButCreateSC = New System.Windows.Forms.Button()
+        Me.ButCheckBackup = New System.Windows.Forms.Button()
         Me.Tabs.SuspendLayout()
         Me.Tab1.SuspendLayout()
         Me.SuspendLayout()
@@ -42,6 +44,8 @@ Partial Class 程序设置
         '
         'Tab1
         '
+        Me.Tab1.Controls.Add(Me.ButCheckBackup)
+        Me.Tab1.Controls.Add(Me.ButClearCookie)
         Me.Tab1.Controls.Add(Me.ButCreateSC)
         Me.Tab1.Location = New System.Drawing.Point(4, 28)
         Me.Tab1.Name = "Tab1"
@@ -50,6 +54,16 @@ Partial Class 程序设置
         Me.Tab1.TabIndex = 0
         Me.Tab1.Text = "杂项"
         Me.Tab1.UseVisualStyleBackColor = True
+        '
+        'ButClearCookie
+        '
+        Me.ButClearCookie.Location = New System.Drawing.Point(146, 180)
+        Me.ButClearCookie.Name = "ButClearCookie"
+        Me.ButClearCookie.Size = New System.Drawing.Size(132, 53)
+        Me.ButClearCookie.TabIndex = 7
+        Me.ButClearCookie.TabStop = False
+        Me.ButClearCookie.Text = "清除本程序收集的 Cookie"
+        Me.ButClearCookie.UseVisualStyleBackColor = True
         '
         'ButCreateSC
         '
@@ -60,6 +74,17 @@ Partial Class 程序设置
         Me.ButCreateSC.TabStop = False
         Me.ButCreateSC.Text = "在桌面上建立" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "本程序的快捷方式"
         Me.ButCreateSC.UseVisualStyleBackColor = True
+        '
+        'ButCheckBackup
+        '
+        Me.ButCheckBackup.Enabled = False
+        Me.ButCheckBackup.Location = New System.Drawing.Point(284, 180)
+        Me.ButCheckBackup.Name = "ButCheckBackup"
+        Me.ButCheckBackup.Size = New System.Drawing.Size(132, 53)
+        Me.ButCheckBackup.TabIndex = 8
+        Me.ButCheckBackup.TabStop = False
+        Me.ButCheckBackup.Text = "查看备份文件夹"
+        Me.ButCheckBackup.UseVisualStyleBackColor = True
         '
         '程序设置
         '
@@ -82,4 +107,6 @@ Partial Class 程序设置
     Friend WithEvents Tabs As TabControl
     Friend WithEvents Tab1 As TabPage
     Friend WithEvents ButCreateSC As Button
+    Friend WithEvents ButClearCookie As Button
+    Friend WithEvents ButCheckBackup As Button
 End Class

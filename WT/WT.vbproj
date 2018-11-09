@@ -181,12 +181,6 @@
     <Compile Include="Tool\RunStringLUA制作器.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tool\Steam好友列表检查.Designer.vb">
-      <DependentUpon>Steam好友列表检查.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Tool\Steam好友列表检查.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Tool\Steam批量好友留言.Designer.vb">
       <DependentUpon>Steam批量好友留言.vb</DependentUpon>
     </Compile>
@@ -277,6 +271,12 @@
     <Compile Include="Public\启动器.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Tool\有没有少Steam好友.Designer.vb">
+      <DependentUpon>有没有少Steam好友.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\有没有少Steam好友.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Tool\未响应图片制作器.Designer.vb">
       <DependentUpon>未响应图片制作器.vb</DependentUpon>
     </Compile>
@@ -342,9 +342,6 @@
     <EmbeddedResource Include="Tool\RunStringLUA制作器.resx">
       <DependentUpon>RunStringLUA制作器.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tool\Steam好友列表检查.resx">
-      <DependentUpon>Steam好友列表检查.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Tool\Steam批量好友留言.resx">
       <DependentUpon>Steam批量好友留言.vb</DependentUpon>
     </EmbeddedResource>
@@ -389,6 +386,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Public\启动器.resx">
       <DependentUpon>启动器.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\有没有少Steam好友.resx">
+      <DependentUpon>有没有少Steam好友.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\未响应图片制作器.resx">
       <DependentUpon>未响应图片制作器.vb</DependentUpon>

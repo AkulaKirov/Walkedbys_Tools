@@ -51,9 +51,10 @@ Partial Class Steam批量好友留言
         Me.Pn.Controls.Add(Me.LabFriends)
         Me.Pn.Controls.Add(Me.ListFriends)
         Me.Pn.Controls.Add(Me.ButGetFriends)
-        Me.Pn.Location = New System.Drawing.Point(12, 45)
+        Me.Pn.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Pn.Location = New System.Drawing.Point(0, 39)
         Me.Pn.Name = "Pn"
-        Me.Pn.Size = New System.Drawing.Size(989, 307)
+        Me.Pn.Size = New System.Drawing.Size(1013, 307)
         Me.Pn.TabIndex = 67
         '
         'ButReSend
@@ -144,7 +145,7 @@ Partial Class Steam批量好友留言
         'TxtLog
         '
         Me.TxtLog.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.TxtLog.Location = New System.Drawing.Point(0, 366)
+        Me.TxtLog.Location = New System.Drawing.Point(0, 351)
         Me.TxtLog.Multiline = True
         Me.TxtLog.Name = "TxtLog"
         Me.TxtLog.ReadOnly = True
@@ -169,7 +170,7 @@ Partial Class Steam批量好友留言
         '
         'ButCheckComments
         '
-        Me.ButCheckComments.Location = New System.Drawing.Point(597, 394)
+        Me.ButCheckComments.Location = New System.Drawing.Point(680, 488)
         Me.ButCheckComments.Name = "ButCheckComments"
         Me.ButCheckComments.Size = New System.Drawing.Size(312, 31)
         Me.ButCheckComments.TabIndex = 70
@@ -180,11 +181,11 @@ Partial Class Steam批量好友留言
         'Steam批量好友留言
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(1013, 546)
+        Me.ClientSize = New System.Drawing.Size(1013, 531)
         Me.Controls.Add(Me.ButCheckComments)
-        Me.Controls.Add(Me.ButGetSteamCookie)
         Me.Controls.Add(Me.Pn)
         Me.Controls.Add(Me.TxtLog)
+        Me.Controls.Add(Me.ButGetSteamCookie)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.MaximizeBox = False

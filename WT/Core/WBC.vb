@@ -26,7 +26,6 @@
                     r.Close()
                 Else
                     兼容读取老版本()
-                    删除(本地文件)
                 End If
             End If
         End Sub
