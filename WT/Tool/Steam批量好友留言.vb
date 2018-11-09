@@ -34,7 +34,12 @@
         With ListFriends
             Dim n As Integer = .SelectedIndex
             If n > -1 Then
-                TxtWork.Text += vbCrLf + .Items.Item(n)
+                If TxtWork.TextLength > 1 Then
+                    TxtWork.Text += vbCrLf
+                End If
+                TxtWork.Text += .Items.Item(n)
+                TxtWork.SelectionStart = TxtWork.TextLength
+                TxtWork.ScrollToCaret()
             End If
         End With
     End Sub
