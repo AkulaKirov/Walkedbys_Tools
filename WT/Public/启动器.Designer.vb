@@ -116,7 +116,7 @@ Partial Class 启动器
         Me.GBpush.Controls.Add(Me.TxtPush)
         Me.GBpush.Location = New System.Drawing.Point(400, 12)
         Me.GBpush.Name = "GBpush"
-        Me.GBpush.Size = New System.Drawing.Size(342, 120)
+        Me.GBpush.Size = New System.Drawing.Size(348, 120)
         Me.GBpush.TabIndex = 2
         Me.GBpush.TabStop = False
         Me.GBpush.Text = "推送："
@@ -131,7 +131,7 @@ Partial Class 启动器
         Me.TxtPush.Name = "TxtPush"
         Me.TxtPush.ReadOnly = True
         Me.TxtPush.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtPush.Size = New System.Drawing.Size(336, 96)
+        Me.TxtPush.Size = New System.Drawing.Size(342, 96)
         Me.TxtPush.TabIndex = 0
         Me.TxtPush.TabStop = False
         '
@@ -151,7 +151,7 @@ Partial Class 启动器
         Me.GBabout.Controls.Add(Me.LabAbout)
         Me.GBabout.Location = New System.Drawing.Point(397, 263)
         Me.GBabout.Name = "GBabout"
-        Me.GBabout.Size = New System.Drawing.Size(339, 107)
+        Me.GBabout.Size = New System.Drawing.Size(354, 107)
         Me.GBabout.TabIndex = 4
         Me.GBabout.TabStop = False
         Me.GBabout.Text = "关于 "
@@ -233,7 +233,7 @@ Partial Class 启动器
         Me.GBupdate.Controls.Add(Me.TxtUpdate)
         Me.GBupdate.Location = New System.Drawing.Point(400, 138)
         Me.GBupdate.Name = "GBupdate"
-        Me.GBupdate.Size = New System.Drawing.Size(342, 119)
+        Me.GBupdate.Size = New System.Drawing.Size(351, 119)
         Me.GBupdate.TabIndex = 6
         Me.GBupdate.TabStop = False
         Me.GBupdate.Text = "新版本："
@@ -247,7 +247,7 @@ Partial Class 启动器
         Me.TxtUpdate.Name = "TxtUpdate"
         Me.TxtUpdate.ReadOnly = True
         Me.TxtUpdate.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtUpdate.Size = New System.Drawing.Size(336, 95)
+        Me.TxtUpdate.Size = New System.Drawing.Size(345, 95)
         Me.TxtUpdate.TabIndex = 0
         Me.TxtUpdate.TabStop = False
         Me.TxtUpdate.WordWrap = False
@@ -256,7 +256,7 @@ Partial Class 启动器
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(754, 396)
+        Me.ClientSize = New System.Drawing.Size(759, 396)
         Me.Controls.Add(Me.GBupdate)
         Me.Controls.Add(Me.LabFun)
         Me.Controls.Add(Me.GBabout)

@@ -28,7 +28,6 @@ Public Class 启动器
         新工具("图床", B站图床, "bilibiliPic", "把图片快速放到B站等网站的服务器里")
         新工具("日子提醒器", 日子提醒, "DayReminder", "提醒生日或者重要的啥日子", 设置.字符串("days").Length > 4)
         新工具("监视式VMT生成器", VMT生成器, "VMTG", "给一个贴图文件夹监视式地批量生成 VMT 文件，也就是生成一个VTF就自动给你生成一个VMT。")
-        新工具("系统代理设置", 系统代理设置, "ProxyManager", "快速设置系统的代理服务器和PAC")
         新工具("GMod模组发布器", GM模组发布器, "GMAddonPu", "打包GMA文件，发布或更新 Addon 到 Garry's Mod Workshop")
         新工具("未响应图片制作器", 未响应图片制作器, "NoResPic", "制作假装程序未响应的假图片")
         新工具("文件筛选", 文件筛选, "FileChoose", "把A文件夹B文件夹的文件选择性的复制到C文件夹")

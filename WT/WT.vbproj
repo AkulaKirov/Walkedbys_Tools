@@ -76,6 +76,13 @@
   <PropertyGroup>
     <SignManifests>false</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
@@ -289,12 +296,6 @@
     <Compile Include="Tool\程序设置.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tool\系统代理设置.Designer.vb">
-      <DependentUpon>系统代理设置.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Tool\系统代理设置.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Tool\网络检测.Designer.vb">
       <DependentUpon>网络检测.vb</DependentUpon>
     </Compile>
@@ -395,9 +396,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\程序设置.resx">
       <DependentUpon>程序设置.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tool\系统代理设置.resx">
-      <DependentUpon>系统代理设置.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\网络检测.resx">
       <DependentUpon>网络检测.vb</DependentUpon>
