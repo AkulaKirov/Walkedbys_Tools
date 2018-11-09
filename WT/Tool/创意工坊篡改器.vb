@@ -25,7 +25,6 @@ Public Class 创意工坊篡改器
     End Sub
 
     Private Sub ButGo_Click(sender As Object, e As EventArgs) Handles ButGo.Click
-        重定日志控件()
         TxtLog.Text = ""
         If SteamCookie.填写正确 = False Then
             日志("你的 Steam Cookie 填写不正确，请去检查。")

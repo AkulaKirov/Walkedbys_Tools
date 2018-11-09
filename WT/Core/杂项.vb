@@ -164,7 +164,9 @@ Module 杂项
     ''' </summary>
     Public Sub 中断线程(ParamArray s() As Thread)
         For Each 线程 As Thread In s
-            If (Not IsNothing(线程)) AndAlso 线程.IsAlive Then 线程.Abort()
+            If (Not IsNothing(线程)) AndAlso 线程.IsAlive Then
+                线程.Abort()
+            End If
         Next
     End Sub
 
@@ -295,6 +297,13 @@ Module 杂项
         s = 只要数字(s)
         Return s.Length = 17 AndAlso s.StartsWith("765611")
     End Function
+
+    ''' <summary>
+    ''' 用浏览器打开steam的用户主页
+    ''' </summary>
+    Public Sub 打开Steam用户主页(id64 As String)
+        Process.Start("https://steamcommunity.com/profiles/" + id64 + "/")
+    End Sub
 
     ''' <summary>
     ''' 获取或者设置剪贴板的信息

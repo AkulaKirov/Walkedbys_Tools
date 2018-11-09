@@ -29,6 +29,7 @@ Partial Class 有没有少Steam好友
         Me.ButGetFriends = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.TxtLog = New System.Windows.Forms.TextBox()
+        Me.ButCheckSteam = New System.Windows.Forms.Button()
         Me.Pn.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -37,7 +38,7 @@ Partial Class 有没有少Steam好友
         Me.ButGetSteamCookie.Dock = System.Windows.Forms.DockStyle.Top
         Me.ButGetSteamCookie.Location = New System.Drawing.Point(0, 0)
         Me.ButGetSteamCookie.Name = "ButGetSteamCookie"
-        Me.ButGetSteamCookie.Size = New System.Drawing.Size(544, 39)
+        Me.ButGetSteamCookie.Size = New System.Drawing.Size(628, 39)
         Me.ButGetSteamCookie.TabIndex = 70
         Me.ButGetSteamCookie.Text = "填写 Steam Cookie"
         Me.ButGetSteamCookie.UseVisualStyleBackColor = True
@@ -49,7 +50,7 @@ Partial Class 有没有少Steam好友
         Me.Pn.Dock = System.Windows.Forms.DockStyle.Top
         Me.Pn.Location = New System.Drawing.Point(0, 39)
         Me.Pn.Name = "Pn"
-        Me.Pn.Size = New System.Drawing.Size(544, 60)
+        Me.Pn.Size = New System.Drawing.Size(628, 54)
         Me.Pn.TabIndex = 71
         '
         'CheckAuto
@@ -78,20 +79,31 @@ Partial Class 有没有少Steam好友
         'TxtLog
         '
         Me.TxtLog.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TxtLog.Location = New System.Drawing.Point(0, 99)
+        Me.TxtLog.Location = New System.Drawing.Point(0, 93)
         Me.TxtLog.Multiline = True
         Me.TxtLog.Name = "TxtLog"
         Me.TxtLog.ReadOnly = True
         Me.TxtLog.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtLog.Size = New System.Drawing.Size(544, 316)
+        Me.TxtLog.Size = New System.Drawing.Size(628, 352)
         Me.TxtLog.TabIndex = 72
         Me.TxtLog.TabStop = False
         Me.TxtLog.WordWrap = False
         '
+        'ButCheckSteam
+        '
+        Me.ButCheckSteam.Location = New System.Drawing.Point(351, 396)
+        Me.ButCheckSteam.Name = "ButCheckSteam"
+        Me.ButCheckSteam.Size = New System.Drawing.Size(243, 37)
+        Me.ButCheckSteam.TabIndex = 73
+        Me.ButCheckSteam.Text = "查看："
+        Me.ButCheckSteam.UseVisualStyleBackColor = True
+        Me.ButCheckSteam.Visible = False
+        '
         '有没有少Steam好友
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(544, 415)
+        Me.ClientSize = New System.Drawing.Size(628, 445)
+        Me.Controls.Add(Me.ButCheckSteam)
         Me.Controls.Add(Me.TxtLog)
         Me.Controls.Add(Me.Pn)
         Me.Controls.Add(Me.ButGetSteamCookie)
@@ -114,4 +126,5 @@ Partial Class 有没有少Steam好友
     Friend WithEvents CheckAuto As CheckBox
     Friend WithEvents Timer1 As Forms.Timer
     Friend WithEvents TxtLog As TextBox
+    Friend WithEvents ButCheckSteam As Button
 End Class

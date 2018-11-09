@@ -1,90 +1,64 @@
-﻿Module 工作控制
+﻿
+''' <summary>
+''' 工具内使用的多线程工作简易操作类
+''' </summary>
+Public Class 工作
 
-    Private 开始工作时间 As Date, 工作线程 As Thread, 工作Panel As Panel, 日志控件 As TextBox
-    Delegate Sub 委托结束工作()
+    Private 窗体 As Form, 日志控件 As TextBox, 线程 As Thread, 工作Panel As Panel, 要求SteamCookie As Boolean
+    Private Delegate Sub 委托结束工作()
+    Private 开始时间 As Date
 
-    ''' <summary>
-    ''' 重新确定日志的控件 
-    ''' </summary>
-    Public Sub 重定日志控件()
-        日志控件 = 最后窗体.Controls("TxtLog")
+    Public Sub New(工作Panel As Panel, Optional 要求steamCookie As Boolean = False)
+        窗体 = 工作Panel.FindForm
+        Me.工作Panel = 工作Panel
+        Me.要求SteamCookie = 要求steamCookie
+        日志控件 = 窗体.Controls("TxtLog")
+        AddHandler 窗体.FormClosing, Sub()
+                                       If 工作Panel.Enabled = False Then
+                                           结束()
+                                       End If
+                                   End Sub
     End Sub
 
-    ''' <summary>
-    ''' 按下开始工作的按钮，冻结Panel，然后输出日志和记录开始时间
-    ''' </summary>
-    Public Sub 开始工作(p As Panel, 要求steamCookie As Boolean, 线程内容 As ThreadStart)
-        重定日志控件()
+    Public Sub 开始(线程内容 As ThreadStart)
         清空日志()
-        工作Panel = p
-        中断线程(工作线程)
-        If 要求steamCookie Then
+        中断线程(线程)
+        If 要求SteamCookie Then
             If SteamCookie.填写正确 = False Then
                 日志("你的 Steam Cookie 填写不正确，请去检查。")
                 Exit Sub
             End If
         End If
-        p.Enabled = False
-        开始工作时间 = Now
-        日志("工作开始：" & 开始工作时间)
+        开始时间 = Now
         SteamCookie.设置按钮启用(False)
-        工作线程 = New Thread(线程内容)
-        工作线程.Start()
-        AddHandler p.FindForm.FormClosing, Sub()
-                                               If p.Enabled = False Then
-                                                   结束工作()
-                                               End If
-                                           End Sub
+        工作Panel.Enabled = False
+        日志("工作开始：" & 开始时间)
+        线程 = New Thread(线程内容)
+        线程.Start()
     End Sub
 
-    ''' <summary>
-    ''' 结束工作，不再冻结Panel，输出所用的时间
-    ''' </summary>
-    Public Sub 结束工作()
-        Dim t As New 委托结束工作(Sub()
-                                日志("工作结束：" & Now + vbCrLf + "用时：" & 时间差(Now, 开始工作时间, True))
-                                中断线程(工作线程)
-                                工作Panel.Enabled = True
-                                SteamCookie.设置按钮启用(True)
-                            End Sub)
-        工作Panel.FindForm.Invoke(t)
-    End Sub
-
-    Private Sub 清空日志()
+    Public Sub 日志(内容 As String)
         If IsNothing(日志控件) Then Exit Sub
-        日志控件.Text = ""
-    End Sub
-
-    ''' <summary>
-    ''' 在当前窗体的 TxtLog 控件里写一条日志
-    ''' </summary>
-    Public Sub 日志(s As String)
-        Dim t As TextBox = 日志控件
-        If IsNothing(t) Then Exit Sub
-        With t
+        With 日志控件
             If .TextLength > 0 Then .Text += vbCrLf
-            .Text += s
+            .Text += 内容
             .SelectionStart = .TextLength
             .ScrollToCaret()
         End With
     End Sub
 
-    ''' <summary>
-    ''' 根据ComboBox的选项进行timer的启用调整，
-    ''' 0 只在本工具运行的时候，
-    ''' 1 本软件运行的时候，
-    ''' 2 现在不记录
-    ''' </summary>
-    Public Function 后台定时器启用(c As ComboBox) As Boolean
-        Dim i As Integer = c.SelectedIndex
-        If i < 0 OrElse i > 2 Then i = 0
-        Select Case i
-            Case 0
-                Return 最后窗体.Text = c.FindForm.Text
-            Case 1
-                Return True
-        End Select
-        Return False
-    End Function
+    Public Sub 清空日志()
+            If IsNothing(日志控件) Then Exit Sub
+            日志控件.Text = ""
+        End Sub
 
-End Module
+    Public Sub 结束()
+        窗体.Invoke(New 委托结束工作(Sub()
+                                 日志("工作结束：" & Now + vbCrLf + "用时：" & 时间差(Now, 开始时间, True))
+                                 中断线程(线程)
+                                 工作Panel.Enabled = True
+                                 SteamCookie.设置按钮启用(True)
+                             End Sub))
+    End Sub
+
+End Class

@@ -90,8 +90,8 @@ Public Class SteamCookie
         更新按钮文字()
         AddHandler b.Click, Sub()
                                 With SteamCookie窗体
-                                    .Left = 鼠标X - (.Width / 2)
-                                    .Top = 鼠标Y - (.Height / 2)
+                                    .Left = 鼠标X - 80
+                                    .Top = 鼠标Y - 80
                                     .ShowDialog()
                                 End With
                             End Sub

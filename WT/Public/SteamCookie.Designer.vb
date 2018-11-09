@@ -28,6 +28,7 @@ Partial Class SteamCookie窗体
         Me.TxtLoginSecure = New System.Windows.Forms.TextBox()
         Me.TxtSession = New System.Windows.Forms.TextBox()
         Me.ButCheckMy = New System.Windows.Forms.Button()
+        Me.LabNote = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'ButHowToGetCookie
@@ -65,7 +66,7 @@ Partial Class SteamCookie窗体
         Me.TxtLoginSecure.Location = New System.Drawing.Point(142, 34)
         Me.TxtLoginSecure.MaxLength = 63
         Me.TxtLoginSecure.Name = "TxtLoginSecure"
-        Me.TxtLoginSecure.Size = New System.Drawing.Size(494, 22)
+        Me.TxtLoginSecure.Size = New System.Drawing.Size(443, 22)
         Me.TxtLoginSecure.TabIndex = 63
         Me.TxtLoginSecure.TabStop = False
         Me.TxtLoginSecure.UseSystemPasswordChar = True
@@ -76,7 +77,7 @@ Partial Class SteamCookie窗体
         Me.TxtSession.Location = New System.Drawing.Point(142, 6)
         Me.TxtSession.MaxLength = 24
         Me.TxtSession.Name = "TxtSession"
-        Me.TxtSession.Size = New System.Drawing.Size(494, 22)
+        Me.TxtSession.Size = New System.Drawing.Size(443, 22)
         Me.TxtSession.TabIndex = 2
         Me.TxtSession.TabStop = False
         '
@@ -91,10 +92,21 @@ Partial Class SteamCookie窗体
         Me.ButCheckMy.Text = "查看我的 Steam 个人主页"
         Me.ButCheckMy.UseVisualStyleBackColor = True
         '
+        'LabNote
+        '
+        Me.LabNote.AutoSize = True
+        Me.LabNote.Location = New System.Drawing.Point(4, 107)
+        Me.LabNote.Name = "LabNote"
+        Me.LabNote.Size = New System.Drawing.Size(496, 38)
+        Me.LabNote.TabIndex = 68
+        Me.LabNote.Text = "如果你留空这个，那么本程序内所有和 Steam 有关的工具都可能暂停工作。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "因为 Steam 网站更新 Cookie 很频繁，所以你今天填写的可能第二天就变成过" &
+    "期了。"
+        '
         'SteamCookie窗体
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(648, 111)
+        Me.ClientSize = New System.Drawing.Size(599, 154)
+        Me.Controls.Add(Me.LabNote)
         Me.Controls.Add(Me.ButCheckMy)
         Me.Controls.Add(Me.ButHowToGetCookie)
         Me.Controls.Add(Me.LabLoginSecure)
@@ -119,4 +131,5 @@ Partial Class SteamCookie窗体
     Friend WithEvents TxtLoginSecure As TextBox
     Friend WithEvents TxtSession As TextBox
     Friend WithEvents ButCheckMy As Button
+    Friend WithEvents LabNote As Label
 End Class

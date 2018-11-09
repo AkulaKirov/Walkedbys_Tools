@@ -115,6 +115,7 @@ Public Class 启动器
     End Sub
 
     Private Sub ListTools_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListTools.SelectedIndexChanged
+        ButOpenTool.Enabled = False
         Dim i As Integer = ListTools.SelectedIndex
         If i < 0 Then Exit Sub
         Dim t As 工具 = 名字工具(ListTools.SelectedItem.ToString)

@@ -45,7 +45,6 @@ Public Class VMT生成器
     End Sub
 
     Private Sub ButGen_Click(sender As Object, e As EventArgs) Handles ButGen.Click
-        重定日志控件()
         Dim i As Boolean = Watching.Enabled
         TxtVMT.Enabled = i
         ListParms.Enabled = i

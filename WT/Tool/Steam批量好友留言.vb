@@ -2,8 +2,10 @@
 
     Dim 回收列表 As New List(Of String), 失败列表 As New List(Of String), 失败文本 As String
     Dim QT As String = "[]"
+    Dim w As 工作
 
     Private Sub Steam批量好友留言_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        w = New 工作(Pn, True)
         SteamCookie.呼起按钮(ButGetSteamCookie)
         文字转列表(ListFriends.Items, 设置.字符串("SteamFriends_" + SteamCookie.ID64))
         TxtSay.Text = 设置.字符串("SteamFriendSayWhat")
@@ -24,7 +26,7 @@
                 ListFriends.Items.Add(i)
             Next
         Else
-            日志("请先填写 Steam Cookie")
+            w.日志("请先填写 Steam Cookie")
         End If
     End Sub
 
@@ -44,99 +46,99 @@
     End Sub
 
     Private Sub ButStart_Click(sender As Object, e As EventArgs) Handles ButStart.Click
-        开始工作(Pn, True, Sub()
-                           回收列表.Clear()
-                           失败列表.Clear()
-                           Dim fs As New List(Of String), m As Match, s As String
-                           For Each m In Regex.Matches(TxtWork.Text, "\[765611[0-9]{11}\]")
-                               s = 只要数字(m.ToString)
-                               If Not 在列表(fs, s) Then fs.Add(s)
-                           Next
-                           日志("你要给 " & fs.Count & " 个人留言。")
-                           If fs.Count < 1 Then
-                               结束工作()
-                           End If
-                           Dim say As String = TxtSay.Text
-                           If say.Length < 1 Then
-                               日志("你不能发送空白留言！")
-                               结束工作()
-                           End If
-                           失败文本 = say
-                           For Each i As String In fs
-                               s = 给好友留言(i, say)
-                               If s.Length > 10 Then
-                                   回收列表.Add(s)
-                               Else
-                                   失败列表.Add(括(i, QT))
-                               End If
-                           Next
-                           日志("成功个数（可撤回）：" & 回收列表.Count)
-                           If 失败列表.Count > 0 Then
-                               日志("失败个数：" & 失败列表.Count)
-                               日志("失败列表：")
-                               日志(列表转文字(失败列表))
-                               日志("失败的可点按钮【重试发生失败的留言】。")
-                           End If
-                           结束工作()
-                       End Sub)
+        w.开始(Sub()
+                 回收列表.Clear()
+                 失败列表.Clear()
+                 Dim fs As New List(Of String), m As Match, s As String
+                 For Each m In Regex.Matches(TxtWork.Text, "\[765611[0-9]{11}\]")
+                     s = 只要数字(m.ToString)
+                     If Not 在列表(fs, s) Then fs.Add(s)
+                 Next
+                 w.日志("你要给 " & fs.Count & " 个人留言。")
+                 If fs.Count < 1 Then
+                     w.结束()
+                 End If
+                 Dim say As String = TxtSay.Text
+                 If say.Length < 1 Then
+                     w.日志("你不能发送空白留言！")
+                     w.结束()
+                 End If
+                 失败文本 = say
+                 For Each i As String In fs
+                     s = 给好友留言(i, say)
+                     If s.Length > 10 Then
+                         回收列表.Add(s)
+                     Else
+                         失败列表.Add(括(i, QT))
+                     End If
+                 Next
+                 w.日志("成功个数（可撤回）：" & 回收列表.Count)
+                 If 失败列表.Count > 0 Then
+                     w.日志("失败个数：" & 失败列表.Count)
+                     w.日志("失败列表：")
+                     w.日志(列表转文字(失败列表))
+                     w.日志("失败的可点按钮【重试发生失败的留言】。")
+                 End If
+                 w.结束()
+             End Sub)
     End Sub
 
     Private Sub ButUndo_Click(sender As Object, e As EventArgs) Handles ButUndo.Click
-        开始工作(Pn, True, Sub()
-                           日志("有 " & 回收列表.Count & " 条留言要撤回。")
-                           If 回收列表.Count < 1 Then
-                               结束工作()
-                           End If
-                           Dim n As New List(Of String), i As String, fail As Integer = 0
-                           For Each i In 回收列表
-                               If 删除留言(i) Then
-                                   日志("已撤回： " & 括(左(i, 17), QT))
-                                   n.Add(i)
-                               Else
-                                   日志("撤回失败： " & 括(左(i, 17), QT))
-                                   fail += 1
-                               End If
-                           Next
-                           For Each i In n
-                               回收列表.Remove(i)
-                           Next
-                           日志("成功：" & n.Count)
-                           If fail > 0 Then
-                               日志("失败：" & fail)
-                               日志("你可以再点一次撤回以重试。")
-                           End If
-                           结束工作()
-                       End Sub)
+        w.开始(Sub()
+                 w.日志("有 " & 回收列表.Count & " 条留言要撤回。")
+                 If 回收列表.Count < 1 Then
+                     w.结束()
+                 End If
+                 Dim n As New List(Of String), i As String, fail As Integer = 0
+                 For Each i In 回收列表
+                     If 删除留言(i) Then
+                         w.日志("已撤回： " & 括(左(i, 17), QT))
+                         n.Add(i)
+                     Else
+                         w.日志("撤回失败： " & 括(左(i, 17), QT))
+                         fail += 1
+                     End If
+                 Next
+                 For Each i In n
+                     回收列表.Remove(i)
+                 Next
+                 w.日志("成功：" & n.Count)
+                 If fail > 0 Then
+                     w.日志("失败：" & fail)
+                     w.日志("你可以再点一次撤回以重试。")
+                 End If
+                 w.结束()
+             End Sub)
     End Sub
 
     Private Sub ButReSend_Click(sender As Object, e As EventArgs) Handles ButReSend.Click
-        开始工作(Pn, True, Sub()
-                           日志("有 " & 失败列表.Count & " 条留言要重新发送。")
-                           If 失败列表.Count < 1 Then
-                               结束工作()
-                           End If
-                           Dim i As String, n As New List(Of String), s As String
-                           For Each i In 失败列表
-                               s = 给好友留言(i, 失败文本)
-                               If s.Length > 10 Then
-                                   回收列表.Add(s)
-                               Else
-                                   n.Add(i)
-                               End If
-                           Next
-                           失败列表.Clear()
-                           For Each i In n
-                               失败列表.Add(i)
-                           Next
-                           日志("成功：" & 回收列表.Count)
-                           If 失败列表.Count > 0 Then
-                               日志("失败个数：" & 失败列表.Count)
-                               日志("失败列表：")
-                               日志(列表转文字(失败列表))
-                               日志("失败的可点按钮【重试发生失败的留言】。")
-                           End If
-                           结束工作()
-                       End Sub)
+        w.开始(Sub()
+                 w.日志("有 " & 失败列表.Count & " 条留言要重新发送。")
+                 If 失败列表.Count < 1 Then
+                     w.结束()
+                 End If
+                 Dim i As String, n As New List(Of String), s As String
+                 For Each i In 失败列表
+                     s = 给好友留言(i, 失败文本)
+                     If s.Length > 10 Then
+                         回收列表.Add(s)
+                     Else
+                         n.Add(i)
+                     End If
+                 Next
+                 失败列表.Clear()
+                 For Each i In n
+                     失败列表.Add(i)
+                 Next
+                 w.日志("成功：" & 回收列表.Count)
+                 If 失败列表.Count > 0 Then
+                     w.日志("失败个数：" & 失败列表.Count)
+                     w.日志("失败列表：")
+                     w.日志(列表转文字(失败列表))
+                     w.日志("失败的可点按钮【重试发生失败的留言】。")
+                 End If
+                 w.结束()
+             End Sub)
     End Sub
 
     Private Sub ShowCount_Tick(sender As Object, e As EventArgs) Handles ShowCount.Tick
@@ -171,12 +173,12 @@
         h.写入(m.ToString)
         Dim s As String = 去除(h.获取回应, 引号)
         If s.StartsWith("{success:true,name:Profile_" + id64) Then
-            日志("成功：" & 括(id64, QT))
+            w.日志("成功：" & 括(id64, QT))
             Return id64 + 只要数字(提取(s, "id=comment_content_", ">"))
         Else
             s = 左(去除(s, "{success:false,error:"), 100)
             If 包含(s, "The settings on this account do not allow you to add ") Then s += "（也可能是 cookie 失效）"
-            日志("发送失败：" & 括(id64, QT) & " 原因：" & s)
+            w.日志("发送失败：" & 括(id64, QT) & " 原因：" & s)
         End If
         Return ""
     End Function

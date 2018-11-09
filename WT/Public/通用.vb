@@ -67,6 +67,24 @@ Module 通用
     End Function
 
     ''' <summary>
+    ''' 根据ComboBox的选项进行timer的启用调整，
+    ''' 0 只在本工具运行的时候，
+    ''' 1 本软件运行的时候，
+    ''' 2 现在不记录
+    ''' </summary>
+    Public Function 后台定时器启用(c As ComboBox) As Boolean
+        Dim i As Integer = c.SelectedIndex
+        If i < 0 OrElse i > 2 Then i = 0
+        Select Case i
+            Case 0
+                Return 最后窗体.Text = c.FindForm.Text
+            Case 1
+                Return True
+        End Select
+        Return False
+    End Function
+
+    ''' <summary>
     ''' 在任务栏的图标弹出一个框框
     ''' </summary>
     Public Sub 消息气泡(s As String, Optional 警告 As Boolean = False)
@@ -164,6 +182,7 @@ Module 通用
                 .StartPosition = FormStartPosition.Manual
                 If 预加载 Then
                     .Top = -4399
+                    Dp("预加载：", 窗体)
                     .Show()
                     .Hide()
                 End If
@@ -193,7 +212,11 @@ Module 通用
             最后窗体 = 窗体
         End Sub
 
-        Public ReadOnly Property 推送 As String
+        Public Property 推送 As String
+            Set(内容 As String)
+                窗体.Tag = 内容
+
+            End Set
             Get
                 If IsNothing(窗体.Tag) Then Return ""
                 Return 非空字符串(窗体.Tag.ToString)
@@ -205,5 +228,19 @@ Module 通用
         End Function
 
     End Class
+
+    ''' <summary>
+    ''' 给最后窗体的 txtlog 控件追加日志
+    ''' </summary>
+    Public Sub 日志(内容 As String)
+        Dim txtlog As TextBox = 最后窗体.Controls("TxtLog")
+        If IsNothing(txtlog) Then Exit Sub
+        With txtlog
+            If .TextLength > 0 Then .Text += vbCrLf
+            .Text += 内容
+            .SelectionStart = .TextLength
+            .ScrollToCaret()
+        End With
+    End Sub
 
 End Module
