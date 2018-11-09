@@ -55,7 +55,11 @@ Public Class 启动器
         新增关于链接("下载最新版", "https://github.com/gordonwalkedby/Walkedbys_Tools/releases")
         新增关于链接("请我喝好的", "https://walkedby.com/donateme/")
         新增关于链接("反馈", "https://github.com/gordonwalkedby/Walkedbys_Tools/issues")
-        GBallTools.Text += 括((ListTools.Items.Count - 1).ToString)
+        i = 0
+        For Each g In ListTools.Items
+            If g.StartsWith(" ") = False Then i += 1
+        Next
+        GBallTools.Text += 括(i.ToString)
         时长 = 设置.数字("OpenTime")
         TimerC_Tick()
         TimerC.Enabled = True

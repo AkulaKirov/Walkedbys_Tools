@@ -49,7 +49,6 @@ Public Class B站催更器
                      out = "获取网站信息失败，错误信息：" + vbCrLf + s
                  End If
                  LabOut.Text = out
-                 Thread.Sleep(4000)
                  w.结束()
              End Sub)
     End Sub

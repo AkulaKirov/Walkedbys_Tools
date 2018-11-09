@@ -10,7 +10,6 @@
         TxtWhiteList.Text = 设置.字符串("WeiboWhitelist")
         TxtLink1.Text = 设置.字符串("WeiboLink1")
         TxtLink2.Text = 设置.字符串("WeiboLink2")
-        TxtCool.Value = 设置.数字("WeiboCool", 3)
     End Sub
 
     Private Sub 微博批量删除_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
@@ -19,7 +18,6 @@
         设置.字符串("WeiboWhitelist") = TxtWhiteList.Text
         设置.字符串("WeiboLink2") = TxtLink1.Text
         设置.字符串("WeiboLink1") = TxtLink2.Text
-        设置.数字("WeiboCool") = TxtCool.Value
     End Sub
 
     Private Sub TxtCookie_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtCookie.KeyDown
@@ -34,7 +32,7 @@
         ListIDs.Items.Clear()
         w.开始(Sub()
                  Dim ck As String = TxtCookie.Text
-                 Dim h As 简易HTTP, s As String, cool As Integer = Int(TxtCool.Value) * 1000
+                 Dim h As 简易HTTP, s As String, cool As Integer = 2000
                  h = New 简易HTTP("https://weibo.com/me")
                  h.Origin = "https://weibo.com/"
                  h.Cookie = ck

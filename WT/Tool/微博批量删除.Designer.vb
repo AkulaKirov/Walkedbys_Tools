@@ -33,8 +33,6 @@ Partial Class 微博批量删除
         Me.TxtLog = New System.Windows.Forms.TextBox()
         Me.Pn = New System.Windows.Forms.Panel()
         Me.ButHowToCookie = New System.Windows.Forms.Button()
-        Me.TxtCool = New System.Windows.Forms.NumericUpDown()
-        Me.LabCool = New System.Windows.Forms.Label()
         Me.ButOld = New System.Windows.Forms.Button()
         Me.LabBUG = New System.Windows.Forms.Label()
         Me.TxtLink2 = New System.Windows.Forms.TextBox()
@@ -43,14 +41,13 @@ Partial Class 微博批量删除
         Me.LabIDcount = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Pn.SuspendLayout()
-        CType(Me.TxtCool, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TxtCookie
         '
         Me.TxtCookie.Location = New System.Drawing.Point(72, 13)
         Me.TxtCookie.Name = "TxtCookie"
-        Me.TxtCookie.Size = New System.Drawing.Size(637, 25)
+        Me.TxtCookie.Size = New System.Drawing.Size(655, 25)
         Me.TxtCookie.TabIndex = 0
         Me.TxtCookie.UseSystemPasswordChar = True
         '
@@ -75,7 +72,7 @@ Partial Class 微博批量删除
         'LabWhitelist
         '
         Me.LabWhitelist.AutoSize = True
-        Me.LabWhitelist.Location = New System.Drawing.Point(619, 65)
+        Me.LabWhitelist.Location = New System.Drawing.Point(637, 66)
         Me.LabWhitelist.Name = "LabWhitelist"
         Me.LabWhitelist.Size = New System.Drawing.Size(269, 19)
         Me.LabWhitelist.TabIndex = 6
@@ -83,7 +80,7 @@ Partial Class 微博批量删除
         '
         'TxtWhiteList
         '
-        Me.TxtWhiteList.Location = New System.Drawing.Point(619, 87)
+        Me.TxtWhiteList.Location = New System.Drawing.Point(637, 88)
         Me.TxtWhiteList.Multiline = True
         Me.TxtWhiteList.Name = "TxtWhiteList"
         Me.TxtWhiteList.ScrollBars = System.Windows.Forms.ScrollBars.Both
@@ -96,7 +93,7 @@ Partial Class 微博批量删除
         Me.ListWhite.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ListWhite.FormattingEnabled = True
         Me.ListWhite.Items.AddRange(New Object() {"只删除包含特殊用词的微博", "跳过包含特殊用词的微博", "不处理特殊用词"})
-        Me.ListWhite.Location = New System.Drawing.Point(619, 222)
+        Me.ListWhite.Location = New System.Drawing.Point(637, 223)
         Me.ListWhite.Name = "ListWhite"
         Me.ListWhite.Size = New System.Drawing.Size(277, 27)
         Me.ListWhite.TabIndex = 8
@@ -125,8 +122,6 @@ Partial Class 微博批量删除
         'Pn
         '
         Me.Pn.Controls.Add(Me.ButHowToCookie)
-        Me.Pn.Controls.Add(Me.TxtCool)
-        Me.Pn.Controls.Add(Me.LabCool)
         Me.Pn.Controls.Add(Me.ButOld)
         Me.Pn.Controls.Add(Me.ButGo)
         Me.Pn.Controls.Add(Me.LabBUG)
@@ -138,38 +133,20 @@ Partial Class 微博批量删除
         Me.Pn.Controls.Add(Me.ListWhite)
         Me.Pn.Controls.Add(Me.LabRange)
         Me.Pn.Controls.Add(Me.LabWhitelist)
-        Me.Pn.Location = New System.Drawing.Point(10, 12)
+        Me.Pn.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Pn.Location = New System.Drawing.Point(0, 0)
         Me.Pn.Name = "Pn"
-        Me.Pn.Size = New System.Drawing.Size(904, 273)
+        Me.Pn.Size = New System.Drawing.Size(926, 270)
         Me.Pn.TabIndex = 11
         '
         'ButHowToCookie
         '
-        Me.ButHowToCookie.Location = New System.Drawing.Point(715, 10)
+        Me.ButHowToCookie.Location = New System.Drawing.Point(733, 11)
         Me.ButHowToCookie.Name = "ButHowToCookie"
         Me.ButHowToCookie.Size = New System.Drawing.Size(181, 28)
         Me.ButHowToCookie.TabIndex = 15
         Me.ButHowToCookie.Text = "如何获取微博 Cookie"
         Me.ButHowToCookie.UseVisualStyleBackColor = True
-        '
-        'TxtCool
-        '
-        Me.TxtCool.Location = New System.Drawing.Point(545, 222)
-        Me.TxtCool.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
-        Me.TxtCool.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.TxtCool.Name = "TxtCool"
-        Me.TxtCool.Size = New System.Drawing.Size(68, 25)
-        Me.TxtCool.TabIndex = 14
-        Me.TxtCool.Value = New Decimal(New Integer() {1, 0, 0, 0})
-        '
-        'LabCool
-        '
-        Me.LabCool.AutoSize = True
-        Me.LabCool.Location = New System.Drawing.Point(426, 222)
-        Me.LabCool.Name = "LabCool"
-        Me.LabCool.Size = New System.Drawing.Size(113, 19)
-        Me.LabCool.TabIndex = 13
-        Me.LabCool.Text = "请求间隔（秒）："
         '
         'ButOld
         '
@@ -247,7 +224,6 @@ Partial Class 微博批量删除
         Me.Text = "微博批量删除"
         Me.Pn.ResumeLayout(False)
         Me.Pn.PerformLayout()
-        CType(Me.TxtCool, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -269,7 +245,5 @@ Partial Class 微博批量删除
     Friend WithEvents LabBUG As Label
     Friend WithEvents ButOld As Button
     Friend WithEvents Timer1 As Forms.Timer
-    Friend WithEvents LabCool As Label
-    Friend WithEvents TxtCool As NumericUpDown
     Friend WithEvents ButHowToCookie As Button
 End Class

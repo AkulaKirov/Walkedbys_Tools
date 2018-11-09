@@ -69,7 +69,7 @@
                          自动检查 = False
                      End If
                  End If
-                 Thread.Sleep(3000)
+                 ' Thread.Sleep(3000)
                  w.结束()
              End Sub)
     End Sub
@@ -79,7 +79,7 @@
             .Visible = False
             Dim s As String = 右(只要数字(TxtLog.SelectedText), 17)
             If 是Steam64ID(s) Then
-                .Text = "查看：" & s
+                .Text = "查询：" & s
                 .Visible = True
             End If
         End With

@@ -350,8 +350,7 @@ Module 字符串处理
     ''' 把文字转换成base64字符串
     ''' </summary>
     Public Function 转为Base64(文字 As String, Optional 编码 As Encoding = Nothing) As String
-        Dim s As String = Convert.ToBase64String(文字转字节(文字, 编码), Base64FormattingOptions.None)
-        Return s
+        Return Convert.ToBase64String(文字转字节(文字, 编码), Base64FormattingOptions.None)
     End Function
 
     ''' <summary>
