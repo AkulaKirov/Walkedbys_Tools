@@ -351,9 +351,6 @@ Module 字符串处理
     ''' </summary>
     Public Function 转为Base64(文字 As String, Optional 编码 As Encoding = Nothing) As String
         Dim s As String = Convert.ToBase64String(文字转字节(文字, 编码), Base64FormattingOptions.None)
-        Do While s.Length Mod 4 <> 0
-            s += "="
-        Loop
         Return s
     End Function
 
@@ -361,8 +358,12 @@ Module 字符串处理
     ''' 把文字转换成base64字符串
     ''' </summary>
     Public Function 转出Base64(B64文字 As String, Optional 编码 As Encoding = Nothing) As String
+        Dim n As Integer = 0
+        B64文字 = 去除(B64文字, "=")
         Do While B64文字.Length Mod 4 <> 0
             B64文字 += "="
+            n += 1
+            If n >= 2 Then Exit Do
         Loop
         Return 字节转文字(Convert.FromBase64String(B64文字), 编码)
     End Function
