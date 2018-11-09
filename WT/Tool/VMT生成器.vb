@@ -68,17 +68,20 @@ Public Class VMT生成器
 
     Private Sub Watching_Tick(sender As Object, e As EventArgs) Handles Watching.Tick
         If Not Visible Then Exit Sub
-        If Not 文件夹存在(TxtPath.Text) Then
-            日志("出错：文件夹已经被删除。 " & TxtPath.Text)
+        Watching.Enabled = False
+        Dim path As String = 追加斜杠(TxtPath.Text)
+        If Not 文件夹存在(path) Then
+            日志("出错：文件夹已经被删除。 " & path)
             ButGen.PerformClick()
             Exit Sub
         End If
-        Dim path As String = TxtPath.Text
         Dim f() As String = Directory.GetFiles(path, "*?.vtf", IIf(CheckSon.Checked, SearchOption.AllDirectories, SearchOption.TopDirectoryOnly))
         If f.Count < 1 Then Exit Sub
         Dim i As String, s As String, m As String, t As String, t2 As String, ok As Boolean = True, tn As String
+        path = 左(path, 1) + 提取(path.ToLower, 左(path, 1), "\materials\") + "\materials\"
         For Each i In f
             m = 去右(i, 4)
+            ok = True
             For Each s In 特殊列表
                 If m.EndsWith(s) Then
                     ok = False
@@ -86,7 +89,7 @@ Public Class VMT生成器
                 End If
             Next
             For Each s In 特殊列表2
-                If m.EndsWith(s) Then
+                If m.EndsWith("\" + s) Then
                     ok = False
                     Exit For
                 End If
@@ -101,12 +104,13 @@ Public Class VMT生成器
                         s = s.Replace("%文件名%", tn)
                         s = s.Replace("%路径%", t2)
                         For Each t In 特殊列表2
-                            If 文件存在(path + t + ".vtf") = False Then
+                            t2 = path + t + ".vtf"
+                            If 文件存在(t2) = False Then
                                 s = 正则去除(s, "\$.*" + Regex.Escape(t) + 引号)
                             End If
                         Next
                         For Each t In 特殊列表
-                            t2 = 去右(path, tn.Length - 1) + tn + t + ".vtf"
+                            t2 = path + tn + t + ".vtf"
                             If 文件存在(t2) = False Then
                                 s = 正则去除(s, "\$.*" + Regex.Escape(t) + 引号)
                             End If
@@ -117,6 +121,7 @@ Public Class VMT生成器
                 End If
             End If
         Next
+        Watching.Enabled = True
     End Sub
 
 End Class

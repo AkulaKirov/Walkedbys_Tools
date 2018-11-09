@@ -128,4 +128,17 @@ Public Class B站图床
         检查图片(i)
     End Sub
 
+    Private Sub LinkSource_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkSource.LinkClicked
+        Dim i As String
+        Select Case ListBed.SelectedIndex
+            Case 0
+                i = "https://t.bilibili.com/"
+            Case 1
+                i = "https://fans.tv.sohu.com/i/topic/add"
+            Case 2
+                i = "https://sm.ms/"
+        End Select
+        Process.Start(i)
+    End Sub
+
 End Class

@@ -22,6 +22,7 @@ Public Class 剪贴板记录器
 
     Private Sub Watching_Tick(sender As Object, e As EventArgs) Handles Watching.Tick
         If 后台定时器启用(ListOption) Then
+            Watching.Enabled = False
             Dim s As String = TxtText.Text, m As String
             If s.Length > 0 AndAlso 文件可用(s) Then
                 m = 剪贴板.文本
@@ -43,6 +44,7 @@ Public Class 剪贴板记录器
                     End If
                 End If
             End If
+            Watching.Enabled = True
         End If
     End Sub
 

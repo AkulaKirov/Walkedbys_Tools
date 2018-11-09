@@ -183,7 +183,6 @@ Module 通用
                 .StartPosition = FormStartPosition.Manual
                 If 预加载 Then
                     .Top = -4399
-                    Dp("预加载：", 窗体)
                     .Show()
                     .Hide()
                 End If

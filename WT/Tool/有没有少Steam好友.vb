@@ -86,7 +86,9 @@
     End Sub
 
     Private Sub ButHistory_Click(sender As Object, e As EventArgs) Handles ButHistory.Click
-        TxtLog.Text = 列表转文字(历史)
+        Dim s As String = 列表转文字(历史)
+        If s.Length < 1 Then s = "还没有历史记录。"
+        TxtLog.Text = s
     End Sub
 
     Private Sub ButCheckSteam_Click(sender As Object, e As EventArgs) Handles ButCheckSteam.Click

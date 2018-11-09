@@ -94,6 +94,7 @@ Public Class 启动器
             End If
         End If
         Refresh()
+        g = "0123456789"
     End Sub
 
     Private Sub 启动器_FormClosing(sender As Form, e As FormClosingEventArgs) Handles Me.FormClosing

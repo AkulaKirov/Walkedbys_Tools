@@ -34,18 +34,18 @@ Partial Class 信息修改器
         Me.ListT.ItemHeight = 19
         Me.ListT.Location = New System.Drawing.Point(12, 12)
         Me.ListT.Name = "ListT"
-        Me.ListT.Size = New System.Drawing.Size(214, 346)
+        Me.ListT.Size = New System.Drawing.Size(285, 346)
         Me.ListT.Sorted = True
         Me.ListT.TabIndex = 0
         '
         'TxtInfo
         '
-        Me.TxtInfo.Location = New System.Drawing.Point(232, 12)
+        Me.TxtInfo.Location = New System.Drawing.Point(303, 12)
         Me.TxtInfo.MaxLength = 52767
         Me.TxtInfo.Multiline = True
         Me.TxtInfo.Name = "TxtInfo"
         Me.TxtInfo.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtInfo.Size = New System.Drawing.Size(571, 346)
+        Me.TxtInfo.Size = New System.Drawing.Size(500, 346)
         Me.TxtInfo.TabIndex = 1
         Me.TxtInfo.TabStop = False
         Me.TxtInfo.WordWrap = False

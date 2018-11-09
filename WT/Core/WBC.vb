@@ -34,7 +34,7 @@
             If 文件后缀(本地文件) <> "wbc" Then Exit Sub
             Dim r As New BinaryWriter(File.OpenWrite(本地文件))
             With r
-                .Write(文字转字节("这是戈登走過去的程序配置文件，请不要篡改内容以免相关程序出错。谢谢合作。"))
+                .Write(文字转字节("这是戈登走過去的程序配置文件，请不要篡改内容以免相关程序出错，谢谢合作。"))
                 Dim b0 As Byte = 0, i As WBC元素
                 .Write(b0)
                 For Each i In 元素列表
@@ -68,10 +68,15 @@
 
         Public Property 日期(名字 As String, Optional 默认 As Date = #2000-01-01 00:00:00#) As Date
             Get
-                Return 字符串(名字, 默认.ToString)
+                Try
+                    Return Date.Parse(字符串(名字, 默认.ToString))
+                Catch ex As Exception
+                    Dp("日期转换出错：", ex.Message)
+                    Return 默认
+                End Try
             End Get
             Set(值 As Date)
-                字符串(名字) = 值.ToString
+                字符串(名字) = 值.ToString()
             End Set
         End Property
 

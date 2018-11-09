@@ -30,6 +30,7 @@ Partial Class B站图床
         Me.CheckAuto = New System.Windows.Forms.CheckBox()
         Me.LabBed = New System.Windows.Forms.Label()
         Me.ListBed = New System.Windows.Forms.ComboBox()
+        Me.LinkSource = New System.Windows.Forms.LinkLabel()
         CType(Me.PicBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -113,11 +114,22 @@ Partial Class B站图床
         Me.ListBed.Size = New System.Drawing.Size(121, 27)
         Me.ListBed.TabIndex = 7
         '
+        'LinkSource
+        '
+        Me.LinkSource.AutoSize = True
+        Me.LinkSource.Location = New System.Drawing.Point(193, 353)
+        Me.LinkSource.Name = "LinkSource"
+        Me.LinkSource.Size = New System.Drawing.Size(100, 19)
+        Me.LinkSource.TabIndex = 8
+        Me.LinkSource.TabStop = True
+        Me.LinkSource.Text = "查看图床源网站"
+        '
         'B站图床
         '
         Me.AllowDrop = True
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(626, 381)
+        Me.Controls.Add(Me.LinkSource)
         Me.Controls.Add(Me.ListBed)
         Me.Controls.Add(Me.LabBed)
         Me.Controls.Add(Me.CheckAuto)
@@ -146,4 +158,5 @@ Partial Class B站图床
     Friend WithEvents CheckAuto As CheckBox
     Friend WithEvents LabBed As Label
     Friend WithEvents ListBed As ComboBox
+    Friend WithEvents LinkSource As LinkLabel
 End Class
